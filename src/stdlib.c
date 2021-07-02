@@ -3,6 +3,23 @@
 #include <errno.h>
 
 
+void *dc_calloc(const struct dc_posix_env *env, int *err, size_t nelem, size_t elsize)
+{
+    void *memory;
+
+    DC_TRACE(env);
+    errno  = 0;
+    memory = calloc(nelem, elsize);
+    *err   = errno;
+
+    if(memory == NULL)
+    {
+        DC_REPORT_ERROR(env, errno);
+    }
+
+    return memory;
+}
+
 void *dc_malloc(const struct dc_posix_env *env, int *err, size_t size)
 {
     void *memory;

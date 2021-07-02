@@ -6,6 +6,7 @@
 #include <sys/types.h>
 
 
+void *dc_calloc(const struct dc_posix_env *env, int *err, size_t nelem, size_t elsize);
 void *dc_malloc(const struct dc_posix_env *env, int *err, size_t size);
 void dc_free(const struct dc_posix_env *env, void *ptr);
 
