@@ -3,9 +3,9 @@
 cmake_minimum_required(VERSION 3.19)
 
 # Project name and a few useful settings. Other commands can pick up the results
-project(
-        libdc_posix
-        VERSION 0.1
+project(libdc_posix
+        VERSION 0.1.0.0
+        HOMEPAGE_URL "https://github.com/bcitcstdatacomm/libdc_posix"
         DESCRIPTION ""
         LANGUAGES C)
 
