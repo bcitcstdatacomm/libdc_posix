@@ -23,6 +23,15 @@
 #include <wordexp.h>
 
 
+/**
+ *
+ * @param env
+ * @param err
+ * @param words
+ * @param pwordexp
+ * @param flags
+ * @return
+ */
 int dc_wordexp(const struct dc_posix_env *env,
                int *err,
                const char *restrict words,

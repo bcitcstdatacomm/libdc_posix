@@ -23,6 +23,15 @@
 #include <unistd.h>
 
 
+/**
+ *
+ * @param env
+ * @param err
+ * @param fildes
+ * @param buf
+ * @param nbyte
+ * @return
+ */
 ssize_t dc_read(const struct dc_posix_env *env, int *err, int fildes, void *buf, size_t nbyte);
 
 
