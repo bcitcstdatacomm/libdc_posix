@@ -2,20 +2,21 @@
 # show up in IDEs unless they are listed in add_library.
 
 set(HEADER_LIST
-        "posix_env.h"
-        "stdlib.h"
-        "wordexp.h"
-        "unistd.h"
-        "inttypes.h"
+        posix_env.h
+        stdlib.h
+        wordexp.h
+        unistd.h
+        inttypes.h
+        string.h
 )
 
 set(SOURCE_LIST
-        "posix_env.c"
-        "stdlib.c"
-        "wordexp.c"
-        "unistd.c"
-        "inttypes.c"
-)
+        posix_env.c
+        stdlib.c
+        wordexp.c
+        unistd.c
+        inttypes.c
+        string.c)
 
 # Make an static library
 add_library(dc_posix SHARED ${SOURCE_LIST} ${HEADER_LIST})

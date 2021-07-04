@@ -31,7 +31,7 @@
  * @param elsize
  * @return
  */
-void *dc_calloc(const struct dc_posix_env *env, int *err, size_t nelem, size_t elsize);
+void *dc_calloc(const struct dc_posix_env *env, struct dc_error *err, size_t nelem, size_t elsize);
 
 /**
  *
@@ -40,14 +40,15 @@ void *dc_calloc(const struct dc_posix_env *env, int *err, size_t nelem, size_t e
  * @param size
  * @return
  */
-void *dc_malloc(const struct dc_posix_env *env, int *err, size_t size);
+void *dc_malloc(const struct dc_posix_env *env, struct dc_error *err, size_t size);
 
 /**
  *
  * @param env
  * @param ptr
+ * @param size
  */
-void dc_free(const struct dc_posix_env *env, void *ptr);
+void dc_free(const struct dc_posix_env *env, void *ptr, size_t size);
 
 
 #endif // LIBDC_POSIX_STDLIB_H

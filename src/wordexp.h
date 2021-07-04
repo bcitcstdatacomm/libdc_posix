@@ -33,7 +33,7 @@
  * @return
  */
 int dc_wordexp(const struct dc_posix_env *env,
-               int *err,
+               struct dc_error *err,
                const char *restrict words,
                wordexp_t *restrict pwordexp,
                int flags);

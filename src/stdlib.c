@@ -16,55 +16,64 @@
 
 
 #include "stdlib.h"
+#include "string.h"
 #include <stdlib.h>
 #include <errno.h>
 
 
-void *dc_calloc(const struct dc_posix_env *env, int *err, size_t nelem, size_t elsize)
+// https://pubs.opengroup.org/onlinepubs/9699919799/functions/calloc.html
+void *dc_calloc(const struct dc_posix_env *env, struct dc_error *err, size_t nelem, size_t elsize)
 {
     void *memory;
 
     DC_TRACE(env);
     errno  = 0;
     memory = calloc(nelem, elsize);
-    *err   = errno;
 
     if(memory == NULL)
     {
-        DC_REPORT_ERROR(env, errno);
+        DC_REPORT_ERRNO(env, err, errno);
+    }
+    else
+    {
+        dc_err_reset(err);
     }
 
     return memory;
 }
 
-void *dc_malloc(const struct dc_posix_env *env, int *err, size_t size)
+
+// https://pubs.opengroup.org/onlinepubs/9699919799/functions/malloc.html
+void *dc_malloc(const struct dc_posix_env *env, struct dc_error *err, size_t size)
 {
     void *memory;
 
     DC_TRACE(env);
-    errno = 0;
-
-    if(env->zero_malloc)
-    {
-        memory = calloc(1, size);
-    }
-    else
-    {
-        memory = malloc(size);
-    }
-
-    *err = errno;
+    errno  = 0;
+    memory = malloc(size);
 
     if(memory == NULL)
     {
-        DC_REPORT_ERROR(env, errno);
+        DC_REPORT_ERRNO(env, err, errno);
+    }
+    else
+    {
+        dc_err_reset(err);
     }
 
     return memory;
 }
 
-void dc_free(const struct dc_posix_env *env, void *ptr)
+
+// https://pubs.opengroup.org/onlinepubs/9699919799/functions/free.html
+void dc_free(const struct dc_posix_env *env, void *ptr, size_t size)
 {
     DC_TRACE(env);
+
+    if(env->zero_free)
+    {
+        dc_memset(env, ptr, 0, size);
+    }
+
     free(ptr);
 }

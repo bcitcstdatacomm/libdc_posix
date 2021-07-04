@@ -16,22 +16,27 @@
 
 
 #include "wordexp.h"
+#include <errno.h>
 
 
+// https://pubs.opengroup.org/onlinepubs/9699919799/functions/wordexp.html
 int dc_wordexp(const struct dc_posix_env *env,
-               int *err,
+               struct dc_error *err,
                const char *restrict words,
                wordexp_t *restrict pwordexp,
                int flags)
 {
+    int err_code;
+
     DC_TRACE(env);
+    errno     = 0;
+    err_code  = wordexp(words, pwordexp, flags);
 
-    *err = wordexp(words, pwordexp, flags);
-
-    if(*err)
+    // TODO: there is more to the error handling
+    if(err_code != 0)
     {
-        DC_REPORT_ERROR(env, *err);
+        DC_REPORT_SYSTEM(env, err, err_code);
     }
 
-    return *err;
+    return err_code;
 }

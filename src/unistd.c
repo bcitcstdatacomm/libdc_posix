@@ -16,21 +16,39 @@
 
 
 #include "unistd.h"
+#include <unistd.h>
 
 
-ssize_t dc_read(const struct dc_posix_env *env, int *err, int fildes, void *buf, size_t nbyte)
+// https://pubs.opengroup.org/onlinepubs/9699919799/
+ssize_t dc_read(const struct dc_posix_env *env, struct dc_error *err, int fildes, void *buf, size_t nbyte)
 {
     ssize_t ret_val;
 
     DC_TRACE(env);
-
-    errno = 0;
+    errno   = 0;
     ret_val = read(fildes, buf, nbyte);
 
     if(ret_val == -1)
     {
-        DC_REPORT_ERROR(env, errno);
-        *err = errno;
+        DC_REPORT_ERRNO(env, err, errno);
+    }
+
+    return ret_val;
+}
+
+
+// https://pubs.opengroup.org/onlinepubs/9699919799/functions/write.html
+ssize_t dc_write(const struct dc_posix_env *env, struct dc_error *err, int fildes, const void *buf, size_t nbyte)
+{
+    ssize_t ret_val;
+
+    DC_TRACE(env);
+    errno   = 0;
+    ret_val = write(fildes, buf, nbyte);
+
+    if(ret_val == -1)
+    {
+        DC_REPORT_ERRNO(env, err, errno);
     }
 
     return ret_val;

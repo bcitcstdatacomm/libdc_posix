@@ -20,7 +20,7 @@
 
 
 #include "posix_env.h"
-#include <unistd.h>
+#include <sys/types.h>
 
 
 /**
@@ -32,7 +32,19 @@
  * @param nbyte
  * @return
  */
-ssize_t dc_read(const struct dc_posix_env *env, int *err, int fildes, void *buf, size_t nbyte);
+ssize_t dc_read(const struct dc_posix_env *env, struct dc_error *err, int fildes, void *buf, size_t nbyte);
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param fildes
+ * @param buf
+ * @param nbyte
+ * @return
+ */
+ssize_t dc_write(const struct dc_posix_env *env, struct dc_error *err, int fildes, const void *buf, size_t nbyte);
+
 
 
 #endif // LIBDC_POSIX_UNISTD_H

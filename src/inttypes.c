@@ -16,11 +16,11 @@
 
 
 #include "inttypes.h"
-#include <errno.h>
 
 
+// https://pubs.opengroup.org/onlinepubs/9699919799/functions/strtoimax.html
 intmax_t dc_strtoimax(const struct dc_posix_env *env,
-                      int *err,
+                      struct dc_error *err,
                       const char *restrict nptr,
                       char **restrict endptr,
                       int base)
@@ -31,31 +31,36 @@ intmax_t dc_strtoimax(const struct dc_posix_env *env,
     errno = 0;
     value = strtoimax(nptr, endptr, base);
 
-    if(errno != 0)
+    if(value == 0 || value == INTMAX_MIN || value == INTMAX_MAX)
     {
-        *err = errno;
-        DC_REPORT_ERROR(env, errno);
+        if(errno != 0)
+        {
+            DC_REPORT_ERRNO(env, err, errno);
+        }
     }
 
     return value;
 }
 
+// https://pubs.opengroup.org/onlinepubs/9699919799/functions/strtoimax.html
 uintmax_t dc_strtoumax(const struct dc_posix_env *env,
-                       int *err,
+                       struct dc_error *err,
                        const char *restrict nptr,
                        char **restrict endptr,
                        int base)
 {
-    uintmax_t  value;
+    uintmax_t value;
 
     DC_TRACE(env);
     errno = 0;
     value = strtoumax(nptr, endptr, base);
-    *err  = errno;
 
-    if(errno != 0)
+    if(value == 0 || value == UINTMAX_MAX)
     {
-        DC_REPORT_ERROR(env, errno);
+        if(errno != 0)
+        {
+            DC_REPORT_ERRNO(env, err, errno);
+        }
     }
 
     return value;

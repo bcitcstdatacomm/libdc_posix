@@ -33,7 +33,7 @@
  * @return
  */
 intmax_t dc_strtoimax(const struct dc_posix_env *env,
-                      int *err,
+                      struct dc_error *err,
                       const char *restrict nptr,
                       char **restrict endptr,
                       int base);
@@ -48,7 +48,7 @@ intmax_t dc_strtoimax(const struct dc_posix_env *env,
  * @return
  */
 uintmax_t dc_strtoumax(const struct dc_posix_env *env,
-                       int *err,
+                       struct dc_error *err,
                        const char *restrict nptr,
                        char **restrict endptr,
                        int base);
