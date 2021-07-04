@@ -28,6 +28,11 @@
 #include <stddef.h>
 
 
+#ifndef __STDC_LIB_EXT1__
+typedef int errno_t;
+#endif
+
+
 typedef enum
 {
     DC_ERROR_NONE = 0,
