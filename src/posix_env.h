@@ -44,7 +44,7 @@ typedef enum
 
 struct dc_error
 {
-    const char *message;
+    char *message;
     const char *file_name;
     const char *function_name;
     size_t line_number;
@@ -77,31 +77,20 @@ struct dc_posix_env
  */
 void dc_posix_env_init(struct dc_posix_env *env, void (*error_reporter)(const struct dc_posix_env *env, const struct dc_error *err));
 
-/**
- *
- * @param err
- */
-void dc_err_reset(struct dc_error *err);
 
 /**
  *
  * @param err
- * @param file_name
- * @param function_name
- * @param line_number
- * @param err_code
  */
-void dc_err_errno(struct dc_error *err, const char *file_name, const char *function_name, size_t line_number, errno_t err_code);
+void dc_error_init(struct dc_error *err);
+
 
 /**
  *
  * @param err
- * @param file_name
- * @param function_name
- * @param line_number
- * @param err_code
  */
-void dc_err_system(struct dc_error *err, const char *file_name, const char *function_name, size_t line_number, int err_code);
+void dc_error_reset(struct dc_error *err);
+
 
 /**
  *
@@ -111,12 +100,34 @@ void dc_err_system(struct dc_error *err, const char *file_name, const char *func
  * @param line_number
  * @param err_code
  */
-void dc_err_user(struct dc_error *err, const char *file_name, const char *function_name, size_t line_number, int err_code);
+void dc_error_errno(struct dc_error *err, const char *file_name, const char *function_name, size_t line_number, errno_t err_code);
 
 
-#define DC_REPORT_ERRNO(env,  err, err_code) dc_err_errno((err),  __FILE__, __func__, __LINE__, (err_code)); if((env)->error_reporter) (env)->error_reporter((env), (err))
-#define DC_REPORT_SYSTEM(env, err, err_code) dc_err_system((err), __FILE__, __func__, __LINE__ ,(err_code)); if((env)->error_reporter) (env)->error_reporter((env), (err))
-#define DC_REPORT_USER(env,   err, err_code)  dc_err_user((err),  __FILE__, __func__, __LINE__, (err_code)); if((env)->error_reporter) (env)->error_reporter((env), (err))
+/**
+ *
+ * @param err
+ * @param file_name
+ * @param function_name
+ * @param line_number
+ * @param err_code
+ */
+void dc_error_system(struct dc_error *err, const char *file_name, const char *function_name, size_t line_number, const char *msg, int err_code);
+
+
+/**
+ *
+ * @param err
+ * @param file_name
+ * @param function_name
+ * @param line_number
+ * @param err_code
+ */
+void dc_error_user(struct dc_error *err, const char *file_name, const char *function_name, size_t line_number, const char *msg, int err_code);
+
+
+#define DC_REPORT_ERRNO(env, err, err_code) dc_error_errno((err), __FILE__, __func__, __LINE__, (err_code)); if((env)->error_reporter) (env)->error_reporter((env), (err))
+#define DC_REPORT_SYSTEM(env, err, msg, err_code) dc_error_system((err), __FILE__, __func__, __LINE__, (msg), (err_code)); if((env)->error_reporter) (env)->error_reporter((env), (err))
+#define DC_REPORT_USER(env, err, msg, err_code) dc_error_user((err), __FILE__, __func__, __LINE__, (msg), (err_code)); if((env)->error_reporter) (env)->error_reporter((env), (err))
 #define DC_TRACE(env) if((env)->tracer) (env)->tracer((env), __FILE__, __func__, __LINE__)
 #define DC_HAS_ERROR(err) (err)->type != DC_ERROR_NONE
 #define DC_HAS_NO_ERROR(err) (err)->type == DC_ERROR_NONE

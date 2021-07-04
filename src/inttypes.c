@@ -28,6 +28,7 @@ intmax_t dc_strtoimax(const struct dc_posix_env *env,
     intmax_t  value;
 
     DC_TRACE(env);
+    dc_error_reset(err);
     errno = 0;
     value = strtoimax(nptr, endptr, base);
 
@@ -52,6 +53,7 @@ uintmax_t dc_strtoumax(const struct dc_posix_env *env,
     uintmax_t value;
 
     DC_TRACE(env);
+    dc_error_reset(err);
     errno = 0;
     value = strtoumax(nptr, endptr, base);
 

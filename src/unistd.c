@@ -32,6 +32,10 @@ ssize_t dc_read(const struct dc_posix_env *env, struct dc_error *err, int fildes
     {
         DC_REPORT_ERRNO(env, err, errno);
     }
+    else
+    {
+        dc_error_reset(err);
+    }
 
     return ret_val;
 }
@@ -49,6 +53,10 @@ ssize_t dc_write(const struct dc_posix_env *env, struct dc_error *err, int filde
     if(ret_val == -1)
     {
         DC_REPORT_ERRNO(env, err, errno);
+    }
+    else
+    {
+        dc_error_reset(err);
     }
 
     return ret_val;

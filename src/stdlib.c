@@ -36,7 +36,7 @@ void *dc_calloc(const struct dc_posix_env *env, struct dc_error *err, size_t nel
     }
     else
     {
-        dc_err_reset(err);
+        dc_error_reset(err);
     }
 
     return memory;
@@ -58,7 +58,7 @@ void *dc_malloc(const struct dc_posix_env *env, struct dc_error *err, size_t siz
     }
     else
     {
-        dc_err_reset(err);
+        dc_error_reset(err);
     }
 
     return memory;

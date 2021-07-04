@@ -32,10 +32,53 @@ int dc_wordexp(const struct dc_posix_env *env,
     errno     = 0;
     err_code  = wordexp(words, pwordexp, flags);
 
-    // TODO: there is more to the error handling
-    if(err_code != 0)
+    // this isn't great but the docs suck when it comes to telling how it works
+    if(errno != 0)
     {
-        DC_REPORT_SYSTEM(env, err, err_code);
+        DC_REPORT_ERRNO(env, err, err_code);
+    }
+    else if(err_code != 0)
+    {
+        const char *msg;
+
+        switch(err_code)
+        {
+            case WRDE_BADCHAR:
+            {
+                msg = "Unquoted character in wordexp";
+                break;
+            }
+            case WRDE_BADVAL:
+            {
+                msg = "Undefined shell variable in wordexp";
+                break;
+            }
+            case WRDE_CMDSUB:
+            {
+                msg = "Command substitution not allowed in wordexp";
+                break;
+            }
+            case WRDE_NOSPACE:
+            {
+                msg = "Memory allocation failure in wordexp";
+                break;
+            }
+            case WRDE_SYNTAX:
+            {
+                msg = "Bad shell syntax in wordexp";
+                break;
+            }
+            default:
+            {
+                msg = "Unknown Error from wordexp";
+            }
+        }
+
+        DC_REPORT_SYSTEM(env, err, msg, err_code);
+    }
+    else
+    {
+        dc_error_reset(err);
     }
 
     return err_code;
