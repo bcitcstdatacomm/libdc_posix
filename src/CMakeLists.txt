@@ -3,20 +3,29 @@
 
 set(HEADER_LIST
         posix_env.h
-        stdlib.h
-        wordexp.h
-        unistd.h
         inttypes.h
+        netdb.h
+        stdlib.h
         string.h
+        unistd.h
+        wordexp.h
 )
+
+set(HEADER_SYS_LIST
+        sys/socket.h
+)
+
 
 set(SOURCE_LIST
         posix_env.c
-        stdlib.c
-        wordexp.c
-        unistd.c
         inttypes.c
-        string.c)
+        netdb.c
+        stdlib.c
+        string.c
+        unistd.c
+        wordexp.c
+        sys/socket.c
+)
 
 # Make an static library
 add_library(dc_posix SHARED ${SOURCE_LIST} ${HEADER_LIST})
@@ -37,10 +46,11 @@ target_compile_options(dc_posix PRIVATE -Wdouble-promotion -Wformat-nonliteral -
 
 install(TARGETS dc_posix LIBRARY DESTINATION lib)
 install(FILES ${HEADER_LIST} DESTINATION include/dc_posix)
+install(FILES ${HEADER_SYS_LIST} DESTINATION include/dc_posix/sys)
 
 # IDEs should put the headers in a nice place
 source_group(
         TREE "${PROJECT_SOURCE_DIR}/src"
         PREFIX "Header Files"
-        FILES ${HEADER_LIST}
+        FILES ${HEADER_LIST} ${HEADER_SYS_LIST}
 )

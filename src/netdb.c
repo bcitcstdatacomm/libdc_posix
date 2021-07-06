@@ -1,0 +1,90 @@
+#include "netdb.h"
+
+
+// https://pubs.opengroup.org/onlinepubs/9699919799/functions/freeaddrinfo.html
+void dc_freeaddrinfo(const struct dc_posix_env *env,
+                     struct addrinfo           *ai)
+{
+    DC_TRACE(env);
+    freeaddrinfo(ai);
+}
+
+
+// https://pubs.opengroup.org/onlinepubs/9699919799/functions/freeaddrinfo.html
+int dc_getaddrinfo(const struct dc_posix_env  *env,
+                   struct dc_error            *err,
+                   const char                 *restrict nodename,
+                   const char                 *restrict servname,
+                   const struct addrinfo      *restrict hints,
+                   struct addrinfo           **restrict res)
+{
+    int ret_val;
+
+    DC_TRACE(env);
+    errno   = 0;
+    ret_val = getaddrinfo(nodename, servname, hints, res);
+
+    if(ret_val != 0)
+    {
+        if(errno == 0)
+        {
+            const char *msg;
+
+            switch(ret_val)
+            {
+                case EAI_AGAIN:
+                {
+                    msg = "The name could not be resolved at this time. Future attempts may succeed.";
+                    break;
+                }
+                case EAI_BADFLAGS:
+                {
+                    msg = "The flags parameter had an invalid value.";
+                    break;
+                }
+                case EAI_FAIL:
+                {
+                    msg = "A non-recoverable error occurred when attempting to resolve the name.";
+                    break;
+                }
+                case EAI_FAMILY:
+                {
+                    msg = "The address family was not recognized.";
+                    break;
+                }
+                case EAI_MEMORY:
+                {
+                    msg = "There was a memory allocation failure when trying to allocate storage for the return value.";
+                    break;
+                }
+                case EAI_NONAME:
+                {
+                    msg = "The name does not resolve for the supplied parameters.";
+                    break;
+                }
+                case EAI_SERVICE:
+                {
+                    msg = "The service passed was not recognized for the specified socket type.";
+                    break;
+                }
+                case EAI_SOCKTYPE:
+                {
+                    msg = "The intended socket type was not recognized.";
+                    break;
+                }
+                default:
+                {
+                    msg = "Unknown Error from wordexp";
+                }
+            }
+
+            DC_REPORT_SYSTEM(env, err, msg, ret_val);
+        }
+        else
+        {
+            DC_REPORT_ERRNO(env, err, errno);
+        }
+    }
+
+    return ret_val;
+}

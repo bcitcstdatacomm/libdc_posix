@@ -131,6 +131,7 @@ void dc_error_user(struct dc_error *err, const char *file_name, const char *func
 #define DC_TRACE(env) if((env)->tracer) (env)->tracer((env), __FILE__, __func__, __LINE__)
 #define DC_HAS_ERROR(err) (err)->type != DC_ERROR_NONE
 #define DC_HAS_NO_ERROR(err) (err)->type == DC_ERROR_NONE
+#define DC_ERROR_IS_ERRNO(err, code) ((err)->type == DC_ERROR_ERRNO) && ((err)->errno_code == (code))
 
 
 #endif // LIBDC_POSIX_POSIX_ENV_H
