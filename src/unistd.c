@@ -61,3 +61,25 @@ ssize_t dc_write(const struct dc_posix_env *env, struct dc_error *err, int filde
 
     return ret_val;
 }
+
+
+// https://pubs.opengroup.org/onlinepubs/9699919799/functions/close.html
+int dc_close(const struct dc_posix_env *env, struct dc_error *err, int fildes)
+{
+    int ret_val;
+
+    DC_TRACE(env);
+    errno = 0;
+    ret_val = close(fildes);
+
+    if(ret_val == -1)
+    {
+        DC_REPORT_ERRNO(env, err, errno);
+    }
+    else
+    {
+        dc_error_reset(err);
+    }
+
+    return ret_val;
+}

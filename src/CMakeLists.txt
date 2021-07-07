@@ -5,6 +5,7 @@ set(HEADER_LIST
         posix_env.h
         inttypes.h
         netdb.h
+        signal.h
         stdlib.h
         string.h
         unistd.h
@@ -20,6 +21,7 @@ set(SOURCE_LIST
         posix_env.c
         inttypes.c
         netdb.c
+        signal.c
         stdlib.c
         string.c
         unistd.c

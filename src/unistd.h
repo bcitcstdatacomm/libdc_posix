@@ -46,5 +46,14 @@ ssize_t dc_read(const struct dc_posix_env *env, struct dc_error *err, int fildes
 ssize_t dc_write(const struct dc_posix_env *env, struct dc_error *err, int fildes, const void *buf, size_t nbyte);
 
 
+/**
+ *
+ * @param env
+ * @param err
+ * @param fildes
+ * @return
+ */
+int dc_close(const struct dc_posix_env *env, struct dc_error *err, int fildes);
+
 
 #endif // LIBDC_POSIX_UNISTD_H
