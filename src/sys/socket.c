@@ -15,7 +15,7 @@
  */
 
 
-#include "socket.h"
+#include "sys/socket.h"
 
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/socket.html

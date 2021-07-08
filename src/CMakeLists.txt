@@ -2,20 +2,19 @@
 # show up in IDEs unless they are listed in add_library.
 
 set(HEADER_LIST
-        posix_env.h
-        inttypes.h
-        netdb.h
-        signal.h
-        stdlib.h
-        string.h
-        unistd.h
-        wordexp.h
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/posix_env.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/inttypes.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/netdb.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/signal.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/stdlib.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/string.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/unistd.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/wordexp.h"
 )
 
 set(HEADER_SYS_LIST
-        sys/socket.h
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/socket.h"
 )
-
 
 set(SOURCE_LIST
         posix_env.c
@@ -29,18 +28,19 @@ set(SOURCE_LIST
         sys/socket.c
 )
 
-# Make an static library
+# Make a shared library
 add_library(dc_posix SHARED ${SOURCE_LIST} ${HEADER_LIST})
 target_include_directories(dc_posix PRIVATE /usr/include)
 target_include_directories(dc_posix PRIVATE /usr/local/include)
 target_link_directories(dc_posix PRIVATE /usr/local/lib)
 
-set_target_properties(dc_posix  PROPERTIES
+set_target_properties(dc_posix PROPERTIES
         VERSION ${PROJECT_VERSION}
         SOVERSION ${PROJECT_VERSION_MAJOR})
 
 # All users of this library will need at least C11
 target_compile_features(dc_posix PUBLIC c_std_11)
+target_compile_options(dc_posix PRIVATE -iquote "${libdc_posix_SOURCE_DIR}/include/dc_posix")
 target_compile_options(dc_posix PRIVATE -g -fPIC)
 target_compile_options(dc_posix PRIVATE -fstack-protector-all -ftrapv)
 target_compile_options(dc_posix PRIVATE -Wpedantic -Wall -Wextra)
@@ -52,7 +52,7 @@ install(FILES ${HEADER_SYS_LIST} DESTINATION include/dc_posix/sys)
 
 # IDEs should put the headers in a nice place
 source_group(
-        TREE "${PROJECT_SOURCE_DIR}/src"
+        TREE "${PROJECT_SOURCE_DIR}/include"
         PREFIX "Header Files"
         FILES ${HEADER_LIST} ${HEADER_SYS_LIST}
 )
