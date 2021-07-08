@@ -80,6 +80,23 @@ void dc_posix_env_init(struct dc_posix_env *env, void (*error_reporter)(const st
 
 /**
  *
+ * @param env
+ * @param err
+ */
+void dc_posix_default_error_reporter(const struct dc_posix_env *env, const struct dc_error *err);
+
+/**
+ *
+ * @param env
+ * @param file_name
+ * @param function_name
+ * @param line_number
+ */
+void dc_posix_default_tracer(const struct dc_posix_env *env, const char *file_name, const char *function_name, size_t line_number);
+
+
+/**
+ *
  * @param err
  */
 void dc_error_init(struct dc_error *err);
