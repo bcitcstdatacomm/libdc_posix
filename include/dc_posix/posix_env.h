@@ -33,15 +33,21 @@ typedef int errno_t;
 #endif
 
 
+/**
+ * Error states.
+ */
 typedef enum
 {
-    DC_ERROR_NONE = 0,
-    DC_ERROR_ERRNO,
-    DC_ERROR_SYSTEM,
-    DC_ERROR_USER,
+    DC_ERROR_NONE = 0,  /**< There is no error */
+    DC_ERROR_ERRNO,     /**< The error is due to errno being set */
+    DC_ERROR_SYSTEM,    /**< The error is from a library call that doesn't set errno */
+    DC_ERROR_USER,      /**< The error is from a non-standard function */
 } dc_error_type;
 
 
+/**
+ *
+ */
 struct dc_error
 {
     char *message;
