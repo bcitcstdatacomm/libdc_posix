@@ -3,6 +3,7 @@
 
 set(HEADER_LIST
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/posix_env.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/fcntl.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/inttypes.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/netdb.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/signal.h"
@@ -10,14 +11,16 @@ set(HEADER_LIST
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/string.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/unistd.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/wordexp.h"
-)
+        )
 
 set(HEADER_SYS_LIST
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/socket.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/stat.h"
 )
 
 set(SOURCE_LIST
         posix_env.c
+        fcntl.c
         inttypes.c
         netdb.c
         signal.c
@@ -26,7 +29,7 @@ set(SOURCE_LIST
         unistd.c
         wordexp.c
         sys/socket.c
-)
+        sys/stat.c)
 
 # Make a shared library
 add_library(dc_posix SHARED ${SOURCE_LIST} ${HEADER_LIST})
