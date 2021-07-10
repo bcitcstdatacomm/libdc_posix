@@ -45,7 +45,9 @@ endif()
 # The compiled library code is here
 add_subdirectory(src)
 
+find_library(LIBCGREEN cgreen)
+
 # Testing only available if this is the main app
-if((CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME) AND BUILD_TESTING)
+if((CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME) AND BUILD_TESTING AND LIBCGREEN)
     add_subdirectory(tests)
 endif()
