@@ -11,7 +11,7 @@ set(HEADER_LIST
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/string.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/unistd.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/wordexp.h"
-        )
+        ../include/dc_posix/regex.h)
 
 set(HEADER_SYS_LIST
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/socket.h"
@@ -29,7 +29,7 @@ set(SOURCE_LIST
         unistd.c
         wordexp.c
         sys/socket.c
-        sys/stat.c)
+        sys/stat.c regex.c)
 
 # Make a shared library
 add_library(dc_posix SHARED ${SOURCE_LIST} ${HEADER_LIST})
