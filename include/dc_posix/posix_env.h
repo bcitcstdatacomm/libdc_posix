@@ -50,16 +50,16 @@ typedef enum
  */
 struct dc_error
 {
-    char *message;
-    const char *file_name;
-    const char *function_name;
-    size_t line_number;
-    dc_error_type type;
+    char *message;              /**< the message for the error */
+    const char *file_name;      /**< the file name that the error happened in */
+    const char *function_name;  /**< the function name that the error happened in */
+    size_t line_number;         /**< the line number that the error happened on */
+    dc_error_type type;         /**< type type of error */
 
     union
     {
-        errno_t errno_code;
-        int     err_code;
+        errno_t errno_code;     /**< the value of errno, if the type is DC_ERROR_ERRNO */
+        int     err_code;       /**< type value of the error, if the type is not DC_ERROR_ERRNO */
     };
 };
 
