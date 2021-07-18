@@ -16,9 +16,9 @@
 
 
 #include "posix_env.h"
-#include <string.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 
 static void setup_error(struct dc_error *err, dc_error_type type, const char *file_name, const char *function_name, size_t line_number, const char *msg);

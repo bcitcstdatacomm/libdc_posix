@@ -15,6 +15,7 @@
  */
 
 
+#include "posix_env.h"
 #include "fcntl.h"
 #include <fcntl.h>
 #include <stdarg.h>
