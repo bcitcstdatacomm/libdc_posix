@@ -9,6 +9,38 @@ project(libdc_posix
         DESCRIPTION ""
         LANGUAGES C)
 
+set(HEADER_LIST
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/posix_env.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/fcntl.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/inttypes.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/netdb.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/signal.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/stdlib.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/string.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/unistd.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/wordexp.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/regex.h")
+
+set(HEADER_SYS_LIST
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/socket.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/stat.h"
+        )
+
+set(SOURCE_LIST
+        "${libdc_posix_SOURCE_DIR}/src/posix_env.c"
+        "${libdc_posix_SOURCE_DIR}/src/fcntl.c"
+        "${libdc_posix_SOURCE_DIR}/src/inttypes.c"
+        "${libdc_posix_SOURCE_DIR}/src/netdb.c"
+        "${libdc_posix_SOURCE_DIR}/src/regex.c"
+        "${libdc_posix_SOURCE_DIR}/src/signal.c"
+        "${libdc_posix_SOURCE_DIR}/src/stdlib.c"
+        "${libdc_posix_SOURCE_DIR}/src/string.c"
+        "${libdc_posix_SOURCE_DIR}/src/unistd.c"
+        "${libdc_posix_SOURCE_DIR}/src/wordexp.c"
+        "${libdc_posix_SOURCE_DIR}/src/sys/socket.c"
+        "${libdc_posix_SOURCE_DIR}/src/sys/stat.c"
+        )
+
 ### Require out-of-source builds
 # this still creates a CMakeFiles directory and CMakeCache.txt- can we delete them?
 file(TO_CMAKE_PATH "${PROJECT_BINARY_DIR}/CMakeLists.txt" LOC_PATH)
