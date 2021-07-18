@@ -13,11 +13,6 @@ target_compile_options(dc_posix_test PRIVATE -Wdouble-promotion -Wformat-nonlite
 target_include_directories(dc_posix_test PRIVATE /usr/include)
 target_include_directories(dc_posix_test PRIVATE /usr/local/include)
 
-find_library(LIBDC_POSIX dc_posix REQUIRED)
-if(LIBDC_POSIX)
-    target_link_libraries(dc_posix_test PRIVATE ${LIBDC_POSIX})
-endif()
-
 find_library(LIBCGREEN cgreen REQUIRED)
 if(LIBCGREEN)
     target_link_libraries(dc_posix_test PRIVATE ${LIBCGREEN})
