@@ -17,23 +17,16 @@
 
 #include "dc_posix_env.h"
 #include "dc_fcntl.h"
-#include <fcntl.h>
-#include <stdarg.h>
 
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/open.html
-int dc_open(const struct dc_posix_env *env, struct dc_error *err, const char *path, int oflag, ...)
+int dc_open(const struct dc_posix_env *env, struct dc_error *err, const char *path, unsigned int oflag, mode_t mode)
 {
-    va_list arg;
-    int     mode;
-    int     ret_val;
+    int ret_val;
 
     DC_TRACE(env);
-    va_start(arg, oflag);
-    mode = va_arg(arg, int);
-    va_end(arg);
     errno   = 0;
-    ret_val = open(path, oflag, mode);
+    ret_val = open(path, (int)oflag, mode);
 
     if(ret_val == -1)
     {

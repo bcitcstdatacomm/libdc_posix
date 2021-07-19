@@ -10,6 +10,7 @@ AfterEach(dc_posix_error) {}
 Ensure(dc_posix_error, init_tests)
 {
     struct dc_error err;
+    char *message;
 
     dc_error_init(&err);
     assert_that(err.file_name, is_null);
@@ -20,10 +21,12 @@ Ensure(dc_posix_error, init_tests)
     assert_that(err.errno_code, is_equal_to(0));
     assert_that(err.err_code, is_equal_to(0));
 
+    message = malloc(6);
+    strcpy(message, "hello");
     err.file_name     = __FILE__;
     err.function_name = __func__;
     err.line_number   = __LINE__;
-    err.message       = "hello";
+    err.message       = message;
     err.type          = DC_ERROR_USER;
     err.err_code      = 1;
     assert_that(err.file_name, is_equal_to_string(__FILE__));
@@ -33,6 +36,8 @@ Ensure(dc_posix_error, init_tests)
     assert_that(err.type, is_equal_to(DC_ERROR_USER));
     assert_that(err.errno_code, is_equal_to(1));
     assert_that(err.err_code, is_equal_to(1));
+    free(message);
+    message = NULL;
 
     dc_error_init(&err);
     assert_that(err.file_name, is_null);

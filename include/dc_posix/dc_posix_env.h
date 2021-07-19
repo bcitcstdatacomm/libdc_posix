@@ -28,6 +28,11 @@
 #include <stddef.h>
 
 
+#ifndef _POSIX_C_SOURCE
+#error Requires a POSIX compatible system
+#endif
+
+
 #ifndef __STDC_LIB_EXT1__
 typedef int errno_t;
 #endif

@@ -56,6 +56,11 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
     # Let's ensure -std=c11 instead of -std=g11
     set(CMAKE_C_EXTENSIONS OFF)
 
+    # Make a shared library
+    if(APPLE)
+        add_definitions( -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 )
+    endif()
+
     # Let's nicely support folders in IDEs
     set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
