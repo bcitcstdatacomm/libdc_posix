@@ -61,6 +61,7 @@ void dc_error_reset(struct dc_error *err)
     if(err->message)
     {
         free(err->message);
+        err->message = NULL;
     }
 
     dc_error_init(err);
