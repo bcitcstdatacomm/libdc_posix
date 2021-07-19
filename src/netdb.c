@@ -96,11 +96,11 @@ int dc_getaddrinfo(const struct dc_posix_env  *env,
                 }
             }
 
-            DC_ERROR_SYSTEM(err, msg, ret_val);
+            DC_ERROR_RAISE_SYSTEM(err, msg, ret_val);
         }
         else
         {
-            DC_ERROR_ERRNO(err, errno);
+            DC_ERROR_RAISE_ERRNO(err, errno);
         }
     }
 

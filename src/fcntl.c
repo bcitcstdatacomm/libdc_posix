@@ -37,7 +37,7 @@ int dc_open(const struct dc_posix_env *env, struct dc_error *err, const char *pa
 
     if(ret_val == -1)
     {
-        DC_ERROR_ERRNO(err, errno);
+        DC_ERROR_RAISE_ERRNO(err, errno);
     }
     else
     {

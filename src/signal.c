@@ -29,7 +29,7 @@ int dc_sigaction(const struct dc_posix_env *env, struct dc_error *err, int sig, 
 
     if(ret_val == -1)
     {
-        DC_ERROR_ERRNO(err, errno);
+        DC_ERROR_RAISE_ERRNO(err, errno);
     }
 
     return ret_val;

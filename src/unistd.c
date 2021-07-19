@@ -30,7 +30,7 @@ ssize_t dc_read(const struct dc_posix_env *env, struct dc_error *err, int fildes
 
     if(ret_val == -1)
     {
-        DC_ERROR_ERRNO(err, errno);
+        DC_ERROR_RAISE_ERRNO(err, errno);
     }
     else
     {
@@ -52,7 +52,7 @@ ssize_t dc_write(const struct dc_posix_env *env, struct dc_error *err, int filde
 
     if(ret_val == -1)
     {
-        DC_ERROR_ERRNO(err, errno);
+        DC_ERROR_RAISE_ERRNO(err, errno);
     }
     else
     {
@@ -74,7 +74,7 @@ int dc_close(const struct dc_posix_env *env, struct dc_error *err, int fildes)
 
     if(ret_val == -1)
     {
-        DC_ERROR_ERRNO(err, errno);
+        DC_ERROR_RAISE_ERRNO(err, errno);
     }
     else
     {
@@ -95,7 +95,7 @@ int dc_dup(const struct dc_posix_env *env, struct dc_error *err, int fildes)
 
     if(ret_val == -1)
     {
-        DC_ERROR_ERRNO(err, errno);
+        DC_ERROR_RAISE_ERRNO(err, errno);
     }
     else
     {
@@ -116,7 +116,7 @@ int dc_dup2(const struct dc_posix_env *env, struct dc_error *err, int fildes, in
 
     if(ret_val == -1)
     {
-        DC_ERROR_ERRNO(err, errno);
+        DC_ERROR_RAISE_ERRNO(err, errno);
     }
     else
     {

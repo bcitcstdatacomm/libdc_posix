@@ -32,7 +32,7 @@ void *dc_calloc(const struct dc_posix_env *env, struct dc_error *err, size_t nel
 
     if(memory == NULL)
     {
-        DC_ERROR_ERRNO(err, errno);
+        DC_ERROR_RAISE_ERRNO(err, errno);
     }
     else
     {
@@ -54,7 +54,7 @@ void *dc_malloc(const struct dc_posix_env *env, struct dc_error *err, size_t siz
 
     if(memory == NULL)
     {
-        DC_ERROR_ERRNO(err, errno);
+        DC_ERROR_RAISE_ERRNO(err, errno);
     }
     else
     {

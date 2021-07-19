@@ -37,7 +37,7 @@ intmax_t dc_strtoimax(const struct dc_posix_env *env,
     {
         if(errno != 0)
         {
-            DC_ERROR_ERRNO(err, errno);
+            DC_ERROR_RAISE_ERRNO(err, errno);
         }
     }
 
@@ -62,7 +62,7 @@ uintmax_t dc_strtoumax(const struct dc_posix_env *env,
     {
         if(errno != 0)
         {
-            DC_ERROR_ERRNO(err, errno);
+            DC_ERROR_RAISE_ERRNO(err, errno);
         }
     }
 

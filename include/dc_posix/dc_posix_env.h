@@ -184,9 +184,9 @@ bool dc_error_is_errno(const struct dc_error *err, errno_t code);
 
 
 #define DC_TRACE(env) dc_trace((env), __FILE__, __func__, __LINE__)
-#define DC_ERROR_ERRNO(err, code) dc_error_errno((err), __FILE__, __func__, __LINE__, (code))
-#define DC_ERROR_SYSTEM(err, msg, code) dc_error_system((err), __FILE__, __func__, __LINE__, (msg), (code))
-#define DC_ERROR_USER(err, msg, code) dc_error_user((err), __FILE__, __func__, __LINE__, (msg), (code))
+#define DC_ERROR_RAISE_ERRNO(err, code) dc_error_errno((err), __FILE__, __func__, __LINE__, (code))
+#define DC_ERROR_RAISE_SYSTEM(err, msg, code) dc_error_system((err), __FILE__, __func__, __LINE__, (msg), (code))
+#define DC_ERROR_RAISE_USER(err, msg, code) dc_error_user((err), __FILE__, __func__, __LINE__, (msg), (code))
 
 
 #endif // LIBDC_POSIX_DC_POSIX_ENV_H

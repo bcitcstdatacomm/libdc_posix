@@ -27,7 +27,8 @@ static const char *actual_file_name;
 static const char *actual_function_name;
 static size_t      actual_line_number;
 
-static void tracer(const struct dc_posix_env *env, const char *file_name, const char *function_name, size_t line_number)
+
+static void tracer(__attribute__ ((unused)) const struct dc_posix_env *env, const char *file_name, const char *function_name, size_t line_number)
 {
     actual_file_name     = file_name;
     actual_function_name = function_name;
