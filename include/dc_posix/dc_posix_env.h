@@ -148,13 +148,45 @@ void dc_error_system(struct dc_error *err, const char *file_name, const char *fu
 void dc_error_user(struct dc_error *err, const char *file_name, const char *function_name, size_t line_number, const char *msg, int err_code);
 
 
-#define DC_REPORT_ERRNO(env, err, err_code) dc_error_errno((err), __FILE__, __func__, __LINE__, (err_code)); if((env)->error_reporter != NULL) (env)->error_reporter((env), (err))
-#define DC_REPORT_SYSTEM(env, err, msg, err_code) dc_error_system((err), __FILE__, __func__, __LINE__, (msg), (err_code)); if((env)->error_reporter != NULL) (env)->error_reporter((env), (err))
-#define DC_REPORT_USER(env, err, msg, err_code) dc_error_user((err), __FILE__, __func__, __LINE__, (msg), (err_code)); if((env)->error_reporter != NULL) (env)->error_reporter((env), (err))
-#define DC_TRACE(env) if((env)->tracer != NULL) (env)->tracer((env), __FILE__, __func__, __LINE__)
-#define DC_HAS_ERROR(err) (err)->type != DC_ERROR_NONE
-#define DC_HAS_NO_ERROR(err) (err)->type == DC_ERROR_NONE
-#define DC_ERROR_IS_ERRNO(err, code) ((err)->type == DC_ERROR_ERRNO) && ((err)->errno_code == (code))
+/**
+ *
+ * @param env
+ * @param file_name
+ * @param function_name
+ * @param line_number
+ */
+void dc_trace(const struct dc_posix_env *env, const char *file_name, const char *function_name, size_t line_number);
+
+
+/**
+ *
+ * @param err
+ * @return
+ */
+bool dc_error_has_error(const struct dc_error *err);
+
+
+/**
+ *
+ * @param err
+ * @return
+ */
+bool dc_error_has_no_error(const struct dc_error *err);
+
+
+/**
+ *
+ * @param err
+ * @param code
+ * @return
+ */
+bool dc_error_is_errno(const struct dc_error *err, errno_t code);
+
+
+#define DC_TRACE(env) dc_trace((env), __FILE__, __func__, __LINE__)
+#define DC_ERROR_ERRNO(err, code) dc_error_errno((err), __FILE__, __func__, __LINE__, (code))
+#define DC_ERROR_SYSTEM(err, msg, code) dc_error_system((err), __FILE__, __func__, __LINE__, (msg), (code))
+#define DC_ERROR_USER(err, msg, code) dc_error_user((err), __FILE__, __func__, __LINE__, (msg), (code))
 
 
 #endif // LIBDC_POSIX_DC_POSIX_ENV_H

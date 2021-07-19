@@ -30,7 +30,7 @@ int dc_regcomp(const struct dc_posix_env *env, struct dc_error *err, regex_t *re
 
     if(ret_val == -1)
     {
-        DC_REPORT_ERRNO(env, err, errno);
+        DC_ERROR_ERRNO(err, errno);
     }
 
     return ret_val;
@@ -47,7 +47,7 @@ size_t dc_regerror(const struct dc_posix_env *env, struct dc_error *err, int err
 
     if(errno != 0)
     {
-        DC_REPORT_ERRNO(env, err, errno);
+        DC_ERROR_ERRNO(err, errno);
     }
 
     return ret_val;

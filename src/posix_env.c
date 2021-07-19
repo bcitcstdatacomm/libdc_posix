@@ -108,3 +108,26 @@ void dc_error_user(struct dc_error *err, const char *file_name, const char *func
     setup_error(err, DC_ERROR_USER, file_name, function_name, line_number, msg);
     err->err_code = err_code;
 }
+
+inline void dc_trace(const struct dc_posix_env *env, const char *file_name, const char *function_name, size_t line_number)
+{
+    if(env->tracer != NULL)
+    {
+        env->tracer(env, file_name, function_name, line_number);
+    }
+}
+
+inline bool dc_error_has_error(const struct dc_error *err)
+{
+    return err->type != DC_ERROR_NONE;
+}
+
+inline bool dc_error_has_no_error(const struct dc_error *err)
+{
+    return err->type == DC_ERROR_NONE;
+}
+
+inline bool dc_error_is_errno(const struct dc_error *err, errno_t code)
+{
+    return (err->type == DC_ERROR_ERRNO) && (err->errno_code == code);
+}

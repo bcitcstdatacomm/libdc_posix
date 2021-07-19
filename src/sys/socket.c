@@ -29,7 +29,7 @@ int dc_socket(const struct dc_posix_env *env, struct dc_error *err, int domain, 
 
     if(fd == -1)
     {
-        DC_REPORT_ERRNO(env, err, errno);
+        DC_ERROR_ERRNO(err, errno);
     }
 
     return fd;
@@ -47,7 +47,7 @@ int dc_connect(const struct dc_posix_env *env, struct dc_error *err, int socket,
 
     if(ret_val == -1)
     {
-        DC_REPORT_ERRNO(env, err, errno);
+        DC_ERROR_ERRNO(err, errno);
     }
 
     return ret_val;
@@ -65,7 +65,7 @@ int dc_setsockopt(const struct dc_posix_env *env, struct dc_error *err, int sock
 
     if(ret_val == -1)
     {
-        DC_REPORT_ERRNO(env, err, errno);
+        DC_ERROR_ERRNO(err, errno);
     }
 
     return ret_val;
@@ -83,7 +83,7 @@ int dc_bind(const struct dc_posix_env *env, struct dc_error *err, int socket, co
 
     if(ret_val == -1)
     {
-        DC_REPORT_ERRNO(env, err, errno);
+        DC_ERROR_ERRNO(err, errno);
     }
 
     return ret_val;
@@ -101,7 +101,7 @@ int dc_listen(const struct dc_posix_env *env, struct dc_error *err, int socket, 
 
     if(ret_val == -1)
     {
-        DC_REPORT_ERRNO(env, err, errno);
+        DC_ERROR_ERRNO(err, errno);
     }
 
     return ret_val;
@@ -119,7 +119,7 @@ int dc_accept(const struct dc_posix_env *env, struct dc_error *err, int socket, 
 
     if(ret_val == -1)
     {
-        DC_REPORT_ERRNO(env, err, errno);
+        DC_ERROR_ERRNO(err, errno);
     }
 
     return ret_val;

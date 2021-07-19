@@ -35,7 +35,7 @@ int dc_wordexp(const struct dc_posix_env *env,
     // this isn't great but the docs suck when it comes to telling how it works
     if(errno != 0)
     {
-        DC_REPORT_ERRNO(env, err, err_code);
+        DC_ERROR_ERRNO(err, errno);
     }
     else if(err_code != 0)
     {
@@ -74,7 +74,7 @@ int dc_wordexp(const struct dc_posix_env *env,
             }
         }
 
-        DC_REPORT_SYSTEM(env, err, msg, err_code);
+        DC_ERROR_SYSTEM(err, msg, err_code);
     }
     else
     {
