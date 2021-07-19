@@ -15,7 +15,7 @@
  */
 
 
-#include "string.h"
+#include "dc_string.h"
 #include <string.h>
 
 

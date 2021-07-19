@@ -15,7 +15,7 @@
  */
 
 
-#include "wordexp.h"
+#include "dc_wordexp.h"
 #include <errno.h>
 
 

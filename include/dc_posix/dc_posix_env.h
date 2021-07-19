@@ -1,5 +1,5 @@
-#ifndef LIBDC_POSIX_POSIX_ENV_H
-#define LIBDC_POSIX_POSIX_ENV_H
+#ifndef LIBDC_POSIX_DC_POSIX_ENV_H
+#define LIBDC_POSIX_DC_POSIX_ENV_H
 
 
 /*
@@ -157,4 +157,4 @@ void dc_error_user(struct dc_error *err, const char *file_name, const char *func
 #define DC_ERROR_IS_ERRNO(err, code) ((err)->type == DC_ERROR_ERRNO) && ((err)->errno_code == (code))
 
 
-#endif // LIBDC_POSIX_POSIX_ENV_H
+#endif // LIBDC_POSIX_DC_POSIX_ENV_H

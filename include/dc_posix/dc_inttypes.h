@@ -1,5 +1,5 @@
-#ifndef LIBDC_POSIX_STDLIB_H
-#define LIBDC_POSIX_STDLIB_H
+#ifndef LIBDC_POSIX_DC_INTTYPES_H
+#define LIBDC_POSIX_DC_INTTYPES_H
 
 
 /*
@@ -19,36 +19,39 @@
  */
 
 
-#include "posix_env.h"
-#include <sys/types.h>
+#include "dc_posix_env.h"
+#include <inttypes.h>
 
 
 /**
  *
  * @param env
  * @param err
- * @param nelem
- * @param elsize
+ * @param nptr
+ * @param endptr
+ * @param base
  * @return
  */
-void *dc_calloc(const struct dc_posix_env *env, struct dc_error *err, size_t nelem, size_t elsize);
+intmax_t dc_strtoimax(const struct dc_posix_env *env,
+                      struct dc_error *err,
+                      const char *restrict nptr,
+                      char **restrict endptr,
+                      int base);
 
 /**
  *
  * @param env
  * @param err
- * @param size
+ * @param nptr
+ * @param endptr
+ * @param base
  * @return
  */
-void *dc_malloc(const struct dc_posix_env *env, struct dc_error *err, size_t size);
-
-/**
- *
- * @param env
- * @param ptr
- * @param size
- */
-void dc_free(const struct dc_posix_env *env, void *ptr, size_t size);
+uintmax_t dc_strtoumax(const struct dc_posix_env *env,
+                       struct dc_error *err,
+                       const char *restrict nptr,
+                       char **restrict endptr,
+                       int base);
 
 
-#endif // LIBDC_POSIX_STDLIB_H
+#endif // LIBDC_POSIX_DC_INTTYPES_H

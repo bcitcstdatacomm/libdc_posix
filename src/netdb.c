@@ -15,8 +15,8 @@
  */
 
 
-#include "posix_env.h"
-#include "netdb.h"
+#include "dc_posix_env.h"
+#include "dc_netdb.h"
 
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/freeaddrinfo.html

@@ -1,5 +1,5 @@
-#ifndef LIBDC_POSIX_STRING_H
-#define LIBDC_POSIX_STRING_H
+#ifndef LIBDC_POSIX_DC_STRING_H
+#define LIBDC_POSIX_DC_STRING_H
 
 
 /*
@@ -19,7 +19,7 @@
  */
 
 
-#include "posix_env.h"
+#include "dc_posix_env.h"
 #include <stddef.h>
 
 
@@ -94,4 +94,4 @@ int dc_strncmp(const struct dc_posix_env *env, const char *s1, const char *s2, s
  */
 char *dc_strtok_r(const struct dc_posix_env *env, char *restrict s, const char *restrict sep, char **restrict state);
 
-#endif // LIBDC_POSIX_STRING_H
+#endif // LIBDC_POSIX_DC_STRING_H

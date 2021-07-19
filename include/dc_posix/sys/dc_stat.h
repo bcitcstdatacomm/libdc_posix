@@ -1,5 +1,5 @@
-#ifndef LIBDC_POSIX_WORDEXP_H
-#define LIBDC_POSIX_WORDEXP_H
+#ifndef LIBDC_POSIX_DC_STAT_H
+#define LIBDC_POSIX_DC_STAT_H
 
 
 /*
@@ -19,24 +19,11 @@
  */
 
 
-#include "posix_env.h"
-#include <wordexp.h>
+#include "../dc_posix_env.h"
+#include <sys/stat.h>
 
 
-/**
- *
- * @param env
- * @param err
- * @param words
- * @param pwordexp
- * @param flags
- * @return
- */
-int dc_wordexp(const struct dc_posix_env *env,
-               struct dc_error *err,
-               const char *restrict words,
-               wordexp_t *restrict pwordexp,
-               int flags);
+int dc_fstat(const struct dc_posix_env *env, struct dc_error *err, int fildes, struct stat *buf);
 
 
-#endif // LIBDC_POSIX_WORDEXP_H
+#endif //LIBDC_POSIX_DC_STAT_H

@@ -15,8 +15,8 @@
  */
 
 
-#include "posix_env.h"
-#include "inttypes.h"
+#include "dc_posix_env.h"
+#include "dc_inttypes.h"
 
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/strtoimax.html

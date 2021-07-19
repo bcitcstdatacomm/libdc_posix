@@ -15,7 +15,7 @@
  */
 
 
-#include "sys/stat.h"
+#include "sys/dc_stat.h"
 
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/fstat.html

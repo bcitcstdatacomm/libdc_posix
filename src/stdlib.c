@@ -15,8 +15,8 @@
  */
 
 
-#include "stdlib.h"
-#include "string.h"
+#include "dc_stdlib.h"
+#include "dc_string.h"
 #include <errno.h>
 #include <stdlib.h>
 

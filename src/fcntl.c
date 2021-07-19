@@ -15,8 +15,8 @@
  */
 
 
-#include "posix_env.h"
-#include "fcntl.h"
+#include "dc_posix_env.h"
+#include "dc_fcntl.h"
 #include <fcntl.h>
 #include <stdarg.h>
 

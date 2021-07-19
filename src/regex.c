@@ -15,8 +15,8 @@
  */
 
 
-#include "regex.h"
-#include "string.h"
+#include "dc_regex.h"
+#include "dc_string.h"
 #include <regex.h>
 
 

@@ -1,38 +1,9 @@
 # Note that headers are optional, and do not affect add_library, but they will not
 # show up in IDEs unless they are listed in add_library.
 
-#set(HEADER_LIST
-#        "${libdc_posix_SOURCE_DIR}/include/dc_posix/posix_env.h"
-#        "${libdc_posix_SOURCE_DIR}/include/dc_posix/fcntl.h"
-#        "${libdc_posix_SOURCE_DIR}/include/dc_posix/inttypes.h"
-#        "${libdc_posix_SOURCE_DIR}/include/dc_posix/netdb.h"
-#        "${libdc_posix_SOURCE_DIR}/include/dc_posix/signal.h"
-#        "${libdc_posix_SOURCE_DIR}/include/dc_posix/stdlib.h"
-#        "${libdc_posix_SOURCE_DIR}/include/dc_posix/string.h"
-#        "${libdc_posix_SOURCE_DIR}/include/dc_posix/unistd.h"
-#        "${libdc_posix_SOURCE_DIR}/include/dc_posix/wordexp.h"
-#        "${libdc_posix_SOURCE_DIR}/include/dc_posix/regex.h)
-
-#set(HEADER_SYS_LIST
-#        "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/socket.h"
-#        "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/stat.h"
-#)
-
-#set(SOURCE_LIST
-#        posix_env.c
-#        fcntl.c
-#        inttypes.c
-#        netdb.c
-#        signal.c
-#        stdlib.c
-#        string.c
-#        unistd.c
-#        wordexp.c
-#        sys/socket.c
-#        sys/stat.c regex.c)
-
 # Make a shared library
 add_library(dc_posix SHARED ${SOURCE_LIST} ${HEADER_LIST} ${HEADER_SYS_LIST})
+target_include_directories(dc_posix PRIVATE ../include/dc_posix)
 target_include_directories(dc_posix PRIVATE /usr/include)
 target_include_directories(dc_posix PRIVATE /usr/local/include)
 target_link_directories(dc_posix PRIVATE /usr/local/lib)
@@ -43,7 +14,6 @@ set_target_properties(dc_posix PROPERTIES
 
 # All users of this library will need at least C11
 target_compile_features(dc_posix PUBLIC c_std_11)
-target_compile_options(dc_posix PRIVATE -iquote "${libdc_posix_SOURCE_DIR}/include/dc_posix")
 target_compile_options(dc_posix PRIVATE -g -fPIC)
 target_compile_options(dc_posix PRIVATE -fstack-protector-all -ftrapv)
 target_compile_options(dc_posix PRIVATE -Wpedantic -Wall -Wextra)

@@ -1,5 +1,5 @@
-#ifndef LIBDC_POSIX_SIGNAL_H
-#define LIBDC_POSIX_SIGNAL_H
+#ifndef LIBDC_POSIX_DC_SIGNAL_H
+#define LIBDC_POSIX_DC_SIGNAL_H
 
 
 /*
@@ -19,11 +19,11 @@
  */
 
 
-#include "posix_env.h"
+#include "dc_posix_env.h"
 #include <signal.h>
 
 
 int dc_sigaction(const struct dc_posix_env  *env, struct dc_error *err, int sig, const struct sigaction *restrict act,struct sigaction *restrict oact);
 
 
-#endif //LIBDC_POSIX_SIGNAL_H
+#endif //LIBDC_POSIX_DC_SIGNAL_H

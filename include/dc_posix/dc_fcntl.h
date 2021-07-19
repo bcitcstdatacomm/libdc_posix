@@ -1,5 +1,5 @@
-#ifndef LIBDC_POSIX_FCNTL_H
-#define LIBDC_POSIX_FCNTL_H
+#ifndef LIBDC_POSIX_DC_FCNTL_H
+#define LIBDC_POSIX_DC_FCNTL_H
 
 
 /*
@@ -19,7 +19,7 @@
  */
 
 
-#include "posix_env.h"
+#include "dc_posix_env.h"
 
 
 /**
@@ -34,4 +34,4 @@
 int dc_open(const struct dc_posix_env *env, struct dc_error *err, const char *path, int oflag, ...);
 
 
-#endif // LIBDC_POSIX_FCNTL_H
+#endif // LIBDC_POSIX_DC_FCNTL_H

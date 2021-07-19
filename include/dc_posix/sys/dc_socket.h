@@ -1,5 +1,5 @@
-#ifndef LIBDC_POSIX_SOCKET_H
-#define LIBDC_POSIX_SOCKET_H
+#ifndef LIBDC_POSIX_DC_SOCKET_H
+#define LIBDC_POSIX_DC_SOCKET_H
 
 
 /*
@@ -19,7 +19,7 @@
  */
 
 
-#include "../posix_env.h"
+#include "../dc_posix_env.h"
 #include <sys/socket.h>
 
 
@@ -31,4 +31,4 @@ int dc_listen(const struct dc_posix_env *env, struct dc_error *err, int socket, 
 int dc_accept(const struct dc_posix_env *env, struct dc_error *err, int socket, struct sockaddr *restrict address, socklen_t *restrict address_len);
 
 
-#endif // LIBDC_POSIX_SOCKET_H
+#endif // LIBDC_POSIX_DC_SOCKET_H

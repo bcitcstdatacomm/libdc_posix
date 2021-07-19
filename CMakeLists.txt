@@ -10,20 +10,20 @@ project(libdc_posix
         LANGUAGES C)
 
 set(HEADER_LIST
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/posix_env.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/fcntl.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/inttypes.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/netdb.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/signal.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/stdlib.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/string.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/unistd.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/wordexp.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/regex.h")
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_posix_env.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_fcntl.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_inttypes.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_netdb.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_signal.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_stdlib.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_string.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_unistd.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_wordexp.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_regex.h")
 
 set(HEADER_SYS_LIST
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/socket.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/stat.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/dc_socket.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/dc_stat.h"
         )
 
 set(SOURCE_LIST

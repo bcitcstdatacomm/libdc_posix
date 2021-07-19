@@ -15,7 +15,7 @@
  */
 
 
-#include "signal.h"
+#include "dc_signal.h"
 
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/sigaction.html

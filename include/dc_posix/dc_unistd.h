@@ -1,5 +1,5 @@
-#ifndef LIBDC_POSIX_UNISTD_H
-#define LIBDC_POSIX_UNISTD_H
+#ifndef LIBDC_POSIX_DC_UNISTD_H
+#define LIBDC_POSIX_DC_UNISTD_H
 
 
 /*
@@ -19,7 +19,7 @@
  */
 
 
-#include "posix_env.h"
+#include "dc_posix_env.h"
 #include <sys/types.h>
 
 
@@ -77,4 +77,4 @@ int dc_dup(const struct dc_posix_env *env, struct dc_error *err, int fildes);
 int dc_dup2(const struct dc_posix_env *env, struct dc_error *err, int fildes, int fildes2);
 
 
-#endif // LIBDC_POSIX_UNISTD_H
+#endif // LIBDC_POSIX_DC_UNISTD_H

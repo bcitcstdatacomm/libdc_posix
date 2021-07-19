@@ -1,5 +1,5 @@
-#ifndef LIBDC_POSIX_NETDB_H
-#define LIBDC_POSIX_NETDB_H
+#ifndef LIBDC_POSIX_DC_STDLIB_H
+#define LIBDC_POSIX_DC_STDLIB_H
 
 
 /*
@@ -19,37 +19,36 @@
  */
 
 
-#include "posix_env.h"
-#include <netdb.h>
-
-
-
-/**
- *
- * @param env
- * @param err
- * @param ai
- */
-void dc_freeaddrinfo(const struct dc_posix_env *env,
-                     struct addrinfo           *ai);
+#include "dc_posix_env.h"
+#include <sys/types.h>
 
 
 /**
  *
  * @param env
  * @param err
- * @param nodename
- * @param servname
- * @param hints
- * @param res
+ * @param nelem
+ * @param elsize
  * @return
  */
-int dc_getaddrinfo(const struct dc_posix_env  *env,
-                   struct dc_error            *err,
-                   const char                 *restrict nodename,
-                   const char                 *restrict servname,
-                   const struct addrinfo      *restrict hints,
-                   struct addrinfo           **restrict res);
+void *dc_calloc(const struct dc_posix_env *env, struct dc_error *err, size_t nelem, size_t elsize);
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param size
+ * @return
+ */
+void *dc_malloc(const struct dc_posix_env *env, struct dc_error *err, size_t size);
+
+/**
+ *
+ * @param env
+ * @param ptr
+ * @param size
+ */
+void dc_free(const struct dc_posix_env *env, void *ptr, size_t size);
 
 
-#endif //LIBDC_POSIX_NETDB_H
+#endif // LIBDC_POSIX_DC_STDLIB_H

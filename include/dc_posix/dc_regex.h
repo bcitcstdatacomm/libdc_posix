@@ -1,5 +1,5 @@
-#ifndef LIBDC_POSIX_REGEX_H
-#define LIBDC_POSIX_REGEX_H
+#ifndef LIBDC_POSIX_DC_REGEX_H
+#define LIBDC_POSIX_DC_REGEX_H
 
 
 /*
@@ -19,7 +19,7 @@
  */
 
 
-#include "posix_env.h"
+#include "dc_posix_env.h"
 #include <regex.h>
 
 
@@ -29,4 +29,4 @@ int dc_regexec(const struct dc_posix_env *env, struct dc_error *err, const regex
 void dc_regfree(const struct dc_posix_env *env, regex_t *preg);
 
 
-#endif // LIBDC_POSIX_REGEX_H
+#endif // LIBDC_POSIX_DC_REGEX_H
