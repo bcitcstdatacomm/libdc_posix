@@ -148,10 +148,10 @@ void dc_error_system(struct dc_error *err, const char *file_name, const char *fu
 void dc_error_user(struct dc_error *err, const char *file_name, const char *function_name, size_t line_number, const char *msg, int err_code);
 
 
-#define DC_REPORT_ERRNO(env, err, err_code) dc_error_errno((err), __FILE__, __func__, __LINE__, (err_code)); if((env)->error_reporter) (env)->error_reporter((env), (err))
-#define DC_REPORT_SYSTEM(env, err, msg, err_code) dc_error_system((err), __FILE__, __func__, __LINE__, (msg), (err_code)); if((env)->error_reporter) (env)->error_reporter((env), (err))
-#define DC_REPORT_USER(env, err, msg, err_code) dc_error_user((err), __FILE__, __func__, __LINE__, (msg), (err_code)); if((env)->error_reporter) (env)->error_reporter((env), (err))
-#define DC_TRACE(env) if((env)->tracer) (env)->tracer((env), __FILE__, __func__, __LINE__)
+#define DC_REPORT_ERRNO(env, err, err_code) dc_error_errno((err), __FILE__, __func__, __LINE__, (err_code)); if((env)->error_reporter != NULL) (env)->error_reporter((env), (err))
+#define DC_REPORT_SYSTEM(env, err, msg, err_code) dc_error_system((err), __FILE__, __func__, __LINE__, (msg), (err_code)); if((env)->error_reporter != NULL) (env)->error_reporter((env), (err))
+#define DC_REPORT_USER(env, err, msg, err_code) dc_error_user((err), __FILE__, __func__, __LINE__, (msg), (err_code)); if((env)->error_reporter != NULL) (env)->error_reporter((env), (err))
+#define DC_TRACE(env) if((env)->tracer != NULL) (env)->tracer((env), __FILE__, __func__, __LINE__)
 #define DC_HAS_ERROR(err) (err)->type != DC_ERROR_NONE
 #define DC_HAS_NO_ERROR(err) (err)->type == DC_ERROR_NONE
 #define DC_ERROR_IS_ERRNO(err, code) ((err)->type == DC_ERROR_ERRNO) && ((err)->errno_code == (code))
