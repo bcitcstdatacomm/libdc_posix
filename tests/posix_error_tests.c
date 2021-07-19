@@ -1,5 +1,5 @@
 #include "tests.h"
-#include "dc_posix/posix_env.h"
+#include "posix_env.h"
 
 
 Describe(dc_posix_error);

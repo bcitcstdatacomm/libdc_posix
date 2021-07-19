@@ -1,5 +1,5 @@
 #include "tests.h"
-#include "dc_posix/string.h"
+#include "string.h"
 
 struct dc_posix_env env;
 struct dc_error err;
