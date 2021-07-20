@@ -63,8 +63,6 @@ struct dc_error {
   };
 };
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpadded"
 struct dc_posix_env {
   bool zero_free;
   bool null_free;
@@ -73,7 +71,6 @@ struct dc_posix_env {
   void (*tracer)(const struct dc_posix_env *env, const char *file_name,
                  const char *function_name, size_t line_number);
 };
-#pragma GCC diagnostic pop
 
 /**
  *
