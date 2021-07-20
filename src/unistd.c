@@ -14,10 +14,8 @@
  * limitations under the License.
  */
 
-
 #include "dc_unistd.h"
 #include <unistd.h>
-
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/
 ssize_t dc_read(const struct dc_posix_env *env, struct dc_error *err, int fildes, void *buf, size_t nbyte)
@@ -40,7 +38,6 @@ ssize_t dc_read(const struct dc_posix_env *env, struct dc_error *err, int fildes
     return ret_val;
 }
 
-
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/write.html
 ssize_t dc_write(const struct dc_posix_env *env, struct dc_error *err, int fildes, const void *buf, size_t nbyte)
 {
@@ -62,14 +59,13 @@ ssize_t dc_write(const struct dc_posix_env *env, struct dc_error *err, int filde
     return ret_val;
 }
 
-
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/close.html
 int dc_close(const struct dc_posix_env *env, struct dc_error *err, int fildes)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno = 0;
+    errno   = 0;
     ret_val = close(fildes);
 
     if(ret_val == -1)
@@ -90,7 +86,7 @@ int dc_dup(const struct dc_posix_env *env, struct dc_error *err, int fildes)
     int ret_val;
 
     DC_TRACE(env);
-    errno = 0;
+    errno   = 0;
     ret_val = dup(fildes);
 
     if(ret_val == -1)
@@ -111,7 +107,7 @@ int dc_dup2(const struct dc_posix_env *env, struct dc_error *err, int fildes, in
     int ret_val;
 
     DC_TRACE(env);
-    errno = 0;
+    errno   = 0;
     ret_val = dup2(fildes, fildes2);
 
     if(ret_val == -1)

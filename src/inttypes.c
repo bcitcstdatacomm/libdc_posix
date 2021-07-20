@@ -14,19 +14,17 @@
  * limitations under the License.
  */
 
-
-#include "dc_posix_env.h"
 #include "dc_inttypes.h"
-
+#include "dc_posix_env.h"
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/strtoimax.html
 intmax_t dc_strtoimax(const struct dc_posix_env *env,
-                      struct dc_error *err,
-                      const char *restrict nptr,
-                      char **restrict endptr,
+                      struct dc_error *          err,
+                      const char * restrict nptr,
+                      char ** restrict endptr,
                       int base)
 {
-    intmax_t  value;
+    intmax_t value;
 
     DC_TRACE(env);
     dc_error_reset(err);
@@ -46,9 +44,9 @@ intmax_t dc_strtoimax(const struct dc_posix_env *env,
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/strtoimax.html
 uintmax_t dc_strtoumax(const struct dc_posix_env *env,
-                       struct dc_error *err,
-                       const char *restrict nptr,
-                       char **restrict endptr,
+                       struct dc_error *          err,
+                       const char * restrict nptr,
+                       char ** restrict endptr,
                        int base)
 {
     uintmax_t value;
@@ -68,4 +66,3 @@ uintmax_t dc_strtoumax(const struct dc_posix_env *env,
 
     return value;
 }
-

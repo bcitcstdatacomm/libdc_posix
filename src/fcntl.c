@@ -14,10 +14,8 @@
  * limitations under the License.
  */
 
-
-#include "dc_posix_env.h"
 #include "dc_fcntl.h"
-
+#include "dc_posix_env.h"
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/open.html
 int dc_open(const struct dc_posix_env *env, struct dc_error *err, const char *path, unsigned int oflag, mode_t mode)

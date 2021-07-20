@@ -1,7 +1,6 @@
 #ifndef LIBDC_POSIX_DC_STAT_H
 #define LIBDC_POSIX_DC_STAT_H
 
-
 /*
  * Copyright 2021-2021 D'Arcy Smith.
  *
@@ -18,12 +17,10 @@
  * limitations under the License.
  */
 
-
 #include "../dc_posix_env.h"
 #include <sys/stat.h>
 
+int dc_fstat(const struct dc_posix_env *env, struct dc_error *err, int fildes,
+             struct stat *buf);
 
-int dc_fstat(const struct dc_posix_env *env, struct dc_error *err, int fildes, struct stat *buf);
-
-
-#endif //LIBDC_POSIX_DC_STAT_H
+#endif // LIBDC_POSIX_DC_STAT_H

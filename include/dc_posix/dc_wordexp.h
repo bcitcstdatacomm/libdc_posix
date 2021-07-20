@@ -1,7 +1,6 @@
 #ifndef LIBDC_POSIX_DC_WORDEXP_H
 #define LIBDC_POSIX_DC_WORDEXP_H
 
-
 /*
  * Copyright 2021-2021 D'Arcy Smith.
  *
@@ -18,10 +17,8 @@
  * limitations under the License.
  */
 
-
 #include "dc_posix_env.h"
 #include <wordexp.h>
-
 
 /**
  *
@@ -32,11 +29,8 @@
  * @param flags
  * @return
  */
-int dc_wordexp(const struct dc_posix_env *env,
-               struct dc_error *err,
-               const char *restrict words,
-               wordexp_t *restrict pwordexp,
+int dc_wordexp(const struct dc_posix_env *env, struct dc_error *err,
+               const char *restrict words, wordexp_t *restrict pwordexp,
                int flags);
-
 
 #endif // LIBDC_POSIX_DC_WORDEXP_H

@@ -37,3 +37,12 @@ source_group(
         PREFIX "Header Files"
         FILES ${HEADER_LIST} ${HEADER_SYS_LIST}
 )
+
+add_custom_target(
+        format
+        COMMAND clang-format
+        -i
+        ${HEADER_LIST}
+        ${HEADER_SYS_LIST}
+        ${SOURCE_LIST}
+)

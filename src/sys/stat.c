@@ -14,9 +14,7 @@
  * limitations under the License.
  */
 
-
 #include "sys/dc_stat.h"
-
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/fstat.html
 int dc_fstat(const struct dc_posix_env *env, struct dc_error *err, int fildes, struct stat *buf)
@@ -34,4 +32,3 @@ int dc_fstat(const struct dc_posix_env *env, struct dc_error *err, int fildes, s
 
     return fd;
 }
-

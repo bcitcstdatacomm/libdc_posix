@@ -14,12 +14,10 @@
  * limitations under the License.
  */
 
-
 #include "dc_stdlib.h"
 #include "dc_string.h"
 #include <errno.h>
 #include <stdlib.h>
-
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/calloc.html
 void *dc_calloc(const struct dc_posix_env *env, struct dc_error *err, size_t nelem, size_t elsize)
@@ -42,7 +40,6 @@ void *dc_calloc(const struct dc_posix_env *env, struct dc_error *err, size_t nel
     return memory;
 }
 
-
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/malloc.html
 void *dc_malloc(const struct dc_posix_env *env, struct dc_error *err, size_t size)
 {
@@ -63,7 +60,6 @@ void *dc_malloc(const struct dc_posix_env *env, struct dc_error *err, size_t siz
 
     return memory;
 }
-
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/free.html
 void dc_free(const struct dc_posix_env *env, void *ptr, size_t size)

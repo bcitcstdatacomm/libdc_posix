@@ -1,7 +1,6 @@
 #ifndef LIBDC_POSIX_DC_REGEX_H
 #define LIBDC_POSIX_DC_REGEX_H
 
-
 /*
  * Copyright 2021-2021 D'Arcy Smith.
  *
@@ -18,15 +17,18 @@
  * limitations under the License.
  */
 
-
 #include "dc_posix_env.h"
 #include <regex.h>
 
-
-int dc_regcomp(const struct dc_posix_env *env, struct dc_error *err, regex_t *restrict preg, const char *restrict pattern, int cflags);
-size_t dc_regerror(const struct dc_posix_env *env, struct dc_error *err, int errcode, const regex_t *restrict preg, char *restrict errbuf, size_t errbuf_size);
-int dc_regexec(const struct dc_posix_env *env, struct dc_error *err, const regex_t *restrict preg, const char *restrict string, size_t nmatch, regmatch_t pmatch[restrict], int eflags);
+int dc_regcomp(const struct dc_posix_env *env, struct dc_error *err,
+               regex_t *restrict preg, const char *restrict pattern,
+               int cflags);
+size_t dc_regerror(const struct dc_posix_env *env, struct dc_error *err,
+                   int errcode, const regex_t *restrict preg,
+                   char *restrict errbuf, size_t errbuf_size);
+int dc_regexec(const struct dc_posix_env *env, struct dc_error *err,
+               const regex_t *restrict preg, const char *restrict string,
+               size_t nmatch, regmatch_t pmatch[restrict], int eflags);
 void dc_regfree(const struct dc_posix_env *env, regex_t *preg);
-
 
 #endif // LIBDC_POSIX_DC_REGEX_H

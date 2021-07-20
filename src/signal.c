@@ -14,12 +14,14 @@
  * limitations under the License.
  */
 
-
 #include "dc_signal.h"
 
-
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/sigaction.html
-int dc_sigaction(const struct dc_posix_env *env, struct dc_error *err, int sig, const struct sigaction *restrict act, struct sigaction *restrict oact)
+int dc_sigaction(const struct dc_posix_env *env,
+                 struct dc_error *          err,
+                 int                        sig,
+                 const struct sigaction * restrict act,
+                 struct sigaction * restrict oact)
 {
     int ret_val;
 

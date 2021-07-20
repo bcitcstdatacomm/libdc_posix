@@ -1,7 +1,6 @@
 #ifndef LIBDC_POSIX_DC_STRING_H
 #define LIBDC_POSIX_DC_STRING_H
 
-
 /*
  * Copyright 2021-2021 D'Arcy Smith.
  *
@@ -18,10 +17,8 @@
  * limitations under the License.
  */
 
-
 #include "dc_posix_env.h"
 #include <stddef.h>
-
 
 /**
  *
@@ -31,7 +28,8 @@
  * @param n
  * @return
  */
-void *dc_memcpy(const struct dc_posix_env *env, void *restrict s1, const void *restrict s2, size_t n);
+void *dc_memcpy(const struct dc_posix_env *env, void *restrict s1,
+                const void *restrict s2, size_t n);
 
 /**
  *
@@ -43,7 +41,6 @@ void *dc_memcpy(const struct dc_posix_env *env, void *restrict s1, const void *r
  */
 void *dc_memset(const struct dc_posix_env *env, void *s, int c, size_t n);
 
-
 /**
  *
  * @param env
@@ -51,8 +48,8 @@ void *dc_memset(const struct dc_posix_env *env, void *s, int c, size_t n);
  * @param s2
  * @return
  */
-char *dc_strcpy(const struct dc_posix_env *env, char *restrict s1, const char *restrict s2);
-
+char *dc_strcpy(const struct dc_posix_env *env, char *restrict s1,
+                const char *restrict s2);
 
 /**
  *
@@ -61,7 +58,6 @@ char *dc_strcpy(const struct dc_posix_env *env, char *restrict s1, const char *r
  * @return
  */
 size_t dc_strlen(const struct dc_posix_env *env, const char *s);
-
 
 /**
  *
@@ -72,7 +68,6 @@ size_t dc_strlen(const struct dc_posix_env *env, const char *s);
  */
 int dc_strcmp(const struct dc_posix_env *env, const char *s1, const char *s2);
 
-
 /**
  *
  * @param env
@@ -81,8 +76,8 @@ int dc_strcmp(const struct dc_posix_env *env, const char *s1, const char *s2);
  * @param n
  * @return
  */
-int dc_strncmp(const struct dc_posix_env *env, const char *s1, const char *s2, size_t n);
-
+int dc_strncmp(const struct dc_posix_env *env, const char *s1, const char *s2,
+               size_t n);
 
 /**
  *
@@ -92,6 +87,7 @@ int dc_strncmp(const struct dc_posix_env *env, const char *s1, const char *s2, s
  * @param state
  * @return
  */
-char *dc_strtok_r(const struct dc_posix_env *env, char *restrict s, const char *restrict sep, char **restrict state);
+char *dc_strtok_r(const struct dc_posix_env *env, char *restrict s,
+                  const char *restrict sep, char **restrict state);
 
 #endif // LIBDC_POSIX_DC_STRING_H

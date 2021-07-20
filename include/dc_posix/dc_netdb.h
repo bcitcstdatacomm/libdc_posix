@@ -1,7 +1,6 @@
 #ifndef LIBDC_POSIX_DC_NETDB_H
 #define LIBDC_POSIX_DC_NETDB_H
 
-
 /*
  * Copyright 2021-2021 D'Arcy Smith.
  *
@@ -18,11 +17,8 @@
  * limitations under the License.
  */
 
-
 #include "dc_posix_env.h"
 #include <netdb.h>
-
-
 
 /**
  *
@@ -30,9 +26,7 @@
  * @param err
  * @param ai
  */
-void dc_freeaddrinfo(const struct dc_posix_env *env,
-                     struct addrinfo           *ai);
-
+void dc_freeaddrinfo(const struct dc_posix_env *env, struct addrinfo *ai);
 
 /**
  *
@@ -44,12 +38,9 @@ void dc_freeaddrinfo(const struct dc_posix_env *env,
  * @param res
  * @return
  */
-int dc_getaddrinfo(const struct dc_posix_env  *env,
-                   struct dc_error            *err,
-                   const char                 *restrict nodename,
-                   const char                 *restrict servname,
-                   const struct addrinfo      *restrict hints,
-                   struct addrinfo           **restrict res);
+int dc_getaddrinfo(const struct dc_posix_env *env, struct dc_error *err,
+                   const char *restrict nodename, const char *restrict servname,
+                   const struct addrinfo *restrict hints,
+                   struct addrinfo **restrict res);
 
-
-#endif //LIBDC_POSIX_DC_NETDB_H
+#endif // LIBDC_POSIX_DC_NETDB_H

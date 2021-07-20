@@ -1,7 +1,6 @@
 #ifndef LIBDC_POSIX_DC_INTTYPES_H
 #define LIBDC_POSIX_DC_INTTYPES_H
 
-
 /*
  * Copyright 2021-2021 D'Arcy Smith.
  *
@@ -18,10 +17,8 @@
  * limitations under the License.
  */
 
-
 #include "dc_posix_env.h"
 #include <inttypes.h>
-
 
 /**
  *
@@ -32,10 +29,8 @@
  * @param base
  * @return
  */
-intmax_t dc_strtoimax(const struct dc_posix_env *env,
-                      struct dc_error *err,
-                      const char *restrict nptr,
-                      char **restrict endptr,
+intmax_t dc_strtoimax(const struct dc_posix_env *env, struct dc_error *err,
+                      const char *restrict nptr, char **restrict endptr,
                       int base);
 
 /**
@@ -47,11 +42,8 @@ intmax_t dc_strtoimax(const struct dc_posix_env *env,
  * @param base
  * @return
  */
-uintmax_t dc_strtoumax(const struct dc_posix_env *env,
-                       struct dc_error *err,
-                       const char *restrict nptr,
-                       char **restrict endptr,
+uintmax_t dc_strtoumax(const struct dc_posix_env *env, struct dc_error *err,
+                       const char *restrict nptr, char **restrict endptr,
                        int base);
-
 
 #endif // LIBDC_POSIX_DC_INTTYPES_H

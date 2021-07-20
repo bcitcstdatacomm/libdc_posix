@@ -14,9 +14,7 @@
  * limitations under the License.
  */
 
-
 #include "sys/dc_socket.h"
-
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/socket.html
 int dc_socket(const struct dc_posix_env *env, struct dc_error *err, int domain, int type, int protocol)
@@ -35,9 +33,12 @@ int dc_socket(const struct dc_posix_env *env, struct dc_error *err, int domain, 
     return fd;
 }
 
-
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/connect.html
-int dc_connect(const struct dc_posix_env *env, struct dc_error *err, int socket, const struct sockaddr *address, socklen_t address_len)
+int dc_connect(const struct dc_posix_env *env,
+               struct dc_error *          err,
+               int                        socket,
+               const struct sockaddr *    address,
+               socklen_t                  address_len)
 {
     int ret_val;
 
@@ -53,9 +54,14 @@ int dc_connect(const struct dc_posix_env *env, struct dc_error *err, int socket,
     return ret_val;
 }
 
-
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/setsockopt.html
-int dc_setsockopt(const struct dc_posix_env *env, struct dc_error *err, int socket, int level, int option_name, const void *option_value, socklen_t option_len)
+int dc_setsockopt(const struct dc_posix_env *env,
+                  struct dc_error *          err,
+                  int                        socket,
+                  int                        level,
+                  int                        option_name,
+                  const void *               option_value,
+                  socklen_t                  option_len)
 {
     int ret_val;
 
@@ -71,9 +77,12 @@ int dc_setsockopt(const struct dc_posix_env *env, struct dc_error *err, int sock
     return ret_val;
 }
 
-
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/bind.html
-int dc_bind(const struct dc_posix_env *env, struct dc_error *err, int socket, const struct sockaddr *address, socklen_t address_len)
+int dc_bind(const struct dc_posix_env *env,
+            struct dc_error *          err,
+            int                        socket,
+            const struct sockaddr *    address,
+            socklen_t                  address_len)
 {
     int ret_val;
 
@@ -88,7 +97,6 @@ int dc_bind(const struct dc_posix_env *env, struct dc_error *err, int socket, co
 
     return ret_val;
 }
-
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/listen.html
 int dc_listen(const struct dc_posix_env *env, struct dc_error *err, int socket, int backlog)
@@ -107,9 +115,12 @@ int dc_listen(const struct dc_posix_env *env, struct dc_error *err, int socket, 
     return ret_val;
 }
 
-
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/accept.html
-int dc_accept(const struct dc_posix_env *env, struct dc_error *err, int socket, struct sockaddr *restrict address, socklen_t *restrict address_len)
+int dc_accept(const struct dc_posix_env *env,
+              struct dc_error *          err,
+              int                        socket,
+              struct sockaddr * restrict address,
+              socklen_t * restrict address_len)
 {
     int ret_val;
 

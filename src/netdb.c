@@ -14,27 +14,23 @@
  * limitations under the License.
  */
 
-
-#include "dc_posix_env.h"
 #include "dc_netdb.h"
-
+#include "dc_posix_env.h"
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/freeaddrinfo.html
-void dc_freeaddrinfo(const struct dc_posix_env *env,
-                     struct addrinfo           *ai)
+void dc_freeaddrinfo(const struct dc_posix_env *env, struct addrinfo *ai)
 {
     DC_TRACE(env);
     freeaddrinfo(ai);
 }
 
-
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/freeaddrinfo.html
-int dc_getaddrinfo(const struct dc_posix_env  *env,
-                   struct dc_error            *err,
-                   const char                 *restrict nodename,
-                   const char                 *restrict servname,
-                   const struct addrinfo      *restrict hints,
-                   struct addrinfo           **restrict res)
+int dc_getaddrinfo(const struct dc_posix_env *env,
+                   struct dc_error *          err,
+                   const char * restrict nodename,
+                   const char * restrict servname,
+                   const struct addrinfo * restrict hints,
+                   struct addrinfo ** restrict res)
 {
     int ret_val;
 

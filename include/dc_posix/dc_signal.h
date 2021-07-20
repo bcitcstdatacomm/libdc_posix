@@ -1,7 +1,6 @@
 #ifndef LIBDC_POSIX_DC_SIGNAL_H
 #define LIBDC_POSIX_DC_SIGNAL_H
 
-
 /*
  * Copyright 2021-2021 D'Arcy Smith.
  *
@@ -18,12 +17,11 @@
  * limitations under the License.
  */
 
-
 #include "dc_posix_env.h"
 #include <signal.h>
 
+int dc_sigaction(const struct dc_posix_env *env, struct dc_error *err, int sig,
+                 const struct sigaction *restrict act,
+                 struct sigaction *restrict oact);
 
-int dc_sigaction(const struct dc_posix_env  *env, struct dc_error *err, int sig, const struct sigaction *restrict act,struct sigaction *restrict oact);
-
-
-#endif //LIBDC_POSIX_DC_SIGNAL_H
+#endif // LIBDC_POSIX_DC_SIGNAL_H

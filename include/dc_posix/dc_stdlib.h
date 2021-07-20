@@ -1,7 +1,6 @@
 #ifndef LIBDC_POSIX_DC_STDLIB_H
 #define LIBDC_POSIX_DC_STDLIB_H
 
-
 /*
  * Copyright 2021-2021 D'Arcy Smith.
  *
@@ -18,10 +17,8 @@
  * limitations under the License.
  */
 
-
 #include "dc_posix_env.h"
 #include <sys/types.h>
-
 
 /**
  *
@@ -31,7 +28,8 @@
  * @param elsize
  * @return
  */
-void *dc_calloc(const struct dc_posix_env *env, struct dc_error *err, size_t nelem, size_t elsize);
+void *dc_calloc(const struct dc_posix_env *env, struct dc_error *err,
+                size_t nelem, size_t elsize);
 
 /**
  *
@@ -40,7 +38,8 @@ void *dc_calloc(const struct dc_posix_env *env, struct dc_error *err, size_t nel
  * @param size
  * @return
  */
-void *dc_malloc(const struct dc_posix_env *env, struct dc_error *err, size_t size);
+void *dc_malloc(const struct dc_posix_env *env, struct dc_error *err,
+                size_t size);
 
 /**
  *
@@ -49,6 +48,5 @@ void *dc_malloc(const struct dc_posix_env *env, struct dc_error *err, size_t siz
  * @param size
  */
 void dc_free(const struct dc_posix_env *env, void *ptr, size_t size);
-
 
 #endif // LIBDC_POSIX_DC_STDLIB_H

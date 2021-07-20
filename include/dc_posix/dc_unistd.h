@@ -1,7 +1,6 @@
 #ifndef LIBDC_POSIX_DC_UNISTD_H
 #define LIBDC_POSIX_DC_UNISTD_H
 
-
 /*
  * Copyright 2021-2021 D'Arcy Smith.
  *
@@ -18,10 +17,20 @@
  * limitations under the License.
  */
 
-
 #include "dc_posix_env.h"
 #include <sys/types.h>
 
+/**
+ *
+ * @param env
+ * @param err
+ * @param fildes
+ * @param buf
+ * @param nbyte
+ * @return
+ */
+ssize_t dc_read(const struct dc_posix_env *env, struct dc_error *err,
+                int fildes, void *buf, size_t nbyte);
 
 /**
  *
@@ -32,19 +41,8 @@
  * @param nbyte
  * @return
  */
-ssize_t dc_read(const struct dc_posix_env *env, struct dc_error *err, int fildes, void *buf, size_t nbyte);
-
-/**
- *
- * @param env
- * @param err
- * @param fildes
- * @param buf
- * @param nbyte
- * @return
- */
-ssize_t dc_write(const struct dc_posix_env *env, struct dc_error *err, int fildes, const void *buf, size_t nbyte);
-
+ssize_t dc_write(const struct dc_posix_env *env, struct dc_error *err,
+                 int fildes, const void *buf, size_t nbyte);
 
 /**
  *
@@ -55,7 +53,6 @@ ssize_t dc_write(const struct dc_posix_env *env, struct dc_error *err, int filde
  */
 int dc_close(const struct dc_posix_env *env, struct dc_error *err, int fildes);
 
-
 /**
  *
  * @param env
@@ -65,7 +62,6 @@ int dc_close(const struct dc_posix_env *env, struct dc_error *err, int fildes);
  */
 int dc_dup(const struct dc_posix_env *env, struct dc_error *err, int fildes);
 
-
 /**
  *
  * @param env
@@ -74,7 +70,7 @@ int dc_dup(const struct dc_posix_env *env, struct dc_error *err, int fildes);
  * @param fildes2
  * @return
  */
-int dc_dup2(const struct dc_posix_env *env, struct dc_error *err, int fildes, int fildes2);
-
+int dc_dup2(const struct dc_posix_env *env, struct dc_error *err, int fildes,
+            int fildes2);
 
 #endif // LIBDC_POSIX_DC_UNISTD_H
