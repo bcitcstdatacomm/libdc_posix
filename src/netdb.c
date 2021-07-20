@@ -26,16 +26,16 @@ void dc_freeaddrinfo(const struct dc_posix_env *env, struct addrinfo *ai)
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/freeaddrinfo.html
 int dc_getaddrinfo(const struct dc_posix_env *env,
-                   struct dc_error *          err,
-                   const char * restrict nodename,
-                   const char * restrict servname,
-                   const struct addrinfo * restrict hints,
-                   struct addrinfo ** restrict res)
+                   struct dc_error *err,
+                   const char *restrict nodename,
+                   const char *restrict servname,
+                   const struct addrinfo *restrict hints,
+                   struct addrinfo **restrict res)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = getaddrinfo(nodename, servname, hints, res);
 
     if(ret_val != 0)

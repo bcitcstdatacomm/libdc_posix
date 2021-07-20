@@ -12,7 +12,8 @@ BeforeEach(dc_posix_string)
     dc_error_init(&err);
 }
 
-AfterEach(dc_posix_string) {}
+AfterEach(dc_posix_string)
+{}
 
 Ensure(dc_posix_string, dc_memcpy_tests)
 {
@@ -38,12 +39,12 @@ Ensure(dc_posix_string, dc_strlen_tests)
 {
     const char *values[] =
             {
-                "",
-                "A",
-                "hello, world",
-                "123",
-                "!",
-                "HI"
+                    "",
+                    "A",
+                    "hello, world",
+                    "123",
+                    "!",
+                    "HI"
             };
 
     for(size_t i = 0; i < sizeof(values) / sizeof(char *); i++)

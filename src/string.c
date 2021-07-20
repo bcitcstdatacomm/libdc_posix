@@ -18,7 +18,7 @@
 #include <string.h>
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/memcpy.html
-void *dc_memcpy(const struct dc_posix_env *env, void * restrict s1, const void * restrict s2, size_t n)
+void *dc_memcpy(const struct dc_posix_env *env, void *restrict s1, const void *restrict s2, size_t n)
 {
     void *ret_val;
 
@@ -40,7 +40,7 @@ void *dc_memset(const struct dc_posix_env *env, void *s, int c, size_t n)
 }
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/strcpy.html
-char *dc_strcpy(const struct dc_posix_env *env, char * restrict s1, const char * restrict s2)
+char *dc_strcpy(const struct dc_posix_env *env, char *restrict s1, const char *restrict s2)
 {
     char *ret_val;
 
@@ -84,7 +84,7 @@ int dc_strncmp(const struct dc_posix_env *env, const char *s1, const char *s2, s
 }
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/strtok.html
-char *dc_strtok_r(const struct dc_posix_env *env, char * restrict s, const char * restrict sep, char ** restrict state)
+char *dc_strtok_r(const struct dc_posix_env *env, char *restrict s, const char *restrict sep, char **restrict state)
 {
     char *ret_val;
 

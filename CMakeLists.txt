@@ -44,12 +44,12 @@ set(SOURCE_LIST
 ### Require out-of-source builds
 # this still creates a CMakeFiles directory and CMakeCache.txt- can we delete them?
 file(TO_CMAKE_PATH "${PROJECT_BINARY_DIR}/CMakeLists.txt" LOC_PATH)
-if(EXISTS "${LOC_PATH}")
+if (EXISTS "${LOC_PATH}")
     message(FATAL_ERROR "You cannot build in a source directory (or any directory with a CMakeLists.txt file). Please make a build subdirectory. Feel free to remove CMakeCache.txt and CMakeFiles.")
-endif()
+endif ()
 
 # Only do these if this is the main project, and not if it is included through add_subdirectory
-if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 
     # Optionally set things like CMAKE_CXX_STANDARD, CMAKE_POSITION_INDEPENDENT_CODE here
 
@@ -57,9 +57,9 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
     set(CMAKE_C_EXTENSIONS OFF)
 
     # Make a shared library
-    if(APPLE)
-        add_definitions( -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 )
-    endif()
+    if (APPLE)
+        add_definitions(-D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700)
+    endif ()
 
     # Let's nicely support folders in IDEs
     set_property(GLOBAL PROPERTY USE_FOLDERS ON)
@@ -72,12 +72,12 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 
     # Docs only available if this is the main app
     find_package(Doxygen)
-    if(Doxygen_FOUND)
+    if (Doxygen_FOUND)
         add_subdirectory(docs)
-    else()
+    else ()
         message(STATUS "Doxygen not found, not building docs")
-    endif()
-endif()
+    endif ()
+endif ()
 
 # The compiled library code is here
 add_subdirectory(src)
@@ -85,6 +85,6 @@ add_subdirectory(src)
 find_library(LIBCGREEN cgreen)
 
 # Testing only available if this is the main app
-if((CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME) AND BUILD_TESTING AND LIBCGREEN)
+if ((CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME) AND BUILD_TESTING AND LIBCGREEN)
     add_subdirectory(tests)
-endif()
+endif ()

@@ -6,7 +6,9 @@
 
 
 TestSuite *dc_error_tests(void);
+
 TestSuite *dc_string_tests(void);
+
 TestSuite *dc_env_tests(void);
 
 

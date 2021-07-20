@@ -1,4 +1,4 @@
-# Documentation for libdc_application Library                             {#mainpage}
+# Documentation for libdc_application Library {#mainpage}
 
 This is the documentation for my simple example library.
 

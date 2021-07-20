@@ -25,7 +25,7 @@ void *dc_calloc(const struct dc_posix_env *env, struct dc_error *err, size_t nel
     void *memory;
 
     DC_TRACE(env);
-    errno  = 0;
+    errno = 0;
     memory = calloc(nelem, elsize);
 
     if(memory == NULL)
@@ -46,7 +46,7 @@ void *dc_malloc(const struct dc_posix_env *env, struct dc_error *err, size_t siz
     void *memory;
 
     DC_TRACE(env);
-    errno  = 0;
+    errno = 0;
     memory = malloc(size);
 
     if(memory == NULL)

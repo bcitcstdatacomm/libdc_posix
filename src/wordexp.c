@@ -19,15 +19,15 @@
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/wordexp.html
 int dc_wordexp(const struct dc_posix_env *env,
-               struct dc_error *          err,
-               const char * restrict words,
-               wordexp_t * restrict pwordexp,
+               struct dc_error *err,
+               const char *restrict words,
+               wordexp_t *restrict pwordexp,
                int flags)
 {
     int err_code;
 
     DC_TRACE(env);
-    errno    = 0;
+    errno = 0;
     err_code = wordexp(words, pwordexp, flags);
 
     // this isn't great but the docs suck when it comes to telling how it works

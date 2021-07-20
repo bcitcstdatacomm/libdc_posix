@@ -3,8 +3,12 @@
 
 
 Describe(dc_posix_error);
-BeforeEach(dc_posix_error) {}
-AfterEach(dc_posix_error) {}
+
+BeforeEach(dc_posix_error)
+{}
+
+AfterEach(dc_posix_error)
+{}
 
 
 Ensure(dc_posix_error, init_tests)
@@ -23,12 +27,12 @@ Ensure(dc_posix_error, init_tests)
 
     message = malloc(6);
     strcpy(message, "hello");
-    err.file_name     = __FILE__;
+    err.file_name = __FILE__;
     err.function_name = __func__;
-    err.line_number   = __LINE__;
-    err.message       = message;
-    err.type          = DC_ERROR_USER;
-    err.err_code      = 1;
+    err.line_number = __LINE__;
+    err.message = message;
+    err.type = DC_ERROR_USER;
+    err.err_code = 1;
     assert_that(err.file_name, is_equal_to_string(__FILE__));
     assert_that(err.function_name, is_equal_to_string(__func__));
     assert_that(err.line_number, is_not_equal_to(0));
