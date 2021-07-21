@@ -1,14 +1,14 @@
 # Note that headers are optional, and do not affect add_library, but they will not
 # show up in IDEs unless they are listed in add_library.
 
-add_definitions(-D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700)
+add_compile_definitions(_POSIX_C_SOURCE=200809L _XOPEN_SOURCE=700)
 
-if (APPLE)
+if(APPLE)
     add_definitions(-D_DARWIN_C_SOURCE)
-endif ()
+endif()
 
 find_program(LINT "clang-tidy")
-IF(WIN_COLOR)
+IF(LINT)
     set(CMAKE_C_CLANG_TIDY "clang-tidy;-checks=*,-llvmlibc-restrict-system-libc-headers,-cppcoreguidelines-init-variables,-clang-analyzer-security.insecureAPI.strcpy,-concurrency-mt-unsafe,-android-cloexec-accept,-android-cloexec-dup,-google-readability-todo,-cppcoreguidelines-avoid-magic-numbers,-readability-magic-numbers,-cert-dcl03-c,-hicpp-static-assert,-misc-static-assert,-altera-struct-pack-align,-clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling;--quiet")
 ENDIF()
 
