@@ -1,3 +1,9 @@
+add_compile_definitions(_POSIX_C_SOURCE=200809L _XOPEN_SOURCE=700)
+
+if(APPLE)
+    add_definitions(-D_DARWIN_C_SOURCE)
+endif()
+
 include_directories(${CGREEN_PUBLIC_INCLUDE_DIRS} ${PROJECT_BINARY_DIR})
 add_executable(dc_posix_test
         ${SOURCE_LIST} ${HEADER_LIST} ${HEADER_SYS_LIST}
