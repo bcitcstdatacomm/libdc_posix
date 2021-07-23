@@ -1,3 +1,4 @@
 # libdc
 
-POSIX wrapper
+A POSIX wrapper.
+
