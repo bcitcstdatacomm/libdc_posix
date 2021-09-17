@@ -73,4 +73,18 @@ int dc_dup(const struct dc_posix_env *env, struct dc_error *err, int fildes);
 int dc_dup2(const struct dc_posix_env *env, struct dc_error *err, int fildes,
             int fildes2);
 
+/**
+ *
+ * @param env
+ * @return
+ */
+pid_t dc_getpid(const struct dc_posix_env *env);
+
+/**
+ *
+ * @param env
+ * @return
+ */
+pid_t dc_getppid(const struct dc_posix_env *env);
+
 #endif // LIBDC_POSIX_DC_UNISTD_H

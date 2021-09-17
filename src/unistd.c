@@ -121,3 +121,25 @@ int dc_dup2(const struct dc_posix_env *env, struct dc_error *err, int fildes, in
 
     return ret_val;
 }
+
+pid_t dc_getpid(const struct dc_posix_env *env)
+{
+    pid_t pid;
+
+    DC_TRACE(env);
+
+    pid = getpid();
+
+    return pid;
+}
+
+pid_t dc_getppid(const struct dc_posix_env *env)
+{
+    pid_t pid;
+
+    DC_TRACE(env);
+
+    pid = getppid();
+
+    return pid;
+}
