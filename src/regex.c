@@ -19,15 +19,15 @@
 #include <regex.h>
 
 int dc_regcomp(const struct dc_posix_env *env,
-               struct dc_error *err,
-               regex_t *restrict preg,
-               const char *restrict pattern,
+               struct dc_error *          err,
+               regex_t * restrict preg,
+               const char * restrict pattern,
                int cflags)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno = 0;
+    errno   = 0;
     ret_val = regcomp(preg, pattern, cflags);
 
     if(ret_val == -1)
@@ -39,16 +39,16 @@ int dc_regcomp(const struct dc_posix_env *env,
 }
 
 size_t dc_regerror(const struct dc_posix_env *env,
-                   struct dc_error *err,
-                   int errcode,
-                   const regex_t *restrict preg,
-                   char *restrict errbuf,
+                   struct dc_error *          err,
+                   int                        errcode,
+                   const regex_t * restrict preg,
+                   char * restrict errbuf,
                    size_t errbuf_size)
 {
     size_t ret_val;
 
     DC_TRACE(env);
-    errno = 0;
+    errno   = 0;
     ret_val = regerror(errcode, preg, errbuf, errbuf_size);
 
     if(errno != 0)
@@ -59,18 +59,18 @@ size_t dc_regerror(const struct dc_posix_env *env,
     return ret_val;
 }
 
-int dc_regexec(const struct dc_posix_env *env,
+int dc_regexec(const struct dc_posix_env *              env,
                __attribute__((unused)) struct dc_error *err,
-               const regex_t *restrict preg,
-               const char *restrict string,
-               size_t nmatch,
+               const regex_t * restrict preg,
+               const char * restrict string,
+               size_t     nmatch,
                regmatch_t pmatch[restrict],
-               int eflags)
+               int        eflags)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno = 0;
+    errno   = 0;
     ret_val = regexec(preg, string, nmatch, pmatch, eflags);
 
     /*

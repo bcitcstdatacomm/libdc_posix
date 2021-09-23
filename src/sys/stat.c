@@ -23,7 +23,7 @@ int dc_fstat(const struct dc_posix_env *env, struct dc_error *err, int fildes, s
 
     DC_TRACE(env);
     errno = 0;
-    fd = fstat(fildes, buf);
+    fd    = fstat(fildes, buf);
 
     if(fd == -1)
     {

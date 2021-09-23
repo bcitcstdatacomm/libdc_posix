@@ -18,13 +18,11 @@ Ensure(dc_posix_env, env_init_tests)
     assert_that(env.null_free, is_false);
     assert_that(env.zero_free, is_false);
     assert_that(env.tracer, is_null);
-    assert_that(env.error_reporter, is_null);
 
     dc_posix_env_init(&env, NULL);
     assert_that(env.null_free, is_false);
     assert_that(env.zero_free, is_false);
     assert_that(env.tracer, is_null);
-    assert_that(env.error_reporter, is_null);
 }
 
 static const char *actual_file_name;

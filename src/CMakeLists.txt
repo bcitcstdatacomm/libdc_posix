@@ -1,6 +1,3 @@
-# Note that headers are optional, and do not affect add_library, but they will not
-# show up in IDEs unless they are listed in add_library.
-
 add_compile_definitions(_POSIX_C_SOURCE=200809L _XOPEN_SOURCE=700)
 
 if (APPLE)

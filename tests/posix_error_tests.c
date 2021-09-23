@@ -16,7 +16,7 @@ Ensure(dc_posix_error, init_tests)
     struct dc_error err;
     char *message;
 
-    dc_error_init(&err);
+    dc_error_init(&err, NULL);
     assert_that(err.file_name, is_null);
     assert_that(err.function_name, is_null);
     assert_that(err.line_number, is_equal_to(0));
@@ -43,7 +43,7 @@ Ensure(dc_posix_error, init_tests)
     free(message);
     message = NULL;
 
-    dc_error_init(&err);
+    dc_error_init(&err, NULL);
     assert_that(err.file_name, is_null);
     assert_that(err.function_name, is_null);
     assert_that(err.line_number, is_equal_to(0));

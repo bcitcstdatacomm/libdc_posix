@@ -23,16 +23,12 @@ ssize_t dc_read(const struct dc_posix_env *env, struct dc_error *err, int fildes
     ssize_t ret_val;
 
     DC_TRACE(env);
-    errno = 0;
+    errno   = 0;
     ret_val = read(fildes, buf, nbyte);
 
     if(ret_val == -1)
     {
         DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-    else
-    {
-        dc_error_reset(err);
     }
 
     return ret_val;
@@ -44,16 +40,12 @@ ssize_t dc_write(const struct dc_posix_env *env, struct dc_error *err, int filde
     ssize_t ret_val;
 
     DC_TRACE(env);
-    errno = 0;
+    errno   = 0;
     ret_val = write(fildes, buf, nbyte);
 
     if(ret_val == -1)
     {
         DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-    else
-    {
-        dc_error_reset(err);
     }
 
     return ret_val;
@@ -65,16 +57,12 @@ int dc_close(const struct dc_posix_env *env, struct dc_error *err, int fildes)
     int ret_val;
 
     DC_TRACE(env);
-    errno = 0;
+    errno   = 0;
     ret_val = close(fildes);
 
     if(ret_val == -1)
     {
         DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-    else
-    {
-        dc_error_reset(err);
     }
 
     return ret_val;
@@ -86,16 +74,12 @@ int dc_dup(const struct dc_posix_env *env, struct dc_error *err, int fildes)
     int ret_val;
 
     DC_TRACE(env);
-    errno = 0;
+    errno   = 0;
     ret_val = dup(fildes);
 
     if(ret_val == -1)
     {
         DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-    else
-    {
-        dc_error_reset(err);
     }
 
     return ret_val;
@@ -107,16 +91,12 @@ int dc_dup2(const struct dc_posix_env *env, struct dc_error *err, int fildes, in
     int ret_val;
 
     DC_TRACE(env);
-    errno = 0;
+    errno   = 0;
     ret_val = dup2(fildes, fildes2);
 
     if(ret_val == -1)
     {
         DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-    else
-    {
-        dc_error_reset(err);
     }
 
     return ret_val;

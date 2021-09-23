@@ -1,3 +1,6 @@
+#ifndef LIBDC_POSIX_DC_TIME_H
+#define LIBDC_POSIX_DC_TIME_H
+
 /*
  * Copyright 2021-2021 D'Arcy Smith.
  *
@@ -14,25 +17,10 @@
  * limitations under the License.
  */
 
-#include "dc_signal.h"
+#include "dc_posix_env.h"
+#include <time.h>
 
-// https://pubs.opengroup.org/onlinepubs/9699919799/functions/sigaction.html
-int dc_sigaction(const struct dc_posix_env *env,
-                 struct dc_error *          err,
-                 int                        sig,
-                 const struct sigaction * restrict act,
-                 struct sigaction * restrict oact)
-{
-    int ret_val;
+int dc_nanosleep(const struct dc_posix_env *env, struct dc_error *err,
+                 const struct timespec *rqtp, struct timespec *rmtp);
 
-    DC_TRACE(env);
-    errno   = 0;
-    ret_val = sigaction(sig, act, oact);
-
-    if(ret_val == -1)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-
-    return ret_val;
-}
+#endif // LIBDC_POSIX_DC_FCNTL_H

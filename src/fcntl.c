@@ -23,16 +23,12 @@ int dc_open(const struct dc_posix_env *env, struct dc_error *err, const char *pa
     int ret_val;
 
     DC_TRACE(env);
-    errno = 0;
+    errno   = 0;
     ret_val = open(path, (int)oflag, mode);
 
     if(ret_val == -1)
     {
         DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-    else
-    {
-        dc_error_reset(err);
     }
 
     return ret_val;

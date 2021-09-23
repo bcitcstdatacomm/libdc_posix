@@ -29,16 +29,12 @@
 #error Requires a POSIX compatible system
 #endif
 
-struct dc_posix_env
-{
-    bool zero_free;
-    bool null_free;
+struct dc_posix_env {
+  bool zero_free;
+  bool null_free;
 
-    void (*error_reporter)(const struct dc_posix_env *env,
-                           const struct dc_error *err);
-
-    void (*tracer)(const struct dc_posix_env *env, const char *file_name,
-                   const char *function_name, size_t line_number);
+  void (*tracer)(const struct dc_posix_env *env, const char *file_name,
+                 const char *function_name, size_t line_number);
 };
 
 /**
@@ -47,16 +43,10 @@ struct dc_posix_env
  * @param error_reporter
  */
 void dc_posix_env_init(struct dc_posix_env *env,
-                       void (*error_reporter)(const struct dc_posix_env *env,
-                                              const struct dc_error *err));
-
-/**
- *
- * @param env
- * @param err
- */
-void dc_posix_default_error_reporter(const struct dc_posix_env *env,
-                                     const struct dc_error *err);
+                       void (*tracer)(const struct dc_posix_env *env,
+                                      const char *file_name,
+                                      const char *function_name,
+                                      size_t line_number));
 
 /**
  *
@@ -80,6 +70,5 @@ void dc_trace(const struct dc_posix_env *env, const char *file_name,
               const char *function_name, size_t line_number);
 
 #define DC_TRACE(env) dc_trace((env), __FILE__, __func__, __LINE__)
-
 
 #endif // LIBDC_POSIX_DC_POSIX_ENV_H

@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
-#include "dc_signal.h"
+#include "dc_posix_env.h"
+#include "dc_time.h"
 
-// https://pubs.opengroup.org/onlinepubs/9699919799/functions/sigaction.html
-int dc_sigaction(const struct dc_posix_env *env,
+// https://pubs.opengroup.org/onlinepubs/9699919799/functions/nanosleep.html
+int dc_nanosleep(const struct dc_posix_env *env,
                  struct dc_error *          err,
-                 int                        sig,
-                 const struct sigaction * restrict act,
-                 struct sigaction * restrict oact)
+                 const struct timespec *    rqtp,
+                 struct timespec *          rmtp)
 {
     int ret_val;
 
     DC_TRACE(env);
     errno   = 0;
-    ret_val = sigaction(sig, act, oact);
+    ret_val = nanosleep(rqtp, rmtp);
 
     if(ret_val == -1)
     {

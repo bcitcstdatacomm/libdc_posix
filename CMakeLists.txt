@@ -17,6 +17,7 @@ set(HEADER_LIST
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_signal.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_stdlib.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_string.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_time.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_unistd.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_wordexp.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_regex.h")
@@ -35,6 +36,7 @@ set(SOURCE_LIST
         "${libdc_posix_SOURCE_DIR}/src/signal.c"
         "${libdc_posix_SOURCE_DIR}/src/stdlib.c"
         "${libdc_posix_SOURCE_DIR}/src/string.c"
+        "${libdc_posix_SOURCE_DIR}/src/time.c"
         "${libdc_posix_SOURCE_DIR}/src/unistd.c"
         "${libdc_posix_SOURCE_DIR}/src/wordexp.c"
         "${libdc_posix_SOURCE_DIR}/src/sys/socket.c"

@@ -9,7 +9,7 @@ Describe(dc_posix_string);
 BeforeEach(dc_posix_string)
 {
     dc_posix_env_init(&env, NULL);
-    dc_error_init(&err);
+    dc_error_init(&err, NULL);
 }
 
 AfterEach(dc_posix_string)
