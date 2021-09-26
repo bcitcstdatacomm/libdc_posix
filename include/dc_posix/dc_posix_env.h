@@ -37,16 +37,18 @@ struct dc_posix_env {
                  const char *function_name, size_t line_number);
 };
 
+typedef void (*dc_posix_tracer)(const struct dc_posix_env *env,
+                       const char *file_name,
+                       const char *function_name,
+                       size_t line_number);
+
 /**
  *
  * @param env
  * @param error_reporter
  */
 void dc_posix_env_init(struct dc_posix_env *env,
-                       void (*tracer)(const struct dc_posix_env *env,
-                                      const char *file_name,
-                                      const char *function_name,
-                                      size_t line_number));
+                       dc_posix_tracer tracer);
 
 /**
  *
