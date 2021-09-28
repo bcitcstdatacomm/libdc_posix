@@ -23,5 +23,7 @@
 int dc_sigaction(const struct dc_posix_env *env, struct dc_error *err, int sig,
                  const struct sigaction *restrict act,
                  struct sigaction *restrict oact);
+int dc_raise(const struct dc_posix_env *env, struct dc_error *err, int sig);
+
 
 #endif // LIBDC_POSIX_DC_SIGNAL_H
