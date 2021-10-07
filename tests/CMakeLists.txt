@@ -17,7 +17,7 @@ set(TEST_SOURCE_LIST
 
 include_directories(${CGREEN_PUBLIC_INCLUDE_DIRS} ${PROJECT_BINARY_DIR})
 add_executable(libdc_posix_test
-        ${TEST_SOURCE_LIST} ${TEST_HEADER_LIST} ${SOURCE_LIST} ${HEADER_LIST} ${HEADER_SYS_LIST})
+        ${TEST_SOURCE_LIST} ${TEST_HEADER_LIST} ${SOURCE_LIST} ${HEADER_LIST} ${HEADER_SYS_LIST} ${HEADER_ARPA_LIST})
 
 target_compile_features(libdc_posix_test PRIVATE c_std_11)
 target_compile_options(libdc_posix_test PRIVATE -g)

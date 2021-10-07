@@ -10,7 +10,7 @@ IF (LINT)
 ENDIF ()
 
 # Make a shared library
-add_library(dc_posix SHARED ${SOURCE_LIST} ${HEADER_LIST} ${HEADER_SYS_LIST})
+add_library(dc_posix SHARED ${SOURCE_LIST} ${HEADER_LIST} ${HEADER_SYS_LIST} ${HEADER_ARPA_LIST})
 target_include_directories(dc_posix PRIVATE ../include/dc_posix)
 target_include_directories(dc_posix PRIVATE /usr/include)
 target_include_directories(dc_posix PRIVATE /usr/local/include)
@@ -33,12 +33,13 @@ target_compile_options(dc_posix PRIVATE -Wdouble-promotion -Wformat-nonliteral -
 install(TARGETS dc_posix LIBRARY DESTINATION lib)
 install(FILES ${HEADER_LIST} DESTINATION include/dc_posix)
 install(FILES ${HEADER_SYS_LIST} DESTINATION include/dc_posix/sys)
+install(FILES ${HEADER_ARPA_LIST} DESTINATION include/dc_posix/arpa)
 
 # IDEs should put the headers in a nice place
 source_group(
         TREE "${PROJECT_SOURCE_DIR}/include"
         PREFIX "Header Files"
-        FILES ${HEADER_LIST} ${HEADER_SYS_LIST}
+        FILES ${HEADER_LIST} ${HEADER_SYS_LIST} ${HEADER_ARPA_LIST}
 )
 
 add_custom_target(
@@ -47,5 +48,6 @@ add_custom_target(
         -i
         ${HEADER_LIST}
         ${HEADER_SYS_LIST}
+        ${HEADER_ARPA_LIST}
         ${SOURCE_LIST}
 )

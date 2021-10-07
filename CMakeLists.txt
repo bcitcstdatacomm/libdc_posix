@@ -27,6 +27,10 @@ set(HEADER_SYS_LIST
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/dc_stat.h"
         )
 
+set(HEADER_ARPA_LIST
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/arpa/dc_inet.h"
+        )
+
 set(SOURCE_LIST
         "${libdc_posix_SOURCE_DIR}/src/posix_env.c"
         "${libdc_posix_SOURCE_DIR}/src/fcntl.c"
@@ -41,6 +45,7 @@ set(SOURCE_LIST
         "${libdc_posix_SOURCE_DIR}/src/wordexp.c"
         "${libdc_posix_SOURCE_DIR}/src/sys/socket.c"
         "${libdc_posix_SOURCE_DIR}/src/sys/stat.c"
+        "${libdc_posix_SOURCE_DIR}/src/arpa/inet.c"
         )
 
 ### Require out-of-source builds
