@@ -38,9 +38,7 @@ int dc_sigaction(const struct dc_posix_env *env,
 }
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/raise.html
-int dc_raise(const struct dc_posix_env *env,
-             struct dc_error *          err,
-             int                        sig)
+int dc_raise(const struct dc_posix_env *env, struct dc_error *err, int sig)
 {
     int ret_val;
 

@@ -26,7 +26,7 @@ void dc_posix_env_init(struct dc_posix_env *env,
                                       size_t                     line_number))
 {
     memset(env, 0, sizeof(struct dc_posix_env));
-    env->tracer         = tracer;
+    env->tracer = tracer;
 }
 
 void dc_posix_default_tracer(__attribute__((unused)) const struct dc_posix_env *env,
