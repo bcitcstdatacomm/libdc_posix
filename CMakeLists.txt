@@ -14,15 +14,17 @@ set(HEADER_LIST
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_fcntl.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_inttypes.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_netdb.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_poll.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_regex.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_signal.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_stdlib.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_string.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_time.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_unistd.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_wordexp.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_regex.h")
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_wordexp.h")
 
 set(HEADER_SYS_LIST
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/dc_select.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/dc_socket.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/dc_stat.h"
         )
@@ -36,10 +38,11 @@ set(HEADER_NET_LIST
         )
 
 set(SOURCE_LIST
-        "${libdc_posix_SOURCE_DIR}/src/posix_env.c"
         "${libdc_posix_SOURCE_DIR}/src/fcntl.c"
         "${libdc_posix_SOURCE_DIR}/src/inttypes.c"
         "${libdc_posix_SOURCE_DIR}/src/netdb.c"
+        "${libdc_posix_SOURCE_DIR}/src/poll.c"
+        "${libdc_posix_SOURCE_DIR}/src/posix_env.c"
         "${libdc_posix_SOURCE_DIR}/src/regex.c"
         "${libdc_posix_SOURCE_DIR}/src/signal.c"
         "${libdc_posix_SOURCE_DIR}/src/stdlib.c"
@@ -47,10 +50,11 @@ set(SOURCE_LIST
         "${libdc_posix_SOURCE_DIR}/src/time.c"
         "${libdc_posix_SOURCE_DIR}/src/unistd.c"
         "${libdc_posix_SOURCE_DIR}/src/wordexp.c"
-        "${libdc_posix_SOURCE_DIR}/src/sys/socket.c"
-        "${libdc_posix_SOURCE_DIR}/src/sys/stat.c"
         "${libdc_posix_SOURCE_DIR}/src/arpa/inet.c"
         "${libdc_posix_SOURCE_DIR}/src/net/if.c"
+        "${libdc_posix_SOURCE_DIR}/src/sys/select.c"
+        "${libdc_posix_SOURCE_DIR}/src/sys/socket.c"
+        "${libdc_posix_SOURCE_DIR}/src/sys/stat.c"
         )
 
 ### Require out-of-source builds
