@@ -32,10 +32,11 @@
  * @param sigmask
  * @return
  */
-int dc_pselect(const struct dc_posix_env *env, struct dc_error *err, int nfds, fd_set *restrict readfds,
-            fd_set *restrict writefds, fd_set *restrict errorfds,
-            const struct timespec *restrict timeout,
-            const sigset_t *restrict sigmask);
+int dc_pselect(const struct dc_posix_env *env, struct dc_error *err, int nfds,
+               fd_set *restrict readfds, fd_set *restrict writefds,
+               fd_set *restrict errorfds,
+               const struct timespec *restrict timeout,
+               const sigset_t *restrict sigmask);
 
 /**
  *
@@ -48,8 +49,8 @@ int dc_pselect(const struct dc_posix_env *env, struct dc_error *err, int nfds, f
  * @param timeout
  * @return
  */
-int dc_select(const struct dc_posix_env *env, struct dc_error *err, int nfds, fd_set *restrict readfds,
-           fd_set *restrict writefds, fd_set *restrict errorfds,
-           struct timeval *restrict timeout);
+int dc_select(const struct dc_posix_env *env, struct dc_error *err, int nfds,
+              fd_set *restrict readfds, fd_set *restrict writefds,
+              fd_set *restrict errorfds, struct timeval *restrict timeout);
 
 #endif // LIBDC_POSIX_DC_SELECT_H

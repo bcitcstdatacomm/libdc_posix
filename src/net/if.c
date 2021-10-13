@@ -16,7 +16,6 @@
 
 #include "net/dc_if.h"
 
-
 void dc_if_freenameindex(const struct dc_posix_env *env, struct if_nameindex *ptr)
 {
     DC_TRACE(env);
@@ -29,7 +28,7 @@ char *dc_if_indextoname(const struct dc_posix_env *env, struct dc_error *err, un
 
     DC_TRACE(env);
     errno = 0;
-    name = if_indextoname(ifindex, ifname);
+    name  = if_indextoname(ifindex, ifname);
 
     if(name == NULL)
     {
@@ -44,7 +43,7 @@ struct if_nameindex *dc_if_nameindex(const struct dc_posix_env *env, struct dc_e
     struct if_nameindex *indexes;
 
     DC_TRACE(env);
-    errno = 0;
+    errno   = 0;
     indexes = if_nameindex();
 
     if(indexes == NULL)

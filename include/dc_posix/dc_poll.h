@@ -29,6 +29,7 @@
  * @param timeout
  * @return
  */
-int dc_poll(const struct dc_posix_env *env, struct dc_error *err, struct pollfd fds[], nfds_t nfds, int timeout);
+int dc_poll(const struct dc_posix_env *env, struct dc_error *err,
+            struct pollfd fds[], nfds_t nfds, int timeout);
 
 #endif // LIBDC_POSIX_DC_POLL_H

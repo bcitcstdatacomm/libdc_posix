@@ -1,10 +1,8 @@
 #ifndef LIBDC_POSIX_INET_H
 #define LIBDC_POSIX_INET_H
 
-
 #include "../dc_posix_env.h"
 #include <arpa/inet.h>
-
 
 /*
  * Copyright 2021-2021 D'Arcy Smith.
@@ -22,8 +20,10 @@
  * limitations under the License.
  */
 
-const char *dc_inet_ntop(const struct dc_posix_env *env, struct dc_error *err, int af, const void *restrict src,
-                      char *restrict dst, socklen_t size);
-int dc_inet_pton(const struct dc_posix_env *env, struct dc_error *err, int af, const char *restrict src, void *restrict dst);
+const char *dc_inet_ntop(const struct dc_posix_env *env, struct dc_error *err,
+                         int af, const void *restrict src, char *restrict dst,
+                         socklen_t size);
+int dc_inet_pton(const struct dc_posix_env *env, struct dc_error *err, int af,
+                 const char *restrict src, void *restrict dst);
 
-#endif //LIBDC_POSIX_INET_H
+#endif // LIBDC_POSIX_INET_H

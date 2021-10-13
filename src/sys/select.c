@@ -16,10 +16,14 @@
 
 #include "sys/dc_select.h"
 
-int dc_pselect(const struct dc_posix_env *env, struct dc_error *err, int nfds, fd_set *restrict readfds,
-               fd_set *restrict writefds, fd_set *restrict errorfds,
-               const struct timespec *restrict timeout,
-               const sigset_t *restrict sigmask)
+int dc_pselect(const struct dc_posix_env *env,
+               struct dc_error *          err,
+               int                        nfds,
+               fd_set * restrict readfds,
+               fd_set * restrict writefds,
+               fd_set * restrict errorfds,
+               const struct timespec * restrict timeout,
+               const sigset_t * restrict sigmask)
 {
     int ret_val;
 
@@ -35,10 +39,13 @@ int dc_pselect(const struct dc_posix_env *env, struct dc_error *err, int nfds, f
     return ret_val;
 }
 
-
-int dc_select(const struct dc_posix_env *env, struct dc_error *err, int nfds, fd_set *restrict readfds,
-              fd_set *restrict writefds, fd_set *restrict errorfds,
-              struct timeval *restrict timeout)
+int dc_select(const struct dc_posix_env *env,
+              struct dc_error *          err,
+              int                        nfds,
+              fd_set * restrict readfds,
+              fd_set * restrict writefds,
+              fd_set * restrict errorfds,
+              struct timeval * restrict timeout)
 {
     int ret_val;
 

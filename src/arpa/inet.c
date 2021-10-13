@@ -16,14 +16,17 @@
 
 #include "arpa/dc_inet.h"
 
-
-const char *dc_inet_ntop(const struct dc_posix_env *env, struct dc_error *err, int af, const void *restrict src,
-                         char *restrict dst, socklen_t size)
+const char *dc_inet_ntop(const struct dc_posix_env *env,
+                         struct dc_error *          err,
+                         int                        af,
+                         const void * restrict src,
+                         char * restrict dst,
+                         socklen_t size)
 {
     const char *presentation;
 
     DC_TRACE(env);
-    errno = 0;
+    errno        = 0;
     presentation = inet_ntop(af, src, dst, size);
 
     if(presentation == NULL)
@@ -34,12 +37,16 @@ const char *dc_inet_ntop(const struct dc_posix_env *env, struct dc_error *err, i
     return presentation;
 }
 
-int dc_inet_pton(const struct dc_posix_env *env, struct dc_error *err, int af, const char *restrict src, void *restrict dst)
+int dc_inet_pton(const struct dc_posix_env *env,
+                 struct dc_error *          err,
+                 int                        af,
+                 const char * restrict src,
+                 void * restrict dst)
 {
     int numeric;
 
     DC_TRACE(env);
-    errno = 0;
+    errno   = 0;
     numeric = inet_pton(af, src, dst);
 
     // TODO: 0 is special too... but how to handle?
@@ -50,4 +57,3 @@ int dc_inet_pton(const struct dc_posix_env *env, struct dc_error *err, int af, c
 
     return numeric;
 }
-

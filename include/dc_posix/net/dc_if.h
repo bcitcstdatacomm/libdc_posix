@@ -17,15 +17,16 @@
  * limitations under the License.
  */
 
-
 #include "../dc_posix_env.h"
 #include <net/if.h>
 
-
-void dc_if_freenameindex(const struct dc_posix_env *env, struct if_nameindex *ptr);
-char *dc_if_indextoname(const struct dc_posix_env *env, struct dc_error *err, unsigned int ifindex, char *ifname);
-struct if_nameindex *dc_if_nameindex(const struct dc_posix_env *env, struct dc_error *err);
-unsigned int dc_if_nametoindex(const struct dc_posix_env *env, const char *ifname);
-
+void dc_if_freenameindex(const struct dc_posix_env *env,
+                         struct if_nameindex *ptr);
+char *dc_if_indextoname(const struct dc_posix_env *env, struct dc_error *err,
+                        unsigned int ifindex, char *ifname);
+struct if_nameindex *dc_if_nameindex(const struct dc_posix_env *env,
+                                     struct dc_error *err);
+unsigned int dc_if_nametoindex(const struct dc_posix_env *env,
+                               const char *ifname);
 
 #endif // LIBDC_POSIX_IF_H

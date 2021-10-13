@@ -199,7 +199,8 @@ int dc_getsockname(const struct dc_posix_env *env,
     return ret_val;
 }
 
-ssize_t dc_recv(const struct dc_posix_env *env, struct dc_error *err, int socket, void *buffer, size_t length, int flags)
+ssize_t
+dc_recv(const struct dc_posix_env *env, struct dc_error *err, int socket, void *buffer, size_t length, int flags)
 {
     ssize_t ret_val;
 
@@ -256,7 +257,8 @@ ssize_t dc_recvmsg(const struct dc_posix_env *env, struct dc_error *err, int soc
     return ret_val;
 }
 
-ssize_t dc_send(const struct dc_posix_env *env, struct dc_error *err, int socket, const void *buffer, size_t length, int flags)
+ssize_t
+dc_send(const struct dc_posix_env *env, struct dc_error *err, int socket, const void *buffer, size_t length, int flags)
 {
     ssize_t ret_val;
 
@@ -272,7 +274,8 @@ ssize_t dc_send(const struct dc_posix_env *env, struct dc_error *err, int socket
     return ret_val;
 }
 
-ssize_t dc_sendmsg(const struct dc_posix_env *env, struct dc_error *err, int socket, const struct msghdr *message, int flags)
+ssize_t
+dc_sendmsg(const struct dc_posix_env *env, struct dc_error *err, int socket, const struct msghdr *message, int flags)
 {
     ssize_t ret_val;
 
