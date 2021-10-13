@@ -1,5 +1,5 @@
-#ifndef LIBDC_POSIX_DC_STAT_H
-#define LIBDC_POSIX_DC_STAT_H
+#ifndef LIBDC_POSIX_SYS_DC_STAT_H
+#define LIBDC_POSIX_SYS_DC_STAT_H
 
 /*
  * Copyright 2021-2021 D'Arcy Smith.
@@ -191,8 +191,7 @@ int dc_stat(const struct dc_posix_env *env, struct dc_error *err,
  * @param cmask
  * @return
  */
-mode_t dc_umask(const struct dc_posix_env *env,
-                mode_t cmask);
+mode_t dc_umask(const struct dc_posix_env *env, mode_t cmask);
 
 /**
  *
@@ -205,4 +204,4 @@ mode_t dc_umask(const struct dc_posix_env *env,
 int dc_utimes(const struct dc_posix_env *env, struct dc_error *err,
               const char *path, const struct timeval times[2]);
 
-#endif // LIBDC_POSIX_DC_STAT_H
+#endif // LIBDC_POSIX_SYS_DC_STAT_H

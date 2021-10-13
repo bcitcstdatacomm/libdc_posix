@@ -1,5 +1,5 @@
-#ifndef LIBDC_POSIX_DC_SELECT_H
-#define LIBDC_POSIX_DC_SELECT_H
+#ifndef LIBDC_POSIX_SYS_DC_SELECT_H
+#define LIBDC_POSIX_SYS_DC_SELECT_H
 
 /*
  * Copyright 2021-2021 D'Arcy Smith.
@@ -53,4 +53,4 @@ int dc_select(const struct dc_posix_env *env, struct dc_error *err, int nfds,
               fd_set *restrict readfds, fd_set *restrict writefds,
               fd_set *restrict errorfds, struct timeval *restrict timeout);
 
-#endif // LIBDC_POSIX_DC_SELECT_H
+#endif // LIBDC_POSIX_SYS_DC_SELECT_H

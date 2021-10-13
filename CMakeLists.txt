@@ -21,12 +21,17 @@ set(HEADER_LIST
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_string.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_time.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_unistd.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_wordexp.h")
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_wordexp.h"
+        )
 
 set(HEADER_SYS_LIST
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/dc_select.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/dc_socket.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/dc_stat.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/dc_statvfs.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/dc_times.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/dc_utsname.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/dc_wait.h"
         )
 
 set(HEADER_ARPA_LIST
@@ -55,6 +60,10 @@ set(SOURCE_LIST
         "${libdc_posix_SOURCE_DIR}/src/sys/select.c"
         "${libdc_posix_SOURCE_DIR}/src/sys/socket.c"
         "${libdc_posix_SOURCE_DIR}/src/sys/stat.c"
+        "${libdc_posix_SOURCE_DIR}/src/sys/statvfs.c"
+        "${libdc_posix_SOURCE_DIR}/src/sys/times.c"
+        "${libdc_posix_SOURCE_DIR}/src/sys/utsname.c"
+        "${libdc_posix_SOURCE_DIR}/src/sys/wait.c"
         )
 
 ### Require out-of-source builds
