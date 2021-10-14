@@ -17,74 +17,88 @@
  * limitations under the License.
  */
 
+
 #include "dc_posix_env.h"
 #include <sys/types.h>
 
-/**
- *
- * @param env
- * @param err
- * @param fildes
- * @param buf
- * @param nbyte
- * @return
- */
-ssize_t dc_read(const struct dc_posix_env *env, struct dc_error *err,
-                int fildes, void *buf, size_t nbyte);
 
-/**
- *
- * @param env
- * @param err
- * @param fildes
- * @param buf
- * @param nbyte
- * @return
- */
-ssize_t dc_write(const struct dc_posix_env *env, struct dc_error *err,
-                 int fildes, const void *buf, size_t nbyte);
-
-/**
- *
- * @param env
- * @param err
- * @param fildes
- * @return
- */
-int dc_close(const struct dc_posix_env *env, struct dc_error *err, int fildes);
-
-/**
- *
- * @param env
- * @param err
- * @param fildes
- * @return
- */
+int dc_access(const struct dc_posix_env *env, struct dc_error *err, const char *path, int amode);
+unsigned dc_alarm(const struct dc_posix_env *env, unsigned seconds);
+int dc_chdir(const struct dc_posix_env *env, struct dc_error *err, const char *path);
+int dc_chown(const struct dc_posix_env *env, struct dc_error *err, const char *path, uid_t owner, gid_t group);
+int dc_dc_close(const struct dc_posix_env *env, struct dc_error *err, int fildes);
+size_t dc_confstr(const struct dc_posix_env *env, struct dc_error *err, int name, char *buf, size_t len);
+char *dc_crypt(const struct dc_posix_env *env, struct dc_error *err, const char *key, const char *salt);
 int dc_dup(const struct dc_posix_env *env, struct dc_error *err, int fildes);
-
-/**
- *
- * @param env
- * @param err
- * @param fildes
- * @param fildes2
- * @return
- */
-int dc_dup2(const struct dc_posix_env *env, struct dc_error *err, int fildes,
-            int fildes2);
-
-/**
- *
- * @param env
- * @return
- */
+int dc_dup2(const struct dc_posix_env *env, struct dc_error *err, int fildes, int fildes2);
+void dc_encrypt(const struct dc_posix_env *env, struct dc_error *err, char block[64], int edflag);
+int dc_execv(const struct dc_posix_env *env, struct dc_error *err, const char *path, char *const argv[]);
+int dc_execve(const struct dc_posix_env *env, struct dc_error *err, const char *path, char *const argv[], char *const envp[]);
+int dc_execvp(const struct dc_posix_env *env, struct dc_error *err, const char *file, char *const argv[]);
+int dc_faccessat(const struct dc_posix_env *env, struct dc_error *err, int fd, const char *path, int amode, int flag);
+int dc_fchdir(const struct dc_posix_env *env, struct dc_error *err, int fildes);
+int dc_fchown(const struct dc_posix_env *env, struct dc_error *err, int fildes, uid_t owner, gid_t group);
+int dc_fchownat(const struct dc_posix_env *env, struct dc_error *err, int fd, const char *path, uid_t owner, gid_t group, int flag);
+// int dc_fdatasync(const struct dc_posix_env *env, int fildes);
+//int dc_fexecve(const struct dc_posix_env *env, struct dc_error *err, int fd, char *const argv[], char *const envp[]);
+pid_t dc_fork(const struct dc_posix_env *env, struct dc_error *err);
+long dc_fpathconf(const struct dc_posix_env *env, struct dc_error *err, int fildes, int name);
+int dc_fsync(const struct dc_posix_env *env, struct dc_error *err, int fildes);
+int dc_ftruncate(const struct dc_posix_env *env, struct dc_error *err, int fildes, off_t length);
+char *dc_getcwd(const struct dc_posix_env *env, struct dc_error *err, char *buf, size_t size);
+gid_t dc_getegid(const struct dc_posix_env *env);
+gid_t dc_geteuid(const struct dc_posix_env *env);
+gid_t dc_getgid(const struct dc_posix_env *env);
+int dc_getgroups(const struct dc_posix_env *env, struct dc_error *err, int gidsetsize, gid_t grouplist[]);
+long dc_gethostid(const struct dc_posix_env *env);
+int dc_gethostname(const struct dc_posix_env *env, struct dc_error *err, char *name, size_t namelen);
+char *dc_getlogin(const struct dc_posix_env *env, struct dc_error *err);
+int dc_getlogin_r(const struct dc_posix_env *env, struct dc_error *err, char *name, size_t namesize);
+int dc_getopt(const struct dc_posix_env *env, struct dc_error *err, int argc, char * const argv[], const char *optstring);
+pid_t dc_getpgid(const struct dc_posix_env *env, struct dc_error *err, pid_t pid);
+pid_t dc_getpgrp(const struct dc_posix_env *env);
 pid_t dc_getpid(const struct dc_posix_env *env);
-
-/**
- *
- * @param env
- * @return
- */
 pid_t dc_getppid(const struct dc_posix_env *env);
+pid_t dc_getsid(const struct dc_posix_env *env, struct dc_error *err, pid_t pid);
+uid_t dc_getuid(const struct dc_posix_env *env);
+int dc_isatty(const struct dc_posix_env *env, struct dc_error *err, int fildes);
+int dc_lchown(const struct dc_posix_env *env, struct dc_error *err, const char *path, uid_t owner, gid_t group);
+int dc_link(const struct dc_posix_env *env, struct dc_error *err, const char *path1, const char *path2);
+int dc_linkat(const struct dc_posix_env *env, struct dc_error *err, int fd1, const char *path1, int fd2, const char *path2, int flag);
+int dc_lockf(const struct dc_posix_env *env, struct dc_error *err, int fildes, int function, off_t size);
+off_t dc_lseek(const struct dc_posix_env *env, struct dc_error *err, int fildes, off_t offset, int whence);
+int dc_nice(const struct dc_posix_env *env, struct dc_error *err, int incr);
+long dc_pathconf(const struct dc_posix_env *env, struct dc_error *err, const char *path, int name);
+int dc_pause(const struct dc_posix_env *env, struct dc_error *err);
+int dc_pipe(const struct dc_posix_env *env, struct dc_error *err, int fildes[2]);
+ssize_t dc_pread(const struct dc_posix_env *env, struct dc_error *err, int fildes, void *buf, size_t nbyte, off_t offset);
+ssize_t dc_pwrite(const struct dc_posix_env *env, struct dc_error *err, int fildes, const void *buf, size_t nbyte, off_t offset);
+ssize_t dc_read(const struct dc_posix_env *env, struct dc_error *err, int fildes, void *buf, size_t nbyte);
+ssize_t dc_readlink(const struct dc_posix_env *env, struct dc_error *err, const char *restrict path, char *restrict buf, size_t bufsize);
+ssize_t dc_readlinkat(const struct dc_posix_env *env, struct dc_error *err, int fd, const char *restrict path, char *restrict buf, size_t bufsize);
+int dc_rmdir(const struct dc_posix_env *env, struct dc_error *err, const char *path);
+int dc_setegid(const struct dc_posix_env *env, struct dc_error *err, gid_t gid);
+int dc_seteuid(const struct dc_posix_env *env, struct dc_error *err, uid_t uid);
+int dc_setgid(const struct dc_posix_env *env, struct dc_error *err, gid_t gid);
+int dc_setpgid(const struct dc_posix_env *env, struct dc_error *err, pid_t pid, pid_t pgid);
+int dc_setregid(const struct dc_posix_env *env, struct dc_error *err, gid_t rgid, gid_t egid);
+int dc_setreuid(const struct dc_posix_env *env, struct dc_error *err, uid_t ruid, uid_t euid);
+pid_t dc_setsid(const struct dc_posix_env *env, struct dc_error *err);
+int dc_setuid(const struct dc_posix_env *env, struct dc_error *err, uid_t uid);
+unsigned dc_sleep(const struct dc_posix_env *env, unsigned seconds);
+void dc_swab(const struct dc_posix_env *env, const void *restrict src, void *restrict dest, ssize_t nbytes);
+int dc_symlink(const struct dc_posix_env *env, struct dc_error *err, const char *path1, const char *path2);
+int dc_symlinkat(const struct dc_posix_env *env, struct dc_error *err, const char *path1, int fd, const char *path2);
+void dc_sync(const struct dc_posix_env *env);
+long dc_sysconf(const struct dc_posix_env *env, struct dc_error *err, int name);
+pid_t dc_tcgetpgrp(const struct dc_posix_env *env, struct dc_error *err, int fildes);
+int dc_tcsetpgrp(const struct dc_posix_env *env, struct dc_error *err, int fildes, pid_t pgid_id);
+int dc_truncate(const struct dc_posix_env *env, struct dc_error *err, const char *path, off_t length);
+char *dc_ttyname(const struct dc_posix_env *env, struct dc_error *err, int fildes);
+int dc_ttyname_r(const struct dc_posix_env *env, struct dc_error *err, int fildes, char *name, size_t namesize);
+int dc_unlink(const struct dc_posix_env *env, struct dc_error *err, const char *path);
+int dc_unlinkat(const struct dc_posix_env *env, struct dc_error *err, int fd, const char *path, int flag);
+ssize_t dc_write(const struct dc_posix_env *env, struct dc_error *err, int fildes, const void *buf, size_t nbyte);
+
 
 #endif // LIBDC_POSIX_DC_UNISTD_H
