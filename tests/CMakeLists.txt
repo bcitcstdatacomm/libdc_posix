@@ -31,7 +31,9 @@ target_include_directories(libdc_posix_test PRIVATE /usr/local/include)
 
 find_library(LIBCGREEN cgreen REQUIRED)
 find_library(LIBDC_ERROR dc_error REQUIRED)
+find_library(LIB_PTHREAD pthread)
 target_link_libraries(libdc_posix_test PRIVATE ${LIBCGREEN})
 target_link_libraries(libdc_posix_test PRIVATE ${LIBDC_ERROR})
+target_link_libraries(dc_posix PUBLIC ${LIB_PTHREAD})
 
 add_test(NAME dc_posix_test COMMAND libdc_posix_test)
