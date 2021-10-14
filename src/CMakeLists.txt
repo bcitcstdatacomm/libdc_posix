@@ -21,7 +21,9 @@ set_target_properties(dc_posix PROPERTIES
         SOVERSION ${PROJECT_VERSION_MAJOR})
 
 find_library(LIBDC_ERROR dc_error REQUIRED)
+find_library(LIB_PTHREAD pthread)
 target_link_libraries(dc_posix PUBLIC ${LIBDC_ERROR})
+target_link_libraries(dc_posix PUBLIC ${LIB_PTHREAD})
 
 # All users of this library will need at least C11
 target_compile_features(dc_posix PUBLIC c_std_11)
