@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+#define _XOPEN_SOURCE 700
 #include "dc_unistd.h"
 #include <unistd.h>
 #if __has_include(<crypt.h>)
@@ -159,6 +160,7 @@ int dc_dup2(const struct dc_posix_env *env, struct dc_error *err, int fildes, in
     return ret_val;
 }
 
+/*
 void dc_encrypt(const struct dc_posix_env *env, struct dc_error *err, char block[64], int edflag)
 {
     DC_TRACE(env);
@@ -170,6 +172,7 @@ void dc_encrypt(const struct dc_posix_env *env, struct dc_error *err, char block
         DC_ERROR_RAISE_ERRNO(err, errno);
     }
 }
+*/
 
 int dc_execv(const struct dc_posix_env *env, struct dc_error *err, const char *path, char *const argv[])
 {
