@@ -18,8 +18,14 @@
  */
 
 #include "dc_posix_env.h"
-#include <ndbm.h>
 
+#if __has_include(<ndbm.h>)
+#include <ndbm.h>
+#endif
+
+#if __has_include(<gdbm/ndbm.h>)
+#include <gdbm/ndbm.h>
+#endif
 
 #ifdef __gdbm_error_to_ndbm
 typedef int mode_t;
