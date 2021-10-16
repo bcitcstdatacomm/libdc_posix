@@ -23,12 +23,16 @@ set_target_properties(dc_posix PROPERTIES
 find_library(LIBDC_ERROR dc_error REQUIRED)
 find_library(LIB_PTHREAD pthread)
 find_library(LIB_CRYPT crypt)
+find_library(LIB_GDBM gdbm)
 target_link_libraries(dc_posix PUBLIC ${LIBDC_ERROR})
 if(LIB_PTHREAD)
     target_link_libraries(dc_posix PUBLIC ${LIB_PTHREAD})
 endif()
 if(LIB_CRYPT)
     target_link_libraries(dc_posix PUBLIC ${LIB_CRYPT})
+endif()
+if(LIB_GDBM)
+    target_link_libraries(dc_posix PUBLIC ${LIB_GDBM})
 endif()
 
 # All users of this library will need at least C11
