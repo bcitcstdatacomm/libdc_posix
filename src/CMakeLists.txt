@@ -39,7 +39,7 @@ if(LIB_GDBM)
 endif()
 
 if(LIB_GDBM_COMPAT)
-    target_link_libraries(dc_posix PUBLIC ${LIB_GDBM})
+    target_link_libraries(dc_posix PUBLIC ${LIB_GDBM_COMPAT})
 endif()
 
 target_link_libraries(dc_posix PUBLIC ${LIBDC_ERROR})
