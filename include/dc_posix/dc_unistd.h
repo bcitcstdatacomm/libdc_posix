@@ -17,10 +17,8 @@
  * limitations under the License.
  */
 
-
 #include "dc_posix_env.h"
 #include <sys/types.h>
-
 
 /**
  *
@@ -30,7 +28,8 @@
  * @param amode
  * @return
  */
-int dc_access(const struct dc_posix_env *env, struct dc_error *err, const char *path, int amode);
+int dc_access(const struct dc_posix_env *env, struct dc_error *err,
+              const char *path, int amode);
 
 /**
  *
@@ -47,7 +46,8 @@ unsigned dc_alarm(const struct dc_posix_env *env, unsigned seconds);
  * @param path
  * @return
  */
-int dc_chdir(const struct dc_posix_env *env, struct dc_error *err, const char *path);
+int dc_chdir(const struct dc_posix_env *env, struct dc_error *err,
+             const char *path);
 
 /**
  *
@@ -58,7 +58,8 @@ int dc_chdir(const struct dc_posix_env *env, struct dc_error *err, const char *p
  * @param group
  * @return
  */
-int dc_chown(const struct dc_posix_env *env, struct dc_error *err, const char *path, uid_t owner, gid_t group);
+int dc_chown(const struct dc_posix_env *env, struct dc_error *err,
+             const char *path, uid_t owner, gid_t group);
 
 /**
  *
@@ -67,7 +68,8 @@ int dc_chown(const struct dc_posix_env *env, struct dc_error *err, const char *p
  * @param fildes
  * @return
  */
-int dc_dc_close(const struct dc_posix_env *env, struct dc_error *err, int fildes);
+int dc_dc_close(const struct dc_posix_env *env, struct dc_error *err,
+                int fildes);
 
 /**
  *
@@ -78,7 +80,8 @@ int dc_dc_close(const struct dc_posix_env *env, struct dc_error *err, int fildes
  * @param len
  * @return
  */
-size_t dc_confstr(const struct dc_posix_env *env, struct dc_error *err, int name, char *buf, size_t len);
+size_t dc_confstr(const struct dc_posix_env *env, struct dc_error *err,
+                  int name, char *buf, size_t len);
 
 /**
  *
@@ -88,7 +91,8 @@ size_t dc_confstr(const struct dc_posix_env *env, struct dc_error *err, int name
  * @param salt
  * @return
  */
-char *dc_crypt(const struct dc_posix_env *env, struct dc_error *err, const char *key, const char *salt);
+char *dc_crypt(const struct dc_posix_env *env, struct dc_error *err,
+               const char *key, const char *salt);
 
 /**
  *
@@ -107,7 +111,8 @@ int dc_dup(const struct dc_posix_env *env, struct dc_error *err, int fildes);
  * @param fildes2
  * @return
  */
-int dc_dup2(const struct dc_posix_env *env, struct dc_error *err, int fildes, int fildes2);
+int dc_dup2(const struct dc_posix_env *env, struct dc_error *err, int fildes,
+            int fildes2);
 
 /**
  *
@@ -116,7 +121,8 @@ int dc_dup2(const struct dc_posix_env *env, struct dc_error *err, int fildes, in
  * @param block
  * @param edflag
  */
-//void dc_encrypt(const struct dc_posix_env *env, struct dc_error *err, char block[64], int edflag);
+// void dc_encrypt(const struct dc_posix_env *env, struct dc_error *err, char
+// block[64], int edflag);
 
 /**
  *
@@ -126,7 +132,8 @@ int dc_dup2(const struct dc_posix_env *env, struct dc_error *err, int fildes, in
  * @param argv
  * @return
  */
-int dc_execv(const struct dc_posix_env *env, struct dc_error *err, const char *path, char *const argv[]);
+int dc_execv(const struct dc_posix_env *env, struct dc_error *err,
+             const char *path, char *const argv[]);
 
 /**
  *
@@ -137,7 +144,8 @@ int dc_execv(const struct dc_posix_env *env, struct dc_error *err, const char *p
  * @param envp
  * @return
  */
-int dc_execve(const struct dc_posix_env *env, struct dc_error *err, const char *path, char *const argv[], char *const envp[]);
+int dc_execve(const struct dc_posix_env *env, struct dc_error *err,
+              const char *path, char *const argv[], char *const envp[]);
 
 /**
  *
@@ -147,7 +155,8 @@ int dc_execve(const struct dc_posix_env *env, struct dc_error *err, const char *
  * @param argv
  * @return
  */
-int dc_execvp(const struct dc_posix_env *env, struct dc_error *err, const char *file, char *const argv[]);
+int dc_execvp(const struct dc_posix_env *env, struct dc_error *err,
+              const char *file, char *const argv[]);
 
 /**
  *
@@ -159,7 +168,8 @@ int dc_execvp(const struct dc_posix_env *env, struct dc_error *err, const char *
  * @param flag
  * @return
  */
-int dc_faccessat(const struct dc_posix_env *env, struct dc_error *err, int fd, const char *path, int amode, int flag);
+int dc_faccessat(const struct dc_posix_env *env, struct dc_error *err, int fd,
+                 const char *path, int amode, int flag);
 
 /**
  *
@@ -179,7 +189,8 @@ int dc_fchdir(const struct dc_posix_env *env, struct dc_error *err, int fildes);
  * @param group
  * @return
  */
-int dc_fchown(const struct dc_posix_env *env, struct dc_error *err, int fildes, uid_t owner, gid_t group);
+int dc_fchown(const struct dc_posix_env *env, struct dc_error *err, int fildes,
+              uid_t owner, gid_t group);
 
 /**
  *
@@ -192,10 +203,12 @@ int dc_fchown(const struct dc_posix_env *env, struct dc_error *err, int fildes, 
  * @param flag
  * @return
  */
-int dc_fchownat(const struct dc_posix_env *env, struct dc_error *err, int fd, const char *path, uid_t owner, gid_t group, int flag);
+int dc_fchownat(const struct dc_posix_env *env, struct dc_error *err, int fd,
+                const char *path, uid_t owner, gid_t group, int flag);
 
 // int dc_fdatasync(const struct dc_posix_env *env, int fildes);
-//int dc_fexecve(const struct dc_posix_env *env, struct dc_error *err, int fd, char *const argv[], char *const envp[]);
+// int dc_fexecve(const struct dc_posix_env *env, struct dc_error *err, int fd,
+// char *const argv[], char *const envp[]);
 
 /**
  *
@@ -213,7 +226,8 @@ pid_t dc_fork(const struct dc_posix_env *env, struct dc_error *err);
  * @param name
  * @return
  */
-long dc_fpathconf(const struct dc_posix_env *env, struct dc_error *err, int fildes, int name);
+long dc_fpathconf(const struct dc_posix_env *env, struct dc_error *err,
+                  int fildes, int name);
 
 /**
  *
@@ -232,7 +246,8 @@ int dc_fsync(const struct dc_posix_env *env, struct dc_error *err, int fildes);
  * @param length
  * @return
  */
-int dc_ftruncate(const struct dc_posix_env *env, struct dc_error *err, int fildes, off_t length);
+int dc_ftruncate(const struct dc_posix_env *env, struct dc_error *err,
+                 int fildes, off_t length);
 
 /**
  *
@@ -242,7 +257,8 @@ int dc_ftruncate(const struct dc_posix_env *env, struct dc_error *err, int filde
  * @param size
  * @return
  */
-char *dc_getcwd(const struct dc_posix_env *env, struct dc_error *err, char *buf, size_t size);
+char *dc_getcwd(const struct dc_posix_env *env, struct dc_error *err, char *buf,
+                size_t size);
 
 /**
  *
@@ -272,7 +288,8 @@ gid_t dc_getgid(const struct dc_posix_env *env);
  * @param grouplist
  * @return
  */
-int dc_getgroups(const struct dc_posix_env *env, struct dc_error *err, int gidsetsize, gid_t grouplist[]);
+int dc_getgroups(const struct dc_posix_env *env, struct dc_error *err,
+                 int gidsetsize, gid_t grouplist[]);
 
 /**
  *
@@ -289,7 +306,8 @@ long dc_gethostid(const struct dc_posix_env *env);
  * @param namelen
  * @return
  */
-int dc_gethostname(const struct dc_posix_env *env, struct dc_error *err, char *name, size_t namelen);
+int dc_gethostname(const struct dc_posix_env *env, struct dc_error *err,
+                   char *name, size_t namelen);
 
 /**
  *
@@ -307,7 +325,8 @@ char *dc_getlogin(const struct dc_posix_env *env, struct dc_error *err);
  * @param namesize
  * @return
  */
-int dc_getlogin_r(const struct dc_posix_env *env, struct dc_error *err, char *name, size_t namesize);
+int dc_getlogin_r(const struct dc_posix_env *env, struct dc_error *err,
+                  char *name, size_t namesize);
 
 /**
  *
@@ -318,7 +337,8 @@ int dc_getlogin_r(const struct dc_posix_env *env, struct dc_error *err, char *na
  * @param optstring
  * @return
  */
-int dc_getopt(const struct dc_posix_env *env, struct dc_error *err, int argc, char * const argv[], const char *optstring);
+int dc_getopt(const struct dc_posix_env *env, struct dc_error *err, int argc,
+              char *const argv[], const char *optstring);
 
 /**
  *
@@ -327,7 +347,8 @@ int dc_getopt(const struct dc_posix_env *env, struct dc_error *err, int argc, ch
  * @param pid
  * @return
  */
-pid_t dc_getpgid(const struct dc_posix_env *env, struct dc_error *err, pid_t pid);
+pid_t dc_getpgid(const struct dc_posix_env *env, struct dc_error *err,
+                 pid_t pid);
 
 /**
  *
@@ -357,7 +378,8 @@ pid_t dc_getppid(const struct dc_posix_env *env);
  * @param pid
  * @return
  */
-pid_t dc_getsid(const struct dc_posix_env *env, struct dc_error *err, pid_t pid);
+pid_t dc_getsid(const struct dc_posix_env *env, struct dc_error *err,
+                pid_t pid);
 
 /**
  *
@@ -384,7 +406,8 @@ int dc_isatty(const struct dc_posix_env *env, struct dc_error *err, int fildes);
  * @param group
  * @return
  */
-int dc_lchown(const struct dc_posix_env *env, struct dc_error *err, const char *path, uid_t owner, gid_t group);
+int dc_lchown(const struct dc_posix_env *env, struct dc_error *err,
+              const char *path, uid_t owner, gid_t group);
 
 /**
  *
@@ -394,7 +417,8 @@ int dc_lchown(const struct dc_posix_env *env, struct dc_error *err, const char *
  * @param path2
  * @return
  */
-int dc_link(const struct dc_posix_env *env, struct dc_error *err, const char *path1, const char *path2);
+int dc_link(const struct dc_posix_env *env, struct dc_error *err,
+            const char *path1, const char *path2);
 
 /**
  *
@@ -407,7 +431,8 @@ int dc_link(const struct dc_posix_env *env, struct dc_error *err, const char *pa
  * @param flag
  * @return
  */
-int dc_linkat(const struct dc_posix_env *env, struct dc_error *err, int fd1, const char *path1, int fd2, const char *path2, int flag);
+int dc_linkat(const struct dc_posix_env *env, struct dc_error *err, int fd1,
+              const char *path1, int fd2, const char *path2, int flag);
 
 /**
  *
@@ -418,7 +443,8 @@ int dc_linkat(const struct dc_posix_env *env, struct dc_error *err, int fd1, con
  * @param size
  * @return
  */
-int dc_lockf(const struct dc_posix_env *env, struct dc_error *err, int fildes, int function, off_t size);
+int dc_lockf(const struct dc_posix_env *env, struct dc_error *err, int fildes,
+             int function, off_t size);
 
 /**
  *
@@ -429,7 +455,8 @@ int dc_lockf(const struct dc_posix_env *env, struct dc_error *err, int fildes, i
  * @param whence
  * @return
  */
-off_t dc_lseek(const struct dc_posix_env *env, struct dc_error *err, int fildes, off_t offset, int whence);
+off_t dc_lseek(const struct dc_posix_env *env, struct dc_error *err, int fildes,
+               off_t offset, int whence);
 
 /**
  *
@@ -448,7 +475,8 @@ int dc_nice(const struct dc_posix_env *env, struct dc_error *err, int incr);
  * @param name
  * @return
  */
-long dc_pathconf(const struct dc_posix_env *env, struct dc_error *err, const char *path, int name);
+long dc_pathconf(const struct dc_posix_env *env, struct dc_error *err,
+                 const char *path, int name);
 
 /**
  *
@@ -465,7 +493,8 @@ int dc_pause(const struct dc_posix_env *env, struct dc_error *err);
  * @param fildes
  * @return
  */
-int dc_pipe(const struct dc_posix_env *env, struct dc_error *err, int fildes[2]);
+int dc_pipe(const struct dc_posix_env *env, struct dc_error *err,
+            int fildes[2]);
 
 /**
  *
@@ -477,7 +506,8 @@ int dc_pipe(const struct dc_posix_env *env, struct dc_error *err, int fildes[2])
  * @param offset
  * @return
  */
-ssize_t dc_pread(const struct dc_posix_env *env, struct dc_error *err, int fildes, void *buf, size_t nbyte, off_t offset);
+ssize_t dc_pread(const struct dc_posix_env *env, struct dc_error *err,
+                 int fildes, void *buf, size_t nbyte, off_t offset);
 
 /**
  *
@@ -489,7 +519,8 @@ ssize_t dc_pread(const struct dc_posix_env *env, struct dc_error *err, int filde
  * @param offset
  * @return
  */
-ssize_t dc_pwrite(const struct dc_posix_env *env, struct dc_error *err, int fildes, const void *buf, size_t nbyte, off_t offset);
+ssize_t dc_pwrite(const struct dc_posix_env *env, struct dc_error *err,
+                  int fildes, const void *buf, size_t nbyte, off_t offset);
 
 /**
  *
@@ -500,7 +531,8 @@ ssize_t dc_pwrite(const struct dc_posix_env *env, struct dc_error *err, int fild
  * @param nbyte
  * @return
  */
-ssize_t dc_read(const struct dc_posix_env *env, struct dc_error *err, int fildes, void *buf, size_t nbyte);
+ssize_t dc_read(const struct dc_posix_env *env, struct dc_error *err,
+                int fildes, void *buf, size_t nbyte);
 
 /**
  *
@@ -511,7 +543,9 @@ ssize_t dc_read(const struct dc_posix_env *env, struct dc_error *err, int fildes
  * @param bufsize
  * @return
  */
-ssize_t dc_readlink(const struct dc_posix_env *env, struct dc_error *err, const char *restrict path, char *restrict buf, size_t bufsize);
+ssize_t dc_readlink(const struct dc_posix_env *env, struct dc_error *err,
+                    const char *restrict path, char *restrict buf,
+                    size_t bufsize);
 
 /**
  *
@@ -523,7 +557,9 @@ ssize_t dc_readlink(const struct dc_posix_env *env, struct dc_error *err, const 
  * @param bufsize
  * @return
  */
-ssize_t dc_readlinkat(const struct dc_posix_env *env, struct dc_error *err, int fd, const char *restrict path, char *restrict buf, size_t bufsize);
+ssize_t dc_readlinkat(const struct dc_posix_env *env, struct dc_error *err,
+                      int fd, const char *restrict path, char *restrict buf,
+                      size_t bufsize);
 
 /**
  *
@@ -532,7 +568,8 @@ ssize_t dc_readlinkat(const struct dc_posix_env *env, struct dc_error *err, int 
  * @param path
  * @return
  */
-int dc_rmdir(const struct dc_posix_env *env, struct dc_error *err, const char *path);
+int dc_rmdir(const struct dc_posix_env *env, struct dc_error *err,
+             const char *path);
 
 /**
  *
@@ -569,7 +606,8 @@ int dc_setgid(const struct dc_posix_env *env, struct dc_error *err, gid_t gid);
  * @param pgid
  * @return
  */
-int dc_setpgid(const struct dc_posix_env *env, struct dc_error *err, pid_t pid, pid_t pgid);
+int dc_setpgid(const struct dc_posix_env *env, struct dc_error *err, pid_t pid,
+               pid_t pgid);
 
 /**
  *
@@ -579,7 +617,8 @@ int dc_setpgid(const struct dc_posix_env *env, struct dc_error *err, pid_t pid, 
  * @param egid
  * @return
  */
-int dc_setregid(const struct dc_posix_env *env, struct dc_error *err, gid_t rgid, gid_t egid);
+int dc_setregid(const struct dc_posix_env *env, struct dc_error *err,
+                gid_t rgid, gid_t egid);
 
 /**
  *
@@ -589,7 +628,8 @@ int dc_setregid(const struct dc_posix_env *env, struct dc_error *err, gid_t rgid
  * @param euid
  * @return
  */
-int dc_setreuid(const struct dc_posix_env *env, struct dc_error *err, uid_t ruid, uid_t euid);
+int dc_setreuid(const struct dc_posix_env *env, struct dc_error *err,
+                uid_t ruid, uid_t euid);
 
 /**
  *
@@ -623,7 +663,8 @@ unsigned dc_sleep(const struct dc_posix_env *env, unsigned seconds);
  * @param dest
  * @param nbytes
  */
-void dc_swab(const struct dc_posix_env *env, const void *restrict src, void *restrict dest, ssize_t nbytes);
+void dc_swab(const struct dc_posix_env *env, const void *restrict src,
+             void *restrict dest, ssize_t nbytes);
 
 /**
  *
@@ -633,7 +674,8 @@ void dc_swab(const struct dc_posix_env *env, const void *restrict src, void *res
  * @param path2
  * @return
  */
-int dc_symlink(const struct dc_posix_env *env, struct dc_error *err, const char *path1, const char *path2);
+int dc_symlink(const struct dc_posix_env *env, struct dc_error *err,
+               const char *path1, const char *path2);
 
 /**
  *
@@ -644,7 +686,8 @@ int dc_symlink(const struct dc_posix_env *env, struct dc_error *err, const char 
  * @param path2
  * @return
  */
-int dc_symlinkat(const struct dc_posix_env *env, struct dc_error *err, const char *path1, int fd, const char *path2);
+int dc_symlinkat(const struct dc_posix_env *env, struct dc_error *err,
+                 const char *path1, int fd, const char *path2);
 
 /**
  *
@@ -668,7 +711,8 @@ long dc_sysconf(const struct dc_posix_env *env, struct dc_error *err, int name);
  * @param fildes
  * @return
  */
-pid_t dc_tcgetpgrp(const struct dc_posix_env *env, struct dc_error *err, int fildes);
+pid_t dc_tcgetpgrp(const struct dc_posix_env *env, struct dc_error *err,
+                   int fildes);
 
 /**
  *
@@ -678,7 +722,8 @@ pid_t dc_tcgetpgrp(const struct dc_posix_env *env, struct dc_error *err, int fil
  * @param pgid_id
  * @return
  */
-int dc_tcsetpgrp(const struct dc_posix_env *env, struct dc_error *err, int fildes, pid_t pgid_id);
+int dc_tcsetpgrp(const struct dc_posix_env *env, struct dc_error *err,
+                 int fildes, pid_t pgid_id);
 
 /**
  *
@@ -688,7 +733,8 @@ int dc_tcsetpgrp(const struct dc_posix_env *env, struct dc_error *err, int filde
  * @param length
  * @return
  */
-int dc_truncate(const struct dc_posix_env *env, struct dc_error *err, const char *path, off_t length);
+int dc_truncate(const struct dc_posix_env *env, struct dc_error *err,
+                const char *path, off_t length);
 
 /**
  *
@@ -697,7 +743,8 @@ int dc_truncate(const struct dc_posix_env *env, struct dc_error *err, const char
  * @param fildes
  * @return
  */
-char *dc_ttyname(const struct dc_posix_env *env, struct dc_error *err, int fildes);
+char *dc_ttyname(const struct dc_posix_env *env, struct dc_error *err,
+                 int fildes);
 
 /**
  *
@@ -708,7 +755,8 @@ char *dc_ttyname(const struct dc_posix_env *env, struct dc_error *err, int filde
  * @param namesize
  * @return
  */
-int dc_ttyname_r(const struct dc_posix_env *env, struct dc_error *err, int fildes, char *name, size_t namesize);
+int dc_ttyname_r(const struct dc_posix_env *env, struct dc_error *err,
+                 int fildes, char *name, size_t namesize);
 
 /**
  *
@@ -717,7 +765,8 @@ int dc_ttyname_r(const struct dc_posix_env *env, struct dc_error *err, int filde
  * @param path
  * @return
  */
-int dc_unlink(const struct dc_posix_env *env, struct dc_error *err, const char *path);
+int dc_unlink(const struct dc_posix_env *env, struct dc_error *err,
+              const char *path);
 
 /**
  *
@@ -728,7 +777,8 @@ int dc_unlink(const struct dc_posix_env *env, struct dc_error *err, const char *
  * @param flag
  * @return
  */
-int dc_unlinkat(const struct dc_posix_env *env, struct dc_error *err, int fd, const char *path, int flag);
+int dc_unlinkat(const struct dc_posix_env *env, struct dc_error *err, int fd,
+                const char *path, int flag);
 
 /**
  *
@@ -739,7 +789,7 @@ int dc_unlinkat(const struct dc_posix_env *env, struct dc_error *err, int fd, co
  * @param nbyte
  * @return
  */
-ssize_t dc_write(const struct dc_posix_env *env, struct dc_error *err, int fildes, const void *buf, size_t nbyte);
-
+ssize_t dc_write(const struct dc_posix_env *env, struct dc_error *err,
+                 int fildes, const void *buf, size_t nbyte);
 
 #endif // LIBDC_POSIX_DC_UNISTD_H

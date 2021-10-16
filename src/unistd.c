@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-#define _XOPEN_SOURCE 700
 #include "dc_unistd.h"
 #include <unistd.h>
 #if __has_include(<crypt.h>)
@@ -174,7 +173,7 @@ void dc_encrypt(const struct dc_posix_env *env, struct dc_error *err, char block
 }
 */
 
-int dc_execv(const struct dc_posix_env *env, struct dc_error *err, const char *path, char *const argv[])
+int dc_execv(const struct dc_posix_env *env, struct dc_error *err, const char *path, char * const argv[])
 {
     int ret_val;
 
@@ -190,7 +189,11 @@ int dc_execv(const struct dc_posix_env *env, struct dc_error *err, const char *p
     return ret_val;
 }
 
-int dc_execve(const struct dc_posix_env *env, struct dc_error *err, const char *path, char *const argv[], char *const envp[])
+int dc_execve(const struct dc_posix_env *env,
+              struct dc_error *          err,
+              const char *               path,
+              char * const               argv[],
+              char * const               envp[])
 {
     int ret_val;
 
@@ -206,7 +209,7 @@ int dc_execve(const struct dc_posix_env *env, struct dc_error *err, const char *
     return ret_val;
 }
 
-int dc_execvp(const struct dc_posix_env *env, struct dc_error *err, const char *file, char *const argv[])
+int dc_execvp(const struct dc_posix_env *env, struct dc_error *err, const char *file, char * const argv[])
 {
     int ret_val;
 
@@ -270,7 +273,13 @@ int dc_fchown(const struct dc_posix_env *env, struct dc_error *err, int fildes, 
     return ret_val;
 }
 
-int dc_fchownat(const struct dc_posix_env *env, struct dc_error *err, int fd, const char *path, uid_t owner, gid_t group, int flag)
+int dc_fchownat(const struct dc_posix_env *env,
+                struct dc_error *          err,
+                int                        fd,
+                const char *               path,
+                uid_t                      owner,
+                gid_t                      group,
+                int                        flag)
 {
     int ret_val;
 
@@ -510,7 +519,11 @@ int dc_getlogin_r(const struct dc_posix_env *env, struct dc_error *err, char *na
     return ret_val;
 }
 
-int dc_getopt(const struct dc_posix_env *env, struct dc_error *err, int argc, char * const argv[], const char *optstring)
+int dc_getopt(const struct dc_posix_env *env,
+              struct dc_error *          err,
+              int                        argc,
+              char * const               argv[],
+              const char *               optstring)
 {
     int ret_val;
 
@@ -650,7 +663,13 @@ int dc_link(const struct dc_posix_env *env, struct dc_error *err, const char *pa
     return ret_val;
 }
 
-int dc_linkat(const struct dc_posix_env *env, struct dc_error *err, int fd1, const char *path1, int fd2, const char *path2, int flag)
+int dc_linkat(const struct dc_posix_env *env,
+              struct dc_error *          err,
+              int                        fd1,
+              const char *               path1,
+              int                        fd2,
+              const char *               path2,
+              int                        flag)
 {
     int ret_val;
 
@@ -762,7 +781,8 @@ int dc_pipe(const struct dc_posix_env *env, struct dc_error *err, int fildes[2])
     return ret_val;
 }
 
-ssize_t dc_pread(const struct dc_posix_env *env, struct dc_error *err, int fildes, void *buf, size_t nbyte, off_t offset)
+ssize_t
+dc_pread(const struct dc_posix_env *env, struct dc_error *err, int fildes, void *buf, size_t nbyte, off_t offset)
 {
     ssize_t ret_val;
 
@@ -778,7 +798,8 @@ ssize_t dc_pread(const struct dc_posix_env *env, struct dc_error *err, int filde
     return ret_val;
 }
 
-ssize_t dc_pwrite(const struct dc_posix_env *env, struct dc_error *err, int fildes, const void *buf, size_t nbyte, off_t offset)
+ssize_t
+dc_pwrite(const struct dc_posix_env *env, struct dc_error *err, int fildes, const void *buf, size_t nbyte, off_t offset)
 {
     ssize_t ret_val;
 
@@ -810,7 +831,11 @@ ssize_t dc_read(const struct dc_posix_env *env, struct dc_error *err, int fildes
     return ret_val;
 }
 
-ssize_t dc_readlink(const struct dc_posix_env *env, struct dc_error *err, const char *restrict path, char *restrict buf, size_t bufsize)
+ssize_t dc_readlink(const struct dc_posix_env *env,
+                    struct dc_error *          err,
+                    const char * restrict path,
+                    char * restrict buf,
+                    size_t bufsize)
 {
     ssize_t ret_val;
 
@@ -826,7 +851,12 @@ ssize_t dc_readlink(const struct dc_posix_env *env, struct dc_error *err, const 
     return ret_val;
 }
 
-ssize_t dc_readlinkat(const struct dc_posix_env *env, struct dc_error *err, int fd, const char *restrict path, char *restrict buf, size_t bufsize)
+ssize_t dc_readlinkat(const struct dc_posix_env *env,
+                      struct dc_error *          err,
+                      int                        fd,
+                      const char * restrict path,
+                      char * restrict buf,
+                      size_t bufsize)
 {
     ssize_t ret_val;
 
@@ -997,10 +1027,10 @@ unsigned dc_sleep(const struct dc_posix_env *env, unsigned seconds)
     return ret_val;
 }
 
-void dc_swab(const struct dc_posix_env *env, const void *restrict src, void *restrict dest, ssize_t nbytes)
+void dc_swab(const struct dc_posix_env *env, const void * restrict src, void * restrict dest, ssize_t nbytes)
 {
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     swab(src, dest, nbytes);
 }
 
@@ -1039,7 +1069,7 @@ int dc_symlinkat(const struct dc_posix_env *env, struct dc_error *err, const cha
 void dc_sync(const struct dc_posix_env *env)
 {
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     sync();
 }
 

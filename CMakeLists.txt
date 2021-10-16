@@ -13,6 +13,7 @@ set(HEADER_LIST
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_posix_env.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_fcntl.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_inttypes.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_ndbm.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_netdb.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_poll.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_regex.h"
@@ -45,6 +46,7 @@ set(HEADER_NET_LIST
 set(SOURCE_LIST
         "${libdc_posix_SOURCE_DIR}/src/fcntl.c"
         "${libdc_posix_SOURCE_DIR}/src/inttypes.c"
+        "${libdc_posix_SOURCE_DIR}/src/ndbm.c"
         "${libdc_posix_SOURCE_DIR}/src/netdb.c"
         "${libdc_posix_SOURCE_DIR}/src/poll.c"
         "${libdc_posix_SOURCE_DIR}/src/posix_env.c"

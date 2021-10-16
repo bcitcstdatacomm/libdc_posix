@@ -69,7 +69,7 @@ void dc_psiginfo(const struct dc_posix_env *env, struct dc_error *err, const sig
 void dc_psignal(const struct dc_posix_env *env, struct dc_error *err, int signum, const char *message)
 {
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     psignal(signum, message);
 
     if(errno == -1)
@@ -94,7 +94,11 @@ int dc_pthread_kill(const struct dc_posix_env *env, struct dc_error *err, pthrea
     return ret_val;
 }
 
-int dc_pthread_sigmask(const struct dc_posix_env *env, struct dc_error *err, int how, const sigset_t *restrict set, sigset_t *restrict oset)
+int dc_pthread_sigmask(const struct dc_posix_env *env,
+                       struct dc_error *          err,
+                       int                        how,
+                       const sigset_t * restrict set,
+                       sigset_t * restrict oset)
 {
     int ret_val;
 
@@ -126,9 +130,11 @@ int dc_raise(const struct dc_posix_env *env, struct dc_error *err, int sig)
     return ret_val;
 }
 
-int dc_sigaction(const struct dc_posix_env *env, struct dc_error *err, int sig,
-                 const struct sigaction *restrict act,
-                 struct sigaction *restrict oact)
+int dc_sigaction(const struct dc_posix_env *env,
+                 struct dc_error *          err,
+                 int                        sig,
+                 const struct sigaction * restrict act,
+                 struct sigaction * restrict oact)
 {
     int ret_val;
 
@@ -160,7 +166,10 @@ int dc_sigaddset(const struct dc_posix_env *env, struct dc_error *err, sigset_t 
     return ret_val;
 }
 
-int dc_sigaltstack(const struct dc_posix_env *env, struct dc_error *err, const stack_t *restrict ss, stack_t *restrict oss)
+int dc_sigaltstack(const struct dc_posix_env *env,
+                   struct dc_error *          err,
+                   const stack_t * restrict ss,
+                   stack_t * restrict oss)
 {
     int ret_val;
 
@@ -320,7 +329,11 @@ int dc_sigpending(const struct dc_posix_env *env, struct dc_error *err, sigset_t
     return ret_val;
 }
 
-int dc_sigprocmask(const struct dc_posix_env *env, struct dc_error *err, int how, const sigset_t *restrict set, sigset_t *restrict oset)
+int dc_sigprocmask(const struct dc_posix_env *env,
+                   struct dc_error *          err,
+                   int                        how,
+                   const sigset_t * restrict set,
+                   sigset_t * restrict oset)
 {
     int ret_val;
 
@@ -402,7 +415,7 @@ int dc_sigtimedwait(const struct dc_posix_env *env, struct dc_error *err, const 
 }
 */
 
-int dc_sigwait(const struct dc_posix_env *env, struct dc_error *err, const sigset_t *restrict set, int *restrict sig)
+int dc_sigwait(const struct dc_posix_env *env, struct dc_error *err, const sigset_t * restrict set, int * restrict sig)
 {
     int ret_val;
 
