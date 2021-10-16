@@ -18,12 +18,13 @@
 
 int dc_dbm_clearerr(const struct dc_posix_env *env, struct dc_error *err, DBM *db)
 {
-    int ret_val;
     int error_code;
 
     DC_TRACE(env);
     errno   = 0;
-    ret_val = dbm_clearerr(db);
+
+    // linux returns void, so no assignment possible
+    dbm_clearerr(db);
     error_code = dbm_error(db);
 
     if(error_code != 0)
@@ -31,7 +32,8 @@ int dc_dbm_clearerr(const struct dc_posix_env *env, struct dc_error *err, DBM *d
         DC_ERROR_RAISE_SYSTEM(err, "dbm clearerr error", error_code);
     }
 
-    return ret_val;
+    // it is undefined, and linux return nothing (void)...
+    return 0;
 }
 
 void dc_dbm_close(const struct dc_posix_env *env, struct dc_error *err, DBM *db)
