@@ -25,19 +25,24 @@ find_library(LIB_PTHREAD pthread)
 find_library(LIB_CRYPT crypt)
 find_library(LIB_GDBM gdbm)
 find_library(LIB_GDBM_COMPAT gdbm_compat)
-target_link_libraries(dc_posix PUBLIC ${LIBDC_ERROR})
+
 if(LIB_PTHREAD)
     target_link_libraries(dc_posix PUBLIC ${LIB_PTHREAD})
 endif()
+
 if(LIB_CRYPT)
     target_link_libraries(dc_posix PUBLIC ${LIB_CRYPT})
 endif()
+
 if(LIB_GDBM)
     target_link_libraries(dc_posix PUBLIC ${LIB_GDBM})
 endif()
+
 if(LIB_GDBM_COMPAT)
     target_link_libraries(dc_posix PUBLIC ${LIB_GDBM})
 endif()
+
+target_link_libraries(dc_posix PUBLIC ${LIBDC_ERROR})
 
 # All users of this library will need at least C11
 target_compile_features(dc_posix PUBLIC c_std_11)
