@@ -20,6 +20,12 @@
 #include "dc_posix_env.h"
 #include <ndbm.h>
 
+
+#ifdef __gdbm_error_to_ndbm
+typedef int mode_t;
+#endif
+
+
 int dc_dbm_clearerr(const struct dc_posix_env *env, struct dc_error *err,
                     DBM *db);
 void dc_dbm_close(const struct dc_posix_env *env, struct dc_error *err,
@@ -30,7 +36,7 @@ int dc_dbm_error(const struct dc_posix_env *env, struct dc_error *err, DBM *db);
 datum dc_dbm_fetch(const struct dc_posix_env *env, struct dc_error *err,
                    DBM *db, datum key);
 datum dc_dbm_firstkey(const struct dc_posix_env *env, struct dc_error *err,
-                      DBM *db);
+                      DBM   *db);
 datum dc_dbm_nextkey(const struct dc_posix_env *env, struct dc_error *err,
                      DBM *db);
 DBM *dc_dbm_open(const struct dc_posix_env *env, struct dc_error *err,
