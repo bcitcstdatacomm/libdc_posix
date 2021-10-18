@@ -69,7 +69,7 @@ int dc_dbm_delete(const struct dc_posix_env *env, struct dc_error *err, DBM *db,
     return ret_val;
 }
 
-int dc_dbm_error(const struct dc_posix_env *env, struct dc_error *err, DBM *db)
+int dc_dbm_error(const struct dc_posix_env *env, DBM *db)
 {
     int ret_val;
 
@@ -141,7 +141,6 @@ DBM *dc_dbm_open(const struct dc_posix_env *env,
                  mode_t                     file_mode)
 {
     DBM *ret_val;
-    int error_code;
 
     DC_TRACE(env);
     errno   = 0;
