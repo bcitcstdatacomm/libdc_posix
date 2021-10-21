@@ -19,6 +19,7 @@
 
 #include "../dc_posix_env.h"
 #include <sys/wait.h>
+#include <sys/signal.h>
 
 pid_t dc_wait(const struct dc_posix_env *env, struct dc_error *err,
               int *stat_loc);
