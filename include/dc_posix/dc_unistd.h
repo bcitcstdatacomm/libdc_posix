@@ -70,6 +70,8 @@ int dc_chown(const struct dc_posix_env *env, struct dc_error *err,
  */
 int dc_dc_close(const struct dc_posix_env *env, struct dc_error *err,
                 int fildes);
+int dc_close(const struct dc_posix_env *env, struct dc_error *err,
+                int fildes);
 
 /**
  *

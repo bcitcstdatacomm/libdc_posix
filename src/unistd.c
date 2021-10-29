@@ -81,6 +81,11 @@ int dc_chown(const struct dc_posix_env *env, struct dc_error *err, const char *p
 
 int dc_dc_close(const struct dc_posix_env *env, struct dc_error *err, int fildes)
 {
+    return dc_close(env, err, fildes);
+}
+
+int dc_close(const struct dc_posix_env *env, struct dc_error *err, int fildes)
+{
     int ret_val;
 
     DC_TRACE(env);
