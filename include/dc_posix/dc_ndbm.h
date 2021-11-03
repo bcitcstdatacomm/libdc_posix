@@ -18,11 +18,8 @@
  */
 
 #include "dc_posix_env.h"
+#include <sys/types.h>
 #include <ndbm.h>
-
-#ifdef __gdbm_error_to_ndbm
-typedef int mode_t;
-#endif
 
 
 int dc_dbm_clearerr(const struct dc_posix_env *env, struct dc_error *err,
