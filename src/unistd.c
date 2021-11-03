@@ -776,6 +776,8 @@ int dc_pipe(const struct dc_posix_env *env, struct dc_error *err, int fildes[2])
 
     DC_TRACE(env);
     errno   = 0;
+
+    // NOLINTNEXTLINE(android-cloexec-pipe)
     ret_val = pipe(fildes);
 
     if(ret_val == -1)

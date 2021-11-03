@@ -70,7 +70,10 @@ void dc_psignal(const struct dc_posix_env *env, struct dc_error *err, int signum
 {
     DC_TRACE(env);
     errno = 0;
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wsign-conversion"
     psignal(signum, message);
+#pragma GCC diagnostic pop
 
     if(errno == -1)
     {
@@ -156,7 +159,14 @@ int dc_sigaddset(const struct dc_posix_env *env, struct dc_error *err, sigset_t 
 
     DC_TRACE(env);
     errno   = 0;
+#pragma GCC diagnostic push
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wsign-conversion"
+#pragma clang diagnostic ignored "-Wsign-conversion"
+    // NOLINTNEXTLINE(hicpp-signed-bitwise)
     ret_val = sigaddset(set, signo);
+#pragma GCC diagnostic pop
+#pragma clang diagnostic pop
 
     if(ret_val == -1)
     {
@@ -191,7 +201,14 @@ int dc_sigdelset(const struct dc_posix_env *env, struct dc_error *err, sigset_t 
 
     DC_TRACE(env);
     errno   = 0;
+#pragma GCC diagnostic push
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wsign-conversion"
+#pragma clang diagnostic ignored "-Wsign-conversion"
+    // NOLINTNEXTLINE(hicpp-signed-bitwise)
     ret_val = sigdelset(set, signo);
+#pragma GCC diagnostic pop
+#pragma clang diagnostic pop
 
     if(ret_val == -1)
     {
@@ -287,7 +304,14 @@ int dc_sigismember(const struct dc_posix_env *env, struct dc_error *err, const s
 
     DC_TRACE(env);
     errno   = 0;
+#pragma GCC diagnostic push
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wsign-conversion"
+#pragma clang diagnostic ignored "-Wsign-conversion"
+    // NOLINTNEXTLINE(hicpp-signed-bitwise)
     ret_val = sigismember(set, signo);
+#pragma GCC diagnostic pop
+#pragma clang diagnostic pop
 
     if(ret_val == -1)
     {
@@ -305,6 +329,7 @@ void (*dc_signal(const struct dc_posix_env *env, struct dc_error *err, int sig, 
     errno   = 0;
     ret_val = signal(sig, func);
 
+    // NOLINTNEXTLINE(performance-no-int-to-ptr)
     if(ret_val == SIG_ERR)
     {
         DC_ERROR_RAISE_ERRNO(err, errno);
@@ -373,6 +398,7 @@ void (*dc_sigset(const struct dc_posix_env *env, struct dc_error *err, int sig, 
     errno   = 0;
     ret_val = sigset(sig, disp);
 
+    // NOLINTNEXTLINE(performance-no-int-to-ptr)
     if(ret_val == SIG_ERR)
     {
         DC_ERROR_RAISE_ERRNO(err, errno);

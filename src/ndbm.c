@@ -144,7 +144,13 @@ DBM *dc_dbm_open(const struct dc_posix_env *env,
 
     DC_TRACE(env);
     errno   = 0;
+#pragma GCC diagnostic push
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wsign-conversion"
+#pragma clang diagnostic ignored "-Wsign-conversion"
     ret_val = dbm_open(file, open_flags, file_mode);
+#pragma GCC diagnostic pop
+#pragma clang diagnostic pop
 
     if(ret_val == NULL)
     {
