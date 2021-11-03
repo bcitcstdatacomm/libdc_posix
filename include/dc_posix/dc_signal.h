@@ -47,8 +47,6 @@ int dc_sigemptyset(const struct dc_posix_env *env, struct dc_error *err,
                    sigset_t *set);
 int dc_sigfillset(const struct dc_posix_env *env, struct dc_error *err,
                   sigset_t *set);
-int dc_sighold(const struct dc_posix_env *env, struct dc_error *err, int sig);
-int dc_sigignore(const struct dc_posix_env *env, struct dc_error *err, int sig);
 int dc_siginterrupt(const struct dc_posix_env *env, struct dc_error *err,
                     int sig, int flag);
 int dc_sigismember(const struct dc_posix_env *env, struct dc_error *err,
@@ -60,9 +58,6 @@ int dc_sigpending(const struct dc_posix_env *env, struct dc_error *err,
 int dc_sigprocmask(const struct dc_posix_env *env, struct dc_error *err,
                    int how, const sigset_t *restrict set,
                    sigset_t *restrict oset);
-int dc_sigrelse(const struct dc_posix_env *env, struct dc_error *err, int sig);
-void (*dc_sigset(const struct dc_posix_env *env, struct dc_error *err, int sig,
-                 void (*disp)(int)))(int);
 int dc_sigsuspend(const struct dc_posix_env *env, struct dc_error *err,
                   const sigset_t *sigmask);
 // int dc_sigtimedwait(const struct dc_posix_env *env, struct dc_error *err,

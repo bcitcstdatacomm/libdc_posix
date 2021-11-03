@@ -250,38 +250,6 @@ int dc_sigfillset(const struct dc_posix_env *env, struct dc_error *err, sigset_t
     return ret_val;
 }
 
-int dc_sighold(const struct dc_posix_env *env, struct dc_error *err, int sig)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno   = 0;
-    ret_val = sighold(sig);
-
-    if(ret_val == -1)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-
-    return ret_val;
-}
-
-int dc_sigignore(const struct dc_posix_env *env, struct dc_error *err, int sig)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno   = 0;
-    ret_val = sigignore(sig);
-
-    if(ret_val == -1)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-
-    return ret_val;
-}
-
 int dc_siginterrupt(const struct dc_posix_env *env, struct dc_error *err, int sig, int flag)
 {
     int ret_val;
@@ -367,39 +335,6 @@ int dc_sigprocmask(const struct dc_posix_env *env,
     ret_val = sigprocmask(how, set, oset);
 
     if(ret_val == -1)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-
-    return ret_val;
-}
-
-int dc_sigrelse(const struct dc_posix_env *env, struct dc_error *err, int sig)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno   = 0;
-    ret_val = sigrelse(sig);
-
-    if(ret_val == -1)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-
-    return ret_val;
-}
-
-void (*dc_sigset(const struct dc_posix_env *env, struct dc_error *err, int sig, void (*disp)(int)))(int)
-{
-    void (*ret_val)(int);
-
-    DC_TRACE(env);
-    errno   = 0;
-    ret_val = sigset(sig, disp);
-
-    // NOLINTNEXTLINE(performance-no-int-to-ptr)
-    if(ret_val == SIG_ERR)
     {
         DC_ERROR_RAISE_ERRNO(err, errno);
     }

@@ -144,13 +144,14 @@ DBM *dc_dbm_open(const struct dc_posix_env *env,
 
     DC_TRACE(env);
     errno   = 0;
-#pragma GCC diagnostic push
-#pragma clang diagnostic push
-#pragma GCC diagnostic ignored "-Wsign-conversion"
-#pragma clang diagnostic ignored "-Wsign-conversion"
+#if defined(__GNUC__) && !defined(__clang__)
+    #pragma GCC diagnostic push
+    #pragma GCC diagnostic ignored "-Wdiscarded-qualifiers"
+#endif
     ret_val = dbm_open(file, open_flags, file_mode);
-#pragma GCC diagnostic pop
-#pragma clang diagnostic pop
+#if defined(__GNUC__) && !defined(__clang__)
+    #pragma GCC diagnostic pop
+#endif
 
     if(ret_val == NULL)
     {
