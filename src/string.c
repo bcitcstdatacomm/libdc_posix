@@ -50,6 +50,17 @@ char *dc_strcpy(const struct dc_posix_env *env, char * restrict s1, const char *
     return ret_val;
 }
 
+// https://pubs.opengroup.org/onlinepubs/9699919799/functions/strcat.html
+char *dc_strcat(const struct dc_posix_env *env, char * restrict s1, const char * restrcit s2)
+{
+  char *ret_val;
+  
+  DC_TRACE(env);
+  ret_val = strcat(s1, s2);
+
+  return ret_val;
+}
+
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/strlen.html
 size_t dc_strlen(const struct dc_posix_env *env, const char *s)
 {
