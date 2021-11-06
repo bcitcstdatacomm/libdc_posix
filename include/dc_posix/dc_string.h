@@ -54,6 +54,15 @@ char *dc_strcpy(const struct dc_posix_env *env, char *restrict s1,
 /**
  *
  * @param env
+ * @param s1
+ * @param s2
+ * @return
+ */
+char *dc_strcat(const struct dc_posix_env *env, char * restrict s1, const char * restrcit s2);
+
+/**
+ *
+ * @param env
  * @param s
  * @return
  */
