@@ -15,8 +15,10 @@
  */
 
 #include "dc_regex.h"
+#include "dc_stdlib.h"
 #include "dc_string.h"
 #include <regex.h>
+#include <stdio.h>
 
 int dc_regcomp(const struct dc_posix_env *env,
                struct dc_error *          err,
@@ -30,7 +32,7 @@ int dc_regcomp(const struct dc_posix_env *env,
     errno   = 0;
     ret_val = regcomp(preg, pattern, cflags);
 
-    if(ret_val == -1)
+    if(ret_val != 0)
     {
         DC_ERROR_RAISE_ERRNO(err, errno);
     }
@@ -73,34 +75,26 @@ int dc_regexec(const struct dc_posix_env *              env,
     errno   = 0;
     ret_val = regexec(preg, string, nmatch, pmatch, eflags);
 
-    /*
     if(ret_val != 0)
     {
         static const char   *msg_format = "%s does not match the regex";
         static const size_t  msg_format_length = 25;
         size_t               msg_length;
-        struct dc_error      local_err;
         char                *msg;
 
-        msg_length = msg_format_length + dc_strlen(env, );
-        dc_error_init(&local_err);
-        msg = dc_malloc(env, &local_err, msg_length);
+        msg_length = msg_format_length + dc_strlen(env, string);
+        msg = dc_malloc(env, err, msg_length);
 
-        if(DC_HAS_NO_ERROR(&local_err))
+        if(dc_error_has_no_error(err))
         {
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wformat-nonliteral"
-            sprintf(msg, msg_format, value, setting->pattern);
+            sprintf(msg, msg_format, string, preg);
 #pragma GCC diagnostic pop
-            DC_REPORT_USER(env, err, msg, match);
             dc_free(env, msg, msg_length * sizeof(char));
-        }
-        else
-        {
-            DC_REPORT_SYSTEM(env, err, "Out of memory", ENOMEM);
+            DC_ERROR_RAISE_SYSTEM(err, msg, errno);
         }
     }
-     */
 
     return ret_val;
 }
