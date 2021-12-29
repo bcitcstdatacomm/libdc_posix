@@ -36,6 +36,18 @@ void *dc_calloc(const struct dc_posix_env *env, struct dc_error *err, size_t nel
     return memory;
 }
 
+char *dc_getenv(const struct dc_posix_env *env, const char *name)
+{
+    char *ret_val;
+
+    DC_TRACE(env);
+    errno  = 0;
+    ret_val = getenv(name);
+
+    return ret_val;
+}
+
+
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/malloc.html
 void *dc_malloc(const struct dc_posix_env *env, struct dc_error *err, size_t size)
 {

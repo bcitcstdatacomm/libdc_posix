@@ -62,7 +62,6 @@ size_t dc_regerror(const struct dc_posix_env *env,
 }
 
 int dc_regexec(const struct dc_posix_env *              env,
-               __attribute__((unused)) struct dc_error *err,
                const regex_t * restrict preg,
                const char * restrict string,
                size_t     nmatch,
@@ -74,27 +73,6 @@ int dc_regexec(const struct dc_posix_env *              env,
     DC_TRACE(env);
     errno   = 0;
     ret_val = regexec(preg, string, nmatch, pmatch, eflags);
-
-    if(ret_val != 0)
-    {
-        static const char   *msg_format = "%s does not match the regex";
-        static const size_t  msg_format_length = 25;
-        size_t               msg_length;
-        char                *msg;
-
-        msg_length = msg_format_length + dc_strlen(env, string);
-        msg = dc_malloc(env, err, msg_length);
-
-        if(dc_error_has_no_error(err))
-        {
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wformat-nonliteral"
-            sprintf(msg, msg_format, string, preg);
-#pragma GCC diagnostic pop
-            dc_free(env, msg, msg_length * sizeof(char));
-            DC_ERROR_RAISE_SYSTEM(err, msg, errno);
-        }
-    }
 
     return ret_val;
 }

@@ -31,6 +31,8 @@
 void *dc_calloc(const struct dc_posix_env *env, struct dc_error *err,
                 size_t nelem, size_t elsize);
 
+char *dc_getenv(const struct dc_posix_env *env, const char *name);
+
 /**
  *
  * @param env
