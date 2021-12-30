@@ -53,6 +53,8 @@ char *dc_getenv(const struct dc_posix_env *env, const char *name);
 void *dc_malloc(const struct dc_posix_env *env, struct dc_error *err,
                 size_t size);
 
+void *dc_realloc(const struct dc_posix_env *env, struct dc_error *err, void *ptr, size_t size);
+
 char *dc_realpath(const struct dc_posix_env *env, struct dc_error *err, const char *restrict file_name, char *restrict resolved_name);
 
 #endif // LIBDC_POSIX_DC_STDLIB_H

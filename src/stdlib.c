@@ -84,6 +84,22 @@ void *dc_malloc(const struct dc_posix_env *env, struct dc_error *err, size_t siz
     return memory;
 }
 
+void *dc_realloc(const struct dc_posix_env *env, struct dc_error *err, void *ptr, size_t size)
+{
+    void *memory;
+
+    DC_TRACE(env);
+    errno  = 0;
+    memory = realloc(ptr, size);
+
+    if(memory == NULL)
+    {
+        DC_ERROR_RAISE_ERRNO(err, errno);
+    }
+
+    return memory;
+}
+
 char *dc_realpath(const struct dc_posix_env *env, struct dc_error *err, const char *restrict file_name, char *restrict resolved_name)
 {
     char *ret_val;
