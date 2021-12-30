@@ -31,6 +31,16 @@
 void *dc_calloc(const struct dc_posix_env *env, struct dc_error *err,
                 size_t nelem, size_t elsize);
 
+void dc_exit(const struct dc_posix_env *env, int status);
+
+/**
+ *
+ * @param env
+ * @param ptr
+ * @param size
+ */
+void dc_free(const struct dc_posix_env *env, void *ptr, size_t size);
+
 char *dc_getenv(const struct dc_posix_env *env, const char *name);
 
 /**
@@ -43,12 +53,6 @@ char *dc_getenv(const struct dc_posix_env *env, const char *name);
 void *dc_malloc(const struct dc_posix_env *env, struct dc_error *err,
                 size_t size);
 
-/**
- *
- * @param env
- * @param ptr
- * @param size
- */
-void dc_free(const struct dc_posix_env *env, void *ptr, size_t size);
+char *dc_realpath(const struct dc_posix_env *env, struct dc_error *err, const char *restrict file_name, char *restrict resolved_name);
 
 #endif // LIBDC_POSIX_DC_STDLIB_H

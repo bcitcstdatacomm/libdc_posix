@@ -36,6 +36,25 @@ void *dc_calloc(const struct dc_posix_env *env, struct dc_error *err, size_t nel
     return memory;
 }
 
+void dc_exit(const struct dc_posix_env *env, int status)
+{
+    DC_TRACE(env);
+
+    exit(status);
+}
+
+void dc_free(const struct dc_posix_env *env, void *ptr, size_t size)
+{
+    DC_TRACE(env);
+
+    if(env->zero_free)
+    {
+        dc_memset(env, ptr, 0, size);
+    }
+
+    free(ptr);
+}
+
 char *dc_getenv(const struct dc_posix_env *env, const char *name)
 {
     char *ret_val;
@@ -65,15 +84,19 @@ void *dc_malloc(const struct dc_posix_env *env, struct dc_error *err, size_t siz
     return memory;
 }
 
-// https://pubs.opengroup.org/onlinepubs/9699919799/functions/free.html
-void dc_free(const struct dc_posix_env *env, void *ptr, size_t size)
+char *dc_realpath(const struct dc_posix_env *env, struct dc_error *err, const char *restrict file_name, char *restrict resolved_name)
 {
-    DC_TRACE(env);
+    char *ret_val;
 
-    if(env->zero_free)
+    DC_TRACE(env);
+    errno  = 0;
+    ret_val = realpath(file_name, resolved_name);
+
+    if(ret_val == NULL)
     {
-        dc_memset(env, ptr, 0, size);
+        DC_ERROR_RAISE_ERRNO(err, errno);
     }
 
-    free(ptr);
+    return ret_val;
 }
+

@@ -33,4 +33,6 @@ int dc_wordexp(const struct dc_posix_env *env, struct dc_error *err,
                const char *restrict words, wordexp_t *restrict pwordexp,
                int flags);
 
+void dc_wordfree(const struct dc_posix_env *env, wordexp_t *pwordexp);
+
 #endif // LIBDC_POSIX_DC_WORDEXP_H

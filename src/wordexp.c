@@ -80,3 +80,10 @@ int dc_wordexp(const struct dc_posix_env *env,
 
     return err_code;
 }
+
+// https://pubs.opengroup.org/onlinepubs/9699919799/functions/wordexp.html
+void dc_wordfree(const struct dc_posix_env *env, wordexp_t *pwordexp)
+{
+    DC_TRACE(env);
+    wordfree(pwordexp);
+}
