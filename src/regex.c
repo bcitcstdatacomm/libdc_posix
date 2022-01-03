@@ -34,14 +34,24 @@ int dc_regcomp(const struct dc_posix_env *env,
 
     if(ret_val != 0)
     {
-        DC_ERROR_RAISE_ERRNO(err, errno);
+        char *message;
+        size_t message_size;
+
+        message_size = dc_regerror(env, ret_val, preg, NULL, 0) + 1;
+        message = dc_malloc(env, err, message_size);
+
+        if(dc_error_has_no_error(err))
+        {
+            dc_regerror(env, ret_val, preg, message, message_size);
+            DC_ERROR_RAISE_SYSTEM(err, message, ret_val);
+            dc_free(env, message, message_size);
+        }
     }
 
     return ret_val;
 }
 
 size_t dc_regerror(const struct dc_posix_env *env,
-                   struct dc_error *          err,
                    int                        errcode,
                    const regex_t * restrict preg,
                    char * restrict errbuf,
@@ -52,11 +62,6 @@ size_t dc_regerror(const struct dc_posix_env *env,
     DC_TRACE(env);
     errno   = 0;
     ret_val = regerror(errcode, preg, errbuf, errbuf_size);
-
-    if(errno != 0)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
 
     return ret_val;
 }

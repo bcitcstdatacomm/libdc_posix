@@ -24,7 +24,7 @@ int dc_regcomp(const struct dc_posix_env *env, struct dc_error *err,
                regex_t *restrict preg, const char *restrict pattern,
                int cflags);
 
-size_t dc_regerror(const struct dc_posix_env *env, struct dc_error *err,
+size_t dc_regerror(const struct dc_posix_env *env,
                    int errcode, const regex_t *restrict preg,
                    char *restrict errbuf, size_t errbuf_size);
 
