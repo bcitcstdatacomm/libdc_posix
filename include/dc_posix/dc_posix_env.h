@@ -35,6 +35,7 @@ struct dc_posix_env {
 
   void (*tracer)(const struct dc_posix_env *env, const char *file_name,
                  const char *function_name, size_t line_number);
+//  void (*error_inducer)(const struct dc_posix_env *env, bool on);
 };
 
 typedef void (*dc_posix_tracer)(const struct dc_posix_env *env,
@@ -58,6 +59,8 @@ void dc_posix_env_init(struct dc_posix_env *env, dc_posix_tracer tracer);
 void dc_posix_default_tracer(const struct dc_posix_env *env,
                              const char *file_name, const char *function_name,
                              size_t line_number);
+
+// void dc_posix_default_error_inducer(const struct dc_posix_env *env, bool on);
 
 /**
  *

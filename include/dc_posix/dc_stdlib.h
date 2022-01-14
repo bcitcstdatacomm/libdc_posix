@@ -31,7 +31,7 @@
 void *dc_calloc(const struct dc_posix_env *env, struct dc_error *err,
                 size_t nelem, size_t elsize);
 
-void dc_exit(const struct dc_posix_env *env, int status);
+_Noreturn void dc_exit(const struct dc_posix_env *env, int status);
 
 /**
  *
