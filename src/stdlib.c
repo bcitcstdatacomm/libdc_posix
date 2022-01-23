@@ -116,3 +116,34 @@ char *dc_realpath(const struct dc_posix_env *env, struct dc_error *err, const ch
     return ret_val;
 }
 
+int dc_putenv(const struct dc_posix_env *env, struct dc_error *err, char *string)
+{
+    int ret_val;
+
+    DC_TRACE(env);
+    errno  = 0;
+    ret_val = putenv(string);
+
+    if(ret_val != 0)
+    {
+        DC_ERROR_RAISE_ERRNO(err, errno);
+    }
+
+    return ret_val;
+}
+
+int dc_setenv(const struct dc_posix_env *env, struct dc_error *err, const char *envname, const char *envval, int overwrite)
+{
+    int ret_val;
+
+    DC_TRACE(env);
+    errno  = 0;
+    ret_val = setenv(envname, envval, overwrite);
+
+    if(ret_val != 0)
+    {
+        DC_ERROR_RAISE_ERRNO(err, errno);
+    }
+
+    return ret_val;
+}
