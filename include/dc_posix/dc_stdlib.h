@@ -61,4 +61,6 @@ int dc_putenv(const struct dc_posix_env *env, struct dc_error *err, char *string
 
 int dc_setenv(const struct dc_posix_env *env, struct dc_error *err, const char *envname, const char *envval, int overwrite);
 
+int dc_unsetenv(const struct dc_posix_env *env, struct dc_error *err, const char *name);
+
 #endif // LIBDC_POSIX_DC_STDLIB_H

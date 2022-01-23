@@ -147,3 +147,19 @@ int dc_setenv(const struct dc_posix_env *env, struct dc_error *err, const char *
 
     return ret_val;
 }
+
+int dc_unsetenv(const struct dc_posix_env *env, struct dc_error *err, const char *name)
+{
+    int ret_val;
+
+    DC_TRACE(env);
+    errno  = 0;
+    ret_val = unsetenv(name);
+
+    if(ret_val != 0)
+    {
+        DC_ERROR_RAISE_ERRNO(err, errno);
+    }
+
+    return ret_val;
+}
