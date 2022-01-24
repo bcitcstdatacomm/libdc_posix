@@ -494,7 +494,7 @@ ssize_t dc_getline(const struct dc_posix_env *env, struct dc_error *err, char **
     errno   = 0;
     ret_val = getline(lineptr, n, stream);
 
-    if(ret_val == -1)
+    if(ret_val == -1 && dc_ferror(env, stream))
     {
         DC_ERROR_RAISE_ERRNO(err, errno);
     }
