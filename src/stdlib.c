@@ -668,7 +668,7 @@ long double dc_strtold(const struct dc_posix_env *env, struct dc_error *err, con
 
     DC_TRACE(env);
     errno  = 0;
-    ret_val = strtod(nptr, endptr);
+    ret_val = strtold(nptr, endptr);
 
     if(errno != 0)
     {
