@@ -2,7 +2,7 @@
 #define LIBDC_POSIX_DC_WORDEXP_H
 
 /*
- * Copyright 2021-2021 D'Arcy Smith.
+ * Copyright 2021-2022 D'Arcy Smith.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,6 +33,11 @@ int dc_wordexp(const struct dc_posix_env *env, struct dc_error *err,
                const char *restrict words, wordexp_t *restrict pwordexp,
                int flags);
 
+/**
+ *
+ * @param env
+ * @param pwordexp
+ */
 void dc_wordfree(const struct dc_posix_env *env, wordexp_t *pwordexp);
 
 #endif // LIBDC_POSIX_DC_WORDEXP_H
