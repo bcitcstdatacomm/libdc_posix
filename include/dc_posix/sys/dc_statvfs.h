@@ -20,8 +20,25 @@
 #include "../dc_posix_env.h"
 #include <sys/statvfs.h>
 
+/**
+ *
+ * @param env
+ * @param err
+ * @param fildes
+ * @param buf
+ * @return
+ */
 int dc_fstatvfs(const struct dc_posix_env *env, struct dc_error *err,
                 int fildes, struct statvfs *buf);
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param path
+ * @param buf
+ * @return
+ */
 int dc_statvfs(const struct dc_posix_env *env, struct dc_error *err,
                const char *restrict path, struct statvfs *restrict buf);
 

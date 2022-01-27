@@ -116,15 +116,14 @@ int dc_dup(const struct dc_posix_env *env, struct dc_error *err, int fildes);
 int dc_dup2(const struct dc_posix_env *env, struct dc_error *err, int fildes,
             int fildes2);
 
-/**
+/*
  *
  * @param env
  * @param err
  * @param block
  * @param edflag
  */
-// void dc_encrypt(const struct dc_posix_env *env, struct dc_error *err, char
-// block[64], int edflag);
+// void dc_encrypt(const struct dc_posix_env *env, struct dc_error *err, char block[64], int edflag);
 
 /**
  *

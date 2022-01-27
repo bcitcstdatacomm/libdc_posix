@@ -20,6 +20,13 @@
 #include "../dc_posix_env.h"
 #include <sys/times.h>
 
+/**
+ *
+ * @param env
+ * @param err
+ * @param buffer
+ * @return
+ */
 clock_t dc_times(const struct dc_posix_env *env, struct dc_error *err,
                  struct tms *buffer);
 

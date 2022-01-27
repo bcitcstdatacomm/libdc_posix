@@ -21,10 +21,38 @@
 #include <sys/wait.h>
 #include <sys/signal.h>
 
+/**
+ *
+ * @param env
+ * @param err
+ * @param stat_loc
+ * @return
+ */
 pid_t dc_wait(const struct dc_posix_env *env, struct dc_error *err,
               int *stat_loc);
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param idtype
+ * @param id
+ * @param infop
+ * @param options
+ * @return
+ */
 int dc_waitid(const struct dc_posix_env *env, struct dc_error *err,
               idtype_t idtype, id_t id, siginfo_t *infop, int options);
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param pid
+ * @param stat_loc
+ * @param options
+ * @return
+ */
 pid_t dc_waitpid(const struct dc_posix_env *env, struct dc_error *err,
                  pid_t pid, int *stat_loc, int options);
 

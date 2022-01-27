@@ -20,6 +20,13 @@
 #include "../dc_posix_env.h"
 #include <sys/utsname.h>
 
+/**
+ *
+ * @param env
+ * @param err
+ * @param name
+ * @return
+ */
 int dc_uname(const struct dc_posix_env *env, struct dc_error *err,
              struct utsname *name);
 
