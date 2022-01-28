@@ -402,12 +402,6 @@ int dc_setenv(const struct dc_posix_env *env, struct dc_error *err, const char *
 
 /**
  *
- * @param key
- */
-void dc_setkey(const struct dc_posix_env *env, struct dc_error *err, const char *key);
-
-/**
- *
  * @param env
  * @param state
  * @return

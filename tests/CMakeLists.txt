@@ -33,19 +33,24 @@ find_library(LIBCGREEN cgreen REQUIRED)
 find_library(LIBDC_ERROR dc_error REQUIRED)
 find_library(LIB_PTHREAD pthread)
 find_library(LIB_CRYPT crypt)
-target_link_libraries(libdc_posix_test PRIVATE ${LIBCGREEN})
-target_link_libraries(libdc_posix_test PRIVATE ${LIBDC_ERROR})
 find_library(LIB_GDBM gdbm)
 find_library(LIB_GDBM_COMPAT gdbm_compat)
+
+target_link_libraries(libdc_posix_test PRIVATE ${LIBCGREEN})
+target_link_libraries(libdc_posix_test PRIVATE ${LIBDC_ERROR})
+
 if(LIB_PTHREAD)
     target_link_libraries(libdc_posix_test PUBLIC ${LIB_PTHREAD})
 endif()
+
 if(LIB_CRYPT)
     target_link_libraries(libdc_posix_test PUBLIC ${LIB_CRYPT})
 endif()
+
 if(LIB_GDBM)
     target_link_libraries(libdc_posix_test PUBLIC ${LIB_GDBM})
 endif()
+
 if(LIB_GDBM_COMPAT)
     target_link_libraries(libdc_posix_test PUBLIC ${LIB_GDBM_COMPAT})
 endif()

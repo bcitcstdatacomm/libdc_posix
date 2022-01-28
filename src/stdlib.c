@@ -570,20 +570,6 @@ int dc_setenv(const struct dc_posix_env *env, struct dc_error *err, const char *
     return ret_val;
 }
 
-/*
-void dc_setkey(const struct dc_posix_env *env, struct dc_error *err, const char *key)
-{
-    DC_TRACE(env);
-    errno  = 0;
-    setkey(key);
-
-    if(errno != 0)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-}
-*/
-
 char *dc_setstate(const struct dc_posix_env *env, char *state)
 {
     char *ret_val;
