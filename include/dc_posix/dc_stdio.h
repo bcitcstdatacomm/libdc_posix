@@ -327,15 +327,6 @@ ssize_t dc_getline(const struct dc_posix_env *env, struct dc_error * err, char *
  *
  * @param env
  * @param err
- * @param s
- * @return
- */
-char *dc_gets(const struct dc_posix_env *env, struct dc_error * err, char *s);
-
-/**
- *
- * @param env
- * @param err
  * @param bufp
  * @param sizep
  * @return
@@ -479,27 +470,9 @@ int dc_setvbuf(const struct dc_posix_env *env, struct dc_error * err, FILE *rest
  *
  * @param env
  * @param err
- * @param dir
- * @param pfx
- * @return
- */
-char *dc_tempnam(const struct dc_posix_env *env, struct dc_error * err, const char *dir, const char *pfx);
-
-/**
- *
- * @param env
- * @param err
  * @return
  */
 FILE *dc_tmpfile(const struct dc_posix_env *env, struct dc_error * err);
-
-/**
- *
- * @param env
- * @param s
- * @return
- */
-char *dc_tmpnam(const struct dc_posix_env *env, char *s);
 
 /**
  *

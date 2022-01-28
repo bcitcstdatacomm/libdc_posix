@@ -502,22 +502,6 @@ ssize_t dc_getline(const struct dc_posix_env *env, struct dc_error *err, char **
     return ret_val;
 }
 
-char *dc_gets(const struct dc_posix_env *env, struct dc_error *err, char *s)
-{
-    char * ret_val;
-
-    DC_TRACE(env);
-    errno   = 0;
-    ret_val = gets(s);
-
-    if(ret_val == NULL)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-
-    return ret_val;
-}
-
 FILE *dc_open_memstream(const struct dc_posix_env *env, struct dc_error *err, char **bufp, size_t *sizep)
 {
     FILE *ret_val;
@@ -743,22 +727,6 @@ int dc_setvbuf(const struct dc_posix_env *env, struct dc_error *err, FILE *restr
     return ret_val;
 }
 
-char *dc_tempnam(const struct dc_posix_env *env, struct dc_error *err, const char *dir, const char *pfx)
-{
-    char *ret_val;
-
-    DC_TRACE(env);
-    errno   = 0;
-    ret_val = tempnam(dir, pfx);
-
-    if(ret_val == NULL)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-
-    return ret_val;
-}
-
 FILE *dc_tmpfile(const struct dc_posix_env *env, struct dc_error *err)
 {
     FILE *ret_val;
@@ -771,17 +739,6 @@ FILE *dc_tmpfile(const struct dc_posix_env *env, struct dc_error *err)
     {
         DC_ERROR_RAISE_ERRNO(err, errno);
     }
-
-    return ret_val;
-}
-
-char *dc_tmpnam(const struct dc_posix_env *env, char *s)
-{
-    char *ret_val;
-
-    DC_TRACE(env);
-    errno   = 0;
-    ret_val = tmpnam(s);
 
     return ret_val;
 }
