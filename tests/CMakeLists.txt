@@ -31,6 +31,7 @@ target_include_directories(libdc_posix_test PRIVATE /usr/local/include)
 
 find_library(LIBCGREEN cgreen REQUIRED)
 find_library(LIBDC_ERROR dc_error REQUIRED)
+find_library(LIB_RT rt)
 find_library(LIB_PTHREAD pthread)
 find_library(LIB_CRYPT crypt)
 find_library(LIB_GDBM gdbm)
@@ -41,6 +42,10 @@ target_link_libraries(libdc_posix_test PRIVATE ${LIBDC_ERROR})
 
 if(LIB_PTHREAD)
     target_link_libraries(libdc_posix_test PUBLIC ${LIB_PTHREAD})
+endif()
+
+if(LIB_RT)
+    target_link_libraries(libdc_posix_test PUBLIC ${LIB_RT})
 endif()
 
 if(LIB_CRYPT)
