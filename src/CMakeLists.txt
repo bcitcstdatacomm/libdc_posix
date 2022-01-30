@@ -21,10 +21,15 @@ set_target_properties(dc_posix PROPERTIES
         SOVERSION ${PROJECT_VERSION_MAJOR})
 
 find_library(LIBDC_ERROR dc_error REQUIRED)
+find_library(LIB_RT rt)
 find_library(LIB_PTHREAD pthread)
 find_library(LIB_CRYPT crypt)
 find_library(LIB_GDBM gdbm)
 find_library(LIB_GDBM_COMPAT gdbm_compat)
+
+if(LIB_RT)
+    target_link_libraries(dc_posix PUBLIC ${LIB_RT})
+endif()
 
 if(LIB_PTHREAD)
     target_link_libraries(dc_posix PUBLIC ${LIB_PTHREAD})
