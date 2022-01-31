@@ -82,7 +82,7 @@ int dc_fstat(const struct dc_posix_env *env, struct dc_error *err, int fildes, s
 }
 
 int dc_fstatat(const struct dc_posix_env *env,
-               struct dc_error *          err,
+               struct dc_error           *err,
                int                        fd,
                const char * restrict path,
                struct stat * restrict buf,
@@ -119,7 +119,7 @@ int dc_futimens(const struct dc_posix_env *env, struct dc_error *err, int fd, co
 }
 
 int dc_lstat(const struct dc_posix_env *env,
-             struct dc_error *          err,
+             struct dc_error           *err,
              const char * restrict path,
              struct stat * restrict buf)
 {
@@ -238,7 +238,7 @@ int dc_mknodat(const struct dc_posix_env *env, struct dc_error *err, int fd, con
 */
 
 int dc_stat(const struct dc_posix_env *env,
-            struct dc_error *          err,
+            struct dc_error           *err,
             const char * restrict path,
             struct stat * restrict buf)
 {

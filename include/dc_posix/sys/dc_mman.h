@@ -20,20 +20,34 @@
 #include "../dc_posix_env.h"
 #include <sys/types.h>
 
-int dc_mlock(const struct dc_posix_env *env, struct dc_error *err, const void *addr, size_t len);
-int dc_mlockall(const struct dc_posix_env *env, struct dc_error *err, int flags);
-void *dc_mmap(const struct dc_posix_env *env, struct dc_error *err, void *addr, size_t len, int prot, int flags, int fildes, off_t off);
-int dc_mprotect(const struct dc_posix_env *env, struct dc_error *err, void *addr, size_t len, int prot);
-int dc_msync(const struct dc_posix_env *env, struct dc_error *err, void *addr, size_t len, int flags);
-int dc_munlock(const struct dc_posix_env *env, struct dc_error *err, const void *addr, size_t len);
+int dc_mlock(const struct dc_posix_env *env, struct dc_error *err,
+             const void *addr, size_t len);
+int dc_mlockall(const struct dc_posix_env *env, struct dc_error *err,
+                int flags);
+void *dc_mmap(const struct dc_posix_env *env, struct dc_error *err, void *addr,
+              size_t len, int prot, int flags, int fildes, off_t off);
+int dc_mprotect(const struct dc_posix_env *env, struct dc_error *err,
+                void *addr, size_t len, int prot);
+int dc_msync(const struct dc_posix_env *env, struct dc_error *err, void *addr,
+             size_t len, int flags);
+int dc_munlock(const struct dc_posix_env *env, struct dc_error *err,
+               const void *addr, size_t len);
 int dc_munlockall(const struct dc_posix_env *env, struct dc_error *err);
-int dc_munmap(const struct dc_posix_env *env, struct dc_error *err, void *addr, size_t len);
-int dc_posix_madvise(const struct dc_posix_env *env, struct dc_error *err, void *addr, size_t len, int advice);
-// int dc_posix_mem_offset(const struct dc_posix_env *env, struct dc_error *err, const void *restrict addr, size_t len, off_t *restrict off, size_t *restrict contig_len, int *restrict fildes);
-// int dc_posix_typed_mem_get_info(const struct dc_posix_env *env, struct dc_error *err, int fildes, struct posix_typed_mem_info *info);
-// int dc_posix_typed_mem_open(const struct dc_posix_env *env, struct dc_error *err, const char *name, int oflag, int tflag);
-int dc_shm_open(const struct dc_posix_env *env, struct dc_error *err, const char *name, int oflag, mode_t mode);
-int dc_shm_unlink(const struct dc_posix_env *env, struct dc_error *err, const char *name);
+int dc_munmap(const struct dc_posix_env *env, struct dc_error *err, void *addr,
+              size_t len);
+int dc_posix_madvise(const struct dc_posix_env *env, struct dc_error *err,
+                     void *addr, size_t len, int advice);
+// int dc_posix_mem_offset(const struct dc_posix_env *env, struct dc_error *err,
+// const void *restrict addr, size_t len, off_t *restrict off, size_t *restrict
+// contig_len, int *restrict fildes); int dc_posix_typed_mem_get_info(const
+// struct dc_posix_env *env, struct dc_error *err, int fildes, struct
+// posix_typed_mem_info *info); int dc_posix_typed_mem_open(const struct
+// dc_posix_env *env, struct dc_error *err, const char *name, int oflag, int
+// tflag);
+int dc_shm_open(const struct dc_posix_env *env, struct dc_error *err,
+                const char *name, int oflag, mode_t mode);
+int dc_shm_unlink(const struct dc_posix_env *env, struct dc_error *err,
+                  const char *name);
 
 /*
 int dc_select(const struct dc_posix_env *env, struct dc_error *err, int nfds,

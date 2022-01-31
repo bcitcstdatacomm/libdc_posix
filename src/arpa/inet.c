@@ -17,7 +17,7 @@
 #include "arpa/dc_inet.h"
 
 const char *dc_inet_ntop(const struct dc_posix_env *env,
-                         struct dc_error *          err,
+                         struct dc_error           *err,
                          int                        af,
                          const void * restrict src,
                          char * restrict dst,
@@ -38,7 +38,7 @@ const char *dc_inet_ntop(const struct dc_posix_env *env,
 }
 
 int dc_inet_pton(const struct dc_posix_env *env,
-                 struct dc_error *          err,
+                 struct dc_error           *err,
                  int                        af,
                  const char * restrict src,
                  void * restrict dst)

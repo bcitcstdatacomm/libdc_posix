@@ -70,8 +70,7 @@ int dc_chown(const struct dc_posix_env *env, struct dc_error *err,
  */
 int dc_dc_close(const struct dc_posix_env *env, struct dc_error *err,
                 int fildes);
-int dc_close(const struct dc_posix_env *env, struct dc_error *err,
-                int fildes);
+int dc_close(const struct dc_posix_env *env, struct dc_error *err, int fildes);
 
 /**
  *
@@ -123,7 +122,8 @@ int dc_dup2(const struct dc_posix_env *env, struct dc_error *err, int fildes,
  * @param block
  * @param edflag
  */
-// void dc_encrypt(const struct dc_posix_env *env, struct dc_error *err, char block[64], int edflag);
+// void dc_encrypt(const struct dc_posix_env *env, struct dc_error *err, char
+// block[64], int edflag);
 
 /**
  *

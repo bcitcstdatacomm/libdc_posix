@@ -28,7 +28,7 @@ char *dc_ctermid(const struct dc_posix_env *env, char *s)
     char *ret_val;
 
     DC_TRACE(env);
-    errno = 0;
+    errno   = 0;
     ret_val = ctermid(s);
 
     return ret_val;
@@ -39,7 +39,7 @@ int dc_fclose(const struct dc_posix_env *env, struct dc_error *err, FILE *stream
     int ret_val;
 
     DC_TRACE(env);
-    errno = 0;
+    errno   = 0;
     ret_val = fclose(stream);
 
     if(ret_val != 0)
@@ -82,7 +82,7 @@ int dc_ferror(const struct dc_posix_env *env, FILE *stream)
     int ret_val;
 
     DC_TRACE(env);
-    errno = 0;
+    errno   = 0;
     ret_val = ferror(stream);
 
     return ret_val;
@@ -106,12 +106,12 @@ int dc_fflush(const struct dc_posix_env *env, struct dc_error *err, FILE *stream
 
 int dc_fgetc(const struct dc_posix_env *env, struct dc_error *err, FILE *stream)
 {
-    int ret_val;
+    int     ret_val;
     errno_t actual_error;
 
     DC_TRACE(env);
-    errno   = 0;
-    ret_val = fgetc(stream);
+    errno        = 0;
+    ret_val      = fgetc(stream);
     actual_error = errno;
 
     if(dc_ferror(env, stream))
@@ -122,7 +122,7 @@ int dc_fgetc(const struct dc_posix_env *env, struct dc_error *err, FILE *stream)
     return ret_val;
 }
 
-int dc_fgetpos(const struct dc_posix_env *env, struct dc_error *err, FILE *restrict stream, fpos_t *restrict pos)
+int dc_fgetpos(const struct dc_posix_env *env, struct dc_error *err, FILE * restrict stream, fpos_t * restrict pos)
 {
     int ret_val;
 
@@ -138,7 +138,7 @@ int dc_fgetpos(const struct dc_posix_env *env, struct dc_error *err, FILE *restr
     return ret_val;
 }
 
-char *dc_fgets(const struct dc_posix_env *env, struct dc_error *err, char *restrict s, int n, FILE *restrict stream)
+char *dc_fgets(const struct dc_posix_env *env, struct dc_error *err, char * restrict s, int n, FILE * restrict stream)
 {
     char *ret_val;
 
@@ -180,11 +180,15 @@ int dc_fileno(const struct dc_posix_env *env, struct dc_error *err, FILE *stream
 void dc_flockfile(const struct dc_posix_env *env, FILE *file)
 {
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     flockfile(file);
 }
 
-FILE *dc_fmemopen(const struct dc_posix_env *env, struct dc_error *err, void *restrict buf, size_t size, const char *restrict mode)
+FILE *dc_fmemopen(const struct dc_posix_env *env,
+                  struct dc_error           *err,
+                  void * restrict buf,
+                  size_t size,
+                  const char * restrict mode)
 {
     FILE *ret_val;
 
@@ -200,7 +204,10 @@ FILE *dc_fmemopen(const struct dc_posix_env *env, struct dc_error *err, void *re
     return ret_val;
 }
 
-FILE *dc_fopen(const struct dc_posix_env *env, struct dc_error *err, const char *restrict pathname, const char *restrict mode)
+FILE *dc_fopen(const struct dc_posix_env *env,
+               struct dc_error           *err,
+               const char * restrict pathname,
+               const char * restrict mode)
 {
     FILE *ret_val;
 
@@ -232,7 +239,7 @@ int dc_fputc(const struct dc_posix_env *env, struct dc_error *err, int c, FILE *
     return ret_val;
 }
 
-int dc_fputs(const struct dc_posix_env *env, struct dc_error *err, const char *restrict s, FILE *restrict stream)
+int dc_fputs(const struct dc_posix_env *env, struct dc_error *err, const char * restrict s, FILE * restrict stream)
 {
     int ret_val;
 
@@ -248,14 +255,19 @@ int dc_fputs(const struct dc_posix_env *env, struct dc_error *err, const char *r
     return ret_val;
 }
 
-size_t dc_fread(const struct dc_posix_env *env, struct dc_error *err, void *restrict ptr, size_t size, size_t nitems, FILE *restrict stream)
+size_t dc_fread(const struct dc_posix_env *env,
+                struct dc_error           *err,
+                void * restrict ptr,
+                size_t size,
+                size_t nitems,
+                FILE * restrict stream)
 {
-    size_t ret_val;
+    size_t  ret_val;
     errno_t actual_error;
 
     DC_TRACE(env);
-    errno   = 0;
-    ret_val = fread(ptr, size, nitems, stream);
+    errno        = 0;
+    ret_val      = fread(ptr, size, nitems, stream);
     actual_error = errno;
 
     if(dc_ferror(env, stream))
@@ -266,7 +278,11 @@ size_t dc_fread(const struct dc_posix_env *env, struct dc_error *err, void *rest
     return ret_val;
 }
 
-FILE *dc_freopen(const struct dc_posix_env *env, struct dc_error *err, const char *restrict pathname, const char *restrict mode, FILE *restrict stream)
+FILE *dc_freopen(const struct dc_posix_env *env,
+                 struct dc_error           *err,
+                 const char * restrict pathname,
+                 const char * restrict mode,
+                 FILE * restrict stream)
 {
     FILE *ret_val;
 
@@ -376,18 +392,23 @@ int dc_ftrylockfile(const struct dc_posix_env *env, FILE *file)
 void dc_funlockfile(const struct dc_posix_env *env, FILE *file)
 {
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     funlockfile(file);
 }
 
-size_t dc_fwrite(const struct dc_posix_env *env, struct dc_error *err, const void *restrict ptr, size_t size, size_t nitems, FILE *restrict stream)
+size_t dc_fwrite(const struct dc_posix_env *env,
+                 struct dc_error           *err,
+                 const void * restrict ptr,
+                 size_t size,
+                 size_t nitems,
+                 FILE * restrict stream)
 {
-    size_t ret_val;
+    size_t  ret_val;
     errno_t actual_error;
 
     DC_TRACE(env);
-    errno   = 0;
-    ret_val = fwrite(ptr, size, nitems, stream);
+    errno        = 0;
+    ret_val      = fwrite(ptr, size, nitems, stream);
     actual_error = errno;
 
     if(dc_ferror(env, stream))
@@ -400,12 +421,12 @@ size_t dc_fwrite(const struct dc_posix_env *env, struct dc_error *err, const voi
 
 int dc_getc(const struct dc_posix_env *env, struct dc_error *err, FILE *stream)
 {
-    int ret_val;
+    int     ret_val;
     errno_t actual_error;
 
     DC_TRACE(env);
-    errno   = 0;
-    ret_val = getc(stream);
+    errno        = 0;
+    ret_val      = getc(stream);
     actual_error = errno;
 
     if(dc_ferror(env, stream))
@@ -418,12 +439,12 @@ int dc_getc(const struct dc_posix_env *env, struct dc_error *err, FILE *stream)
 
 int dc_getchar(const struct dc_posix_env *env, struct dc_error *err)
 {
-    int ret_val;
+    int     ret_val;
     errno_t actual_error;
 
     DC_TRACE(env);
-    errno   = 0;
-    ret_val = getchar();
+    errno        = 0;
+    ret_val      = getchar();
     actual_error = errno;
 
     if(dc_ferror(env, stdin))
@@ -436,12 +457,12 @@ int dc_getchar(const struct dc_posix_env *env, struct dc_error *err)
 
 int dc_getc_unlocked(const struct dc_posix_env *env, struct dc_error *err, FILE *stream)
 {
-    int ret_val;
+    int     ret_val;
     errno_t actual_error;
 
     DC_TRACE(env);
-    errno   = 0;
-    ret_val = getc_unlocked(stream);
+    errno        = 0;
+    ret_val      = getc_unlocked(stream);
     actual_error = errno;
 
     if(dc_ferror(env, stream))
@@ -454,12 +475,12 @@ int dc_getc_unlocked(const struct dc_posix_env *env, struct dc_error *err, FILE 
 
 int dc_getchar_unlocked(const struct dc_posix_env *env, struct dc_error *err)
 {
-    int ret_val;
+    int     ret_val;
     errno_t actual_error;
 
     DC_TRACE(env);
-    errno   = 0;
-    ret_val = getchar_unlocked();
+    errno        = 0;
+    ret_val      = getchar_unlocked();
     actual_error = errno;
 
     if(dc_ferror(env, stdin))
@@ -470,7 +491,12 @@ int dc_getchar_unlocked(const struct dc_posix_env *env, struct dc_error *err)
     return ret_val;
 }
 
-ssize_t dc_getdelim(const struct dc_posix_env *env, struct dc_error *err, char **restrict lineptr, size_t *restrict n, int delimiter, FILE *restrict stream)
+ssize_t dc_getdelim(const struct dc_posix_env *env,
+                    struct dc_error           *err,
+                    char ** restrict lineptr,
+                    size_t * restrict n,
+                    int delimiter,
+                    FILE * restrict stream)
 {
     ssize_t ret_val;
 
@@ -486,7 +512,11 @@ ssize_t dc_getdelim(const struct dc_posix_env *env, struct dc_error *err, char *
     return ret_val;
 }
 
-ssize_t dc_getline(const struct dc_posix_env *env, struct dc_error *err, char **restrict lineptr, size_t *restrict n, FILE *restrict stream)
+ssize_t dc_getline(const struct dc_posix_env *env,
+                   struct dc_error           *err,
+                   char ** restrict lineptr,
+                   size_t * restrict n,
+                   FILE * restrict stream)
 {
     ssize_t ret_val;
 
@@ -537,7 +567,7 @@ int dc_pclose(const struct dc_posix_env *env, struct dc_error *err, FILE *stream
 void dc_perror(const struct dc_posix_env *env, const char *s)
 {
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     perror(s);
 }
 
@@ -669,7 +699,12 @@ int dc_rename(const struct dc_posix_env *env, struct dc_error *err, const char *
     return ret_val;
 }
 
-int dc_renameat(const struct dc_posix_env *env, struct dc_error *err, int oldfd, const char *old, int newfd, const char *new)
+int dc_renameat(const struct dc_posix_env *env,
+                struct dc_error           *err,
+                int                        oldfd,
+                const char                *old,
+                int                        newfd,
+                const char *new)
 {
     int ret_val;
 
@@ -688,7 +723,7 @@ int dc_renameat(const struct dc_posix_env *env, struct dc_error *err, int oldfd,
 void dc_rewind(const struct dc_posix_env *env, struct dc_error *err, FILE *stream)
 {
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
 
     rewind(stream);
 
@@ -698,10 +733,10 @@ void dc_rewind(const struct dc_posix_env *env, struct dc_error *err, FILE *strea
     }
 }
 
-void dc_setbuf(const struct dc_posix_env *env, struct dc_error *err, FILE *restrict stream, char *restrict buf)
+void dc_setbuf(const struct dc_posix_env *env, struct dc_error *err, FILE * restrict stream, char * restrict buf)
 {
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
 
     setbuf(stream, buf);
 
@@ -711,7 +746,12 @@ void dc_setbuf(const struct dc_posix_env *env, struct dc_error *err, FILE *restr
     }
 }
 
-int dc_setvbuf(const struct dc_posix_env *env, struct dc_error *err, FILE *restrict stream, char *restrict buf, int type, size_t size)
+int dc_setvbuf(const struct dc_posix_env *env,
+               struct dc_error           *err,
+               FILE * restrict stream,
+               char * restrict buf,
+               int    type,
+               size_t size)
 {
     int ret_val;
 

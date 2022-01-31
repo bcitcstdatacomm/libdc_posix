@@ -35,7 +35,8 @@
  * @param n
  * @return
  */
-void *dc_memccpy(const struct dc_posix_env *env, void *restrict s1, const void *restrict s2, int c, size_t n);
+void *dc_memccpy(const struct dc_posix_env *env, void *restrict s1,
+                 const void *restrict s2, int c, size_t n);
 
 /**
  *
@@ -55,7 +56,8 @@ void *dc_memchr(const struct dc_posix_env *env, const void *s, int c, size_t n);
  * @param n
  * @return
  */
-int dc_memcmp(const struct dc_posix_env *env, const void *s1, const void *s2, size_t n);
+int dc_memcmp(const struct dc_posix_env *env, const void *s1, const void *s2,
+              size_t n);
 
 /**
  *
@@ -65,7 +67,8 @@ int dc_memcmp(const struct dc_posix_env *env, const void *s1, const void *s2, si
  * @param n
  * @return
  */
-void *dc_memcpy(const struct dc_posix_env *env, void *restrict s1, const void *restrict s2, size_t n);
+void *dc_memcpy(const struct dc_posix_env *env, void *restrict s1,
+                const void *restrict s2, size_t n);
 
 /**
  *
@@ -75,7 +78,8 @@ void *dc_memcpy(const struct dc_posix_env *env, void *restrict s1, const void *r
  * @param n
  * @return
  */
-void *dc_memmove(const struct dc_posix_env *env, void *s1, const void *s2, size_t n);
+void *dc_memmove(const struct dc_posix_env *env, void *s1, const void *s2,
+                 size_t n);
 
 /**
  *
@@ -94,7 +98,8 @@ void *dc_memset(const struct dc_posix_env *env, void *s, int c, size_t n);
  * @param s2
  * @return
  */
-char *dc_stpcpy(const struct dc_posix_env *env, char *restrict s1, const char *restrict s2);
+char *dc_stpcpy(const struct dc_posix_env *env, char *restrict s1,
+                const char *restrict s2);
 
 /**
  *
@@ -104,7 +109,8 @@ char *dc_stpcpy(const struct dc_posix_env *env, char *restrict s1, const char *r
  * @param n
  * @return
  */
-char *dc_stpncpy(const struct dc_posix_env *env, char *restrict s1, const char *restrict s2, size_t n);
+char *dc_stpncpy(const struct dc_posix_env *env, char *restrict s1,
+                 const char *restrict s2, size_t n);
 
 /**
  *
@@ -113,7 +119,8 @@ char *dc_stpncpy(const struct dc_posix_env *env, char *restrict s1, const char *
  * @param s2
  * @return
  */
-char *dc_strcat(const struct dc_posix_env *env, char *restrict s1, const char *restrict s2);
+char *dc_strcat(const struct dc_posix_env *env, char *restrict s1,
+                const char *restrict s2);
 
 /**
  *
@@ -150,7 +157,8 @@ int dc_strcoll(const struct dc_posix_env *env, const char *s1, const char *s2);
  * @param locale
  * @return
  */
-int dc_strcoll_l(const struct dc_posix_env *env, const char *s1, const char *s2, locale_t locale);
+int dc_strcoll_l(const struct dc_posix_env *env, const char *s1, const char *s2,
+                 locale_t locale);
 
 /**
  *
@@ -159,7 +167,8 @@ int dc_strcoll_l(const struct dc_posix_env *env, const char *s1, const char *s2,
  * @param s2
  * @return
  */
-char *dc_strcpy(const struct dc_posix_env *env, char *restrict s1, const char *restrict s2);
+char *dc_strcpy(const struct dc_posix_env *env, char *restrict s1,
+                const char *restrict s2);
 
 /**
  *
@@ -168,7 +177,8 @@ char *dc_strcpy(const struct dc_posix_env *env, char *restrict s1, const char *r
  * @param s2
  * @return
  */
-size_t dc_strcspn(const struct dc_posix_env *env, const char *s1, const char *s2);
+size_t dc_strcspn(const struct dc_posix_env *env, const char *s1,
+                  const char *s2);
 
 /**
  *
@@ -177,7 +187,8 @@ size_t dc_strcspn(const struct dc_posix_env *env, const char *s1, const char *s2
  * @param s
  * @return
  */
-char *dc_strdup(const struct dc_posix_env *env, struct dc_error *err, const char *s);
+char *dc_strdup(const struct dc_posix_env *env, struct dc_error *err,
+                const char *s);
 
 /**
  *
@@ -186,7 +197,8 @@ char *dc_strdup(const struct dc_posix_env *env, struct dc_error *err, const char
  * @param errnum
  * @return
  */
-char *dc_strerror(const struct dc_posix_env *env, struct dc_error *err, int errnum);
+char *dc_strerror(const struct dc_posix_env *env, struct dc_error *err,
+                  int errnum);
 
 /**
  *
@@ -196,7 +208,8 @@ char *dc_strerror(const struct dc_posix_env *env, struct dc_error *err, int errn
  * @param buflen
  * @return
  */
-int dc_strerror_r(const struct dc_posix_env *env, int errnum, char *strerrbuf, size_t buflen);
+int dc_strerror_r(const struct dc_posix_env *env, int errnum, char *strerrbuf,
+                  size_t buflen);
 
 /**
  *
@@ -214,7 +227,8 @@ size_t dc_strlen(const struct dc_posix_env *env, const char *s);
  * @param n
  * @return
  */
-char *dc_strncat(const struct dc_posix_env *env, char *restrict s1, const char *restrict s2, size_t n);
+char *dc_strncat(const struct dc_posix_env *env, char *restrict s1,
+                 const char *restrict s2, size_t n);
 
 /**
  *
@@ -224,7 +238,8 @@ char *dc_strncat(const struct dc_posix_env *env, char *restrict s1, const char *
  * @param n
  * @return
  */
-int dc_strncmp(const struct dc_posix_env *env, const char *s1, const char *s2, size_t n);
+int dc_strncmp(const struct dc_posix_env *env, const char *s1, const char *s2,
+               size_t n);
 
 /**
  *
@@ -234,7 +249,8 @@ int dc_strncmp(const struct dc_posix_env *env, const char *s1, const char *s2, s
  * @param n
  * @return
  */
-char *dc_strncpy(const struct dc_posix_env *env, char *restrict s1, const char *restrict s2, size_t n);
+char *dc_strncpy(const struct dc_posix_env *env, char *restrict s1,
+                 const char *restrict s2, size_t n);
 
 /**
  *
@@ -244,7 +260,8 @@ char *dc_strncpy(const struct dc_posix_env *env, char *restrict s1, const char *
  * @param n
  * @return
  */
-char *dc_strndup(const struct dc_posix_env *env, struct dc_error *err, const char *s, size_t n);
+char *dc_strndup(const struct dc_posix_env *env, struct dc_error *err,
+                 const char *s, size_t n);
 
 /**
  *
@@ -262,7 +279,8 @@ size_t dc_strnlen(const struct dc_posix_env *env, const char *s, size_t maxlen);
  * @param s2
  * @return
  */
-char *dc_strpbrk(const struct dc_posix_env *env, const char *s1, const char *s2);
+char *dc_strpbrk(const struct dc_posix_env *env, const char *s1,
+                 const char *s2);
 
 /**
  *
@@ -288,7 +306,8 @@ char *dc_strsignal(const struct dc_posix_env *env, int signum);
  * @param s2
  * @return
  */
-size_t dc_strspn(const struct dc_posix_env *env, const char *s1, const char *s2);
+size_t dc_strspn(const struct dc_posix_env *env, const char *s1,
+                 const char *s2);
 
 /**
  *
@@ -306,7 +325,8 @@ char *dc_strstr(const struct dc_posix_env *env, const char *s1, const char *s2);
  * @param sep
  * @return
  */
-char *dc_strtok(const struct dc_posix_env *env, char *restrict s, const char *restrict sep);
+char *dc_strtok(const struct dc_posix_env *env, char *restrict s,
+                const char *restrict sep);
 
 /**
  *
@@ -316,7 +336,8 @@ char *dc_strtok(const struct dc_posix_env *env, char *restrict s, const char *re
  * @param state
  * @return
  */
-char *dc_strtok_r(const struct dc_posix_env *env, char *restrict s, const char *restrict sep, char **restrict state);
+char *dc_strtok_r(const struct dc_posix_env *env, char *restrict s,
+                  const char *restrict sep, char **restrict state);
 
 /**
  *
@@ -327,7 +348,8 @@ char *dc_strtok_r(const struct dc_posix_env *env, char *restrict s, const char *
  * @param n
  * @return
  */
-size_t dc_strxfrm(const struct dc_posix_env *env, struct dc_error *err, char *restrict s1, const char *restrict s2, size_t n);
+size_t dc_strxfrm(const struct dc_posix_env *env, struct dc_error *err,
+                  char *restrict s1, const char *restrict s2, size_t n);
 
 /**
  *
@@ -339,6 +361,8 @@ size_t dc_strxfrm(const struct dc_posix_env *env, struct dc_error *err, char *re
  * @param locale
  * @return
  */
-size_t dc_strxfrm_l(const struct dc_posix_env *env, struct dc_error *err, char *restrict s1, const char *restrict s2, size_t n, locale_t locale);
+size_t dc_strxfrm_l(const struct dc_posix_env *env, struct dc_error *err,
+                    char *restrict s1, const char *restrict s2, size_t n,
+                    locale_t locale);
 
 #endif // LIBDC_POSIX_DC_STRING_H

@@ -17,7 +17,7 @@
 #include "sys/dc_select.h"
 
 int dc_pselect(const struct dc_posix_env *env,
-               struct dc_error *          err,
+               struct dc_error           *err,
                int                        nfds,
                fd_set * restrict readfds,
                fd_set * restrict writefds,
@@ -40,7 +40,7 @@ int dc_pselect(const struct dc_posix_env *env,
 }
 
 int dc_select(const struct dc_posix_env *env,
-              struct dc_error *          err,
+              struct dc_error           *err,
               int                        nfds,
               fd_set * restrict readfds,
               fd_set * restrict writefds,

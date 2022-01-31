@@ -27,6 +27,8 @@ find_library(LIB_CRYPT crypt)
 find_library(LIB_GDBM gdbm)
 find_library(LIB_GDBM_COMPAT gdbm_compat)
 
+target_link_libraries(dc_posix PUBLIC ${LIBDC_ERROR})
+
 if(LIB_RT)
     target_link_libraries(dc_posix PUBLIC ${LIB_RT})
 endif()
@@ -47,14 +49,12 @@ if(LIB_GDBM_COMPAT)
     target_link_libraries(dc_posix PUBLIC ${LIB_GDBM_COMPAT})
 endif()
 
-target_link_libraries(dc_posix PUBLIC ${LIBDC_ERROR})
-
 # All users of this library will need at least C11
 target_compile_features(dc_posix PUBLIC c_std_11)
 target_compile_options(dc_posix PRIVATE -g -fPIC)
 target_compile_options(dc_posix PRIVATE -fstack-protector-all -ftrapv)
 target_compile_options(dc_posix PRIVATE -Wpedantic -Wall -Wextra)
-target_compile_options(dc_posix PRIVATE -Wdouble-promotion -Wformat-nonliteral -Wformat-security -Wformat-y2k -Wnull-dereference -Winit-self -Wmissing-include-dirs -Wswitch-default -Wswitch-enum -Wunused-local-typedefs -Wstrict-overflow=5 -Wmissing-noreturn -Walloca -Wfloat-equal -Wdeclaration-after-statement -Wshadow -Wpointer-arith -Wabsolute-value -Wundef -Wexpansion-to-defined -Wunused-macros -Wno-endif-labels -Wbad-function-cast -Wcast-qual -Wwrite-strings -Wconversion -Wdangling-else -Wdate-time -Wempty-body -Wsign-conversion -Wfloat-conversion -Waggregate-return -Wstrict-prototypes -Wold-style-definition -Wmissing-prototypes -Wmissing-declarations -Wpacked -Wredundant-decls -Wnested-externs -Winline -Winvalid-pch -Wlong-long -Wvariadic-macros -Wdisabled-optimization -Wstack-protector -Woverlength-strings)
+target_compile_options(dc_posix PRIVATE -Wdouble-promotion -Wformat-nonliteral -Wformat-security -Wformat-y2k -Wnull-dereference -Winit-self -Wmissing-include-dirs -Wswitch-default -Wswitch-enum -Wunused-local-typedefs -Wstrict-overflow=5 -Wmissing-noreturn -Walloca -Wfloat-equal -Wdeclaration-after-statement -Wshadow -Wpointer-arith -Wabsolute-value -Wundef -Wexpansion-to-defined -Wunused-macros -Wno-endif-labels -Wbad-function-cast -Wcast-qual -Wwrite-strings -Wconversion -Wdangling-else -Wdate-time -Wempty-body -Wsign-conversion -Wfloat-conversion -Waggregate-return -Wstrict-prototypes -Wold-style-definition -Wmissing-prototypes -Wmissing-declarations -Wpacked -Wredundant-decls -Wnested-externs -Winline -Winvalid-pch -Wvariadic-macros -Wdisabled-optimization -Wstack-protector -Woverlength-strings)
 
 install(TARGETS dc_posix LIBRARY DESTINATION lib)
 install(FILES ${HEADER_LIST} DESTINATION include/dc_posix)

@@ -35,9 +35,9 @@ int dc_socket(const struct dc_posix_env *env, struct dc_error *err, int domain, 
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/connect.html
 int dc_connect(const struct dc_posix_env *env,
-               struct dc_error *          err,
+               struct dc_error           *err,
                int                        socket,
-               const struct sockaddr *    address,
+               const struct sockaddr     *address,
                socklen_t                  address_len)
 {
     int ret_val;
@@ -56,7 +56,7 @@ int dc_connect(const struct dc_posix_env *env,
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/getsockopt.html
 int dc_getsockopt(const struct dc_posix_env *env,
-                  struct dc_error *          err,
+                  struct dc_error           *err,
                   int                        socket,
                   int                        level,
                   int                        option_name,
@@ -79,11 +79,11 @@ int dc_getsockopt(const struct dc_posix_env *env,
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/setsockopt.html
 int dc_setsockopt(const struct dc_posix_env *env,
-                  struct dc_error *          err,
+                  struct dc_error           *err,
                   int                        socket,
                   int                        level,
                   int                        option_name,
-                  const void *               option_value,
+                  const void                *option_value,
                   socklen_t                  option_len)
 {
     int ret_val;
@@ -102,9 +102,9 @@ int dc_setsockopt(const struct dc_posix_env *env,
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/bind.html
 int dc_bind(const struct dc_posix_env *env,
-            struct dc_error *          err,
+            struct dc_error           *err,
             int                        socket,
-            const struct sockaddr *    address,
+            const struct sockaddr     *address,
             socklen_t                  address_len)
 {
     int ret_val;
@@ -140,7 +140,7 @@ int dc_listen(const struct dc_posix_env *env, struct dc_error *err, int socket, 
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/accept.html
 int dc_accept(const struct dc_posix_env *env,
-              struct dc_error *          err,
+              struct dc_error           *err,
               int                        socket,
               struct sockaddr * restrict address,
               socklen_t * restrict address_len)
@@ -160,7 +160,7 @@ int dc_accept(const struct dc_posix_env *env,
 }
 
 int dc_getpeername(const struct dc_posix_env *env,
-                   struct dc_error *          err,
+                   struct dc_error           *err,
                    int                        socket,
                    struct sockaddr * restrict address,
                    socklen_t * restrict address_len)
@@ -180,7 +180,7 @@ int dc_getpeername(const struct dc_posix_env *env,
 }
 
 int dc_getsockname(const struct dc_posix_env *env,
-                   struct dc_error *          err,
+                   struct dc_error           *err,
                    int                        socket,
                    struct sockaddr * restrict address,
                    socklen_t * restrict address_len)
@@ -218,7 +218,7 @@ dc_recv(const struct dc_posix_env *env, struct dc_error *err, int socket, void *
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/recvfrom.html
 ssize_t dc_recvfrom(const struct dc_posix_env *env,
-                    struct dc_error *          err,
+                    struct dc_error           *err,
                     int                        socket,
                     void * restrict buffer,
                     size_t length,
@@ -292,12 +292,12 @@ dc_sendmsg(const struct dc_posix_env *env, struct dc_error *err, int socket, con
 }
 
 ssize_t dc_sendto(const struct dc_posix_env *env,
-                  struct dc_error *          err,
+                  struct dc_error           *err,
                   int                        socket,
-                  const void *               message,
+                  const void                *message,
                   size_t                     length,
                   int                        flags,
-                  const struct sockaddr *    dest_addr,
+                  const struct sockaddr     *dest_addr,
                   socklen_t                  dest_len)
 {
     ssize_t ret_val;
@@ -347,7 +347,7 @@ int dc_sockatmark(const struct dc_posix_env *env, struct dc_error *err, int sock
 }
 
 int dc_socketpair(const struct dc_posix_env *env,
-                  struct dc_error *          err,
+                  struct dc_error           *err,
                   int                        domain,
                   int                        type,
                   int                        protocol,

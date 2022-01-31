@@ -18,8 +18,8 @@
  */
 
 #include "dc_posix_env.h"
-#include <sys/types.h>
 #include <stdlib.h>
+#include <sys/types.h>
 
 /**
  *
@@ -35,7 +35,8 @@ _Noreturn void dc__Exit(const struct dc_posix_env *env, int status);
  * @param s
  * @return
  */
-long dc_a64l(const struct dc_posix_env *env, struct dc_error *err, const char *s);
+long dc_a64l(const struct dc_posix_env *env, struct dc_error *err,
+             const char *s);
 
 /**
  *
@@ -59,7 +60,8 @@ int dc_abs(const struct dc_posix_env *env, struct dc_error *err, int i);
  * @param func
  * @return
  */
-int dc_atexit(const struct dc_posix_env *env, struct dc_error *err, void (*func)(void));
+int dc_atexit(const struct dc_posix_env *env, struct dc_error *err,
+              void (*func)(void));
 
 /**
  *
@@ -71,7 +73,9 @@ int dc_atexit(const struct dc_posix_env *env, struct dc_error *err, void (*func)
  * @param compar
  * @return
  */
-void *dc_bsearch(const struct dc_posix_env *env, const void *key, const void *base, size_t nel, size_t width, int (*compar)(const void *, const void *));
+void *dc_bsearch(const struct dc_posix_env *env, const void *key,
+                 const void *base, size_t nel, size_t width,
+                 int (*compar)(const void *, const void *));
 
 /**
  *
@@ -81,7 +85,8 @@ void *dc_bsearch(const struct dc_posix_env *env, const void *key, const void *ba
  * @param elsize
  * @return
  */
-void *dc_calloc(const struct dc_posix_env *env, struct dc_error *err, size_t nelem, size_t elsize);
+void *dc_calloc(const struct dc_posix_env *env, struct dc_error *err,
+                size_t nelem, size_t elsize);
 
 /**
  *
@@ -139,7 +144,8 @@ char *dc_getenv(const struct dc_posix_env *env, const char *name);
  * @param valuep
  * @return
  */
-int dc_getsubopt(const struct dc_posix_env *env, char **optionp, char * const *keylistp, char **valuep);
+int dc_getsubopt(const struct dc_posix_env *env, char **optionp,
+                 char *const *keylistp, char **valuep);
 
 /**
  *
@@ -148,7 +154,8 @@ int dc_getsubopt(const struct dc_posix_env *env, char **optionp, char * const *k
  * @param fildes
  * @return
  */
-int dc_grantpt(const struct dc_posix_env *env, struct dc_error *err, int fildes);
+int dc_grantpt(const struct dc_posix_env *env, struct dc_error *err,
+               int fildes);
 
 /**
  *
@@ -158,7 +165,8 @@ int dc_grantpt(const struct dc_posix_env *env, struct dc_error *err, int fildes)
  * @param size
  * @return
  */
-char *dc_initstate(const struct dc_posix_env *env, unsigned seed, char *state, size_t size);
+char *dc_initstate(const struct dc_posix_env *env, unsigned seed, char *state,
+                   size_t size);
 
 /**
  *
@@ -207,7 +215,8 @@ ldiv_t dc_ldiv(const struct dc_posix_env *env, long numer, long denom);
  * @param i
  * @return
  */
-long long dc_llabs(const struct dc_posix_env *env, struct dc_error *err, long long i);
+long long dc_llabs(const struct dc_posix_env *env, struct dc_error *err,
+                   long long i);
 
 /**
  *
@@ -216,7 +225,8 @@ long long dc_llabs(const struct dc_posix_env *env, struct dc_error *err, long lo
  * @param denom
  * @return
  */
-lldiv_t dc_lldiv(const struct dc_posix_env *env, long long numer, long long denom);
+lldiv_t dc_lldiv(const struct dc_posix_env *env, long long numer,
+                 long long denom);
 
 /**
  *
@@ -232,7 +242,8 @@ long dc_lrand48(const struct dc_posix_env *env);
  * @param size
  * @return
  */
-void *dc_malloc(const struct dc_posix_env *env, struct dc_error *err, size_t size);
+void *dc_malloc(const struct dc_posix_env *env, struct dc_error *err,
+                size_t size);
 
 /**
  *
@@ -242,7 +253,8 @@ void *dc_malloc(const struct dc_posix_env *env, struct dc_error *err, size_t siz
  * @param n
  * @return
  */
-int dc_mblen(const struct dc_posix_env *env, struct dc_error *err, const char *s, size_t n);
+int dc_mblen(const struct dc_posix_env *env, struct dc_error *err,
+             const char *s, size_t n);
 
 /**
  *
@@ -253,7 +265,8 @@ int dc_mblen(const struct dc_posix_env *env, struct dc_error *err, const char *s
  * @param n
  * @return
  */
-size_t dc_mbstowcs(const struct dc_posix_env *env, struct dc_error *err, wchar_t *restrict pwcs, const char *restrict s, size_t n);
+size_t dc_mbstowcs(const struct dc_posix_env *env, struct dc_error *err,
+                   wchar_t *restrict pwcs, const char *restrict s, size_t n);
 
 /**
  *
@@ -264,7 +277,8 @@ size_t dc_mbstowcs(const struct dc_posix_env *env, struct dc_error *err, wchar_t
  * @param n
  * @return
  */
-int dc_mbtowc(const struct dc_posix_env *env, struct dc_error *err, wchar_t *restrict pwc, const char *restrict s, size_t n);
+int dc_mbtowc(const struct dc_posix_env *env, struct dc_error *err,
+              wchar_t *restrict pwc, const char *restrict s, size_t n);
 
 /**
  *
@@ -273,7 +287,8 @@ int dc_mbtowc(const struct dc_posix_env *env, struct dc_error *err, wchar_t *res
  * @param template
  * @return
  */
-char *dc_mkdtemp(const struct dc_posix_env *env, struct dc_error *err, char *template);
+char *dc_mkdtemp(const struct dc_posix_env *env, struct dc_error *err,
+                 char *template);
 
 /**
  *
@@ -282,7 +297,8 @@ char *dc_mkdtemp(const struct dc_posix_env *env, struct dc_error *err, char *tem
  * @param template
  * @return
  */
-int dc_mkstemp(const struct dc_posix_env *env, struct dc_error *err, char *template);
+int dc_mkstemp(const struct dc_posix_env *env, struct dc_error *err,
+               char *template);
 
 /**
  *
@@ -308,7 +324,8 @@ long dc_nrand48(const struct dc_posix_env *env, unsigned short xsubi[3]);
  * @param size
  * @return
  */
-int dc_posix_memalign(const struct dc_posix_env *env, struct dc_error *err, void **memptr, size_t alignment, size_t size);
+int dc_posix_memalign(const struct dc_posix_env *env, struct dc_error *err,
+                      void **memptr, size_t alignment, size_t size);
 
 /**
  *
@@ -317,7 +334,8 @@ int dc_posix_memalign(const struct dc_posix_env *env, struct dc_error *err, void
  * @param oflag
  * @return
  */
-int dc_posix_openpt(const struct dc_posix_env *env, struct dc_error *err, int oflag);
+int dc_posix_openpt(const struct dc_posix_env *env, struct dc_error *err,
+                    int oflag);
 
 /**
  *
@@ -326,7 +344,8 @@ int dc_posix_openpt(const struct dc_posix_env *env, struct dc_error *err, int of
  * @param fildes
  * @return
  */
-char *dc_ptsname(const struct dc_posix_env *env, struct dc_error *err, int fildes);
+char *dc_ptsname(const struct dc_posix_env *env, struct dc_error *err,
+                 int fildes);
 
 /**
  *
@@ -335,7 +354,8 @@ char *dc_ptsname(const struct dc_posix_env *env, struct dc_error *err, int filde
  * @param string
  * @return
  */
-int dc_putenv(const struct dc_posix_env *env, struct dc_error *err, char *string);
+int dc_putenv(const struct dc_posix_env *env, struct dc_error *err,
+              char *string);
 
 /**
  *
@@ -345,7 +365,8 @@ int dc_putenv(const struct dc_posix_env *env, struct dc_error *err, char *string
  * @param width
  * @param compar
  */
-void dc_qsort(const struct dc_posix_env *env, void *base, size_t nel, size_t width, int (*compar)(const void *, const void *));
+void dc_qsort(const struct dc_posix_env *env, void *base, size_t nel,
+              size_t width, int (*compar)(const void *, const void *));
 
 /**
  *
@@ -369,7 +390,8 @@ long dc_random(const struct dc_posix_env *env);
  * @param size
  * @return
  */
-void *dc_realloc(const struct dc_posix_env *env, struct dc_error *err, void *ptr, size_t size);
+void *dc_realloc(const struct dc_posix_env *env, struct dc_error *err,
+                 void *ptr, size_t size);
 
 /**
  *
@@ -379,7 +401,8 @@ void *dc_realloc(const struct dc_posix_env *env, struct dc_error *err, void *ptr
  * @param resolved_name
  * @return
  */
-char *dc_realpath(const struct dc_posix_env *env, struct dc_error *err, const char *restrict file_name, char *restrict resolved_name);
+char *dc_realpath(const struct dc_posix_env *env, struct dc_error *err,
+                  const char *restrict file_name, char *restrict resolved_name);
 
 /**
  *
@@ -387,7 +410,8 @@ char *dc_realpath(const struct dc_posix_env *env, struct dc_error *err, const ch
  * @param seed16v
  * @return
  */
-unsigned short *dc_seed48(const struct dc_posix_env *env, unsigned short seed16v[3]);
+unsigned short *dc_seed48(const struct dc_posix_env *env,
+                          unsigned short seed16v[3]);
 
 /**
  *
@@ -398,7 +422,8 @@ unsigned short *dc_seed48(const struct dc_posix_env *env, unsigned short seed16v
  * @param overwrite
  * @return
  */
-int dc_setenv(const struct dc_posix_env *env, struct dc_error *err, const char *envname, const char *envval, int overwrite);
+int dc_setenv(const struct dc_posix_env *env, struct dc_error *err,
+              const char *envname, const char *envval, int overwrite);
 
 /**
  *
@@ -437,7 +462,8 @@ void dc_srandom(const struct dc_posix_env *env, unsigned seed);
  * @param endptr
  * @return
  */
-double dc_strtod(const struct dc_posix_env *env, struct dc_error *err, const char *restrict nptr, char **restrict endptr);
+double dc_strtod(const struct dc_posix_env *env, struct dc_error *err,
+                 const char *restrict nptr, char **restrict endptr);
 
 /**
  *
@@ -447,28 +473,8 @@ double dc_strtod(const struct dc_posix_env *env, struct dc_error *err, const cha
  * @param endptr
  * @return
  */
-float dc_strtof(const struct dc_posix_env *env, struct dc_error *err, const char *restrict nptr, char **restrict endptr);
-
-/**
- *
- * @param env
- * @param err
- * @param nptr
- * @param endptr
- * @param base
- * @return
- */
-long dc_strtol(const struct dc_posix_env *env, struct dc_error *err, const char *restrict nptr, char **restrict endptr, int base);
-
-/**
- *
- * @param env
- * @param err
- * @param nptr
- * @param endptr
- * @return
- */
-long double dc_strtold(const struct dc_posix_env *env, struct dc_error *err, const char *restrict nptr, char **restrict endptr);
+float dc_strtof(const struct dc_posix_env *env, struct dc_error *err,
+                const char *restrict nptr, char **restrict endptr);
 
 /**
  *
@@ -479,7 +485,32 @@ long double dc_strtold(const struct dc_posix_env *env, struct dc_error *err, con
  * @param base
  * @return
  */
-long long dc_strtoll(const struct dc_posix_env *env, struct dc_error *err, const char *restrict nptr, char **restrict endptr, int base);
+long dc_strtol(const struct dc_posix_env *env, struct dc_error *err,
+               const char *restrict nptr, char **restrict endptr, int base);
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param nptr
+ * @param endptr
+ * @return
+ */
+long double dc_strtold(const struct dc_posix_env *env, struct dc_error *err,
+                       const char *restrict nptr, char **restrict endptr);
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param nptr
+ * @param endptr
+ * @param base
+ * @return
+ */
+long long dc_strtoll(const struct dc_posix_env *env, struct dc_error *err,
+                     const char *restrict nptr, char **restrict endptr,
+                     int base);
 
 /**
  *
@@ -490,7 +521,9 @@ long long dc_strtoll(const struct dc_posix_env *env, struct dc_error *err, const
  * @param base
  * @return
  */
-unsigned long dc_strtoul(const struct dc_posix_env *env, struct dc_error *err, const char *restrict str, char **restrict endptr, int base);
+unsigned long dc_strtoul(const struct dc_posix_env *env, struct dc_error *err,
+                         const char *restrict str, char **restrict endptr,
+                         int base);
 
 /**
  *
@@ -501,7 +534,9 @@ unsigned long dc_strtoul(const struct dc_posix_env *env, struct dc_error *err, c
  * @param base
  * @return
  */
-unsigned long long dc_strtoull(const struct dc_posix_env *env, struct dc_error *err, const char *restrict str, char **restrict endptr, int base);
+unsigned long long dc_strtoull(const struct dc_posix_env *env,
+                               struct dc_error *err, const char *restrict str,
+                               char **restrict endptr, int base);
 
 /**
  *
@@ -510,7 +545,8 @@ unsigned long long dc_strtoull(const struct dc_posix_env *env, struct dc_error *
  * @param command
  * @return
  */
-int dc_system(const struct dc_posix_env *env, struct dc_error *err, const char *command);
+int dc_system(const struct dc_posix_env *env, struct dc_error *err,
+              const char *command);
 
 /**
  *
@@ -519,7 +555,8 @@ int dc_system(const struct dc_posix_env *env, struct dc_error *err, const char *
  * @param fildes
  * @return
  */
-int dc_unlockpt(const struct dc_posix_env *env, struct dc_error *err, int fildes);
+int dc_unlockpt(const struct dc_posix_env *env, struct dc_error *err,
+                int fildes);
 
 /**
  *
@@ -528,8 +565,8 @@ int dc_unlockpt(const struct dc_posix_env *env, struct dc_error *err, int fildes
  * @param name
  * @return
  */
-int dc_unsetenv(const struct dc_posix_env *env, struct dc_error *err, const char *name);
-
+int dc_unsetenv(const struct dc_posix_env *env, struct dc_error *err,
+                const char *name);
 
 /**
  *
@@ -540,8 +577,8 @@ int dc_unsetenv(const struct dc_posix_env *env, struct dc_error *err, const char
  * @param n
  * @return
  */
-size_t dc_wcstombs(const struct dc_posix_env *env, struct dc_error *err, char *restrict s, const wchar_t *restrict pwcs, size_t n);
-
+size_t dc_wcstombs(const struct dc_posix_env *env, struct dc_error *err,
+                   char *restrict s, const wchar_t *restrict pwcs, size_t n);
 
 /**
  *
@@ -551,6 +588,7 @@ size_t dc_wcstombs(const struct dc_posix_env *env, struct dc_error *err, char *r
  * @param wchar
  * @return
  */
-int dc_wctomb(const struct dc_posix_env *env, struct dc_error *err, char *s, wchar_t wchar);
+int dc_wctomb(const struct dc_posix_env *env, struct dc_error *err, char *s,
+              wchar_t wchar);
 
 #endif // LIBDC_POSIX_DC_STDLIB_H

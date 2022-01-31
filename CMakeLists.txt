@@ -1,6 +1,6 @@
 # https://gitlab.com/CLIUtils/modern-cmake/-/blob/master/examples/extended-project/CMakeLists.txt
 
-cmake_minimum_required(VERSION 3.19)
+cmake_minimum_required(VERSION 3.21)
 
 # Project name and a few useful settings. Other commands can pick up the results
 project(libdc_posix

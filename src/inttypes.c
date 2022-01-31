@@ -19,7 +19,7 @@
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/strtoimax.html
 intmax_t dc_strtoimax(const struct dc_posix_env *env,
-                      struct dc_error *          err,
+                      struct dc_error           *err,
                       const char * restrict nptr,
                       char ** restrict endptr,
                       int base)
@@ -44,7 +44,7 @@ intmax_t dc_strtoimax(const struct dc_posix_env *env,
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/strtoimax.html
 uintmax_t dc_strtoumax(const struct dc_posix_env *env,
-                       struct dc_error *          err,
+                       struct dc_error           *err,
                        const char * restrict nptr,
                        char ** restrict endptr,
                        int base)

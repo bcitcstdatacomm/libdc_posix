@@ -195,8 +195,8 @@ int dc_execv(const struct dc_posix_env *env, struct dc_error *err, const char *p
 }
 
 int dc_execve(const struct dc_posix_env *env,
-              struct dc_error *          err,
-              const char *               path,
+              struct dc_error           *err,
+              const char                *path,
               char * const               argv[],
               char * const               envp[])
 {
@@ -279,9 +279,9 @@ int dc_fchown(const struct dc_posix_env *env, struct dc_error *err, int fildes, 
 }
 
 int dc_fchownat(const struct dc_posix_env *env,
-                struct dc_error *          err,
+                struct dc_error           *err,
                 int                        fd,
-                const char *               path,
+                const char                *path,
                 uid_t                      owner,
                 gid_t                      group,
                 int                        flag)
@@ -525,10 +525,10 @@ int dc_getlogin_r(const struct dc_posix_env *env, struct dc_error *err, char *na
 }
 
 int dc_getopt(const struct dc_posix_env *env,
-              struct dc_error *          err,
+              struct dc_error           *err,
               int                        argc,
               char * const               argv[],
-              const char *               optstring)
+              const char                *optstring)
 {
     int ret_val;
 
@@ -669,11 +669,11 @@ int dc_link(const struct dc_posix_env *env, struct dc_error *err, const char *pa
 }
 
 int dc_linkat(const struct dc_posix_env *env,
-              struct dc_error *          err,
+              struct dc_error           *err,
               int                        fd1,
-              const char *               path1,
+              const char                *path1,
               int                        fd2,
-              const char *               path2,
+              const char                *path2,
               int                        flag)
 {
     int ret_val;
@@ -839,7 +839,7 @@ ssize_t dc_read(const struct dc_posix_env *env, struct dc_error *err, int fildes
 }
 
 ssize_t dc_readlink(const struct dc_posix_env *env,
-                    struct dc_error *          err,
+                    struct dc_error           *err,
                     const char * restrict path,
                     char * restrict buf,
                     size_t bufsize)
@@ -859,7 +859,7 @@ ssize_t dc_readlink(const struct dc_posix_env *env,
 }
 
 ssize_t dc_readlinkat(const struct dc_posix_env *env,
-                      struct dc_error *          err,
+                      struct dc_error           *err,
                       int                        fd,
                       const char * restrict path,
                       char * restrict buf,

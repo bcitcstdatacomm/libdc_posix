@@ -21,7 +21,7 @@
 #include <stdio.h>
 
 int dc_regcomp(const struct dc_posix_env *env,
-               struct dc_error *          err,
+               struct dc_error           *err,
                regex_t * restrict preg,
                const char * restrict pattern,
                int cflags)
@@ -34,11 +34,11 @@ int dc_regcomp(const struct dc_posix_env *env,
 
     if(ret_val != 0)
     {
-        char *message;
+        char  *message;
         size_t message_size;
 
         message_size = dc_regerror(env, ret_val, preg, NULL, 0) + 1;
-        message = dc_malloc(env, err, message_size);
+        message      = dc_malloc(env, err, message_size);
 
         if(dc_error_has_no_error(err))
         {
@@ -66,7 +66,7 @@ size_t dc_regerror(const struct dc_posix_env *env,
     return ret_val;
 }
 
-int dc_regexec(const struct dc_posix_env *              env,
+int dc_regexec(const struct dc_posix_env *env,
                const regex_t * restrict preg,
                const char * restrict string,
                size_t     nmatch,

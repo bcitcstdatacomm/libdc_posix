@@ -21,7 +21,7 @@ int dc_dbm_clearerr(const struct dc_posix_env *env, struct dc_error *err, DBM *d
     int error_code;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
 
     // linux returns void, so no assignment possible
     dbm_clearerr(db);
@@ -57,8 +57,8 @@ int dc_dbm_delete(const struct dc_posix_env *env, struct dc_error *err, DBM *db,
     int error_code;
 
     DC_TRACE(env);
-    errno   = 0;
-    ret_val = dbm_delete(db, key);
+    errno      = 0;
+    ret_val    = dbm_delete(db, key);
     error_code = dbm_error(db);
 
     if(error_code != 0)
@@ -80,14 +80,16 @@ int dc_dbm_error(const struct dc_posix_env *env, DBM *db)
     return ret_val;
 }
 
-datum dc_dbm_fetch(const struct dc_posix_env *env, struct dc_error *err, DBM *db, datum key)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Waggregate-return"
+datum                  dc_dbm_fetch(const struct dc_posix_env *env, struct dc_error *err, DBM *db, datum key)
 {
     datum ret_val;
-    int error_code;
+    int   error_code;
 
     DC_TRACE(env);
-    errno   = 0;
-    ret_val = dbm_fetch(db, key);
+    errno      = 0;
+    ret_val    = dbm_fetch(db, key);
     error_code = dbm_error(db);
 
     if(error_code != 0)
@@ -97,15 +99,18 @@ datum dc_dbm_fetch(const struct dc_posix_env *env, struct dc_error *err, DBM *db
 
     return ret_val;
 }
+#pragma GCC diagnostic pop
 
-datum dc_dbm_firstkey(const struct dc_posix_env *env, struct dc_error *err, DBM *db)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Waggregate-return"
+datum                  dc_dbm_firstkey(const struct dc_posix_env *env, struct dc_error *err, DBM *db)
 {
     datum ret_val;
-    int error_code;
+    int   error_code;
 
     DC_TRACE(env);
-    errno   = 0;
-    ret_val = dbm_firstkey(db);
+    errno      = 0;
+    ret_val    = dbm_firstkey(db);
     error_code = dbm_error(db);
 
     if(error_code != 0)
@@ -115,15 +120,18 @@ datum dc_dbm_firstkey(const struct dc_posix_env *env, struct dc_error *err, DBM 
 
     return ret_val;
 }
+#pragma GCC diagnostic pop
 
-datum dc_dbm_nextkey(const struct dc_posix_env *env, struct dc_error *err, DBM *db)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Waggregate-return"
+datum                  dc_dbm_nextkey(const struct dc_posix_env *env, struct dc_error *err, DBM *db)
 {
     datum ret_val;
-    int error_code;
+    int   error_code;
 
     DC_TRACE(env);
-    errno   = 0;
-    ret_val = dbm_nextkey(db);
+    errno      = 0;
+    ret_val    = dbm_nextkey(db);
     error_code = dbm_error(db);
 
     if(error_code != 0)
@@ -133,17 +141,18 @@ datum dc_dbm_nextkey(const struct dc_posix_env *env, struct dc_error *err, DBM *
 
     return ret_val;
 }
+#pragma GCC diagnostic pop
 
-DBM *dc_dbm_open(const struct dc_posix_env *env,
-                 struct dc_error *          err,
-                 const char *               file,
-                 int                        open_flags,
-                 mode_t                     file_mode)
+DBM                   *dc_dbm_open(const struct dc_posix_env *env,
+                                   struct dc_error           *err,
+                                   const char                *file,
+                                   int                        open_flags,
+                                   mode_t                     file_mode)
 {
     DBM *ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
 #if defined(__GNUC__) && !defined(__clang__)
     #pragma GCC diagnostic push
     #pragma GCC diagnostic ignored "-Wdiscarded-qualifiers"
@@ -162,8 +171,8 @@ DBM *dc_dbm_open(const struct dc_posix_env *env,
 }
 
 int dc_dbm_store(const struct dc_posix_env *env,
-                 struct dc_error *          err,
-                 DBM *                      db,
+                 struct dc_error           *err,
+                 DBM                       *db,
                  datum                      key,
                  datum                      content,
                  int                        store_mode)
@@ -172,8 +181,8 @@ int dc_dbm_store(const struct dc_posix_env *env,
     int error_code;
 
     DC_TRACE(env);
-    errno   = 0;
-    ret_val = dbm_store(db, key, content, store_mode);
+    errno      = 0;
+    ret_val    = dbm_store(db, key, content, store_mode);
     error_code = dbm_error(db);
 
     if(error_code != 0)

@@ -33,10 +33,10 @@ pid_t dc_wait(const struct dc_posix_env *env, struct dc_error *err, int *stat_lo
 }
 
 int dc_waitid(const struct dc_posix_env *env,
-              struct dc_error *          err,
+              struct dc_error           *err,
               idtype_t                   idtype,
               id_t                       id,
-              siginfo_t *                infop,
+              siginfo_t                 *infop,
               int                        options)
 {
     int ret_val;

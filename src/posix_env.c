@@ -21,8 +21,8 @@
 
 void dc_posix_env_init(struct dc_posix_env *env,
                        void (*tracer)(const struct dc_posix_env *env,
-                                      const char *               file_name,
-                                      const char *               function_name,
+                                      const char                *file_name,
+                                      const char                *function_name,
                                       size_t                     line_number))
 {
     memset(env, 0, sizeof(struct dc_posix_env));
@@ -30,8 +30,8 @@ void dc_posix_env_init(struct dc_posix_env *env,
 }
 
 void dc_posix_default_tracer(__attribute__((unused)) const struct dc_posix_env *env,
-                             const char *                                       file_name,
-                             const char *                                       function_name,
+                             const char                                        *file_name,
+                             const char                                        *function_name,
                              size_t                                             line_number)
 {
     fprintf(stdout, "TRACE: %s : %s : @ %zu\n", file_name, function_name, line_number);

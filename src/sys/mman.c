@@ -47,7 +47,14 @@ int dc_mlockall(const struct dc_posix_env *env, struct dc_error *err, int flags)
     return ret_val;
 }
 
-void *dc_mmap(const struct dc_posix_env *env, struct dc_error *err, void *addr, size_t len, int prot, int flags, int fildes, off_t off)
+void *dc_mmap(const struct dc_posix_env *env,
+              struct dc_error           *err,
+              void                      *addr,
+              size_t                     len,
+              int                        prot,
+              int                        flags,
+              int                        fildes,
+              off_t                      off)
 {
     void *ret_val;
 

@@ -18,8 +18,8 @@
  */
 
 #include "dc_posix_env.h"
-#include <sys/types.h>
 #include <ndbm.h>
+#include <sys/types.h>
 
 /**
  *
@@ -78,7 +78,7 @@ datum dc_dbm_fetch(const struct dc_posix_env *env, struct dc_error *err,
  * @return
  */
 datum dc_dbm_firstkey(const struct dc_posix_env *env, struct dc_error *err,
-                      DBM   *db);
+                      DBM *db);
 
 /**
  *

@@ -42,7 +42,8 @@ char *dc_ctermid(const struct dc_posix_env *env, char *s);
  * @param stream
  * @return
  */
-int dc_fclose(const struct dc_posix_env *env, struct dc_error * err, FILE *stream);
+int dc_fclose(const struct dc_posix_env *env, struct dc_error *err,
+              FILE *stream);
 
 /**
  *
@@ -52,7 +53,8 @@ int dc_fclose(const struct dc_posix_env *env, struct dc_error * err, FILE *strea
  * @param mode
  * @return
  */
-FILE *dc_fdopen(const struct dc_posix_env *env, struct dc_error * err, int fildes, const char *mode);
+FILE *dc_fdopen(const struct dc_posix_env *env, struct dc_error *err,
+                int fildes, const char *mode);
 
 /**
  *
@@ -77,7 +79,8 @@ int dc_ferror(const struct dc_posix_env *env, FILE *stream);
  * @param stream
  * @return
  */
-int dc_fflush(const struct dc_posix_env *env, struct dc_error * err, FILE *stream);
+int dc_fflush(const struct dc_posix_env *env, struct dc_error *err,
+              FILE *stream);
 
 /**
  *
@@ -86,7 +89,8 @@ int dc_fflush(const struct dc_posix_env *env, struct dc_error * err, FILE *strea
  * @param stream
  * @return
  */
-int dc_fgetc(const struct dc_posix_env *env, struct dc_error * err, FILE *stream);
+int dc_fgetc(const struct dc_posix_env *env, struct dc_error *err,
+             FILE *stream);
 
 /**
  *
@@ -96,7 +100,8 @@ int dc_fgetc(const struct dc_posix_env *env, struct dc_error * err, FILE *stream
  * @param pos
  * @return
  */
-int dc_fgetpos(const struct dc_posix_env *env, struct dc_error * err, FILE *restrict stream, fpos_t *restrict pos);
+int dc_fgetpos(const struct dc_posix_env *env, struct dc_error *err,
+               FILE *restrict stream, fpos_t *restrict pos);
 
 /**
  *
@@ -107,7 +112,8 @@ int dc_fgetpos(const struct dc_posix_env *env, struct dc_error * err, FILE *rest
  * @param stream
  * @return
  */
-char *dc_fgets(const struct dc_posix_env *env, struct dc_error * err, char *restrict s, int n, FILE *restrict stream);
+char *dc_fgets(const struct dc_posix_env *env, struct dc_error *err,
+               char *restrict s, int n, FILE *restrict stream);
 
 /**
  *
@@ -116,7 +122,8 @@ char *dc_fgets(const struct dc_posix_env *env, struct dc_error * err, char *rest
  * @param stream
  * @return
  */
-int dc_fileno(const struct dc_posix_env *env, struct dc_error * err, FILE *stream);
+int dc_fileno(const struct dc_posix_env *env, struct dc_error *err,
+              FILE *stream);
 
 /**
  *
@@ -134,7 +141,8 @@ void dc_flockfile(const struct dc_posix_env *env, FILE *file);
  * @param mode
  * @return
  */
-FILE *dc_fmemopen(const struct dc_posix_env *env, struct dc_error * err, void *restrict buf, size_t size, const char *restrict mode);
+FILE *dc_fmemopen(const struct dc_posix_env *env, struct dc_error *err,
+                  void *restrict buf, size_t size, const char *restrict mode);
 
 /**
  *
@@ -144,7 +152,8 @@ FILE *dc_fmemopen(const struct dc_posix_env *env, struct dc_error * err, void *r
  * @param mode
  * @return
  */
-FILE *dc_fopen(const struct dc_posix_env *env, struct dc_error * err, const char *restrict pathname, const char *restrict mode);
+FILE *dc_fopen(const struct dc_posix_env *env, struct dc_error *err,
+               const char *restrict pathname, const char *restrict mode);
 
 /**
  *
@@ -154,7 +163,8 @@ FILE *dc_fopen(const struct dc_posix_env *env, struct dc_error * err, const char
  * @param stream
  * @return
  */
-int dc_fputc(const struct dc_posix_env *env, struct dc_error * err, int c, FILE *stream);
+int dc_fputc(const struct dc_posix_env *env, struct dc_error *err, int c,
+             FILE *stream);
 
 /**
  *
@@ -164,7 +174,8 @@ int dc_fputc(const struct dc_posix_env *env, struct dc_error * err, int c, FILE 
  * @param stream
  * @return
  */
-int dc_fputs(const struct dc_posix_env *env, struct dc_error * err, const char *restrict s, FILE *restrict stream);
+int dc_fputs(const struct dc_posix_env *env, struct dc_error *err,
+             const char *restrict s, FILE *restrict stream);
 
 /**
  *
@@ -176,7 +187,9 @@ int dc_fputs(const struct dc_posix_env *env, struct dc_error * err, const char *
  * @param stream
  * @return
  */
-size_t dc_fread(const struct dc_posix_env *env, struct dc_error * err, void *restrict ptr, size_t size, size_t nitems, FILE *restrict stream);
+size_t dc_fread(const struct dc_posix_env *env, struct dc_error *err,
+                void *restrict ptr, size_t size, size_t nitems,
+                FILE *restrict stream);
 
 /**
  *
@@ -187,7 +200,9 @@ size_t dc_fread(const struct dc_posix_env *env, struct dc_error * err, void *res
  * @param stream
  * @return
  */
-FILE *dc_freopen(const struct dc_posix_env *env, struct dc_error * err, const char *restrict pathname, const char *restrict mode, FILE *restrict stream);
+FILE *dc_freopen(const struct dc_posix_env *env, struct dc_error *err,
+                 const char *restrict pathname, const char *restrict mode,
+                 FILE *restrict stream);
 
 /**
  *
@@ -198,7 +213,8 @@ FILE *dc_freopen(const struct dc_posix_env *env, struct dc_error * err, const ch
  * @param whence
  * @return
  */
-int dc_fseek(const struct dc_posix_env *env, struct dc_error * err, FILE *stream, long offset, int whence);
+int dc_fseek(const struct dc_posix_env *env, struct dc_error *err, FILE *stream,
+             long offset, int whence);
 
 /**
  *
@@ -209,7 +225,8 @@ int dc_fseek(const struct dc_posix_env *env, struct dc_error * err, FILE *stream
  * @param whence
  * @return
  */
-int dc_fseeko(const struct dc_posix_env *env, struct dc_error * err, FILE *stream, off_t offset, int whence);
+int dc_fseeko(const struct dc_posix_env *env, struct dc_error *err,
+              FILE *stream, off_t offset, int whence);
 
 /**
  *
@@ -219,7 +236,8 @@ int dc_fseeko(const struct dc_posix_env *env, struct dc_error * err, FILE *strea
  * @param pos
  * @return
  */
-int dc_fsetpos(const struct dc_posix_env *env, struct dc_error * err, FILE *stream, const fpos_t *pos);
+int dc_fsetpos(const struct dc_posix_env *env, struct dc_error *err,
+               FILE *stream, const fpos_t *pos);
 
 /**
  *
@@ -228,7 +246,8 @@ int dc_fsetpos(const struct dc_posix_env *env, struct dc_error * err, FILE *stre
  * @param stream
  * @return
  */
-long dc_ftell(const struct dc_posix_env *env, struct dc_error * err, FILE *stream);
+long dc_ftell(const struct dc_posix_env *env, struct dc_error *err,
+              FILE *stream);
 
 /**
  *
@@ -237,7 +256,8 @@ long dc_ftell(const struct dc_posix_env *env, struct dc_error * err, FILE *strea
  * @param stream
  * @return
  */
-off_t dc_ftello(const struct dc_posix_env *env, struct dc_error * err, FILE *stream);
+off_t dc_ftello(const struct dc_posix_env *env, struct dc_error *err,
+                FILE *stream);
 
 /**
  *
@@ -264,7 +284,9 @@ void dc_funlockfile(const struct dc_posix_env *env, FILE *file);
  * @param stream
  * @return
  */
-size_t dc_fwrite(const struct dc_posix_env *env, struct dc_error * err, const void *restrict ptr, size_t size, size_t nitems, FILE *restrict stream);
+size_t dc_fwrite(const struct dc_posix_env *env, struct dc_error *err,
+                 const void *restrict ptr, size_t size, size_t nitems,
+                 FILE *restrict stream);
 
 /**
  *
@@ -273,7 +295,7 @@ size_t dc_fwrite(const struct dc_posix_env *env, struct dc_error * err, const vo
  * @param stream
  * @return
  */
-int dc_getc(const struct dc_posix_env *env, struct dc_error * err, FILE *stream);
+int dc_getc(const struct dc_posix_env *env, struct dc_error *err, FILE *stream);
 
 /**
  *
@@ -281,7 +303,7 @@ int dc_getc(const struct dc_posix_env *env, struct dc_error * err, FILE *stream)
  * @param err
  * @return
  */
-int dc_getchar(const struct dc_posix_env *env, struct dc_error * err);
+int dc_getchar(const struct dc_posix_env *env, struct dc_error *err);
 
 /**
  *
@@ -290,7 +312,8 @@ int dc_getchar(const struct dc_posix_env *env, struct dc_error * err);
  * @param stream
  * @return
  */
-int dc_getc_unlocked(const struct dc_posix_env *env, struct dc_error * err, FILE *stream);
+int dc_getc_unlocked(const struct dc_posix_env *env, struct dc_error *err,
+                     FILE *stream);
 
 /**
  *
@@ -298,7 +321,7 @@ int dc_getc_unlocked(const struct dc_posix_env *env, struct dc_error * err, FILE
  * @param err
  * @return
  */
-int dc_getchar_unlocked(const struct dc_posix_env *env, struct dc_error * err);
+int dc_getchar_unlocked(const struct dc_posix_env *env, struct dc_error *err);
 
 /**
  *
@@ -310,7 +333,9 @@ int dc_getchar_unlocked(const struct dc_posix_env *env, struct dc_error * err);
  * @param stream
  * @return
  */
-ssize_t dc_getdelim(const struct dc_posix_env *env, struct dc_error * err, char **restrict lineptr, size_t *restrict n, int delimiter, FILE *restrict stream);
+ssize_t dc_getdelim(const struct dc_posix_env *env, struct dc_error *err,
+                    char **restrict lineptr, size_t *restrict n, int delimiter,
+                    FILE *restrict stream);
 
 /**
  *
@@ -321,7 +346,9 @@ ssize_t dc_getdelim(const struct dc_posix_env *env, struct dc_error * err, char 
  * @param stream
  * @return
  */
-ssize_t dc_getline(const struct dc_posix_env *env, struct dc_error * err, char **restrict lineptr, size_t *restrict n, FILE *restrict stream);
+ssize_t dc_getline(const struct dc_posix_env *env, struct dc_error *err,
+                   char **restrict lineptr, size_t *restrict n,
+                   FILE *restrict stream);
 
 /**
  *
@@ -331,7 +358,8 @@ ssize_t dc_getline(const struct dc_posix_env *env, struct dc_error * err, char *
  * @param sizep
  * @return
  */
-FILE *dc_open_memstream(const struct dc_posix_env *env, struct dc_error * err, char **bufp, size_t *sizep);
+FILE *dc_open_memstream(const struct dc_posix_env *env, struct dc_error *err,
+                        char **bufp, size_t *sizep);
 
 /**
  *
@@ -340,7 +368,8 @@ FILE *dc_open_memstream(const struct dc_posix_env *env, struct dc_error * err, c
  * @param stream
  * @return
  */
-int dc_pclose(const struct dc_posix_env *env, struct dc_error * err, FILE *stream);
+int dc_pclose(const struct dc_posix_env *env, struct dc_error *err,
+              FILE *stream);
 
 /**
  *
@@ -357,7 +386,8 @@ void dc_perror(const struct dc_posix_env *env, const char *s);
  * @param mode
  * @return
  */
-FILE *dc_popen(const struct dc_posix_env *env, struct dc_error * err, const char *command, const char *mode);
+FILE *dc_popen(const struct dc_posix_env *env, struct dc_error *err,
+               const char *command, const char *mode);
 
 /**
  *
@@ -367,7 +397,8 @@ FILE *dc_popen(const struct dc_posix_env *env, struct dc_error * err, const char
  * @param stream
  * @return
  */
-int dc_putc(const struct dc_posix_env *env, struct dc_error * err, int c, FILE *stream);
+int dc_putc(const struct dc_posix_env *env, struct dc_error *err, int c,
+            FILE *stream);
 
 /**
  *
@@ -376,7 +407,7 @@ int dc_putc(const struct dc_posix_env *env, struct dc_error * err, int c, FILE *
  * @param c
  * @return
  */
-int dc_putchar(const struct dc_posix_env *env, struct dc_error * err, int c);
+int dc_putchar(const struct dc_posix_env *env, struct dc_error *err, int c);
 
 /**
  *
@@ -386,7 +417,8 @@ int dc_putchar(const struct dc_posix_env *env, struct dc_error * err, int c);
  * @param stream
  * @return
  */
-int dc_putc_unlocked(const struct dc_posix_env *env, struct dc_error * err, int c, FILE *stream);
+int dc_putc_unlocked(const struct dc_posix_env *env, struct dc_error *err,
+                     int c, FILE *stream);
 
 /**
  *
@@ -395,7 +427,8 @@ int dc_putc_unlocked(const struct dc_posix_env *env, struct dc_error * err, int 
  * @param c
  * @return
  */
-int dc_putchar_unlocked(const struct dc_posix_env *env, struct dc_error * err, int c);
+int dc_putchar_unlocked(const struct dc_posix_env *env, struct dc_error *err,
+                        int c);
 
 /**
  *
@@ -404,7 +437,8 @@ int dc_putchar_unlocked(const struct dc_posix_env *env, struct dc_error * err, i
  * @param s
  * @return
  */
-int dc_puts(const struct dc_posix_env *env, struct dc_error * err, const char *s);
+int dc_puts(const struct dc_posix_env *env, struct dc_error *err,
+            const char *s);
 
 /**
  *
@@ -413,7 +447,8 @@ int dc_puts(const struct dc_posix_env *env, struct dc_error * err, const char *s
  * @param path
  * @return
  */
-int dc_remove(const struct dc_posix_env *env, struct dc_error * err, const char *path);
+int dc_remove(const struct dc_posix_env *env, struct dc_error *err,
+              const char *path);
 
 /**
  *
@@ -423,7 +458,8 @@ int dc_remove(const struct dc_posix_env *env, struct dc_error * err, const char 
  * @param new
  * @return
  */
-int dc_rename(const struct dc_posix_env *env, struct dc_error * err, const char *old, const char *new);
+int dc_rename(const struct dc_posix_env *env, struct dc_error *err,
+              const char *old, const char *new);
 
 /**
  *
@@ -435,7 +471,8 @@ int dc_rename(const struct dc_posix_env *env, struct dc_error * err, const char 
  * @param new
  * @return
  */
-int dc_renameat(const struct dc_posix_env *env, struct dc_error * err, int oldfd, const char *old, int newfd, const char *new);
+int dc_renameat(const struct dc_posix_env *env, struct dc_error *err, int oldfd,
+                const char *old, int newfd, const char *new);
 
 /**
  *
@@ -443,7 +480,8 @@ int dc_renameat(const struct dc_posix_env *env, struct dc_error * err, int oldfd
  * @param err
  * @param stream
  */
-void dc_rewind(const struct dc_posix_env *env, struct dc_error * err, FILE *stream);
+void dc_rewind(const struct dc_posix_env *env, struct dc_error *err,
+               FILE *stream);
 
 /**
  *
@@ -452,7 +490,8 @@ void dc_rewind(const struct dc_posix_env *env, struct dc_error * err, FILE *stre
  * @param stream
  * @param buf
  */
-void dc_setbuf(const struct dc_posix_env *env, struct dc_error * err, FILE *restrict stream, char *restrict buf);
+void dc_setbuf(const struct dc_posix_env *env, struct dc_error *err,
+               FILE *restrict stream, char *restrict buf);
 
 /**
  *
@@ -464,7 +503,9 @@ void dc_setbuf(const struct dc_posix_env *env, struct dc_error * err, FILE *rest
  * @param size
  * @return
  */
-int dc_setvbuf(const struct dc_posix_env *env, struct dc_error * err, FILE *restrict stream, char *restrict buf, int type, size_t size);
+int dc_setvbuf(const struct dc_posix_env *env, struct dc_error *err,
+               FILE *restrict stream, char *restrict buf, int type,
+               size_t size);
 
 /**
  *
@@ -472,7 +513,7 @@ int dc_setvbuf(const struct dc_posix_env *env, struct dc_error * err, FILE *rest
  * @param err
  * @return
  */
-FILE *dc_tmpfile(const struct dc_posix_env *env, struct dc_error * err);
+FILE *dc_tmpfile(const struct dc_posix_env *env, struct dc_error *err);
 
 /**
  *

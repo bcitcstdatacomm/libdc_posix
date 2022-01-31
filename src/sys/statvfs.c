@@ -33,7 +33,7 @@ int dc_fstatvfs(const struct dc_posix_env *env, struct dc_error *err, int fildes
 }
 
 int dc_statvfs(const struct dc_posix_env *env,
-               struct dc_error *          err,
+               struct dc_error           *err,
                const char * restrict path,
                struct statvfs * restrict buf)
 {

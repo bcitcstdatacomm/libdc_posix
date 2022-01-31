@@ -98,7 +98,7 @@ int dc_pthread_kill(const struct dc_posix_env *env, struct dc_error *err, pthrea
 }
 
 int dc_pthread_sigmask(const struct dc_posix_env *env,
-                       struct dc_error *          err,
+                       struct dc_error           *err,
                        int                        how,
                        const sigset_t * restrict set,
                        sigset_t * restrict oset)
@@ -134,7 +134,7 @@ int dc_raise(const struct dc_posix_env *env, struct dc_error *err, int sig)
 }
 
 int dc_sigaction(const struct dc_posix_env *env,
-                 struct dc_error *          err,
+                 struct dc_error           *err,
                  int                        sig,
                  const struct sigaction * restrict act,
                  struct sigaction * restrict oact)
@@ -158,7 +158,7 @@ int dc_sigaddset(const struct dc_posix_env *env, struct dc_error *err, sigset_t 
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wsign-conversion"
     // NOLINTNEXTLINE(hicpp-signed-bitwise)
@@ -174,7 +174,7 @@ int dc_sigaddset(const struct dc_posix_env *env, struct dc_error *err, sigset_t 
 }
 
 int dc_sigaltstack(const struct dc_posix_env *env,
-                   struct dc_error *          err,
+                   struct dc_error           *err,
                    const stack_t * restrict ss,
                    stack_t * restrict oss)
 {
@@ -197,7 +197,7 @@ int dc_sigdelset(const struct dc_posix_env *env, struct dc_error *err, sigset_t 
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wsign-conversion"
     // NOLINTNEXTLINE(hicpp-signed-bitwise)
@@ -244,28 +244,12 @@ int dc_sigfillset(const struct dc_posix_env *env, struct dc_error *err, sigset_t
     return ret_val;
 }
 
-int dc_siginterrupt(const struct dc_posix_env *env, struct dc_error *err, int sig, int flag)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno   = 0;
-    ret_val = siginterrupt(sig, flag);
-
-    if(ret_val == -1)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-
-    return ret_val;
-}
-
 int dc_sigismember(const struct dc_posix_env *env, struct dc_error *err, const sigset_t *set, int signo)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wsign-conversion"
     // NOLINTNEXTLINE(hicpp-signed-bitwise)
@@ -314,7 +298,7 @@ int dc_sigpending(const struct dc_posix_env *env, struct dc_error *err, sigset_t
 }
 
 int dc_sigprocmask(const struct dc_posix_env *env,
-                   struct dc_error *          err,
+                   struct dc_error           *err,
                    int                        how,
                    const sigset_t * restrict set,
                    sigset_t * restrict oset)

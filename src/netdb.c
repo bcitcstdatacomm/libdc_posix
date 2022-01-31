@@ -26,7 +26,7 @@ void dc_freeaddrinfo(const struct dc_posix_env *env, struct addrinfo *ai)
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/freeaddrinfo.html
 int dc_getaddrinfo(const struct dc_posix_env *env,
-                   struct dc_error *          err,
+                   struct dc_error           *err,
                    const char * restrict nodename,
                    const char * restrict servname,
                    const struct addrinfo * restrict hints,

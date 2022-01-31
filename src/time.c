@@ -19,9 +19,9 @@
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/nanosleep.html
 int dc_nanosleep(const struct dc_posix_env *env,
-                 struct dc_error *          err,
-                 const struct timespec *    rqtp,
-                 struct timespec *          rmtp)
+                 struct dc_error           *err,
+                 const struct timespec     *rqtp,
+                 struct timespec           *rmtp)
 {
     int ret_val;
 

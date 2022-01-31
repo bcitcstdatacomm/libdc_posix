@@ -20,7 +20,6 @@
 #include "dc_posix_env.h"
 #include <time.h>
 
-
 /**
  *
  * @param env

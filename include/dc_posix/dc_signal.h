@@ -157,17 +157,6 @@ int dc_sigfillset(const struct dc_posix_env *env, struct dc_error *err,
  *
  * @param env
  * @param err
- * @param sig
- * @param flag
- * @return
- */
-int dc_siginterrupt(const struct dc_posix_env *env, struct dc_error *err,
-                    int sig, int flag);
-
-/**
- *
- * @param env
- * @param err
  * @param set
  * @param signo
  * @return
