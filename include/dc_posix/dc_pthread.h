@@ -195,72 +195,15 @@ int dc_pthread_attr_setstack(const struct dc_posix_env *env, struct dc_error *er
  */
 int dc_pthread_attr_setstacksize(const struct dc_posix_env *env, struct dc_error *err, pthread_attr_t *attr, size_t stacksize);
 
-/**
- *
- * @param env
- * @param err
- * @param barrier
- * @return
- */
+/*
 int dc_pthread_barrier_destroy(const struct dc_posix_env *env, struct dc_error *err, pthread_barrier_t *barrier);
-
-/**
- *
- * @param env
- * @param err
- * @param barrier
- * @param attr
- * @param count
- * @return
- */
 int dc_pthread_barrier_init(const struct dc_posix_env *env, struct dc_error *err, pthread_barrier_t *restrict barrier, const pthread_barrierattr_t *restrict attr, unsigned count);
-
-/**
- *
- * @param env
- * @param err
- * @param barrier
- * @return
- */
 int dc_pthread_barrier_wait(const struct dc_posix_env *env, struct dc_error *err, pthread_barrier_t *barrier);
-
-/**
- *
- * @param env
- * @param err
- * @param attr
- * @return
- */
 int dc_pthread_barrierattr_destroy(const struct dc_posix_env *env, struct dc_error *err, pthread_barrierattr_t *attr);
-
-/**
- *
- * @param env
- * @param err
- * @param attr
- * @param pshared
- * @return
- */
 int dc_pthread_barrierattr_getpshared(const struct dc_posix_env *env, struct dc_error *err, const pthread_barrierattr_t *restrict attr, int *restrict pshared);
-
-/**
- *
- * @param env
- * @param err
- * @param attr
- * @return
- */
 int dc_pthread_barrierattr_init(const struct dc_posix_env *env, struct dc_error *err, pthread_barrierattr_t *attr);
-
-/**
- *
- * @param env
- * @param err
- * @param attr
- * @param pshared
- * @return
- */
 int dc_pthread_barrierattr_setpshared(const struct dc_posix_env *env, struct dc_error *err, pthread_barrierattr_t *attr, int pshared);
+*/
 
 /**
  *
@@ -338,15 +281,7 @@ int dc_pthread_cond_wait(const struct dc_posix_env *env, struct dc_error *err, p
  */
 int dc_pthread_condattr_destroy(const struct dc_posix_env *env, struct dc_error *err, pthread_condattr_t *attr);
 
-/**
- *
- * @param env
- * @param err
- * @param attr
- * @param clock_id
- * @return
- */
-int dc_pthread_condattr_getclock(const struct dc_posix_env *env, struct dc_error *err, const pthread_condattr_t *restrict attr, clockid_t *restrict clock_id);
+// int dc_pthread_condattr_getclock(const struct dc_posix_env *env, struct dc_error *err, const pthread_condattr_t *restrict attr, clockid_t *restrict clock_id);
 
 /**
  *
@@ -367,15 +302,7 @@ int dc_pthread_condattr_getpshared(const struct dc_posix_env *env, struct dc_err
  */
 int dc_pthread_condattr_init(const struct dc_posix_env *env, struct dc_error *err, pthread_condattr_t *attr);
 
-/**
- *
- * @param env
- * @param err
- * @param attr
- * @param clock_id
- * @return
- */
-int dc_pthread_condattr_setclock(const struct dc_posix_env *env, struct dc_error *err, pthread_condattr_t *attr, clockid_t clock_id);
+// int dc_pthread_condattr_setclock(const struct dc_posix_env *env, struct dc_error *err, pthread_condattr_t *attr, clockid_t clock_id);
 
 /**
  *
@@ -424,15 +351,7 @@ int dc_pthread_equal(const struct dc_posix_env *env, pthread_t t1, pthread_t t2)
  */
 _Noreturn void dc_pthread_exit(const struct dc_posix_env *env, void *value_ptr);
 
-/**
- *
- * @param env
- * @param err
- * @param thread_id
- * @param clock_id
- * @return
- */
-int dc_pthread_getcpuclockid(const struct dc_posix_env *env, struct dc_error *err, pthread_t thread_id, clockid_t *clock_id);
+// int dc_pthread_getcpuclockid(const struct dc_posix_env *env, struct dc_error *err, pthread_t thread_id, clockid_t *clock_id);
 
 /**
  *
@@ -482,14 +401,7 @@ int dc_pthread_key_create(const struct dc_posix_env *env, struct dc_error *err, 
  */
 int dc_pthread_key_delete(const struct dc_posix_env *env, struct dc_error *err, pthread_key_t key);
 
-/**
- *
- * @param env
- * @param err
- * @param mutex
- * @return
- */
-int dc_pthread_mutex_consistent(const struct dc_posix_env *env, struct dc_error *err, pthread_mutex_t *mutex);
+// int dc_pthread_mutex_consistent(const struct dc_posix_env *env, struct dc_error *err, pthread_mutex_t *mutex);
 
 /**
  *
@@ -540,15 +452,7 @@ int dc_pthread_mutex_lock(const struct dc_posix_env *env, struct dc_error *err, 
  */
 int dc_pthread_mutex_setprioceiling(const struct dc_posix_env *env, struct dc_error *err, pthread_mutex_t *restrict mutex, int prioceiling, int *restrict old_ceiling);
 
-/**
- *
- * @param env
- * @param err
- * @param mutex
- * @param abstime
- * @return
- */
-int dc_pthread_mutex_timedlock(const struct dc_posix_env *env, struct dc_error *err, pthread_mutex_t *restrict mutex, const struct timespec *restrict abstime);
+// int dc_pthread_mutex_timedlock(const struct dc_posix_env *env, struct dc_error *err, pthread_mutex_t *restrict mutex, const struct timespec *restrict abstime);
 
 /**
  *
@@ -607,15 +511,7 @@ int dc_pthread_mutexattr_getprotocol(const struct dc_posix_env *env, struct dc_e
  */
 int dc_pthread_mutexattr_getpshared(const struct dc_posix_env *env, struct dc_error *err, const pthread_mutexattr_t *restrict attr, int *restrict pshared);
 
-/**
- *
- * @param env
- * @param err
- * @param attr
- * @param robust
- * @return
- */
-int dc_pthread_mutexattr_getrobust(const struct dc_posix_env *env, struct dc_error *err, const pthread_mutexattr_t *restrict attr, int *restrict robust);
+// int dc_pthread_mutexattr_getrobust(const struct dc_posix_env *env, struct dc_error *err, const pthread_mutexattr_t *restrict attr, int *restrict robust);
 
 /**
  *
@@ -666,15 +562,7 @@ int dc_pthread_mutexattr_setprotocol(const struct dc_posix_env *env, struct dc_e
  */
 int dc_pthread_mutexattr_setpshared(const struct dc_posix_env *env, struct dc_error *err, pthread_mutexattr_t *attr, int pshared);
 
-/**
- *
- * @param env
- * @param err
- * @param attr
- * @param robust
- * @return
- */
-int dc_pthread_mutexattr_setrobust(const struct dc_posix_env *env, struct dc_error *err, pthread_mutexattr_t *attr, int robust);
+// int dc_pthread_mutexattr_setrobust(const struct dc_posix_env *env, struct dc_error *err, pthread_mutexattr_t *attr, int robust);
 
 /**
  *
@@ -724,25 +612,9 @@ int dc_pthread_rwlock_init(const struct dc_posix_env *env, struct dc_error *err,
  */
 int dc_pthread_rwlock_rdlock(const struct dc_posix_env *env, struct dc_error *err, pthread_rwlock_t *rwlock);
 
-/**
- *
- * @param env
- * @param err
- * @param rwlock
- * @param abstime
- * @return
- */
-int dc_pthread_rwlock_timedrdlock(const struct dc_posix_env *env, struct dc_error *err, pthread_rwlock_t *restrict rwlock, const struct timespec *restrict abstime);
+// int dc_pthread_rwlock_timedrdlock(const struct dc_posix_env *env, struct dc_error *err, pthread_rwlock_t *restrict rwlock, const struct timespec *restrict abstime);
 
-/**
- *
- * @param env
- * @param err
- * @param rwlock
- * @param abstime
- * @return
- */
-int dc_pthread_rwlock_timedwrlock(const struct dc_posix_env *env, struct dc_error *err, pthread_rwlock_t *restrict rwlock, const struct timespec *restrict abstime);
+// int dc_pthread_rwlock_timedwrlock(const struct dc_posix_env *env, struct dc_error *err, pthread_rwlock_t *restrict rwlock, const struct timespec *restrict abstime);
 
 /**
  *
@@ -856,15 +728,7 @@ int dc_pthread_setcanceltype(const struct dc_posix_env *env, struct dc_error *er
  */
 int dc_pthread_setschedparam(const struct dc_posix_env *env, struct dc_error *err, pthread_t thread, int policy, const struct sched_param *param);
 
-/**
- *
- * @param env
- * @param err
- * @param thread
- * @param prio
- * @return
- */
-int dc_pthread_setschedprio(const struct dc_posix_env *env, struct dc_error *err, pthread_t thread, int prio);
+// int dc_pthread_setschedprio(const struct dc_posix_env *env, struct dc_error *err, pthread_t thread, int prio);
 
 /**
  *
@@ -876,51 +740,13 @@ int dc_pthread_setschedprio(const struct dc_posix_env *env, struct dc_error *err
  */
 int dc_pthread_setspecific(const struct dc_posix_env *env, struct dc_error *err, pthread_key_t key, const void *value);
 
-/**
- *
- * @param env
- * @param err
- * @param lock
- * @return
- */
+/*
 int dc_pthread_spin_destroy(const struct dc_posix_env *env, struct dc_error *err, pthread_spinlock_t *lock);
-
-/**
- *
- * @param env
- * @param err
- * @param lock
- * @param pshared
- * @return
- */
 int dc_pthread_spin_init(const struct dc_posix_env *env, struct dc_error *err, pthread_spinlock_t *lock, int pshared);
-
-/**
- *
- * @param env
- * @param err
- * @param lock
- * @return
- */
 int dc_pthread_spin_lock(const struct dc_posix_env *env, struct dc_error *err, pthread_spinlock_t *lock);
-
-/**
- *
- * @param env
- * @param err
- * @param lock
- * @return
- */
 int dc_pthread_spin_trylock(const struct dc_posix_env *env, struct dc_error *err, pthread_spinlock_t *lock);
-
-/**
- *
- * @param env
- * @param err
- * @param lock
- * @return
- */
 int dc_pthread_spin_unlock(const struct dc_posix_env *env, struct dc_error *err, pthread_spinlock_t *lock);
+*/
 
 /**
  *
