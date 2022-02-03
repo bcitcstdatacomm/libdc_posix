@@ -16,19 +16,120 @@
 
 #include "dc_fcntl.h"
 #include "dc_posix_env.h"
+#include <stdarg.h>
 
-// https://pubs.opengroup.org/onlinepubs/9699919799/functions/open.html
-int dc_open(const struct dc_posix_env *env, struct dc_error *err, const char *path, unsigned int oflag, mode_t mode)
+
+int dc_creat(const struct dc_posix_env *env, struct dc_error *err, const char *path, mode_t mode)
 {
     int ret_val;
 
     DC_TRACE(env);
     errno   = 0;
+    ret_val = creat(path, mode);
+
+    if(ret_val == -1)
+    {
+        DC_ERROR_RAISE_ERRNO(err, errno);
+    }
+
+    return ret_val;
+}
+
+int dc_open(const struct dc_posix_env *env, struct dc_error *err, const char *path, unsigned int oflag, ...)
+{
+    int ret_val;
+    mode_t mode;
+
+    DC_TRACE(env);
+    errno   = 0;
+
+    if(((oflag & DC_O_CREAT) != 0)
+#ifdef O_TMPFILE
+    || ((oflag & O_TMPFILE) != 0)
+#endif
+    )
+    {
+        va_list arg;
+        va_start(arg, oflag);
+        mode = va_arg(arg, mode_t);
+        va_end(arg);
+    }
+    else
+    {
+        mode = 0;
+    }
+
     ret_val = open(path, (int)oflag, mode);
 
     if(ret_val == -1)
     {
         DC_ERROR_RAISE_ERRNO(err, errno);
+    }
+
+    return ret_val;
+}
+
+int dc_openat(const struct dc_posix_env *env, struct dc_error *err, int fd, const char *path, unsigned int oflag, ...)
+{
+    int ret_val;
+    mode_t mode;
+
+    DC_TRACE(env);
+    errno   = 0;
+
+    if((((oflag) & DC_O_CREAT) != 0)
+#ifdef O_TMPFILE
+        || (((oflag) & O_TMPFILE) != 0)
+#endif
+    )
+    {
+        va_list arg;
+        va_start(arg, oflag);
+        mode = va_arg(arg, mode_t);
+        va_end(arg);
+    }
+    else
+    {
+        mode = 0;
+    }
+
+    ret_val = openat(fd, path, (int)oflag, mode);
+
+    if(ret_val == -1)
+    {
+        DC_ERROR_RAISE_ERRNO(err, errno);
+    }
+
+    return ret_val;
+}
+
+int dc_posix_fadvise(const struct dc_posix_env *env, struct dc_error *err, int fd, off_t offset, off_t len, int advice)
+{
+    int ret_val;
+
+    DC_TRACE(env);
+    errno   = 0;
+    ret_val = posix_fadvise(fd, offset, len, advice);
+
+    if(ret_val == -1)
+    {
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
+    }
+
+    return ret_val;
+}
+
+int dc_posix_fallocate(const struct dc_posix_env *env, struct dc_error *err, int fd, off_t offset, off_t len)
+{
+    int ret_val;
+
+    DC_TRACE(env);
+    errno   = 0;
+    ret_val = posix_fallocate(fd, offset, len);
+
+    if(ret_val == -1)
+    {
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;

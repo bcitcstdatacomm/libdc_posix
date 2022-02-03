@@ -20,6 +20,9 @@
  * limitations under the License.
  */
 
+
+in_addr_t dc_inet_addr(const struct dc_posix_env *env, struct dc_error *err, const char *cp);
+char *dc_inet_ntoa(const struct dc_posix_env *env, struct in_addr in);
 const char *dc_inet_ntop(const struct dc_posix_env *env, struct dc_error *err,
                          int af, const void *restrict src, char *restrict dst,
                          socklen_t size);

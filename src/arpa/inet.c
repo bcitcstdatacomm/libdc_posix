@@ -16,6 +16,34 @@
 
 #include "arpa/dc_inet.h"
 
+in_addr_t dc_inet_addr(const struct dc_posix_env *env, struct dc_error *err, const char *cp)
+{
+    in_addr_t addr;
+
+    DC_TRACE(env);
+    errno        = 0;
+    addr = inet_addr(cp);
+
+    if(addr == (in_addr_t) -1)
+    {
+        // TODO: the documentation is unclear on what happens if there is an error
+        DC_ERROR_RAISE_ERRNO(err, errno);
+    }
+
+    return addr;
+}
+
+char *dc_inet_ntoa(const struct dc_posix_env *env, struct in_addr in)
+{
+    char *addr;
+
+    DC_TRACE(env);
+    errno = 0;
+    addr = inet_ntoa(in);
+
+    return addr;
+}
+
 const char *dc_inet_ntop(const struct dc_posix_env *env,
                          struct dc_error           *err,
                          int                        af,
@@ -49,7 +77,6 @@ int dc_inet_pton(const struct dc_posix_env *env,
     errno   = 0;
     numeric = inet_pton(af, src, dst);
 
-    // TODO: 0 is special too... but how to handle?
     if(numeric == -1)
     {
         DC_ERROR_RAISE_ERRNO(err, errno);
