@@ -72,7 +72,7 @@ void *dc_dlsym(const struct dc_posix_env *env, struct dc_error *err, void *restr
 
     DC_TRACE(env);
     errno   = 0;
-    ret_val = dlopen(handle, name);
+    ret_val = dlsym(handle, name);
 
     if(ret_val != 0)
     {
