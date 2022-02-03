@@ -25,8 +25,8 @@ int dc_creat(const struct dc_posix_env *env, struct dc_error *err, const char *p
 // int dc_fcntl(const struct dc_posix_env *env, struct dc_error *err, int fildes, int cmd, ...);
 int dc_open(const struct dc_posix_env *env, struct dc_error *err, const char *path, unsigned int oflag, ...);
 int dc_openat(const struct dc_posix_env *env, struct dc_error *err, int fd, const char *path, unsigned int oflag, ...);
-int dc_posix_fadvise(const struct dc_posix_env *env, struct dc_error *err, int fd, off_t offset, off_t len, int advice);
-int dc_posix_fallocate(const struct dc_posix_env *env, struct dc_error *err, int fd, off_t offset, off_t len);
+// int dc_posix_fadvise(const struct dc_posix_env *env, struct dc_error *err, int fd, off_t offset, off_t len, int advice);
+// int dc_posix_fallocate(const struct dc_posix_env *env, struct dc_error *err, int fd, off_t offset, off_t len);
 
 #define DC_O_APPEND (unsigned int)O_APPEND
 #define DC_O_CLOEXEC (unsigned int)O_CLOEXEC

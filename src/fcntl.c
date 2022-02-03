@@ -103,6 +103,7 @@ int dc_openat(const struct dc_posix_env *env, struct dc_error *err, int fd, cons
     return ret_val;
 }
 
+/*
 int dc_posix_fadvise(const struct dc_posix_env *env, struct dc_error *err, int fd, off_t offset, off_t len, int advice)
 {
     int ret_val;
@@ -134,3 +135,4 @@ int dc_posix_fallocate(const struct dc_posix_env *env, struct dc_error *err, int
 
     return ret_val;
 }
+*/
