@@ -15,7 +15,6 @@
  */
 
 #include "dc_wordexp.h"
-#include <errno.h>
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/wordexp.html
 int dc_wordexp(const struct dc_posix_env *env,

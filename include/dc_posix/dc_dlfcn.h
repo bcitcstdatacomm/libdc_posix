@@ -18,6 +18,7 @@
  */
 
 #include "dc_posix_env.h"
+#include <dlfcn.h>
 
 int dc_dlclose(const struct dc_posix_env *env, struct dc_error *err, void *handle);
 char *dc_dlerror(const struct dc_posix_env *env);

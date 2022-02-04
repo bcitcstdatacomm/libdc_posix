@@ -15,7 +15,6 @@
  */
 
 #include "dc_dlfcn.h"
-#include <dlfcn.h>
 
 int dc_dlclose(const struct dc_posix_env *env, struct dc_error *err, void *handle)
 {

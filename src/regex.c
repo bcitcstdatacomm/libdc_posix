@@ -18,7 +18,6 @@
 #include "dc_stdlib.h"
 #include "dc_string.h"
 #include <regex.h>
-#include <stdio.h>
 
 int dc_regcomp(const struct dc_posix_env *env,
                struct dc_error           *err,

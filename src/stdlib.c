@@ -17,7 +17,6 @@
 #include "dc_stdlib.h"
 #include "dc_string.h"
 #include <errno.h>
-#include <stdlib.h>
 #include <unistd.h>
 
 void dc__Exit(const struct dc_posix_env *env, int status)

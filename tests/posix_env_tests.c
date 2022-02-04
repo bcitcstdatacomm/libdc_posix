@@ -5,10 +5,12 @@
 Describe(dc_posix_env);
 
 BeforeEach(dc_posix_env)
-{}
+{
+}
 
 AfterEach(dc_posix_env)
-{}
+{
+}
 
 Ensure(dc_posix_env, env_init_tests)
 {
@@ -58,7 +60,7 @@ Ensure(dc_posix_env, env_trace_tests)
     assert_that(actual_line_number, is_equal_to(line_number + 1)); // need + 1 because DC_TRACE is the real line #
 }
 
-TestSuite *dc_env_tests(void)
+TestSuite *dc_posix_env_tests(void)
 {
     TestSuite *suite;
 

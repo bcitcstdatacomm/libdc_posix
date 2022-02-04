@@ -10,9 +10,45 @@ set(TEST_HEADER_LIST
 
 set(TEST_SOURCE_LIST
         main.c
+        arpa/inet_tests.c
+        net/if_tests.c
+        sys/mman_tests.c
+        sys/select_tests.c
+        sys/socket_tests.c
+        sys/stat_tests.c
+        sys/statvfs_tests.c
+        sys/times_tests.c
+        sys/utsname_tests.c
+        sys/wait_tests.c
+        aio_tests.c
+        dirent_tests.c
+        dlfcn_tests.c
+        fcntl_tests.c
+        fnmatch_tests.c
+        glob_tests.c
+        grp_tests.c
+        iconv_tests.c
+        inttypes_tests.c
+        langinfo_tests.c
+        ndbm_tests.c
+        netdb_tests.c
+        nl_typtes_tests.c
+        poll_tests.c
         posix_env_tests.c
-        posix_error_tests.c
+        pthread_tests.c
+        pwd_tests.c
+        regex_tests.c
+        sched_tests.c
+        semaphore_tests.c
+        signal_tests.c
+        stdio_tests.c
+        stdlib_tests.c
         string_tests.c
+        strings_tests.c
+        termios_tests.c
+        time_tests.c
+        unistd_tests.c
+        wordexp_tests.c
         )
 
 include_directories(${CGREEN_PUBLIC_INCLUDE_DIRS} ${PROJECT_BINARY_DIR})

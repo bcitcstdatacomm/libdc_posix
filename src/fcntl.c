@@ -15,9 +15,7 @@
  */
 
 #include "dc_fcntl.h"
-#include "dc_posix_env.h"
 #include <stdarg.h>
-
 
 int dc_creat(const struct dc_posix_env *env, struct dc_error *err, const char *path, mode_t mode)
 {
@@ -50,6 +48,7 @@ int dc_open(const struct dc_posix_env *env, struct dc_error *err, const char *pa
     )
     {
         va_list arg;
+
         va_start(arg, oflag);
         mode = va_arg(arg, mode_t);
         va_end(arg);

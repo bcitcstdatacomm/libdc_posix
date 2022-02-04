@@ -19,7 +19,6 @@
 
 #include "dc_posix_env.h"
 #include <fcntl.h>
-#include <sys/stat.h>
 
 int dc_creat(const struct dc_posix_env *env, struct dc_error *err, const char *path, mode_t mode);
 // int dc_fcntl(const struct dc_posix_env *env, struct dc_error *err, int fildes, int cmd, ...);

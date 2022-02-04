@@ -17,8 +17,7 @@
  * limitations under the License.
  */
 
-#include "../dc_posix_env.h"
-#include <sys/signal.h>
+#include "dc_posix_env.h"
 #include <sys/wait.h>
 
 /**

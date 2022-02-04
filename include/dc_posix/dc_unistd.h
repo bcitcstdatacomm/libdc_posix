@@ -18,7 +18,7 @@
  */
 
 #include "dc_posix_env.h"
-#include <sys/types.h>
+#include <unistd.h>
 
 /**
  *

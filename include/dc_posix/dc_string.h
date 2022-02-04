@@ -19,6 +19,7 @@
 
 #include "dc_posix_env.h"
 #include <stddef.h>
+#include <string.h>
 #if __has_include(<locale.h>)
 #include <locale.h>
 #endif

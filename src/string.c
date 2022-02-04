@@ -15,7 +15,6 @@
  */
 
 #include "dc_string.h"
-#include <string.h>
 
 void *dc_memccpy(const struct dc_posix_env *env, void * restrict s1, const void * restrict s2, int c, size_t n)
 {

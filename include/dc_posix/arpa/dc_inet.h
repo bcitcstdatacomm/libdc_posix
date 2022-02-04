@@ -20,6 +20,7 @@
  * limitations under the License.
  */
 
+#include "dc_posix_env.h"
 
 in_addr_t dc_inet_addr(const struct dc_posix_env *env, struct dc_error *err, const char *cp);
 char *dc_inet_ntoa(const struct dc_posix_env *env, struct in_addr in);

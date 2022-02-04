@@ -18,7 +18,6 @@
  */
 
 #include "dc_posix_env.h"
-#include <aio.h>
 #include <dirent.h>
 
 

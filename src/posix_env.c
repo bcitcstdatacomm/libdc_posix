@@ -16,7 +16,6 @@
 
 #include "dc_posix_env.h"
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
 void dc_posix_env_init(struct dc_posix_env *env,

@@ -15,7 +15,6 @@
  */
 
 #include "sys/dc_mman.h"
-#include <sys/mman.h>
 
 int dc_mlock(const struct dc_posix_env *env, struct dc_error *err, const void *addr, size_t len)
 {
