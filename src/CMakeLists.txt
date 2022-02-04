@@ -24,6 +24,7 @@ find_library(LIBDC_ERROR dc_error REQUIRED)
 find_library(LIB_RT rt)
 find_library(LIB_PTHREAD pthread)
 find_library(LIB_CRYPT crypt)
+find_library(LIB_ICONV iconv)
 find_library(LIB_GDBM gdbm)
 find_library(LIB_GDBM_COMPAT gdbm_compat)
 
@@ -39,6 +40,10 @@ endif()
 
 if(LIB_CRYPT)
     target_link_libraries(dc_posix PUBLIC ${LIB_CRYPT})
+endif()
+
+if(LIB_ICONV)
+    target_link_libraries(dc_posix PUBLIC ${LIB_ICONV})
 endif()
 
 if(LIB_GDBM)

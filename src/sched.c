@@ -48,6 +48,7 @@ int dc_sched_get_priority_min(const struct dc_posix_env *env, struct dc_error *e
     return ret_val;
 }
 
+/*
 int dc_sched_getparam(const struct dc_posix_env *env, struct dc_error *err, pid_t pid, struct sched_param *param)
 {
     int ret_val;
@@ -63,7 +64,9 @@ int dc_sched_getparam(const struct dc_posix_env *env, struct dc_error *err, pid_
 
     return ret_val;
 }
+*/
 
+/*
 int dc_sched_getscheduler(const struct dc_posix_env *env, struct dc_error *err, pid_t pid)
 {
     int ret_val;
@@ -79,7 +82,9 @@ int dc_sched_getscheduler(const struct dc_posix_env *env, struct dc_error *err, 
 
     return ret_val;
 }
+*/
 
+/*
 int dc_sched_rr_get_interval(const struct dc_posix_env *env, struct dc_error *err, pid_t pid, struct timespec *interval)
 {
     int ret_val;
@@ -95,7 +100,9 @@ int dc_sched_rr_get_interval(const struct dc_posix_env *env, struct dc_error *er
 
     return ret_val;
 }
+*/
 
+/*
 int dc_sched_setparam(const struct dc_posix_env *env, struct dc_error *err, pid_t pid, const struct sched_param *param)
 {
     int ret_val;
@@ -111,7 +118,9 @@ int dc_sched_setparam(const struct dc_posix_env *env, struct dc_error *err, pid_
 
     return ret_val;
 }
+*/
 
+/*
 int dc_sched_setscheduler(const struct dc_posix_env *env, struct dc_error *err, pid_t pid, int policy, const struct sched_param *param)
 {
     int ret_val;
@@ -127,7 +136,7 @@ int dc_sched_setscheduler(const struct dc_posix_env *env, struct dc_error *err, 
 
     return ret_val;
 }
-
+*/
 int dc_sched_yield(const struct dc_posix_env *env, struct dc_error *err)
 {
     int ret_val;

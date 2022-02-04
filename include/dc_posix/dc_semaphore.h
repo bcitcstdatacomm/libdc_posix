@@ -26,7 +26,7 @@ int dc_sem_getvalue(const struct dc_posix_env *env, struct dc_error *err, sem_t 
 int dc_sem_init(const struct dc_posix_env *env, struct dc_error *err, sem_t *sem, int pshared, unsigned value);
 sem_t *dc_sem_open(const struct dc_posix_env *env, struct dc_error *err, const char *name, unsigned int oflag, ...);
 int dc_sem_post(const struct dc_posix_env *env, struct dc_error *err, sem_t *sem);
-int dc_sem_timedwait(const struct dc_posix_env *env, struct dc_error *err, sem_t *restrict sem, const struct timespec *restrict abstime);
+// int dc_sem_timedwait(const struct dc_posix_env *env, struct dc_error *err, sem_t *restrict sem, const struct timespec *restrict abstime);
 int dc_sem_trywait(const struct dc_posix_env *env, struct dc_error *err, sem_t *sem);
 int dc_sem_unlink(const struct dc_posix_env *env, struct dc_error *err, const char *name);
 int dc_sem_wait(const struct dc_posix_env *env, struct dc_error *err, sem_t *sem);

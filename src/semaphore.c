@@ -129,6 +129,7 @@ int dc_sem_post(const struct dc_posix_env *env, struct dc_error *err, sem_t *sem
     return ret_val;
 }
 
+/*
 int dc_sem_timedwait(const struct dc_posix_env *env, struct dc_error *err, sem_t *restrict sem, const struct timespec *restrict abstime)
 {
     int ret_val;
@@ -144,6 +145,7 @@ int dc_sem_timedwait(const struct dc_posix_env *env, struct dc_error *err, sem_t
 
     return ret_val;
 }
+*/
 
 int dc_sem_trywait(const struct dc_posix_env *env, struct dc_error *err, sem_t *sem)
 {
