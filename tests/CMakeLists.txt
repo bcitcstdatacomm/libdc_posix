@@ -67,38 +67,43 @@ target_include_directories(libdc_posix_test PRIVATE /usr/local/include)
 
 find_library(LIBCGREEN cgreen REQUIRED)
 find_library(LIBDC_ERROR dc_error REQUIRED)
-find_library(LIB_RT rt)
-find_library(LIB_PTHREAD pthread)
 find_library(LIB_CRYPT crypt)
-find_library(LIB_ICONV iconv)
+find_library(LIB_DL dl)
 find_library(LIB_GDBM gdbm)
 find_library(LIB_GDBM_COMPAT gdbm_compat)
+find_library(LIB_ICONV iconv)
+find_library(LIB_PTHREAD pthread)
+find_library(LIB_RT rt)
 
 target_link_libraries(libdc_posix_test PRIVATE ${LIBCGREEN})
 target_link_libraries(libdc_posix_test PRIVATE ${LIBDC_ERROR})
 
-if(LIB_PTHREAD)
-    target_link_libraries(libdc_posix_test PRIVATE ${LIB_PTHREAD})
-endif()
-
-if(LIB_RT)
-    target_link_libraries(libdc_posix_test PRIVATE ${LIB_RT})
-endif()
-
 if(LIB_CRYPT)
-    target_link_libraries(libdc_posix_test PRIVATE ${LIB_CRYPT})
+    target_link_libraries(libdc_posix_test PUBLIC ${LIB_CRYPT})
 endif()
 
-if(LIB_ICONV)
-    target_link_libraries(libdc_posix_test PRIVATE ${LIB_ICONV})
+if(LIB_DL)
+    target_link_libraries(libdc_posix_test PUBLIC ${LIB_DL})
 endif()
 
 if(LIB_GDBM)
-    target_link_libraries(libdc_posix_test PRIVATE ${LIB_GDBM})
+    target_link_libraries(libdc_posix_test PUBLIC ${LIB_GDBM})
 endif()
 
 if(LIB_GDBM_COMPAT)
-    target_link_libraries(libdc_posix_test PRIVATE ${LIB_GDBM_COMPAT})
+    target_link_libraries(libdc_posix_test PUBLIC ${LIB_GDBM_COMPAT})
+endif()
+
+if(LIB_ICONV)
+    target_link_libraries(libdc_posix_test PUBLIC ${LIB_ICONV})
+endif()
+
+if(LIB_PTHREAD)
+    target_link_libraries(libdc_posix_test PUBLIC ${LIB_PTHREAD})
+endif()
+
+if(LIB_RT)
+    target_link_libraries(libdc_posix_test PUBLIC ${LIB_RT})
 endif()
 
 add_test(NAME dc_posix_test COMMAND libdc_posix_test)

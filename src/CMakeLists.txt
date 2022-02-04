@@ -21,29 +21,22 @@ set_target_properties(dc_posix PROPERTIES
         SOVERSION ${PROJECT_VERSION_MAJOR})
 
 find_library(LIBDC_ERROR dc_error REQUIRED)
-find_library(LIB_RT rt)
-find_library(LIB_PTHREAD pthread)
 find_library(LIB_CRYPT crypt)
-find_library(LIB_ICONV iconv)
+find_library(LIB_DL dl)
 find_library(LIB_GDBM gdbm)
 find_library(LIB_GDBM_COMPAT gdbm_compat)
+find_library(LIB_ICONV iconv)
+find_library(LIB_PTHREAD pthread)
+find_library(LIB_RT rt)
 
 target_link_libraries(dc_posix PUBLIC ${LIBDC_ERROR})
-
-if(LIB_RT)
-    target_link_libraries(dc_posix PUBLIC ${LIB_RT})
-endif()
-
-if(LIB_PTHREAD)
-    target_link_libraries(dc_posix PUBLIC ${LIB_PTHREAD})
-endif()
 
 if(LIB_CRYPT)
     target_link_libraries(dc_posix PUBLIC ${LIB_CRYPT})
 endif()
 
-if(LIB_ICONV)
-    target_link_libraries(dc_posix PUBLIC ${LIB_ICONV})
+if(LIB_DL)
+    target_link_libraries(dc_posix PUBLIC ${LIB_DL})
 endif()
 
 if(LIB_GDBM)
@@ -52,6 +45,18 @@ endif()
 
 if(LIB_GDBM_COMPAT)
     target_link_libraries(dc_posix PUBLIC ${LIB_GDBM_COMPAT})
+endif()
+
+if(LIB_ICONV)
+    target_link_libraries(dc_posix PUBLIC ${LIB_ICONV})
+endif()
+
+if(LIB_PTHREAD)
+    target_link_libraries(dc_posix PUBLIC ${LIB_PTHREAD})
+endif()
+
+if(LIB_RT)
+    target_link_libraries(dc_posix PUBLIC ${LIB_RT})
 endif()
 
 # All users of this library will need at least C11
