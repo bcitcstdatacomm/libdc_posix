@@ -19,7 +19,9 @@
 
 #include "dc_posix_env.h"
 #include <langinfo.h>
-#include <xlocale.h>
+#if __has_include(<xlocale.h>)
+    #include <xlocale.h>
+#endif
 
 char *dc_nl_langinfo(const struct dc_posix_env *env, nl_item item);
 char *dc_nl_langinfo_l(const struct dc_posix_env *env, nl_item item, locale_t locale);

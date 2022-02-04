@@ -19,7 +19,9 @@
 
 #include "dc_posix_env.h"
 #include <strings.h>
-#include <xlocale.h>
+#if __has_include(<xlocale.h>)
+    #include <xlocale.h>
+#endif
 
 int dc_ffs(const struct dc_posix_env *env, int i);
 int dc_strcasecmp(const struct dc_posix_env *env, const char *s1, const char *s2);
