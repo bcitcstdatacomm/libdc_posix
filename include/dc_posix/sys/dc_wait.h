@@ -18,6 +18,7 @@
  */
 
 #include "dc_posix_env.h"
+#include <signal.h>
 #include <sys/wait.h>
 
 /**
