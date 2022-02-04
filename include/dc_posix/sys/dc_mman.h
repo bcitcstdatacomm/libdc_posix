@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-#include "dc_posix_env.h"
+#include "../dc_posix_env.h"
 #include <sys/mman.h>
 
 int dc_mlock(const struct dc_posix_env *env, struct dc_error *err,
