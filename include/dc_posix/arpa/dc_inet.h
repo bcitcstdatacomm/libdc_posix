@@ -1,5 +1,5 @@
-#ifndef LIBDC_POSIX_INET_H
-#define LIBDC_POSIX_INET_H
+#ifndef LIBDC_POSIX_ARPA_INET_H
+#define LIBDC_POSIX_ARPA_INET_H
 
 #include "../dc_posix_env.h"
 #include <arpa/inet.h>
@@ -20,7 +20,7 @@
  * limitations under the License.
  */
 
-#include "dc_posix_env.h"
+#include "../dc_posix_env.h"
 
 in_addr_t dc_inet_addr(const struct dc_posix_env *env, struct dc_error *err, const char *cp);
 char *dc_inet_ntoa(const struct dc_posix_env *env, struct in_addr in);
