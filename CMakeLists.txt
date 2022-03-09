@@ -42,7 +42,9 @@ set(HEADER_LIST
         )
 
 set(HEADER_SYS_LIST
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/dc_ipc.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/dc_mman.h"
+        "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/dc_msg.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/dc_select.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/dc_socket.h"
         "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/dc_stat.h"
@@ -92,7 +94,9 @@ set(SOURCE_LIST
         "${libdc_posix_SOURCE_DIR}/src/wordexp.c"
         "${libdc_posix_SOURCE_DIR}/src/arpa/inet.c"
         "${libdc_posix_SOURCE_DIR}/src/net/if.c"
+        "${libdc_posix_SOURCE_DIR}/src/sys/ipc.c"
         "${libdc_posix_SOURCE_DIR}/src/sys/mman.c"
+        "${libdc_posix_SOURCE_DIR}/src/sys/msg.c"
         "${libdc_posix_SOURCE_DIR}/src/sys/select.c"
         "${libdc_posix_SOURCE_DIR}/src/sys/socket.c"
         "${libdc_posix_SOURCE_DIR}/src/sys/stat.c"
