@@ -57,9 +57,6 @@ add_executable(libdc_posix_test
 
 target_compile_features(libdc_posix_test PRIVATE c_std_17)
 target_compile_options(libdc_posix_test PRIVATE -g)
-target_compile_options(libdc_posix_test PRIVATE -fstack-protector-all -ftrapv)
-target_compile_options(libdc_posix_test PRIVATE -Wpedantic -Wall -Wextra)
-target_compile_options(libdc_posix_test PRIVATE -Wdouble-promotion -Wformat-nonliteral -Wformat-security -Wformat-y2k -Wnull-dereference -Winit-self -Wmissing-include-dirs -Wswitch-default -Wswitch-enum -Wunused-local-typedefs -Wstrict-overflow=5 -Wmissing-noreturn -Walloca -Wfloat-equal -Wdeclaration-after-statement -Wshadow -Wpointer-arith -Wabsolute-value -Wundef -Wexpansion-to-defined -Wunused-macros -Wno-endif-labels -Wbad-function-cast -Wcast-qual -Wcast-align -Wwrite-strings -Wconversion -Wdangling-else -Wdate-time -Wempty-body -Wsign-conversion -Wfloat-conversion -Waggregate-return -Wstrict-prototypes -Wold-style-definition -Wmissing-prototypes -Wmissing-declarations -Wredundant-decls -Wnested-externs -Winline -Winvalid-pch -Wvariadic-macros -Wdisabled-optimization -Wstack-protector -Woverlength-strings)
 
 target_include_directories(libdc_posix_test PRIVATE ../include/dc_posix)
 target_include_directories(libdc_posix_test PRIVATE /usr/include)
