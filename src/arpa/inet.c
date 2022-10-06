@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "arpa/dc_inet.h"
+#include "dc_posix/arpa/dc_inet.h"
 
 in_addr_t dc_inet_addr(const struct dc_posix_env *env, struct dc_error *err, const char *cp)
 {

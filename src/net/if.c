@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "net/dc_if.h"
+#include "dc_posix/net/dc_if.h"
 
 void dc_if_freenameindex(const struct dc_posix_env *env, struct if_nameindex *ptr)
 {

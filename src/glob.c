@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "dc_glob.h"
+#include "dc_posix/dc_glob.h"
 
 int dc_glob(const struct dc_posix_env *env, struct dc_error *err, const char *restrict pattern, int flags, int(*errfunc)(const char *epath, int eerrno), glob_t *restrict pglob)
 {

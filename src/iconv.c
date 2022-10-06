@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "dc_iconv.h"
+#include "dc_posix/dc_iconv.h"
 
 size_t dc_iconv(const struct dc_posix_env *env, struct dc_error *err, iconv_t cd, char **restrict inbuf, size_t *restrict inbytesleft, char **restrict outbuf, size_t *restrict outbytesleft)
 {

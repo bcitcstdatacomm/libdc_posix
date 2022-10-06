@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#include "dc_posix_env.h"
-#include "dc_time.h"
+#include "dc_posix/dc_posix_env.h"
+#include "dc_posix/dc_time.h"
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/nanosleep.html
 int dc_nanosleep(const struct dc_posix_env *env,

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "sys/dc_ipc.h"
+#include "dc_posix/sys/dc_ipc.h"
 
 key_t dc_ftok(const struct dc_posix_env *env, struct dc_error *err, const char *path, int id)
 {

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "dc_pwd.h"
+#include "dc_posix/dc_pwd.h"
 
 void dc_endpwent(const struct dc_posix_env *env, struct dc_error *err)
 {

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "dc_fcntl.h"
+#include "dc_posix/dc_fcntl.h"
 #include <stdarg.h>
 
 int dc_creat(const struct dc_posix_env *env, struct dc_error *err, const char *path, mode_t mode)

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "sys/dc_socket.h"
+#include "dc_posix/sys/dc_socket.h"
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/socket.html
 int dc_socket(const struct dc_posix_env *env, struct dc_error *err, int domain, int type, int protocol)

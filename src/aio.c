@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "dc_aio.h"
+#include "dc_posix/dc_aio.h"
 
 int dc_aio_cancel(const struct dc_posix_env *env, struct dc_error *err, int fildes, struct aiocb *aiocbp)
 {

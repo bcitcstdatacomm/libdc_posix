@@ -115,7 +115,6 @@ double dc_erand48(const struct dc_posix_env *env, unsigned short xsubi[3]);
 /**
  *
  * @param env
- * @param env
  * @param status
  */
 _Noreturn void dc_exit(const struct dc_posix_env *env, int status);

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "sys/dc_statvfs.h"
+#include "dc_posix/sys/dc_statvfs.h"
 
 int dc_fstatvfs(const struct dc_posix_env *env, struct dc_error *err, int fildes, struct statvfs *buf)
 {

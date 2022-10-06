@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "dc_grp.h"
+#include "dc_posix/dc_grp.h"
 
 void dc_endgrent(const struct dc_posix_env *env, struct dc_error *err)
 {

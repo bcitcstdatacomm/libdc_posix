@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "dc_posix_env.h"
+#include "dc_posix/dc_posix_env.h"
 #include <stdio.h>
 #include <string.h>
 

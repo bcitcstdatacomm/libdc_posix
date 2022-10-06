@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "dc_ndbm.h"
+#include "dc_posix/dc_ndbm.h"
 
 int dc_dbm_clearerr(const struct dc_posix_env *env, struct dc_error *err, DBM *db)
 {

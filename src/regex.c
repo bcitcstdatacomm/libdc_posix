@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-#include "dc_regex.h"
-#include "dc_stdlib.h"
-#include "dc_string.h"
+#include "dc_posix/dc_regex.h"
+#include "dc_posix/dc_stdlib.h"
+#include "dc_posix/dc_string.h"
 #include <regex.h>
 
 int dc_regcomp(const struct dc_posix_env *env,

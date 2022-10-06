@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "dc_wordexp.h"
+#include "dc_posix/dc_wordexp.h"
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/wordexp.html
 int dc_wordexp(const struct dc_posix_env *env,

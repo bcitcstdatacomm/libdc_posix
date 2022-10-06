@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "sys/dc_mman.h"
+#include "dc_posix/sys/dc_mman.h"
 
 int dc_mlock(const struct dc_posix_env *env, struct dc_error *err, const void *addr, size_t len)
 {

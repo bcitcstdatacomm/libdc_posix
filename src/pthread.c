@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "dc_pthread.h"
+#include "dc_posix/dc_pthread.h"
 
 int dc_pthread_atfork(const struct dc_posix_env *env, struct dc_error *err, void (*prepare)(void), void (*parent)(void), void (*child)(void))
 {

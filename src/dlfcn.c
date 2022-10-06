@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "dc_dlfcn.h"
+#include "dc_posix/dc_dlfcn.h"
 
 int dc_dlclose(const struct dc_posix_env *env, struct dc_error *err, void *handle)
 {

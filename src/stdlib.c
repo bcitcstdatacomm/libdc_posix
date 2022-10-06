@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#include "dc_stdlib.h"
-#include "dc_string.h"
+#include "dc_posix/dc_stdlib.h"
+#include "dc_posix/dc_string.h"
 #include <errno.h>
 #include <unistd.h>
 

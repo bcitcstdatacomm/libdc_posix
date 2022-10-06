@@ -187,7 +187,6 @@ int dc_stat(const struct dc_posix_env *env, struct dc_error *err,
 /**
  *
  * @param env
- * @param err
  * @param cmask
  * @return
  */

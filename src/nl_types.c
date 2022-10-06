@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "dc_nl_types.h"
+#include "dc_posix/dc_nl_types.h"
 
 int dc_catclose(const struct dc_posix_env *env, struct dc_error *err,nl_catd catd)
 {

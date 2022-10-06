@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "dc_signal.h"
+#include "dc_posix/dc_signal.h"
 
 int dc_kill(const struct dc_posix_env *env, struct dc_error *err, pid_t pid, int sig)
 {

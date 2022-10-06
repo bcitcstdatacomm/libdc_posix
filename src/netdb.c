@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "dc_netdb.h"
+#include "dc_posix/dc_netdb.h"
 
 // https://pubs.opengroup.org/onlinepubs/9699919799/functions/freeaddrinfo.html
 void dc_freeaddrinfo(const struct dc_posix_env *env, struct addrinfo *ai)

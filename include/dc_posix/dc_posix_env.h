@@ -45,7 +45,7 @@ typedef void (*dc_posix_tracer)(const struct dc_posix_env *env,
 /**
  *
  * @param env
- * @param error_reporter
+ * @param tracer
  */
 void dc_posix_env_init(struct dc_posix_env *env, dc_posix_tracer tracer);
 

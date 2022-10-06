@@ -23,7 +23,6 @@
 /**
  *
  * @param env
- * @param err
  * @param ai
  */
 void dc_freeaddrinfo(const struct dc_posix_env *env, struct addrinfo *ai);

@@ -1,155 +1,273 @@
-# https://gitlab.com/CLIUtils/modern-cmake/-/blob/master/examples/extended-project/CMakeLists.txt
+cmake_minimum_required(VERSION 3.22)
 
-cmake_minimum_required(VERSION 3.21)
-
-# Project name and a few useful settings. Other commands can pick up the results
-project(libdc_posix
-        VERSION 0.1.0.0
-        HOMEPAGE_URL "https://github.com/bcitcstdatacomm/libdc_posix"
+project(dc_posix
+        VERSION 0.2.1
         DESCRIPTION ""
         LANGUAGES C)
 
-set(HEADER_LIST
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_posix_env.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_aio.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_dirent.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_dlfcn.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_fcntl.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_fnmatch.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_glob.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_grp.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_iconv.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_inttypes.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_langinfo.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_ndbm.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_netdb.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_nl_types.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_poll.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_pthread.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_pwd.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_regex.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_sched.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_semaphore.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_signal.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_stdio.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_stdlib.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_string.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_strings.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_termios.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_time.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_unistd.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/dc_wordexp.h"
+set(CMAKE_C_STANDARD 17)
+
+set(SOURCE_DIR ${PROJECT_SOURCE_DIR}/src)
+set(INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
+set(SOURCE_LIST ${SOURCE_DIR}/ ${SOURCE_DIR}/aio.c
+        ${SOURCE_DIR}/dirent.c
+        ${SOURCE_DIR}/dlfcn.c
+        ${SOURCE_DIR}/fcntl.c
+        ${SOURCE_DIR}/fnmatch.c
+        ${SOURCE_DIR}/glob.c
+        ${SOURCE_DIR}/grp.c
+        ${SOURCE_DIR}/iconv.c
+        ${SOURCE_DIR}/inttypes.c
+        ${SOURCE_DIR}/langinfo.c
+        ${SOURCE_DIR}/ndbm.c
+        ${SOURCE_DIR}/netdb.c
+        ${SOURCE_DIR}/nl_types.c
+        ${SOURCE_DIR}/poll.c
+        ${SOURCE_DIR}/posix_env.c
+        ${SOURCE_DIR}/pthread.c
+        ${SOURCE_DIR}/pwd.c
+        ${SOURCE_DIR}/regex.c
+        ${SOURCE_DIR}/sched.c
+        ${SOURCE_DIR}/semaphore.c
+        ${SOURCE_DIR}/signal.c
+        ${SOURCE_DIR}/stdio.c
+        ${SOURCE_DIR}/stdlib.c
+        ${SOURCE_DIR}/string.c
+        ${SOURCE_DIR}/strings.c
+        ${SOURCE_DIR}/termios.c
+        ${SOURCE_DIR}/time.c
+        ${SOURCE_DIR}/unistd.c
+        ${SOURCE_DIR}/wordexp.c
+        ${SOURCE_DIR}/arpa/inet.c
+        ${SOURCE_DIR}/net/if.c
+        ${SOURCE_DIR}/sys/ipc.c
+        ${SOURCE_DIR}/sys/mman.c
+        ${SOURCE_DIR}/sys/msg.c
+        ${SOURCE_DIR}/sys/select.c
+        ${SOURCE_DIR}/sys/socket.c
+        ${SOURCE_DIR}/sys/stat.c
+        ${SOURCE_DIR}/sys/statvfs.c
+        ${SOURCE_DIR}/sys/times.c
+        ${SOURCE_DIR}/sys/utsname.c
+        ${SOURCE_DIR}/sys/wait.c
+        )
+set(HEADER_LIST ${INCLUDE_DIR}/dc_posix/dc_aio.h
+        ${INCLUDE_DIR}/dc_posix/dc_dirent.h
+        ${INCLUDE_DIR}/dc_posix/dc_dlfcn.h
+        ${INCLUDE_DIR}/dc_posix/dc_fcntl.h
+        ${INCLUDE_DIR}/dc_posix/dc_fnmatch.h
+        ${INCLUDE_DIR}/dc_posix/dc_glob.h
+        ${INCLUDE_DIR}/dc_posix/dc_grp.h
+        ${INCLUDE_DIR}/dc_posix/dc_iconv.h
+        ${INCLUDE_DIR}/dc_posix/dc_inttypes.h
+        ${INCLUDE_DIR}/dc_posix/dc_langinfo.h
+        ${INCLUDE_DIR}/dc_posix/dc_ndbm.h
+        ${INCLUDE_DIR}/dc_posix/dc_netdb.h
+        ${INCLUDE_DIR}/dc_posix/dc_nl_types.h
+        ${INCLUDE_DIR}/dc_posix/dc_poll.h
+        ${INCLUDE_DIR}/dc_posix/dc_posix_env.h
+        ${INCLUDE_DIR}/dc_posix/dc_pthread.h
+        ${INCLUDE_DIR}/dc_posix/dc_pwd.h
+        ${INCLUDE_DIR}/dc_posix/dc_regex.h
+        ${INCLUDE_DIR}/dc_posix/dc_sched.h
+        ${INCLUDE_DIR}/dc_posix/dc_semaphore.h
+        ${INCLUDE_DIR}/dc_posix/dc_signal.h
+        ${INCLUDE_DIR}/dc_posix/dc_stdio.h
+        ${INCLUDE_DIR}/dc_posix/dc_stdlib.h
+        ${INCLUDE_DIR}/dc_posix/dc_string.h
+        ${INCLUDE_DIR}/dc_posix/dc_strings.h
+        ${INCLUDE_DIR}/dc_posix/dc_termios.h
+        ${INCLUDE_DIR}/dc_posix/dc_time.h
+        ${INCLUDE_DIR}/dc_posix/dc_unistd.h
+        ${INCLUDE_DIR}/dc_posix/dc_wordexp.h
+        ${INCLUDE_DIR}/dc_posix/arpa/dc_inet.h
+        ${INCLUDE_DIR}/dc_posix/net/dc_if.h
+        ${INCLUDE_DIR}/dc_posix/sys/dc_ipc.h
+        ${INCLUDE_DIR}/dc_posix/sys/dc_mman.h
+        ${INCLUDE_DIR}/dc_posix/sys/dc_msg.h
+        ${INCLUDE_DIR}/dc_posix/sys/dc_select.h
+        ${INCLUDE_DIR}/dc_posix/sys/dc_socket.h
+        ${INCLUDE_DIR}/dc_posix/sys/dc_stat.h
+        ${INCLUDE_DIR}/dc_posix/sys/dc_statvfs.h
+        ${INCLUDE_DIR}/dc_posix/sys/dc_times.h
+        ${INCLUDE_DIR}/dc_posix/sys/dc_utsname.h
+        ${INCLUDE_DIR}/dc_posix/sys/dc_wait.h
         )
 
-set(HEADER_SYS_LIST
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/dc_ipc.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/dc_mman.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/dc_msg.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/dc_select.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/dc_socket.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/dc_stat.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/dc_statvfs.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/dc_times.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/dc_utsname.h"
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/sys/dc_wait.h"
-        )
+set(SANITIZE TRUE)
 
-set(HEADER_ARPA_LIST
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/arpa/dc_inet.h"
-        )
+add_compile_definitions(_POSIX_C_SOURCE=200809L)
+add_compile_definitions(_XOPEN_SOURCE=700)
 
-set(HEADER_NET_LIST
-        "${libdc_posix_SOURCE_DIR}/include/dc_posix/net/dc_if.h"
-        )
-
-set(SOURCE_LIST
-        "${libdc_posix_SOURCE_DIR}/src/aio.c"
-        "${libdc_posix_SOURCE_DIR}/src/dirent.c"
-        "${libdc_posix_SOURCE_DIR}/src/dlfcn.c"
-        "${libdc_posix_SOURCE_DIR}/src/fcntl.c"
-        "${libdc_posix_SOURCE_DIR}/src/fnmatch.c"
-        "${libdc_posix_SOURCE_DIR}/src/glob.c"
-        "${libdc_posix_SOURCE_DIR}/src/grp.c"
-        "${libdc_posix_SOURCE_DIR}/src/iconv.c"
-        "${libdc_posix_SOURCE_DIR}/src/inttypes.c"
-        "${libdc_posix_SOURCE_DIR}/src/langinfo.c"
-        "${libdc_posix_SOURCE_DIR}/src/ndbm.c"
-        "${libdc_posix_SOURCE_DIR}/src/netdb.c"
-        "${libdc_posix_SOURCE_DIR}/src/nl_types.c"
-        "${libdc_posix_SOURCE_DIR}/src/poll.c"
-        "${libdc_posix_SOURCE_DIR}/src/posix_env.c"
-        "${libdc_posix_SOURCE_DIR}/src/pthread.c"
-        "${libdc_posix_SOURCE_DIR}/src/pwd.c"
-        "${libdc_posix_SOURCE_DIR}/src/regex.c"
-        "${libdc_posix_SOURCE_DIR}/src/sched.c"
-        "${libdc_posix_SOURCE_DIR}/src/semaphore.c"
-        "${libdc_posix_SOURCE_DIR}/src/signal.c"
-        "${libdc_posix_SOURCE_DIR}/src/stdio.c"
-        "${libdc_posix_SOURCE_DIR}/src/stdlib.c"
-        "${libdc_posix_SOURCE_DIR}/src/string.c"
-        "${libdc_posix_SOURCE_DIR}/src/strings.c"
-        "${libdc_posix_SOURCE_DIR}/src/termios.c"
-        "${libdc_posix_SOURCE_DIR}/src/time.c"
-        "${libdc_posix_SOURCE_DIR}/src/unistd.c"
-        "${libdc_posix_SOURCE_DIR}/src/wordexp.c"
-        "${libdc_posix_SOURCE_DIR}/src/arpa/inet.c"
-        "${libdc_posix_SOURCE_DIR}/src/net/if.c"
-        "${libdc_posix_SOURCE_DIR}/src/sys/ipc.c"
-        "${libdc_posix_SOURCE_DIR}/src/sys/mman.c"
-        "${libdc_posix_SOURCE_DIR}/src/sys/msg.c"
-        "${libdc_posix_SOURCE_DIR}/src/sys/select.c"
-        "${libdc_posix_SOURCE_DIR}/src/sys/socket.c"
-        "${libdc_posix_SOURCE_DIR}/src/sys/stat.c"
-        "${libdc_posix_SOURCE_DIR}/src/sys/statvfs.c"
-        "${libdc_posix_SOURCE_DIR}/src/sys/times.c"
-        "${libdc_posix_SOURCE_DIR}/src/sys/utsname.c"
-        "${libdc_posix_SOURCE_DIR}/src/sys/wait.c"
-        )
-
-### Require out-of-source builds
-# this still creates a CMakeFiles directory and CMakeCache.txt- can we delete them?
-file(TO_CMAKE_PATH "${PROJECT_BINARY_DIR}/CMakeLists.txt" LOC_PATH)
-if (EXISTS "${LOC_PATH}")
-    message(FATAL_ERROR "You cannot build in a source directory (or any directory with a CMakeLists.txt file). Please make a build subdirectory. Feel free to remove CMakeCache.txt and CMakeFiles.")
+if (APPLE)
+    add_definitions(-D_DARWIN_C_SOURCE)
 endif ()
 
-# Only do these if this is the main project, and not if it is included through add_subdirectory
-if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+include_directories(${INCLUDE_DIR})
+add_compile_options("-Wall"
+        "-Wextra"
+        "-Wpedantic"
+        "-Wshadow"
+        "-Wstrict-overflow=4"
+        "-Wswitch-default"
+        "-Wswitch-enum"
+        "-Wunused"
+        "-Wunused-macros"
+        "-Wdate-time"
+        "-Winvalid-pch"
+        "-Wmissing-declarations"
+        "-Wmissing-include-dirs"
+        "-Wmissing-prototypes"
+        "-Wstrict-prototypes"
+        "-Wundef"
+        "-Wnull-dereference"
+        "-Wstack-protector"
+        "-Wdouble-promotion"
+        "-Wvla"
+        "-Walloca"
+        "-Woverlength-strings"
+        "-Wdisabled-optimization"
+        "-Winline"
+        "-Wcast-qual"
+        "-Wfloat-equal"
+        "-Wformat=2"
+        "-Wfree-nonheap-object"
+        "-Wshift-overflow"
+        "-Wwrite-strings")
 
-    # Optionally set things like CMAKE_CXX_STANDARD, CMAKE_POSITION_INDEPENDENT_CODE here
+if (${SANITIZE})
+    add_compile_options("-fsanitize=address")
+    add_compile_options("-fsanitize=undefined")
+    add_compile_options("-fsanitize-address-use-after-scope")
+    add_compile_options("-fstack-protector-all")
+    add_compile_options("-fdelete-null-pointer-checks")
+    add_compile_options("-fno-omit-frame-pointer")
 
-    # Let's ensure -std=c11 instead of -std=g11
-    set(CMAKE_C_EXTENSIONS OFF)
-
-    # Make a shared library
-    if (APPLE)
-        add_definitions(-D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700)
+    if (NOT APPLE)
+        add_compile_options("-fsanitize=leak")
     endif ()
 
-    # Let's nicely support folders in IDEs
-    set_property(GLOBAL PROPERTY USE_FOLDERS ON)
-
-    # Testing only available if this is the main app
-    # Note this needs to be done in the main CMakeLists
-    # since it calls enable_testing, which must be in the
-    # main CMakeLists.
-    include(CTest)
-
-    # Docs only available if this is the main app
-    find_package(Doxygen)
-    if (Doxygen_FOUND)
-        add_subdirectory(docs)
-    else ()
-        message(STATUS "Doxygen not found, not building docs")
-    endif ()
+    add_link_options("-fsanitize=address")
+    add_link_options("-fsanitize=bounds")
 endif ()
 
-# The compiled library code is here
-add_subdirectory(src)
+if ("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
+    #    add_compile_options("-O2")
+    add_compile_options("-Wcast-align"
+            "-Wunsuffixed-float-constants"
+            "-Warith-conversion"
+            "-Wcast-align=strict"
+            "-Wunsafe-loop-optimizations"
+            "-Wvector-operation-performance"
+            "-Walloc-zero"
+            "-Wtrampolines"
+            "-Wtsan"
+            "-Wformat-overflow=2"
+            "-Wformat-signedness"
+            "-Wjump-misses-init"
+            "-Wformat-truncation=2")
+elseif ("${CMAKE_C_COMPILER_ID}" STREQUAL "Clang")
+endif ()
 
-find_library(LIBCGREEN cgreen)
+find_package(Doxygen
+        REQUIRED
+        REQUIRED dot
+        OPTIONAL_COMPONENTS mscgen dia)
+
+set(DOXYGEN_ALWAYS_DETAILED_SEC YES)
+set(DOXYGEN_REPEAT_BRIEF YES)
+set(DOXYGEN_EXTRACT_ALL YES)
+set(DOXYGEN_JAVADOC_AUTOBRIEF YES)
+set(DOXYGEN_OPTIMIZE_OUTPUT_FOR_C YES)
+set(DOXYGEN_GENERATE_HTML YES)
+set(DOXYGEN_WARNINGS YES)
+set(DOXYGEN_QUIET YES)
+
+doxygen_add_docs(doxygen
+        ${HEADER_LIST}
+        WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+        COMMENT "Generating Doxygen documentation for x")
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CLANG_TIDY_CHECKS "*")
+set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},-llvmlibc-restrict-system-libc-headers")
+set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},-misc-unused-parameters")
+set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},-clang-diagnostic-unused-parameter")
+set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},-clang-diagnostic-unused-variable")
+set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},-cppcoreguidelines-init-variables")
+set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},-readability-identifier-length")
+set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},-clang-diagnostic-unused-but-set-variable")
+set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},-clang-analyzer-deadcode.DeadStores")
+set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},-altera-id-dependent-backward-branch")
+set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},-cert-dcl03-c")
+set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},-hicpp-static-assert")
+set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},-misc-static-assert")
+set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},-altera-unroll-loops")
+set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},-altera-struct-pack-align")
+set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},-clang-analyzer-security.insecureAPI.strcpy")
+set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},-bugprone-easily-swappable-parameters")
+set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},-android-cloexec-open")
+set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},-clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling")
+set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},-android-cloexec-accept")
+set(CMAKE_C_CLANG_TIDY clang-tidy -checks=${CLANG_TIDY_CHECKS};--quiet)
+
+add_library(dc_posix SHARED ${SOURCE_LIST} ${HEADER_LIST})
+target_include_directories(dc_posix PRIVATE include/dc_posix)
+target_include_directories(dc_posix PRIVATE /usr/include)
+target_include_directories(dc_posix PRIVATE /usr/local/include)
+target_link_directories(dc_posix PRIVATE /usr/local/lib)
+
+set_target_properties(dc_posix PROPERTIES
+        VERSION ${PROJECT_VERSION}
+        SOVERSION ${PROJECT_VERSION_MAJOR})
+
+find_library(LIBDC_ERROR dc_error REQUIRED)
+find_library(LIB_CRYPT crypt)
+find_library(LIB_DL dl)
+find_library(LIB_GDBM gdbm)
+find_library(LIB_GDBM_COMPAT gdbm_compat)
+find_library(LIB_ICONV iconv)
+find_library(LIB_PTHREAD pthread)
+find_library(LIB_RT rt)
+
+target_link_libraries(dc_posix PUBLIC ${LIBDC_ERROR})
+
+if(LIB_CRYPT)
+    target_link_libraries(dc_posix PUBLIC ${LIB_CRYPT})
+endif()
+
+if(LIB_DL)
+    target_link_libraries(dc_posix PUBLIC ${LIB_DL})
+endif()
+
+if(LIB_GDBM)
+    target_link_libraries(dc_posix PUBLIC ${LIB_GDBM})
+endif()
+
+if(LIB_GDBM_COMPAT)
+    target_link_libraries(dc_posix PUBLIC ${LIB_GDBM_COMPAT})
+endif()
+
+if(LIB_ICONV)
+    target_link_libraries(dc_posix PUBLIC ${LIB_ICONV})
+endif()
+
+if(LIB_PTHREAD)
+    target_link_libraries(dc_posix PUBLIC ${LIB_PTHREAD})
+endif()
+
+if(LIB_RT)
+    target_link_libraries(dc_posix PUBLIC ${LIB_RT})
+endif()
+
+install(TARGETS dc_posix LIBRARY DESTINATION lib)
+install(FILES ${HEADER_LIST} DESTINATION include/dc_posix)
+
+add_dependencies(dc_posix doxygen)
+
+#find_library(LIBCGREEN cgreen)
 
 # Testing only available if this is the main app
-if ((CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME) AND BUILD_TESTING AND LIBCGREEN)
-    add_subdirectory(tests)
-endif ()
+#if ((CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME) AND BUILD_TESTING AND LIBCGREEN)
+add_subdirectory(tests)
+#endif ()

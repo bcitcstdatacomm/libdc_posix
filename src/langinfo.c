@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "dc_langinfo.h"
+#include "dc_posix/dc_langinfo.h"
 
 char *dc_nl_langinfo(const struct dc_posix_env *env, nl_item item)
 {

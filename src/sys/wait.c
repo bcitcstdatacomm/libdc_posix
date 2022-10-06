@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "sys/dc_wait.h"
+#include "dc_posix/sys/dc_wait.h"
 
 pid_t dc_wait(const struct dc_posix_env *env, struct dc_error *err, int *stat_loc)
 {
