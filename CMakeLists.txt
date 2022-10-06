@@ -80,9 +80,12 @@ set(HEADER_LIST ${INCLUDE_DIR}/dc_posix/dc_aio.h
         ${INCLUDE_DIR}/dc_posix/dc_time.h
         ${INCLUDE_DIR}/dc_posix/dc_unistd.h
         ${INCLUDE_DIR}/dc_posix/dc_wordexp.h
-        ${INCLUDE_DIR}/dc_posix/arpa/dc_inet.h
-        ${INCLUDE_DIR}/dc_posix/net/dc_if.h
-        ${INCLUDE_DIR}/dc_posix/sys/dc_ipc.h
+    )
+set(HEADER_LIST_ARPA ${INCLUDE_DIR}/dc_posix/arpa/dc_inet.h)
+
+set(HEADER_LIST_NET ${INCLUDE_DIR}/dc_posix/net/dc_if.h)
+
+set(HEADER_LIST_SYS ${INCLUDE_DIR}/dc_posix/sys/dc_ipc.h
         ${INCLUDE_DIR}/dc_posix/sys/dc_mman.h
         ${INCLUDE_DIR}/dc_posix/sys/dc_msg.h
         ${INCLUDE_DIR}/dc_posix/sys/dc_select.h
@@ -92,7 +95,7 @@ set(HEADER_LIST ${INCLUDE_DIR}/dc_posix/dc_aio.h
         ${INCLUDE_DIR}/dc_posix/sys/dc_times.h
         ${INCLUDE_DIR}/dc_posix/sys/dc_utsname.h
         ${INCLUDE_DIR}/dc_posix/sys/dc_wait.h
-        )
+    )
 
 set(SANITIZE TRUE)
 
@@ -263,6 +266,9 @@ endif()
 
 install(TARGETS dc_posix LIBRARY DESTINATION lib)
 install(FILES ${HEADER_LIST} DESTINATION include/dc_posix)
+install(FILES ${HEADER_LIST_ARPA} DESTINATION include/dc_posix/arpa)
+install(FILES ${HEADER_LIST_NET} DESTINATION include/dc_posix/net)
+install(FILES ${HEADER_LIST_SYS} DESTINATION include/dc_posix/sys)
 
 add_dependencies(dc_posix doxygen)
 
