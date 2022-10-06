@@ -157,7 +157,7 @@ DBM                   *dc_dbm_open(const struct dc_posix_env *env,
     #pragma GCC diagnostic push
     #pragma GCC diagnostic ignored "-Wdiscarded-qualifiers"
 #endif
-    ret_val = dbm_open(file, open_flags, file_mode);
+    ret_val = dbm_open(file, open_flags, file_mode);    // NOLINT(bugprone-narrowing-conversions,cppcoreguidelines-narrowing-conversions)
 #if defined(__GNUC__) && !defined(__clang__)
     #pragma GCC diagnostic pop
 #endif

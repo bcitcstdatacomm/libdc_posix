@@ -253,7 +253,7 @@ long dc_labs(const struct dc_posix_env *env, __attribute__((unused)) struct dc_e
     return ret_val;
 }
 
-void dc_lcong48(const struct dc_posix_env *env, unsigned short param[7])
+void dc_lcong48(const struct dc_posix_env *env, unsigned short param[7])    // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 {
     DC_TRACE(env);
     errno = 0;
@@ -523,7 +523,7 @@ int dc_rand(const struct dc_posix_env *env)
 
     DC_TRACE(env);
     errno   = 0;
-    ret_val = rand();
+    ret_val = rand();   // NOLINT(cert-msc30-c,cert-msc50-cpp)
 
     return ret_val;
 }
@@ -776,7 +776,7 @@ int dc_system(const struct dc_posix_env *env, struct dc_error *err, const char *
 
     DC_TRACE(env);
     errno   = 0;
-    ret_val = system(command);
+    ret_val = system(command);  // NOLINT(cert-env33-c)
 
     if(errno != 0)
     {

@@ -56,7 +56,7 @@ nl_catd dc_catopen(const struct dc_posix_env *env, struct dc_error *err,const ch
     errno   = 0;
     ret_val = catopen(name, oflag);
 
-    if(ret_val == (nl_catd)-1)
+    if(ret_val == (nl_catd)-1)  //NOLINT(performance-no-int-to-ptr)
     {
         DC_ERROR_RAISE_ERRNO(err, errno);
     }

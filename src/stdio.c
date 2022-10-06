@@ -577,7 +577,7 @@ FILE *dc_popen(const struct dc_posix_env *env, struct dc_error *err, const char 
 
     DC_TRACE(env);
     errno   = 0;
-    ret_val = popen(command, mode);
+    ret_val = popen(command, mode);     // NOLINT(cert-env33-c)
 
     if(ret_val == NULL)
     {

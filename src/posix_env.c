@@ -33,7 +33,7 @@ void dc_posix_default_tracer(__attribute__((unused)) const struct dc_posix_env *
                              const char                                        *function_name,
                              size_t                                             line_number)
 {
-    fprintf(stdout, "TRACE: %s : %s : @ %zu\n", file_name, function_name, line_number);
+    fprintf(stdout, "TRACE: %s : %s : @ %zu\n", file_name, function_name, line_number); // NOLINT(cert-err33-c)
 }
 
 inline void

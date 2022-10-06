@@ -186,6 +186,7 @@ char *dc_l64a(const struct dc_posix_env *env, long value);
 /**
  *
  * @param env
+ * @param err
  * @param i
  * @return
  */

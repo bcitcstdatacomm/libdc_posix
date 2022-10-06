@@ -23,7 +23,7 @@ int dc_creat(const struct dc_posix_env *env, struct dc_error *err, const char *p
 
     DC_TRACE(env);
     errno   = 0;
-    ret_val = creat(path, mode);
+    ret_val = creat(path, mode);    // NOLINT(android-cloexec-creat)
 
     if(ret_val == -1)
     {

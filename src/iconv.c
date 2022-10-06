@@ -56,7 +56,7 @@ iconv_t dc_iconv_open(const struct dc_posix_env *env, struct dc_error *err, cons
     errno = 0;
     ret_val = iconv_open(tocode, fromcode);
 
-    if(ret_val == (iconv_t)-1)
+    if(ret_val == (iconv_t)-1)  // NOLINT(performance-no-int-to-ptr)
     {
         DC_ERROR_RAISE_ERRNO(err, errno);
     }
