@@ -35,13 +35,8 @@ typedef void (*dc_posix_tracer)(const struct dc_posix_env *env,
                                 const char *file_name,
                                 const char *function_name, size_t line_number);
 
+struct dc_posix_env;
 
-struct dc_posix_env
-{
-    bool zero_free;
-    bool null_free;
-    dc_posix_tracer tracer;
-};
 
 /**
  *
@@ -50,7 +45,33 @@ struct dc_posix_env
  */
 void dc_posix_env_init(struct dc_posix_env *env, dc_posix_tracer tracer);
 
-void dc_posix_env_set_trace(struct dc_posix_env *env, dc_posix_tracer tracer);
+/**
+ *
+ * @param env
+ * @return
+ */
+bool dc_posix_env_is_zero_free(const struct dc_posix_env *env);
+
+/**
+ *
+ * @param env
+ * @return
+ */
+dc_posix_tracer dc_posix_env_get_tracer(const struct dc_posix_env *env);
+
+/**
+ *
+ * @param env
+ * @param on
+ */
+void dc_posix_env_set_zero_free(struct dc_posix_env *env, bool on);
+
+/**
+ *
+ * @param env
+ * @param tracer
+ */
+void dc_posix_env_set_tracer(struct dc_posix_env *env, dc_posix_tracer tracer);
 
 /**
  *

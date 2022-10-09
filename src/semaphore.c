@@ -95,7 +95,10 @@ sem_t *dc_sem_open(const struct dc_posix_env *env, struct dc_error *err, const c
         va_list arg;
 
         va_start(arg, oflag);
-        mode = va_arg(arg, mode_t);
+        // https://www.gnu.org/software/gnulib/manual/html_node/va_005farg.html
+        mode = (sizeof (mode_t) < sizeof (int)
+                ? va_arg (arg, int)
+                : va_arg (arg, mode_t));
         va_end(arg);
     }
     else

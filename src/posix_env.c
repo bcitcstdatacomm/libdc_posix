@@ -18,17 +18,37 @@
 #include <stdio.h>
 #include <string.h>
 
+struct dc_posix_env
+{
+    bool zero_free;
+    dc_posix_tracer tracer;
+};
+
 void dc_posix_env_init(struct dc_posix_env *env, dc_posix_tracer tracer)
 {
     memset(env, 0, sizeof(struct dc_posix_env));
     env->tracer = tracer;
 }
 
-void dc_posix_env_set_trace(struct dc_posix_env *env, dc_posix_tracer tracer)
+bool dc_posix_env_is_zero_free(const struct dc_posix_env *env)
+{
+    return env->zero_free;
+}
+
+dc_posix_tracer dc_posix_env_get_tracer(const struct dc_posix_env *env)
+{
+    return env->tracer;
+}
+
+void dc_posix_env_set_zero_free(struct dc_posix_env *env, bool on)
+{
+    env->zero_free = on;
+}
+
+void dc_posix_env_set_tracer(struct dc_posix_env *env, dc_posix_tracer tracer)
 {
     env->tracer = tracer;
 }
-
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-parameter"
@@ -41,8 +61,7 @@ void dc_posix_default_tracer(const struct dc_posix_env *env,
 }
 #pragma GCC diagnostic pop
 
-inline void
-dc_trace(const struct dc_posix_env *env, const char *file_name, const char *function_name, size_t line_number)
+void dc_trace(const struct dc_posix_env *env, const char *file_name, const char *function_name, size_t line_number)
 {
     if(env->tracer != NULL)
     {

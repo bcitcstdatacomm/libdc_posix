@@ -161,7 +161,7 @@ void dc_free(const struct dc_posix_env *env, void *ptr, size_t size)
 {
     DC_TRACE(env);
 
-    if(env->zero_free)
+    if(dc_posix_env_is_zero_free(env))
     {
         dc_memset(env, ptr, 0, size);
     }
