@@ -40,10 +40,19 @@ struct dc_posix_env;
 
 /**
  *
- * @param env
+ * @param err
+ * @param zero_free
  * @param tracer
  */
-void dc_posix_env_init(struct dc_posix_env *env, dc_posix_tracer tracer);
+struct dc_posix_env *dc_posix_env_create(struct dc_error *err, bool zero_free, dc_posix_tracer tracer);
+
+/**
+ *
+ * @param env
+ * @param zero_free
+ * @param tracer
+ */
+void dc_posix_env_init(struct dc_posix_env *env, bool zero_free, dc_posix_tracer tracer);
 
 /**
  *
