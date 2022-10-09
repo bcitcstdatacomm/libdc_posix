@@ -21,6 +21,12 @@
  */
 
 #include "../dc_posix_env.h"
+#include <stdint.h>
+
+uint32_t dc_htonl(const struct dc_posix_env *env, uint32_t hostlong);
+uint16_t dc_htons(const struct dc_posix_env *env, uint16_t hostshort);
+uint32_t dc_ntohl(const struct dc_posix_env *env, uint32_t netlong);
+uint16_t dc_ntohs(const struct dc_posix_env *env, uint16_t netshort);
 
 in_addr_t dc_inet_addr(const struct dc_posix_env *env, struct dc_error *err, const char *cp);
 char *dc_inet_ntoa(const struct dc_posix_env *env, struct in_addr in);

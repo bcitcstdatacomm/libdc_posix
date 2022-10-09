@@ -16,6 +16,55 @@
 
 #include "dc_posix/arpa/dc_inet.h"
 
+
+uint32_t dc_htonl(const struct dc_posix_env *env, uint32_t hostlong)
+{
+    uint32_t converted;
+
+    DC_TRACE(env);
+    errno = 0;
+    converted = htonl(hostlong);
+
+    return converted;
+}
+
+
+uint16_t dc_htons(const struct dc_posix_env *env, uint16_t hostshort)
+{
+    uint16_t converted;
+
+    DC_TRACE(env);
+    errno = 0;
+    converted = htons(hostshort);
+
+    return converted;
+}
+
+
+uint32_t dc_ntohl(const struct dc_posix_env *env, uint32_t netlong)
+{
+    uint32_t converted;
+
+    DC_TRACE(env);
+    errno = 0;
+    converted = ntohl(netlong);
+
+    return converted;
+}
+
+
+uint16_t dc_ntohs(const struct dc_posix_env *env, uint16_t netshort)
+{
+    uint32_t converted;
+
+    DC_TRACE(env);
+    errno = 0;
+    converted = ntohs(netshort);
+
+    return converted;
+}
+
+
 in_addr_t dc_inet_addr(const struct dc_posix_env *env, struct dc_error *err, const char *cp)
 {
     in_addr_t addr;

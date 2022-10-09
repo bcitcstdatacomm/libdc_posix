@@ -29,18 +29,19 @@
 #error Requires a POSIX compatible system
 #endif
 
-struct dc_posix_env {
-  bool zero_free;
-  bool null_free;
-
-  void (*tracer)(const struct dc_posix_env *env, const char *file_name,
-                 const char *function_name, size_t line_number);
-  //  void (*error_inducer)(const struct dc_posix_env *env, bool on);
-};
+struct dc_posix_env;
 
 typedef void (*dc_posix_tracer)(const struct dc_posix_env *env,
                                 const char *file_name,
                                 const char *function_name, size_t line_number);
+
+
+struct dc_posix_env
+{
+    bool zero_free;
+    bool null_free;
+    dc_posix_tracer tracer;
+};
 
 /**
  *
@@ -48,6 +49,8 @@ typedef void (*dc_posix_tracer)(const struct dc_posix_env *env,
  * @param tracer
  */
 void dc_posix_env_init(struct dc_posix_env *env, dc_posix_tracer tracer);
+
+void dc_posix_env_set_trace(struct dc_posix_env *env, dc_posix_tracer tracer);
 
 /**
  *

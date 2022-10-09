@@ -19,6 +19,7 @@ set(SOURCE_LIST ${SOURCE_DIR}/ ${SOURCE_DIR}/aio.c
         ${SOURCE_DIR}/iconv.c
         ${SOURCE_DIR}/inttypes.c
         ${SOURCE_DIR}/langinfo.c
+        ${SOURCE_DIR}/libgen.c
         ${SOURCE_DIR}/ndbm.c
         ${SOURCE_DIR}/netdb.c
         ${SOURCE_DIR}/nl_types.c
@@ -61,6 +62,7 @@ set(HEADER_LIST ${INCLUDE_DIR}/dc_posix/dc_aio.h
         ${INCLUDE_DIR}/dc_posix/dc_iconv.h
         ${INCLUDE_DIR}/dc_posix/dc_inttypes.h
         ${INCLUDE_DIR}/dc_posix/dc_langinfo.h
+        ${INCLUDE_DIR}/dc_posix/dc_libgen.h
         ${INCLUDE_DIR}/dc_posix/dc_ndbm.h
         ${INCLUDE_DIR}/dc_posix/dc_netdb.h
         ${INCLUDE_DIR}/dc_posix/dc_nl_types.h

@@ -524,6 +524,8 @@ int dc_getlogin_r(const struct dc_posix_env *env, struct dc_error *err, char *na
     return ret_val;
 }
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 int dc_getopt(const struct dc_posix_env *env,
               struct dc_error           *err,
               int                        argc,
@@ -536,13 +538,9 @@ int dc_getopt(const struct dc_posix_env *env,
     errno   = 0;
     ret_val = getopt(argc, argv, optstring);
 
-    if(ret_val == -1)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-
     return ret_val;
 }
+#pragma GCC diagnostic pop
 
 pid_t dc_getpgid(const struct dc_posix_env *env, struct dc_error *err, pid_t pid)
 {
