@@ -39,6 +39,8 @@ struct dc_posix_env *dc_posix_env_create(struct dc_error *err, bool zero_free, d
     {
         dc_posix_env_init(env, zero_free, tracer);
     }
+
+    return env;
 }
 
 void dc_posix_env_init(struct dc_posix_env *env, bool zero_free, dc_posix_tracer tracer)
