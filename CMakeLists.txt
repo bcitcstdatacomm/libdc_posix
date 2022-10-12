@@ -230,11 +230,11 @@ endif ()
 
 add_library(dc_posix SHARED ${SOURCE_LIST} ${HEADER_LIST})
 target_include_directories(dc_posix PRIVATE include/dc_posix)
+target_include_directories(dc_posix PRIVATE /usr/local/include)
+target_link_directories(dc_posix PRIVATE /usr/local/lib)
 
 if (NOT APPLE)
     target_include_directories(dc_posix PRIVATE /usr/include)
-    target_include_directories(dc_posix PRIVATE /usr/local/include)
-    target_link_directories(dc_posix PRIVATE /usr/local/lib)
 endif ()
 
 set_target_properties(dc_posix PROPERTIES
