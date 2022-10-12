@@ -16,8 +16,8 @@
 
 #include "dc_posix/dc_posix_env.h"
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
 
 struct dc_posix_env
 {
@@ -77,6 +77,8 @@ void dc_posix_env_set_tracer(struct dc_posix_env *env, dc_posix_tracer tracer)
     env->tracer = tracer;
 }
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 void dc_posix_default_tracer(const struct dc_posix_env *env,
                              const char *file_name,
                              const char *function_name,
@@ -84,6 +86,7 @@ void dc_posix_default_tracer(const struct dc_posix_env *env,
 {
     fprintf(stdout, "TRACE: %s : %s : @ %zu\n", file_name, function_name, line_number); // NOLINT(cert-err33-c)
 }
+#pragma GCC diagnostic pop
 
 void dc_trace(const struct dc_posix_env *env, const char *file_name, const char *function_name, size_t line_number)
 {
