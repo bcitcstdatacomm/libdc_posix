@@ -106,8 +106,12 @@ add_compile_definitions(_POSIX_C_SOURCE=200809L)
 add_compile_definitions(_XOPEN_SOURCE=700)
 add_compile_definitions(_GNU_SOURCE)
 
-if (APPLE)
-    add_definitions(-D_DARWIN_C_SOURCE)
+if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+    add_compile_definitions(_DARWIN_C_SOURCE)
+endif ()
+
+if (${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD")
+    add_compile_definitions(__BSD_VISIBLE)
 endif ()
 
 include_directories(${INCLUDE_DIR})
@@ -150,7 +154,7 @@ if (${SANITIZE})
     add_compile_options("-fdelete-null-pointer-checks")
     add_compile_options("-fno-omit-frame-pointer")
 
-    if (NOT APPLE)
+    if (NOT ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
         add_compile_options("-fsanitize=leak")
     endif ()
 
@@ -222,7 +226,7 @@ set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},-misc-static-assert")
 set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},-misc-unused-parameters")
 set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},-readability-identifier-length")
 
-if (APPLE)
+if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     # TODO: find a better way so this is not hard-coded
     set(CMAKE_C_CLANG_TIDY clang-tidy -extra-arg=-I/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include -checks=${CLANG_TIDY_CHECKS};--quiet)
 else ()
@@ -234,7 +238,7 @@ target_include_directories(dc_posix PRIVATE include/dc_posix)
 target_include_directories(dc_posix PRIVATE /usr/local/include)
 target_link_directories(dc_posix PRIVATE /usr/local/lib)
 
-if (NOT APPLE)
+if (NOT ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     target_include_directories(dc_posix PRIVATE /usr/include)
 endif ()
 
