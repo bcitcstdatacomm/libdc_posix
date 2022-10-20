@@ -1,6 +1,7 @@
 #ifndef LIBDC_POSIX_SYS_DC_STATVFS_H
 #define LIBDC_POSIX_SYS_DC_STATVFS_H
 
+
 /*
  * Copyright 2021-2022 D'Arcy Smith.
  *
@@ -17,8 +18,15 @@
  * limitations under the License.
  */
 
+
 #include "../dc_posix_env.h"
 #include <sys/statvfs.h>
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /**
  *
@@ -41,5 +49,11 @@ int dc_fstatvfs(const struct dc_posix_env *env, struct dc_error *err,
  */
 int dc_statvfs(const struct dc_posix_env *env, struct dc_error *err,
                const char *restrict path, struct statvfs *restrict buf);
+
+
+#ifdef __cplusplus
+}
+#endif
+
 
 #endif // LIBDC_POSIX_SYS_DC_STAT_H

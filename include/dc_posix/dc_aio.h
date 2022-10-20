@@ -1,6 +1,7 @@
 #ifndef LIBDC_POSIX_DC_AIO_H
 #define LIBDC_POSIX_DC_AIO_H
 
+
 /*
  * Copyright 2022-2022 D'Arcy Smith.
  *
@@ -17,16 +18,99 @@
  * limitations under the License.
  */
 
+
 #include "dc_posix_env.h"
 #include <aio.h>
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param fildes
+ * @param aiocbp
+ * @return
+ */
 int dc_aio_cancel(const struct dc_posix_env *env, struct dc_error *err,int fildes, struct aiocb *aiocbp);
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param aiocbp
+ * @return
+ */
 int dc_aio_error(const struct dc_posix_env *env, struct dc_error *err,const struct aiocb *aiocbp);
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param op
+ * @param aiocbp
+ * @return
+ */
 int dc_aio_fsync(const struct dc_posix_env *env, struct dc_error *err,int op, struct aiocb *aiocbp);
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param aiocbp
+ * @return
+ */
 int dc_aio_read(const struct dc_posix_env *env, struct dc_error *err,struct aiocb *aiocbp);
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param aiocbp
+ * @return
+ */
 ssize_t dc_aio_return(const struct dc_posix_env *env, struct dc_error *err,struct aiocb *aiocbp);
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param list
+ * @param nent
+ * @param timeout
+ * @return
+ */
 int dc_aio_suspend(const struct dc_posix_env *env, struct dc_error *err,const struct aiocb *const list[], int nent, const struct timespec *timeout);
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param aiocbp
+ * @return
+ */
 int dc_aio_write(const struct dc_posix_env *env, struct dc_error *err,struct aiocb *aiocbp);
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param mode
+ * @param list
+ * @param nent
+ * @param sig
+ * @return
+ */
 int dc_lio_listio(const struct dc_posix_env *env, struct dc_error *err,int mode, struct aiocb *restrict const list[restrict], int nent, struct sigevent *restrict sig);
+
+
+#ifdef __cplusplus
+}
+#endif
+
 
 #endif // LIBDC_POSIX_DC_AIO_H

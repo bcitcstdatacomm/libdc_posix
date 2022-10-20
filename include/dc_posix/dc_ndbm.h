@@ -1,6 +1,7 @@
 #ifndef LIBDC_POSIX_DC_NDBM_H
 #define LIBDC_POSIX_DC_NDBM_H
 
+
 /*
  * Copyright 2021-2022 D'Arcy Smith.
  *
@@ -17,9 +18,16 @@
  * limitations under the License.
  */
 
+
 #include "dc_posix_env.h"
 #include <ndbm.h>
 #include <sys/types.h>
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /**
  *
@@ -114,5 +122,11 @@ DBM *dc_dbm_open(const struct dc_posix_env *env, struct dc_error *err,
  */
 int dc_dbm_store(const struct dc_posix_env *env, struct dc_error *err, DBM *db,
                  datum key, datum content, int store_mode);
+
+
+#ifdef __cplusplus
+}
+#endif
+
 
 #endif // LIBDC_POSIX_DC_NDBM_H

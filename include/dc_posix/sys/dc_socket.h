@@ -1,6 +1,7 @@
 #ifndef LIBDC_POSIX_SYS_DC_SOCKET_H
 #define LIBDC_POSIX_SYS_DC_SOCKET_H
 
+
 /*
  * Copyright 2021-2022 D'Arcy Smith.
  *
@@ -17,8 +18,15 @@
  * limitations under the License.
  */
 
+
 #include "../dc_posix_env.h"
 #include <sys/socket.h>
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /**
  *
@@ -252,5 +260,11 @@ int dc_sockatmark(const struct dc_posix_env *env, struct dc_error *err,
  */
 int dc_socketpair(const struct dc_posix_env *env, struct dc_error *err,
                   int domain, int type, int protocol, int socket_vector[2]);
+
+
+#ifdef __cplusplus
+}
+#endif
+
 
 #endif // LIBDC_POSIX_SYS_DC_SOCKET_H

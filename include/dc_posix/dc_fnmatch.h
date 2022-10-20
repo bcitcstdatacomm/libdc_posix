@@ -1,6 +1,7 @@
 #ifndef LIBDC_POSIX_DC_FNMATCH_H
 #define LIBDC_POSIX_DC_FNMATCH_H
 
+
 /*
  * Copyright 2022-2022 D'Arcy Smith.
  *
@@ -17,9 +18,22 @@
  * limitations under the License.
  */
 
+
 #include "dc_posix_env.h"
 #include <fnmatch.h>
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 int dc_fnmatch(const struct dc_posix_env *env, struct dc_error *err, const char *pattern, const char *string, int flags);
+
+
+#ifdef __cplusplus
+}
+#endif
+
 
 #endif // LIBDC_POSIX_DC_FNMATCH_H

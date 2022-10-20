@@ -14,8 +14,10 @@
  * limitations under the License.
  */
 
+
 #include "dc_posix/dc_fcntl.h"
 #include <stdarg.h>
+
 
 int dc_creat(const struct dc_posix_env *env, struct dc_error *err, const char *path, mode_t mode)
 {
@@ -41,7 +43,7 @@ int dc_open(const struct dc_posix_env *env, struct dc_error *err, const char *pa
     DC_TRACE(env);
     errno   = 0;
 
-    if(((oflag & DC_O_CREAT) != 0)
+    if(((oflag & (unsigned int)O_CREAT) != 0)
 #ifdef O_TMPFILE
     || ((oflag & O_TMPFILE) != 0)
 #endif
@@ -79,7 +81,7 @@ int dc_openat(const struct dc_posix_env *env, struct dc_error *err, int fd, cons
     DC_TRACE(env);
     errno   = 0;
 
-    if((((oflag) & DC_O_CREAT) != 0)
+    if((((oflag) & (unsigned int)O_CREAT) != 0)
 #ifdef O_TMPFILE
         || (((oflag) & O_TMPFILE) != 0)
 #endif

@@ -1,6 +1,7 @@
 #ifndef LIBDC_POSIX_DC_STDLIB_H
 #define LIBDC_POSIX_DC_STDLIB_H
 
+
 /*
  * Copyright 2021-2022 D'Arcy Smith.
  *
@@ -17,9 +18,16 @@
  * limitations under the License.
  */
 
+
 #include "dc_posix_env.h"
 #include <stdlib.h>
 #include <sys/types.h>
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /**
  *
@@ -590,5 +598,11 @@ size_t dc_wcstombs(const struct dc_posix_env *env, struct dc_error *err,
  */
 int dc_wctomb(const struct dc_posix_env *env, struct dc_error *err, char *s,
               wchar_t wchar);
+
+
+#ifdef __cplusplus
+}
+#endif
+
 
 #endif // LIBDC_POSIX_DC_STDLIB_H

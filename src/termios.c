@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
+
 #include "dc_posix/dc_termios.h"
+
 
 speed_t dc_cfgetispeed(const struct dc_posix_env *env, const struct termios *termios_p)
 {

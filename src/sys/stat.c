@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
+
 #include "dc_posix/sys/dc_stat.h"
+
 
 int dc_chmod(const struct dc_posix_env *env, struct dc_error *err, const char *path, mode_t mode)
 {
@@ -108,6 +110,22 @@ int dc_futimens(const struct dc_posix_env *env, struct dc_error *err, int fd, co
     DC_TRACE(env);
     errno   = 0;
     ret_val = futimens(fd, times);
+
+    if(ret_val == -1)
+    {
+        DC_ERROR_RAISE_ERRNO(err, errno);
+    }
+
+    return ret_val;
+}
+
+int dc_utimensat(const struct dc_posix_env *env, struct dc_error *err, int fd, const char *path, const struct timespec times[2], int flag)
+{
+    int ret_val;
+
+    DC_TRACE(env);
+    errno   = 0;
+    ret_val = utimensat(fd, path, times, flag);
 
     if(ret_val == -1)
     {

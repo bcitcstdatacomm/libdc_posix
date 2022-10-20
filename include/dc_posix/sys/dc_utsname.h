@@ -1,6 +1,7 @@
 #ifndef LIBDC_POSIX_SYS_DC_UTSNAME_H
 #define LIBDC_POSIX_SYS_DC_UTSNAME_H
 
+
 /*
  * Copyright 2021-2022 D'Arcy Smith.
  *
@@ -17,8 +18,15 @@
  * limitations under the License.
  */
 
+
 #include "../dc_posix_env.h"
 #include <sys/utsname.h>
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /**
  *
@@ -29,5 +37,11 @@
  */
 int dc_uname(const struct dc_posix_env *env, struct dc_error *err,
              struct utsname *name);
+
+
+#ifdef __cplusplus
+}
+#endif
+
 
 #endif // LIBDC_POSIX_SYS_DC_UTSNAME_H

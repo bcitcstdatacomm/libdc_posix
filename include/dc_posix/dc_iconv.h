@@ -1,6 +1,7 @@
 #ifndef LIBDC_POSIX_DC_ICONV_H
 #define LIBDC_POSIX_DC_ICONV_H
 
+
 /*
  * Copyright 2022-2022 D'Arcy Smith.
  *
@@ -17,11 +18,52 @@
  * limitations under the License.
  */
 
+
 #include "dc_posix_env.h"
 #include <iconv.h>
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param cd
+ * @param inbuf
+ * @param inbytesleft
+ * @param outbuf
+ * @param outbytesleft
+ * @return
+ */
 size_t dc_iconv(const struct dc_posix_env *env, struct dc_error *err, iconv_t cd, char **restrict inbuf, size_t *restrict inbytesleft, char **restrict outbuf, size_t *restrict outbytesleft);
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param cd
+ * @return
+ */
 int dc_iconv_close(const struct dc_posix_env *env, struct dc_error *err, iconv_t cd);
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param tocode
+ * @param fromcode
+ * @return
+ */
 iconv_t dc_iconv_open(const struct dc_posix_env *env, struct dc_error *err, const char *tocode, const char *fromcode);
+
+
+#ifdef __cplusplus
+}
+#endif
+
 
 #endif // LIBDC_POSIX_DC_ICONV_H

@@ -1,6 +1,7 @@
 #ifndef LIBDC_POSIX_DC_GLOB_H
 #define LIBDC_POSIX_DC_GLOB_H
 
+
 /*
  * Copyright 2022-2022 D'Arcy Smith.
  *
@@ -20,7 +21,35 @@
 #include "dc_posix_env.h"
 #include <glob.h>
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param pattern
+ * @param flags
+ * @param errfunc
+ * @param pglob
+ * @return
+ */
 int dc_glob(const struct dc_posix_env *env, struct dc_error *err, const char *restrict pattern, int flags, int(*errfunc)(const char *epath, int eerrno), glob_t *restrict pglob);
+
+/**
+ *
+ * @param env
+ * @param pglob
+ */
 void dc_globfree(const struct dc_posix_env *env, glob_t *pglob);
+
+
+#ifdef __cplusplus
+}
+#endif
+
 
 #endif // LIBDC_POSIX_DC_GLOB_H

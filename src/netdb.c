@@ -14,22 +14,60 @@
  * limitations under the License.
  */
 
+
 #include "dc_posix/dc_netdb.h"
 
-// https://pubs.opengroup.org/onlinepubs/9699919799/functions/freeaddrinfo.html
+
+void dc_endhostent(const struct dc_posix_env *env)
+{
+    DC_TRACE(env);
+    errno   = 0;
+    endhostent();
+}
+
+void dc_endnetent(const struct dc_posix_env *env)
+{
+    DC_TRACE(env);
+    errno   = 0;
+    endnetent();
+}
+
+void dc_endprotoent(const struct dc_posix_env *env)
+{
+    DC_TRACE(env);
+    errno   = 0;
+    endprotoent();
+}
+
+void dc_endservent(const struct dc_posix_env *env)
+{
+    DC_TRACE(env);
+    errno   = 0;
+    endservent();
+}
+
 void dc_freeaddrinfo(const struct dc_posix_env *env, struct addrinfo *ai)
 {
     DC_TRACE(env);
+    errno   = 0;
     freeaddrinfo(ai);
 }
 
-// https://pubs.opengroup.org/onlinepubs/9699919799/functions/freeaddrinfo.html
-int dc_getaddrinfo(const struct dc_posix_env *env,
-                   struct dc_error           *err,
-                   const char * restrict nodename,
-                   const char * restrict servname,
-                   const struct addrinfo * restrict hints,
-                   struct addrinfo ** restrict res)
+const char *dc_gai_strerror(const struct dc_posix_env *env, int ecode)
+{
+    const char *ret_val;
+
+    DC_TRACE(env);
+    errno   = 0;
+    ret_val = gai_strerror(ecode);
+
+    return ret_val;
+}
+
+int dc_getaddrinfo(const struct dc_posix_env *env, struct dc_error *err,
+                   const char *restrict nodename, const char *restrict servname,
+                   const struct addrinfo *restrict hints,
+                   struct addrinfo **restrict res)
 {
     int ret_val;
 
@@ -39,65 +77,185 @@ int dc_getaddrinfo(const struct dc_posix_env *env,
 
     if(ret_val != 0)
     {
-        if(errno == 0)
+        if(ret_val == EAI_SYSTEM)
         {
-            const char *msg;
-
-            switch(ret_val)
-            {
-                case EAI_AGAIN:
-                {
-                    msg = "The name could not be resolved at this time. Future attempts may succeed.";
-                    break;
-                }
-                case EAI_BADFLAGS:
-                {
-                    msg = "The flags parameter had an invalid value.";
-                    break;
-                }
-                case EAI_FAIL:
-                {
-                    msg = "A non-recoverable error occurred when attempting to resolve the name.";
-                    break;
-                }
-                case EAI_FAMILY:
-                {
-                    msg = "The address family was not recognized.";
-                    break;
-                }
-                case EAI_MEMORY:
-                {
-                    msg = "There was a memory allocation failure when trying to allocate storage for the return value.";
-                    break;
-                }
-                case EAI_NONAME:
-                {
-                    msg = "The name does not resolve for the supplied parameters.";
-                    break;
-                }
-                case EAI_SERVICE:
-                {
-                    msg = "The service passed was not recognized for the specified socket type.";
-                    break;
-                }
-                case EAI_SOCKTYPE:
-                {
-                    msg = "The intended socket type was not recognized.";
-                    break;
-                }
-                default:
-                {
-                    msg = "Unknown Error from wordexp";
-                }
-            }
-
-            DC_ERROR_RAISE_SYSTEM(err, msg, ret_val);
+            DC_ERROR_RAISE_ERRNO(err, errno);
         }
         else
         {
-            DC_ERROR_RAISE_ERRNO(err, errno);
+            const char *msg;
+
+            msg = dc_gai_strerror(env, ret_val);
+            DC_ERROR_RAISE_SYSTEM(err, msg, ret_val);
         }
     }
 
     return ret_val;
+}
+
+struct hostent *dc_gethostent(const struct dc_posix_env *env)
+{
+    struct hostent *ret_val;
+
+    DC_TRACE(env);
+    errno   = 0;
+    ret_val = gethostent();
+
+    return ret_val;
+}
+
+int dc_getnameinfo(const struct dc_posix_env *env, struct dc_error *err,
+                   const struct sockaddr *restrict sa, socklen_t salen,
+                   char *restrict node, socklen_t nodelen, char *restrict service,
+                   socklen_t servicelen, int flags)
+{
+    int ret_val;
+
+    DC_TRACE(env);
+    errno   = 0;
+    ret_val = getnameinfo(sa, salen, node, nodelen, service, servicelen, flags);
+
+    if(ret_val != 0)
+    {
+        if(ret_val == EAI_SYSTEM)
+        {
+            DC_ERROR_RAISE_ERRNO(err, errno);
+        }
+        else
+        {
+            const char *msg;
+
+            msg = dc_gai_strerror(env, ret_val);
+            DC_ERROR_RAISE_SYSTEM(err, msg, ret_val);
+        }
+    }
+
+    return ret_val;
+}
+
+struct netent *dc_getnetbyaddr(const struct dc_posix_env *env, uint32_t net, int type)
+{
+    struct netent *ret_val;
+
+    DC_TRACE(env);
+    errno   = 0;
+    ret_val = getnetbyaddr(net, type);
+
+    return ret_val;
+}
+
+struct netent *dc_getnetbyname(const struct dc_posix_env *env, const char *name)
+{
+    struct netent *ret_val;
+
+    DC_TRACE(env);
+    errno   = 0;
+    ret_val = getnetbyname(name);
+
+    return ret_val;
+}
+
+struct netent *dc_getnetent(const struct dc_posix_env *env)
+{
+    struct netent *ret_val;
+
+    DC_TRACE(env);
+    errno   = 0;
+    ret_val = getnetent();
+
+    return ret_val;
+}
+
+struct protoent *dc_getprotobyname(const struct dc_posix_env *env, const char *name)
+{
+    struct protoent *ret_val;
+
+    DC_TRACE(env);
+    errno   = 0;
+    ret_val = getprotobyname(name);
+
+    return ret_val;
+}
+
+struct protoent *dc_getprotobynumber(const struct dc_posix_env *env, int proto)
+{
+    struct protoent *ret_val;
+
+    DC_TRACE(env);
+    errno   = 0;
+    ret_val = getprotobynumber(proto);
+
+    return ret_val;
+}
+
+struct protoent *dc_getprotoent(const struct dc_posix_env *env)
+{
+    struct protoent *ret_val;
+
+    DC_TRACE(env);
+    errno   = 0;
+    ret_val = getprotoent();
+
+    return ret_val;
+}
+
+struct servent *dc_getservbyname(const struct dc_posix_env *env, const char *name, const char *proto)
+{
+    struct servent *ret_val;
+
+    DC_TRACE(env);
+    errno   = 0;
+    ret_val = getservbyname(name, proto);
+
+    return ret_val;
+}
+
+struct servent *dc_getservbyport(const struct dc_posix_env *env, int port, const char *proto)
+{
+    struct servent *ret_val;
+
+    DC_TRACE(env);
+    errno   = 0;
+    ret_val = getservbyport(port, proto);
+
+    return ret_val;
+}
+
+struct servent *dc_getservent(const struct dc_posix_env *env)
+{
+    struct servent *ret_val;
+
+    DC_TRACE(env);
+    errno   = 0;
+    ret_val = getservent();
+
+    return ret_val;
+}
+
+void dc_sethostent(const struct dc_posix_env *env, int stayopen)
+{
+    DC_TRACE(env);
+    errno   = 0;
+    sethostent(stayopen);
+}
+
+void dc_setnetent(const struct dc_posix_env *env, int stayopen)
+{
+    DC_TRACE(env);
+    errno   = 0;
+    setnetent(stayopen);
+}
+
+void dc_setprotoent(const struct dc_posix_env *env, int stayopen)
+{
+    DC_TRACE(env);
+    errno   = 0;
+    setprotoent(stayopen);
+}
+
+void dc_setservent(const struct dc_posix_env *env, int stayopen)
+{
+    DC_TRACE(env);
+    errno   = 0;
+    setservent(stayopen);
 }

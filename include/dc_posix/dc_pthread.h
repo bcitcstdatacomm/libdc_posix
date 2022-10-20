@@ -1,8 +1,32 @@
 #ifndef LIBDC_POSIX_PTHREAD_H
 #define LIBDC_POSIX_PTHREAD_H
 
+
+/*
+ * Copyright 2022-2022 D'Arcy Smith.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
 #include "dc_posix_env.h"
 #include <pthread.h>
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /**
  *
@@ -281,8 +305,6 @@ int dc_pthread_cond_wait(const struct dc_posix_env *env, struct dc_error *err, p
  */
 int dc_pthread_condattr_destroy(const struct dc_posix_env *env, struct dc_error *err, pthread_condattr_t *attr);
 
-// int dc_pthread_condattr_getclock(const struct dc_posix_env *env, struct dc_error *err, const pthread_condattr_t *restrict attr, clockid_t *restrict clock_id);
-
 /**
  *
  * @param env
@@ -301,8 +323,6 @@ int dc_pthread_condattr_getpshared(const struct dc_posix_env *env, struct dc_err
  * @return
  */
 int dc_pthread_condattr_init(const struct dc_posix_env *env, struct dc_error *err, pthread_condattr_t *attr);
-
-// int dc_pthread_condattr_setclock(const struct dc_posix_env *env, struct dc_error *err, pthread_condattr_t *attr, clockid_t clock_id);
 
 /**
  *
@@ -350,8 +370,6 @@ int dc_pthread_equal(const struct dc_posix_env *env, pthread_t t1, pthread_t t2)
  * @param value_ptr
  */
 _Noreturn void dc_pthread_exit(const struct dc_posix_env *env, void *value_ptr);
-
-// int dc_pthread_getcpuclockid(const struct dc_posix_env *env, struct dc_error *err, pthread_t thread_id, clockid_t *clock_id);
 
 /**
  *
@@ -401,8 +419,6 @@ int dc_pthread_key_create(const struct dc_posix_env *env, struct dc_error *err, 
  */
 int dc_pthread_key_delete(const struct dc_posix_env *env, struct dc_error *err, pthread_key_t key);
 
-// int dc_pthread_mutex_consistent(const struct dc_posix_env *env, struct dc_error *err, pthread_mutex_t *mutex);
-
 /**
  *
  * @param env
@@ -451,8 +467,6 @@ int dc_pthread_mutex_lock(const struct dc_posix_env *env, struct dc_error *err, 
  * @return
  */
 int dc_pthread_mutex_setprioceiling(const struct dc_posix_env *env, struct dc_error *err, pthread_mutex_t *restrict mutex, int prioceiling, int *restrict old_ceiling);
-
-// int dc_pthread_mutex_timedlock(const struct dc_posix_env *env, struct dc_error *err, pthread_mutex_t *restrict mutex, const struct timespec *restrict abstime);
 
 /**
  *
@@ -511,8 +525,6 @@ int dc_pthread_mutexattr_getprotocol(const struct dc_posix_env *env, struct dc_e
  */
 int dc_pthread_mutexattr_getpshared(const struct dc_posix_env *env, struct dc_error *err, const pthread_mutexattr_t *restrict attr, int *restrict pshared);
 
-// int dc_pthread_mutexattr_getrobust(const struct dc_posix_env *env, struct dc_error *err, const pthread_mutexattr_t *restrict attr, int *restrict robust);
-
 /**
  *
  * @param env
@@ -562,8 +574,6 @@ int dc_pthread_mutexattr_setprotocol(const struct dc_posix_env *env, struct dc_e
  */
 int dc_pthread_mutexattr_setpshared(const struct dc_posix_env *env, struct dc_error *err, pthread_mutexattr_t *attr, int pshared);
 
-// int dc_pthread_mutexattr_setrobust(const struct dc_posix_env *env, struct dc_error *err, pthread_mutexattr_t *attr, int robust);
-
 /**
  *
  * @param env
@@ -611,10 +621,6 @@ int dc_pthread_rwlock_init(const struct dc_posix_env *env, struct dc_error *err,
  * @return
  */
 int dc_pthread_rwlock_rdlock(const struct dc_posix_env *env, struct dc_error *err, pthread_rwlock_t *rwlock);
-
-// int dc_pthread_rwlock_timedrdlock(const struct dc_posix_env *env, struct dc_error *err, pthread_rwlock_t *restrict rwlock, const struct timespec *restrict abstime);
-
-// int dc_pthread_rwlock_timedwrlock(const struct dc_posix_env *env, struct dc_error *err, pthread_rwlock_t *restrict rwlock, const struct timespec *restrict abstime);
 
 /**
  *
@@ -728,8 +734,6 @@ int dc_pthread_setcanceltype(const struct dc_posix_env *env, struct dc_error *er
  */
 int dc_pthread_setschedparam(const struct dc_posix_env *env, struct dc_error *err, pthread_t thread, int policy, const struct sched_param *param);
 
-// int dc_pthread_setschedprio(const struct dc_posix_env *env, struct dc_error *err, pthread_t thread, int prio);
-
 /**
  *
  * @param env
@@ -740,26 +744,49 @@ int dc_pthread_setschedparam(const struct dc_posix_env *env, struct dc_error *er
  */
 int dc_pthread_setspecific(const struct dc_posix_env *env, struct dc_error *err, pthread_key_t key, const void *value);
 
-/*
-int dc_pthread_spin_destroy(const struct dc_posix_env *env, struct dc_error *err, pthread_spinlock_t *lock);
-int dc_pthread_spin_init(const struct dc_posix_env *env, struct dc_error *err, pthread_spinlock_t *lock, int pshared);
-int dc_pthread_spin_lock(const struct dc_posix_env *env, struct dc_error *err, pthread_spinlock_t *lock);
-int dc_pthread_spin_trylock(const struct dc_posix_env *env, struct dc_error *err, pthread_spinlock_t *lock);
-int dc_pthread_spin_unlock(const struct dc_posix_env *env, struct dc_error *err, pthread_spinlock_t *lock);
-*/
-
 /**
  *
  * @param env
  */
 void dc_pthread_testcancel(const struct dc_posix_env *env);
-//void dc_pthread_cleanup_pop(const struct dc_posix_env *env, int execute);
-//void dc_pthread_cleanup_push(const struct dc_posix_env *env, void (*routine)(void*), void *arg);
+
 
 struct dc_thread_arg
 {
     struct dc_posix_env *env;
     struct dc_error *err;
 };
+
+
+#ifdef __cplusplus
+}
+#endif
+
+
+// These are implemented as macros, and don't work as functions
+// void dc_pthread_cleanup_pop(const struct dc_posix_env *env, int execute);
+// void dc_pthread_cleanup_push(const struct dc_posix_env *env, void (*routine)(void*), void *arg);
+
+// obsolete
+// int pthread_getconcurrency(void);
+// int pthread_setconcurrency(int new_level);
+
+// These do not exist on macOS
+// int dc_pthread_setschedprio(const struct dc_posix_env *env, struct dc_error *err, pthread_t thread, int prio);
+//int dc_pthread_spin_destroy(const struct dc_posix_env *env, struct dc_error *err, pthread_spinlock_t *lock);
+//int dc_pthread_spin_init(const struct dc_posix_env *env, struct dc_error *err, pthread_spinlock_t *lock, int pshared);
+//int dc_pthread_spin_lock(const struct dc_posix_env *env, struct dc_error *err, pthread_spinlock_t *lock);
+//int dc_pthread_spin_trylock(const struct dc_posix_env *env, struct dc_error *err, pthread_spinlock_t *lock);
+//int dc_pthread_spin_unlock(const struct dc_posix_env *env, struct dc_error *err, pthread_spinlock_t *lock);
+// int dc_pthread_mutexattr_getrobust(const struct dc_posix_env *env, struct dc_error *err, const pthread_mutexattr_t *restrict attr, int *restrict robust);
+// int dc_pthread_condattr_getclock(const struct dc_posix_env *env, struct dc_error *err, const pthread_condattr_t *restrict attr, clockid_t *restrict clock_id);
+// int dc_pthread_condattr_setclock(const struct dc_posix_env *env, struct dc_error *err, pthread_condattr_t *attr, clockid_t clock_id);
+// int dc_pthread_getcpuclockid(const struct dc_posix_env *env, struct dc_error *err, pthread_t thread_id, clockid_t *clock_id);
+// int dc_pthread_mutex_consistent(const struct dc_posix_env *env, struct dc_error *err, pthread_mutex_t *mutex);
+// int dc_pthread_mutex_timedlock(const struct dc_posix_env *env, struct dc_error *err, pthread_mutex_t *restrict mutex, const struct timespec *restrict abstime);
+// int dc_pthread_mutexattr_setrobust(const struct dc_posix_env *env, struct dc_error *err, pthread_mutexattr_t *attr, int robust);
+// int dc_pthread_rwlock_timedrdlock(const struct dc_posix_env *env, struct dc_error *err, pthread_rwlock_t *restrict rwlock, const struct timespec *restrict abstime);
+// int dc_pthread_rwlock_timedwrlock(const struct dc_posix_env *env, struct dc_error *err, pthread_rwlock_t *restrict rwlock, const struct timespec *restrict abstime);
+
 
 #endif //LIBDC_POSIX_PTHREAD_H

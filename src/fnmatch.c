@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
+
 #include "dc_posix/dc_fnmatch.h"
+
 
 int dc_fnmatch(const struct dc_posix_env *env, struct dc_error *err, const char *pattern, const char *string, int flags)
 {

@@ -1,6 +1,7 @@
 #ifndef LIBDC_POSIX_DC_DLFCN_H
 #define LIBDC_POSIX_DC_DLFCN_H
 
+
 /*
  * Copyright 2022-2022 D'Arcy Smith.
  *
@@ -17,12 +18,56 @@
  * limitations under the License.
  */
 
+
 #include "dc_posix_env.h"
 #include <dlfcn.h>
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param handle
+ * @return
+ */
 int dc_dlclose(const struct dc_posix_env *env, struct dc_error *err, void *handle);
+
+/**
+ *
+ * @param env
+ * @return
+ */
 char *dc_dlerror(const struct dc_posix_env *env);
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param file
+ * @param mode
+ * @return
+ */
 void *dc_dlopen(const struct dc_posix_env *env, struct dc_error *err, const char *file, int mode);
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param handle
+ * @param name
+ * @return
+ */
 void *dc_dlsym(const struct dc_posix_env *env, struct dc_error *err, void *restrict handle, const char *restrict name);
+
+
+#ifdef __cplusplus
+}
+#endif
+
 
 #endif // LIBDC_POSIX_DC_DLFCN_H

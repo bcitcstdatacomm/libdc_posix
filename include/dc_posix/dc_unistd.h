@@ -1,6 +1,7 @@
 #ifndef LIBDC_POSIX_DC_UNISTD_H
 #define LIBDC_POSIX_DC_UNISTD_H
 
+
 /*
  * Copyright 2021-2022 D'Arcy Smith.
  *
@@ -17,8 +18,15 @@
  * limitations under the License.
  */
 
+
 #include "dc_posix_env.h"
 #include <unistd.h>
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /**
  *
@@ -792,5 +800,11 @@ int dc_unlinkat(const struct dc_posix_env *env, struct dc_error *err, int fd,
  */
 ssize_t dc_write(const struct dc_posix_env *env, struct dc_error *err,
                  int fildes, const void *buf, size_t nbyte);
+
+
+#ifdef __cplusplus
+}
+#endif
+
 
 #endif // LIBDC_POSIX_DC_UNISTD_H

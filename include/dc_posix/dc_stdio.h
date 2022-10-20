@@ -1,6 +1,7 @@
 #ifndef LIBDC_POSIX_DC_STDIO_H
 #define LIBDC_POSIX_DC_STDIO_H
 
+
 /*
  * Copyright 2021-2022 D'Arcy Smith.
  *
@@ -17,8 +18,15 @@
  * limitations under the License.
  */
 
+
 #include "dc_posix_env.h"
 #include <stdio.h>
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /**
  *
@@ -523,5 +531,15 @@ FILE *dc_tmpfile(const struct dc_posix_env *env, struct dc_error *err);
  * @return
  */
 int dc_ungetc(const struct dc_posix_env *env, int c, FILE *stream);
+
+
+#ifdef __cplusplus
+}
+#endif
+
+
+// obselete
+// char *tmpnam(char *str);
+
 
 #endif // LIBDC_POSIX_DC_STDIO_H

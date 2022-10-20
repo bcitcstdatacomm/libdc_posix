@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
+
 #include "dc_posix/dc_strings.h"
+
 
 int dc_ffs(const struct dc_posix_env *env, int i)
 {

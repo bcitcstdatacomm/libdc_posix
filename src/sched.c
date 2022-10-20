@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
+
 #include "dc_posix/dc_sched.h"
+
 
 int dc_sched_get_priority_max(const struct dc_posix_env *env, struct dc_error *err, int policy)
 {

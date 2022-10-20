@@ -1,6 +1,7 @@
 #ifndef LIBDC_POSIX_DC_LIBGEN_H
 #define LIBDC_POSIX_DC_LIBGEN_H
 
+
 /*
  * Copyright 2022-2022 D'Arcy Smith.
  *
@@ -17,12 +18,36 @@
  * limitations under the License.
  */
 
+
 #include "dc_posix_env.h"
-#include "dc_libgen.h"
+#include <libgen.h>
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
+/**
+ *
+ * @param env
+ * @param path
+ * @return
+ */
 char *dc_basename(const struct dc_posix_env *env, char *path);
+
+/**
+ *
+ * @param env
+ * @param path
+ * @return
+ */
 char *dc_dirname(const struct dc_posix_env *env, char *path);
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif // LIBDC_POSIX_DC_LIBGEN_H

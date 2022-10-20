@@ -17,12 +17,66 @@
  * limitations under the License.
  */
 
+
 #include "../dc_posix_env.h"
 #include <sys/msg.h>
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param msqid
+ * @param cmd
+ * @param buf
+ * @return
+ */
 int dc_msgctl(const struct dc_posix_env *env, struct dc_error *err, int msqid, int cmd, struct msqid_ds *buf);
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param key
+ * @param msgflg
+ * @return
+ */
 int dc_msgget(const struct dc_posix_env *env, struct dc_error *err, key_t key, int msgflg);
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param msqid
+ * @param msgp
+ * @param msgsz
+ * @param msgtype
+ * @param msgflg
+ * @return
+ */
 ssize_t dc_msgrcv(const struct dc_posix_env *env, struct dc_error *err, int msqid, void *msgp, size_t msgsz, long msgtype, int msgflg);
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param msqid
+ * @param msgp
+ * @param msgsz
+ * @param msgflg
+ * @return
+ */
 int dc_msgsnd(const struct dc_posix_env *env, struct dc_error *err, int msqid, const void *msgp, size_t msgsz, int msgflg);
+
+
+#ifdef __cplusplus
+}
+#endif
+
 
 #endif // LIBDC_POSIX_SYS_DC_MSG_H

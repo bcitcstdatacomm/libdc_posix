@@ -1,6 +1,7 @@
 #ifndef LIBDC_POSIX_SYS_DC_SELECT_H
 #define LIBDC_POSIX_SYS_DC_SELECT_H
 
+
 /*
  * Copyright 2021-2022 D'Arcy Smith.
  *
@@ -17,8 +18,15 @@
  * limitations under the License.
  */
 
+
 #include "../dc_posix_env.h"
 #include <sys/select.h>
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /**
  *
@@ -52,5 +60,11 @@ int dc_pselect(const struct dc_posix_env *env, struct dc_error *err, int nfds,
 int dc_select(const struct dc_posix_env *env, struct dc_error *err, int nfds,
               fd_set *restrict readfds, fd_set *restrict writefds,
               fd_set *restrict errorfds, struct timeval *restrict timeout);
+
+
+#ifdef __cplusplus
+}
+#endif
+
 
 #endif // LIBDC_POSIX_SYS_DC_SELECT_H

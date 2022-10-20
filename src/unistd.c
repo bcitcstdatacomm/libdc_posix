@@ -14,11 +14,13 @@
  * limitations under the License.
  */
 
+
 #include "dc_posix/dc_unistd.h"
 #include <unistd.h>
 #if __has_include(<crypt.h>)
     #include <crypt.h>
 #endif
+
 
 int dc_access(const struct dc_posix_env *env, struct dc_error *err, const char *path, int amode)
 {

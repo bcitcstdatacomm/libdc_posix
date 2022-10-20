@@ -1,6 +1,7 @@
 #ifndef LIBDC_POSIX_SYS_DC_IPC_H
 #define LIBDC_POSIX_SYS_DC_IPC_H
 
+
 /*
  * Copyright 2022-2022 D'Arcy Smith.
  *
@@ -17,9 +18,30 @@
  * limitations under the License.
  */
 
+
 #include "../dc_posix_env.h"
 #include <sys/ipc.h>
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param path
+ * @param id
+ * @return
+ */
 key_t dc_ftok(const struct dc_posix_env *env, struct dc_error *err, const char *path, int id);
+
+
+#ifdef __cplusplus
+}
+#endif
+
 
 #endif // LIBDC_POSIX_SYS_DC_IPC_H

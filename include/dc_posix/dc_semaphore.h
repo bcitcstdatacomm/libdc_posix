@@ -1,6 +1,7 @@
 #ifndef LIBDC_POSIX_DC_SEMAPHORE_H
 #define LIBDC_POSIX_DC_SEMAPHORE_H
 
+
 /*
  * Copyright 2022-2022 D'Arcy Smith.
  *
@@ -17,18 +18,36 @@
  * limitations under the License.
  */
 
+
 #include "dc_posix_env.h"
 #include <semaphore.h>
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 int dc_sem_close(const struct dc_posix_env *env, struct dc_error *err, sem_t *sem);
-int dc_sem_destroy(const struct dc_posix_env *env, struct dc_error *err, sem_t *sem);
-int dc_sem_getvalue(const struct dc_posix_env *env, struct dc_error *err, sem_t *restrict sem, int *restrict sval);
-int dc_sem_init(const struct dc_posix_env *env, struct dc_error *err, sem_t *sem, int pshared, unsigned value);
 sem_t *dc_sem_open(const struct dc_posix_env *env, struct dc_error *err, const char *name, unsigned int oflag, ...);
 int dc_sem_post(const struct dc_posix_env *env, struct dc_error *err, sem_t *sem);
-// int dc_sem_timedwait(const struct dc_posix_env *env, struct dc_error *err, sem_t *restrict sem, const struct timespec *restrict abstime);
 int dc_sem_trywait(const struct dc_posix_env *env, struct dc_error *err, sem_t *sem);
 int dc_sem_unlink(const struct dc_posix_env *env, struct dc_error *err, const char *name);
 int dc_sem_wait(const struct dc_posix_env *env, struct dc_error *err, sem_t *sem);
+
+
+#ifdef __cplusplus
+}
+#endif
+
+
+// These exist on macOS but do not work - they always fail by design
+// int dc_sem_destroy(const struct dc_posix_env *env, struct dc_error *err, sem_t *sem);
+// int dc_sem_getvalue(const struct dc_posix_env *env, struct dc_error *err, sem_t *restrict sem, int *restrict sval);
+// int dc_sem_init(const struct dc_posix_env *env, struct dc_error *err, sem_t *sem, int pshared, unsigned value);
+
+// These do not exist on macOS
+// int dc_sem_timedwait(const struct dc_posix_env *env, struct dc_error *err, sem_t *restrict sem, const struct timespec *restrict abstime);
+
 
 #endif // LIBDC_POSIX_DC_SEMAPHORE_H

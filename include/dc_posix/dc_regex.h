@@ -1,6 +1,7 @@
 #ifndef LIBDC_POSIX_DC_REGEX_H
 #define LIBDC_POSIX_DC_REGEX_H
 
+
 /*
  * Copyright 2021-2022 D'Arcy Smith.
  *
@@ -17,8 +18,15 @@
  * limitations under the License.
  */
 
+
 #include "dc_posix_env.h"
 #include <regex.h>
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /**
  *
@@ -66,5 +74,11 @@ int dc_regexec(const struct dc_posix_env *env, const regex_t *restrict preg,
  * @param preg
  */
 void dc_regfree(const struct dc_posix_env *env, regex_t *preg);
+
+
+#ifdef __cplusplus
+}
+#endif
+
 
 #endif // LIBDC_POSIX_DC_REGEX_H

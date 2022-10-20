@@ -1,6 +1,7 @@
 #ifndef LIBDC_POSIX_DC_POSIX_ENV_H
 #define LIBDC_POSIX_DC_POSIX_ENV_H
 
+
 /*
  * Copyright 2021-2022 D'Arcy Smith.
  *
@@ -17,6 +18,7 @@
  * limitations under the License.
  */
 
+
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-macros"
 #define __STDC_WANT_LIB_EXT1__ 1
@@ -25,9 +27,16 @@
 #include <dc_error/error.h>
 #include <stdbool.h>
 
+
 #ifndef _POSIX_C_SOURCE
 #error Requires a POSIX compatible system
 #endif
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 struct dc_posix_env;
 
@@ -106,5 +115,11 @@ void dc_trace(const struct dc_posix_env *env, const char *file_name,
               const char *function_name, size_t line_number);
 
 #define DC_TRACE(env) dc_trace((env), __FILE__, __func__, __LINE__)
+
+
+#ifdef __cplusplus
+}
+#endif
+
 
 #endif // LIBDC_POSIX_DC_POSIX_ENV_H

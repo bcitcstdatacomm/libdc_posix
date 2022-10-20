@@ -1,8 +1,6 @@
 #ifndef LIBDC_POSIX_ARPA_INET_H
 #define LIBDC_POSIX_ARPA_INET_H
 
-#include "../dc_posix_env.h"
-#include <arpa/inet.h>
 
 /*
  * Copyright 2021-2022 D'Arcy Smith.
@@ -20,20 +18,97 @@
  * limitations under the License.
  */
 
+
 #include "../dc_posix_env.h"
+#include "../dc_posix_env.h"
+#include <arpa/inet.h>
 #include <stdint.h>
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
+/**
+ *
+ * @param env
+ * @param hostlong
+ * @return
+ */
 uint32_t dc_htonl(const struct dc_posix_env *env, uint32_t hostlong);
+
+/**
+ *
+ * @param env
+ * @param hostshort
+ * @return
+ */
 uint16_t dc_htons(const struct dc_posix_env *env, uint16_t hostshort);
+
+/**
+ *
+ * @param env
+ * @param netlong
+ * @return
+ */
 uint32_t dc_ntohl(const struct dc_posix_env *env, uint32_t netlong);
+
+/**
+ *
+ * @param env
+ * @param netshort
+ * @return
+ */
 uint16_t dc_ntohs(const struct dc_posix_env *env, uint16_t netshort);
 
+/**
+ *
+ * @param env
+ * @param err
+ * @param cp
+ * @return
+ */
 in_addr_t dc_inet_addr(const struct dc_posix_env *env, struct dc_error *err, const char *cp);
+
+/**
+ *
+ * @param env
+ * @param in
+ * @return
+ */
 char *dc_inet_ntoa(const struct dc_posix_env *env, struct in_addr in);
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param af
+ * @param src
+ * @param dst
+ * @param size
+ * @return
+ */
 const char *dc_inet_ntop(const struct dc_posix_env *env, struct dc_error *err,
                          int af, const void *restrict src, char *restrict dst,
                          socklen_t size);
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param af
+ * @param src
+ * @param dst
+ * @return
+ */
 int dc_inet_pton(const struct dc_posix_env *env, struct dc_error *err, int af,
                  const char *restrict src, void *restrict dst);
 
-#endif // LIBDC_POSIX_INET_H
+
+#ifdef __cplusplus
+}
+#endif
+
+
+#endif //LIBDC_POSIX_ARPA_INET_H

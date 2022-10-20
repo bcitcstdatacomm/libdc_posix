@@ -1,6 +1,7 @@
 #ifndef LIBDC_POSIX_IF_H
 #define LIBDC_POSIX_IF_H
 
+
 /*
  * Copyright 2021-2022 D'Arcy Smith.
  *
@@ -17,16 +18,57 @@
  * limitations under the License.
  */
 
+
 #include "../dc_posix_env.h"
 #include <net/if.h>
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
+/**
+ *
+ * @param env
+ * @param ptr
+ */
 void dc_if_freenameindex(const struct dc_posix_env *env,
                          struct if_nameindex *ptr);
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param ifindex
+ * @param ifname
+ * @return
+ */
 char *dc_if_indextoname(const struct dc_posix_env *env, struct dc_error *err,
                         unsigned int ifindex, char *ifname);
+
+/**
+ *
+ * @param env
+ * @param err
+ * @return
+ */
 struct if_nameindex *dc_if_nameindex(const struct dc_posix_env *env,
                                      struct dc_error *err);
+
+/**
+ *
+ * @param env
+ * @param ifname
+ * @return
+ */
 unsigned int dc_if_nametoindex(const struct dc_posix_env *env,
                                const char *ifname);
+
+
+#ifdef __cplusplus
+}
+#endif
+
 
 #endif // LIBDC_POSIX_IF_H

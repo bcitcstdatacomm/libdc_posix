@@ -1,6 +1,7 @@
 #ifndef LIBDC_POSIX_DC_STRING_H
 #define LIBDC_POSIX_DC_STRING_H
 
+
 /*
  * Copyright 2021-2022 D'Arcy Smith.
  *
@@ -17,15 +18,22 @@
  * limitations under the License.
  */
 
+
 #include "dc_posix_env.h"
-#include <stddef.h>
-#include <string.h>
 #if __has_include(<locale.h>)
 #include <locale.h>
 #endif
+#include <stddef.h>
+#include <string.h>
 #if __has_include(<xlocale.h>)
 #include <xlocale.h>
 #endif
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /**
  *
@@ -365,5 +373,11 @@ size_t dc_strxfrm(const struct dc_posix_env *env, struct dc_error *err,
 size_t dc_strxfrm_l(const struct dc_posix_env *env, struct dc_error *err,
                     char *restrict s1, const char *restrict s2, size_t n,
                     locale_t locale);
+
+
+#ifdef __cplusplus
+}
+#endif
+
 
 #endif // LIBDC_POSIX_DC_STRING_H

@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
+
 #include "dc_posix/dc_pthread.h"
+
 
 int dc_pthread_atfork(const struct dc_posix_env *env, struct dc_error *err, void (*prepare)(void), void (*parent)(void), void (*child)(void))
 {
@@ -1451,106 +1453,10 @@ int dc_pthread_setspecific(const struct dc_posix_env *env, struct dc_error *err,
 
     return ret_val;
 }
-/*
-int dc_pthread_spin_destroy(const struct dc_posix_env *env, struct dc_error *err, pthread_spinlock_t *lock)
-{
-    int ret_val;
 
-    DC_TRACE(env);
-    errno   = 0;
-    ret_val = pthread_spin_destroy(lock);
-
-    if(ret_val != 0)
-    {
-        DC_ERROR_RAISE_ERRNO(err, ret_val);
-    }
-
-    return ret_val;
-}
-
-int dc_pthread_spin_init(const struct dc_posix_env *env, struct dc_error *err, pthread_spinlock_t *lock, int pshared)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno   = 0;
-    ret_val = pthread_spin_init(lock, pshared);
-
-    if(ret_val != 0)
-    {
-        DC_ERROR_RAISE_ERRNO(err, ret_val);
-    }
-
-    return ret_val;
-}
-
-int dc_pthread_spin_lock(const struct dc_posix_env *env, struct dc_error *err, pthread_spinlock_t *lock)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno   = 0;
-    ret_val = pthread_spin_lock(lock);
-
-    if(ret_val != 0)
-    {
-        DC_ERROR_RAISE_ERRNO(err, ret_val);
-    }
-
-    return ret_val;
-}
-
-int dc_pthread_spin_trylock(const struct dc_posix_env *env, struct dc_error *err, pthread_spinlock_t *lock)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno   = 0;
-    ret_val = pthread_spin_trylock(lock);
-
-    if(ret_val != 0)
-    {
-        DC_ERROR_RAISE_ERRNO(err, ret_val);
-    }
-
-    return ret_val;
-}
-
-int dc_pthread_spin_unlock(const struct dc_posix_env *env, struct dc_error *err, pthread_spinlock_t *lock)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno   = 0;
-    ret_val = pthread_spin_unlock(lock);
-
-    if(ret_val != 0)
-    {
-        DC_ERROR_RAISE_ERRNO(err, ret_val);
-    }
-
-    return ret_val;
-}
-*/
 void dc_pthread_testcancel(const struct dc_posix_env *env)
 {
     DC_TRACE(env);
     errno   = 0;
     pthread_testcancel();
 }
-
-/*
-void dc_pthread_cleanup_pop(const struct dc_posix_env *env, int execute)
-{
-    DC_TRACE(env);
-    errno   = 0;
-    pthread_cleanup_pop(execute);
-}
-
-void dc_pthread_cleanup_push(const struct dc_posix_env *env, void (*routine)(void*), void *arg)
-{
-    DC_TRACE(env);
-    errno   = 0;
-    pthread_cleanup_push(routine, arg);
-}
-*/

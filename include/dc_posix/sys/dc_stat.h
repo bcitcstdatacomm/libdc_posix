@@ -1,6 +1,7 @@
 #ifndef LIBDC_POSIX_SYS_DC_STAT_H
 #define LIBDC_POSIX_SYS_DC_STAT_H
 
+
 /*
  * Copyright 2021-2022 D'Arcy Smith.
  *
@@ -17,9 +18,16 @@
  * limitations under the License.
  */
 
+
 #include "../dc_posix_env.h"
 #include <sys/stat.h>
 #include <sys/time.h>
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /**
  *
@@ -90,6 +98,18 @@ int dc_fstatat(const struct dc_posix_env *env, struct dc_error *err, int fd,
  */
 int dc_futimens(const struct dc_posix_env *env, struct dc_error *err, int fd,
                 const struct timespec times[2]);
+
+/**
+ *
+ * @param env
+ * @param err
+ * @param fd
+ * @param path
+ * @param times
+ * @param flag
+ * @return
+ */
+int dc_utimensat(const struct dc_posix_env *env, struct dc_error *err, int fd, const char *path, const struct timespec times[2], int flag);
 
 /**
  *
@@ -202,5 +222,11 @@ mode_t dc_umask(const struct dc_posix_env *env, mode_t cmask);
  */
 int dc_utimes(const struct dc_posix_env *env, struct dc_error *err,
               const char *path, const struct timeval times[2]);
+
+
+#ifdef __cplusplus
+}
+#endif
+
 
 #endif // LIBDC_POSIX_SYS_DC_STAT_H

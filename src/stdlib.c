@@ -14,10 +14,12 @@
  * limitations under the License.
  */
 
+
 #include "dc_posix/dc_stdlib.h"
 #include "dc_posix/dc_string.h"
 #include <errno.h>
 #include <unistd.h>
+
 
 void dc__Exit(const struct dc_posix_env *env, int status)
 {

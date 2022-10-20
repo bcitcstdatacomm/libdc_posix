@@ -1,6 +1,7 @@
 #ifndef LIBDC_POSIX_SYS_DC_TIMES_H
 #define LIBDC_POSIX_SYS_DC_TIMES_H
 
+
 /*
  * Copyright 2021-2022 D'Arcy Smith.
  *
@@ -17,8 +18,15 @@
  * limitations under the License.
  */
 
+
 #include "../dc_posix_env.h"
 #include <sys/times.h>
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /**
  *
@@ -29,5 +37,11 @@
  */
 clock_t dc_times(const struct dc_posix_env *env, struct dc_error *err,
                  struct tms *buffer);
+
+
+#ifdef __cplusplus
+}
+#endif
+
 
 #endif // LIBDC_POSIX_SYS_DC_TIMES_H

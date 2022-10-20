@@ -1,6 +1,7 @@
 #ifndef LIBDC_POSIX_DC_SIGNAL_H
 #define LIBDC_POSIX_DC_SIGNAL_H
 
+
 /*
  * Copyright 2021-2022 D'Arcy Smith.
  *
@@ -17,8 +18,15 @@
  * limitations under the License.
  */
 
+
 #include "dc_posix_env.h"
 #include <signal.h>
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /**
  *
@@ -41,8 +49,6 @@ int dc_kill(const struct dc_posix_env *env, struct dc_error *err, pid_t pid,
  */
 int dc_killpg(const struct dc_posix_env *env, struct dc_error *err, pid_t pgrp,
               int sig);
-// void dc_psiginfo(const struct dc_posix_env *env, struct dc_error *err, const
-// siginfo_t *pinfo, const char *message);
 
 /**
  *
@@ -208,10 +214,6 @@ int dc_sigprocmask(const struct dc_posix_env *env, struct dc_error *err,
 int dc_sigsuspend(const struct dc_posix_env *env, struct dc_error *err,
                   const sigset_t *sigmask);
 
-// int dc_sigtimedwait(const struct dc_posix_env *env, struct dc_error *err,
-// const sigset_t *restrict set, siginfo_t *restrict info, const struct timespec
-// *restrict timeout);
-
 /**
  *
  * @param env
@@ -222,7 +224,24 @@ int dc_sigsuspend(const struct dc_posix_env *env, struct dc_error *err,
  */
 int dc_sigwait(const struct dc_posix_env *env, struct dc_error *err,
                const sigset_t *restrict set, int *restrict sig);
-// int dc_sigwaitinfo(const struct dc_posix_env *env, struct dc_error *err,
-//                     const sigset_t *restrict set, siginfo_t *restrict info);
+
+#ifdef __cplusplus
+}
+#endif
+
+
+// obselete
+// int sighold(int sig);
+// int sigignore(int sig);
+// int sigpause(int sig);
+// int sigrelse(int sig);
+// void (*sigset(int sig, void (*disp)(int)))(int);
+// int siginterrupt(int sig, int flag);
+
+// These do not exist on macOS
+// int dc_sigtimedwait(const struct dc_posix_env *env, struct dc_error *err, const sigset_t *restrict set, siginfo_t *restrict info, const struct timespec *restrict timeout);
+// int dc_sigwaitinfo(const struct dc_posix_env *env, struct dc_error *err, const sigset_t *restrict set, siginfo_t *restrict info);
+// void psiginfo(const struct dc_posix_env *env, struct dc_error *err, const siginfo_t *pinfo, const char *message);
+
 
 #endif // LIBDC_POSIX_DC_SIGNAL_H

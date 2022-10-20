@@ -1,6 +1,7 @@
 #ifndef LIBDC_POSIX_SYS_DC_WAIT_H
 #define LIBDC_POSIX_SYS_DC_WAIT_H
 
+
 /*
  * Copyright 2021-2022 D'Arcy Smith.
  *
@@ -17,9 +18,16 @@
  * limitations under the License.
  */
 
+
 #include "../dc_posix_env.h"
 #include <signal.h>
 #include <sys/wait.h>
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /**
  *
@@ -55,5 +63,11 @@ int dc_waitid(const struct dc_posix_env *env, struct dc_error *err,
  */
 pid_t dc_waitpid(const struct dc_posix_env *env, struct dc_error *err,
                  pid_t pid, int *stat_loc, int options);
+
+
+#ifdef __cplusplus
+}
+#endif
+
 
 #endif // LIBDC_POSIX_SYS_DC_WAIT_H

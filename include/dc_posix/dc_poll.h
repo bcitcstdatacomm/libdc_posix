@@ -1,6 +1,7 @@
 #ifndef LIBDC_POSIX_DC_POLL_H
 #define LIBDC_POSIX_DC_POLL_H
 
+
 /*
  * Copyright 2021-2022 D'Arcy Smith.
  *
@@ -17,8 +18,15 @@
  * limitations under the License.
  */
 
+
 #include "dc_posix_env.h"
 #include <poll.h>
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /**
  *
@@ -31,5 +39,11 @@
  */
 int dc_poll(const struct dc_posix_env *env, struct dc_error *err,
             struct pollfd fds[], nfds_t nfds, int timeout);
+
+
+#ifdef __cplusplus
+}
+#endif
+
 
 #endif // LIBDC_POSIX_DC_POLL_H

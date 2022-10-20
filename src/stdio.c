@@ -14,7 +14,9 @@
  *limitations under the License.
  */
 
+
 #include "dc_posix/dc_stdio.h"
+
 
 void dc_clearerr(const struct dc_posix_env *env, FILE *stream)
 {

@@ -14,9 +14,11 @@
  * limitations under the License.
  */
 
+
 #include "dc_posix/dc_semaphore.h"
 #include "dc_posix/dc_fcntl.h"
 #include <stdarg.h>
+
 
 int dc_sem_close(const struct dc_posix_env *env, struct dc_error *err, sem_t *sem)
 {
@@ -34,6 +36,7 @@ int dc_sem_close(const struct dc_posix_env *env, struct dc_error *err, sem_t *se
     return ret_val;
 }
 
+/*
 int dc_sem_destroy(const struct dc_posix_env *env, struct dc_error *err, sem_t *sem)
 {
     int ret_val;
@@ -49,7 +52,9 @@ int dc_sem_destroy(const struct dc_posix_env *env, struct dc_error *err, sem_t *
 
     return ret_val;
 }
+*/
 
+/*
 int dc_sem_getvalue(const struct dc_posix_env *env, struct dc_error *err, sem_t *restrict sem, int *restrict sval)
 {
     int ret_val;
@@ -65,7 +70,9 @@ int dc_sem_getvalue(const struct dc_posix_env *env, struct dc_error *err, sem_t 
 
     return ret_val;
 }
+*/
 
+/*
 int dc_sem_init(const struct dc_posix_env *env, struct dc_error *err, sem_t *sem, int pshared, unsigned value)
 {
     int ret_val;
@@ -81,6 +88,7 @@ int dc_sem_init(const struct dc_posix_env *env, struct dc_error *err, sem_t *sem
 
     return ret_val;
 }
+*/
 
 sem_t *dc_sem_open(const struct dc_posix_env *env, struct dc_error *err, const char *name, unsigned int oflag, ...)
 {
@@ -90,7 +98,7 @@ sem_t *dc_sem_open(const struct dc_posix_env *env, struct dc_error *err, const c
     DC_TRACE(env);
     errno   = 0;
 
-    if((oflag & DC_O_CREAT) != 0)
+    if((oflag & (unsigned int)O_CREAT) != 0)
     {
         va_list arg;
 
