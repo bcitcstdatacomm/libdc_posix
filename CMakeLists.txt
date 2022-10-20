@@ -104,7 +104,7 @@ set(HEADER_LIST_SYS ${INCLUDE_DIR}/dc_posix/sys/dc_ipc.h
 
 add_compile_definitions(_POSIX_C_SOURCE=200809L)
 add_compile_definitions(_XOPEN_SOURCE=700)
-add_compile_definitions(_GNU_SOURCE)
+# add_compile_definitions(_GNU_SOURCE)
 
 if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     add_compile_definitions(_DARWIN_C_SOURCE)

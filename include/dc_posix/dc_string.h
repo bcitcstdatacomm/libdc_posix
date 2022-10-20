@@ -212,13 +212,13 @@ char *dc_strerror(const struct dc_posix_env *env, struct dc_error *err,
 /**
  *
  * @param env
+ * @param err
  * @param errnum
  * @param strerrbuf
  * @param buflen
  * @return
  */
-char *dc_strerror_r(const struct dc_posix_env *env, int errnum, char *strerrbuf,
-                    size_t buflen);
+int dc_strerror_r(const struct dc_posix_env *env, struct dc_error *err, int errnum, char *strerrbuf, size_t buflen);
 
 /**
  *

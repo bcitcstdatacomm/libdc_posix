@@ -207,7 +207,7 @@ char *dc_strerror(const struct dc_posix_env *env, struct dc_error *err, int errn
     errno   = 0;
     ret_val = strerror(errnum);
 
-    if(errno != 0)
+    if(ret_val != NULL)
     {
         DC_ERROR_RAISE_ERRNO(err, errno);
     }
@@ -215,13 +215,18 @@ char *dc_strerror(const struct dc_posix_env *env, struct dc_error *err, int errn
     return ret_val;
 }
 
-char *dc_strerror_r(const struct dc_posix_env *env, int errnum, char *strerrbuf, size_t buflen)
+int dc_strerror_r(const struct dc_posix_env *env, struct dc_error *err, int errnum, char *strerrbuf, size_t buflen)
 {
-    char * ret_val;
+    int ret_val;
 
     DC_TRACE(env);
     errno   = 0;
     ret_val = strerror_r(errnum, strerrbuf, buflen);
+
+    if(ret_val != 0)
+    {
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
+    }
 
     return ret_val;
 }
