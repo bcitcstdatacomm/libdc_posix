@@ -45,7 +45,7 @@ int dc_open(const struct dc_posix_env *env, struct dc_error *err, const char *pa
 
     if(((oflag & (unsigned int)O_CREAT) != 0)
 #ifdef O_TMPFILE
-    || ((oflag & O_TMPFILE) != 0)
+    || ((oflag & (unsigned int)O_TMPFILE) != 0)
 #endif
     )
     {
@@ -83,7 +83,7 @@ int dc_openat(const struct dc_posix_env *env, struct dc_error *err, int fd, cons
 
     if((((oflag) & (unsigned int)O_CREAT) != 0)
 #ifdef O_TMPFILE
-        || (((oflag) & O_TMPFILE) != 0)
+        || (((oflag) & (unsigned int)O_TMPFILE) != 0)
 #endif
     )
     {

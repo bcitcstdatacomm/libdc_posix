@@ -217,8 +217,8 @@ char *dc_strerror(const struct dc_posix_env *env, struct dc_error *err,
  * @param buflen
  * @return
  */
-int dc_strerror_r(const struct dc_posix_env *env, int errnum, char *strerrbuf,
-                  size_t buflen);
+char *dc_strerror_r(const struct dc_posix_env *env, int errnum, char *strerrbuf,
+                    size_t buflen);
 
 /**
  *

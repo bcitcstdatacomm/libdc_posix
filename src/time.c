@@ -200,7 +200,10 @@ size_t dc_strftime(const struct dc_posix_env *env, struct dc_error *err, char * 
 
     DC_TRACE(env);
     errno   = 0;
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat-nonliteral"
     ret_val = strftime(buf, maxsize, format, timeptr);
+#pragma GCC diagnostic pop
 
     if(ret_val == 0)
     {

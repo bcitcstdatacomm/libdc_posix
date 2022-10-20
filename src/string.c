@@ -215,9 +215,9 @@ char *dc_strerror(const struct dc_posix_env *env, struct dc_error *err, int errn
     return ret_val;
 }
 
-int dc_strerror_r(const struct dc_posix_env *env, int errnum, char *strerrbuf, size_t buflen)
+char *dc_strerror_r(const struct dc_posix_env *env, int errnum, char *strerrbuf, size_t buflen)
 {
-    int ret_val;
+    char * ret_val;
 
     DC_TRACE(env);
     errno   = 0;

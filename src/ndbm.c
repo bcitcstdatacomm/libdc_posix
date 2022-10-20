@@ -155,14 +155,12 @@ DBM                   *dc_dbm_open(const struct dc_posix_env *env,
 
     DC_TRACE(env);
     errno = 0;
-#if defined(__GNUC__) && !defined(__clang__)
-    #pragma GCC diagnostic push
-    #pragma GCC diagnostic ignored "-Wdiscarded-qualifiers"
-#endif
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wpragmas"  // the switch on the compiler - ugh
+#pragma GCC diagnostic ignored "-Wdiscarded-qualifiers"
+#pragma GCC diagnostic ignored "-Wincompatible-pointer-types-discards-qualifiers"
     ret_val = dbm_open(file, open_flags, file_mode);    // NOLINT(bugprone-narrowing-conversions,cppcoreguidelines-narrowing-conversions)
-#if defined(__GNUC__) && !defined(__clang__)
-    #pragma GCC diagnostic pop
-#endif
+#pragma GCC diagnostic pop
 
     if(ret_val == NULL)
     {

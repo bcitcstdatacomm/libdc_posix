@@ -138,6 +138,7 @@ int dc_lio_listio(const struct dc_posix_env *env, struct dc_error *err, int mode
     errno   = 0;
 
 #pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wpragmas"  // the switch on the compiler - ugh
 #pragma GCC diagnostic ignored "-Wdiscarded-qualifiers"
 #pragma GCC diagnostic ignored "-Wincompatible-pointer-types-discards-qualifiers"
     ret_val = lio_listio(mode, list, nent, sig);
