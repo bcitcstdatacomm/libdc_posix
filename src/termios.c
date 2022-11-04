@@ -18,167 +18,167 @@
 #include "dc_posix/dc_termios.h"
 
 
-speed_t dc_cfgetispeed(const struct dc_posix_env *env, const struct termios *termios_p)
+speed_t dc_cfgetispeed(const struct dc_env *env, const struct termios *termios_p)
 {
     speed_t ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = cfgetispeed(termios_p);
 
     return ret_val;
 }
 
-speed_t dc_cfgetospeed(const struct dc_posix_env *env, const struct termios *termios_p)
+speed_t dc_cfgetospeed(const struct dc_env *env, const struct termios *termios_p)
 {
     speed_t ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = cfgetospeed(termios_p);
 
     return ret_val;
 }
 
-int dc_cfsetispeed(const struct dc_posix_env *env, struct dc_error *err, struct termios *termios_p, speed_t speed)
+int dc_cfsetispeed(const struct dc_env *env, struct dc_error *err, struct termios *termios_p, speed_t speed)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = cfsetispeed(termios_p, speed);
 
     if(ret_val == -1)
     {
-        DC_ERROR_RAISE_ERRNO(err, ret_val);
+        DC_ERROR_RAISE_ERRNO(err, errno);
     }
 
     return ret_val;
 }
 
-int dc_cfsetospeed(const struct dc_posix_env *env, struct dc_error *err, struct termios *termios_p, speed_t speed)
+int dc_cfsetospeed(const struct dc_env *env, struct dc_error *err, struct termios *termios_p, speed_t speed)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = cfsetospeed(termios_p, speed);
 
     if(ret_val == -1)
     {
-        DC_ERROR_RAISE_ERRNO(err, ret_val);
+        DC_ERROR_RAISE_ERRNO(err, errno);
     }
 
     return ret_val;
 }
 
-int dc_tcdrain(const struct dc_posix_env *env, struct dc_error *err, int fildes)
+int dc_tcdrain(const struct dc_env *env, struct dc_error *err, int fildes)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = tcdrain(fildes);
 
     if(ret_val == -1)
     {
-        DC_ERROR_RAISE_ERRNO(err, ret_val);
+        DC_ERROR_RAISE_ERRNO(err, errno);
     }
 
     return ret_val;
 }
 
-int dc_tcflow(const struct dc_posix_env *env, struct dc_error *err, int fildes, int action)
+int dc_tcflow(const struct dc_env *env, struct dc_error *err, int fildes, int action)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = tcflow(fildes, action);
 
     if(ret_val == -1)
     {
-        DC_ERROR_RAISE_ERRNO(err, ret_val);
+        DC_ERROR_RAISE_ERRNO(err, errno);
     }
 
     return ret_val;
 }
 
-int dc_tcflush(const struct dc_posix_env *env, struct dc_error *err, int fildes, int queue_selector)
+int dc_tcflush(const struct dc_env *env, struct dc_error *err, int fildes, int queue_selector)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = tcflush(fildes, queue_selector);
 
     if(ret_val == -1)
     {
-        DC_ERROR_RAISE_ERRNO(err, ret_val);
+        DC_ERROR_RAISE_ERRNO(err, errno);
     }
 
     return ret_val;
 }
 
-int dc_tcgetattr(const struct dc_posix_env *env, struct dc_error *err, int fildes, struct termios *termios_p)
+int dc_tcgetattr(const struct dc_env *env, struct dc_error *err, int fildes, struct termios *termios_p)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = tcgetattr(fildes, termios_p);
 
     if(ret_val == -1)
     {
-        DC_ERROR_RAISE_ERRNO(err, ret_val);
+        DC_ERROR_RAISE_ERRNO(err, errno);
     }
 
     return ret_val;
 }
 
-pid_t dc_tcgetsid(const struct dc_posix_env *env, struct dc_error *err, int fildes)
+pid_t dc_tcgetsid(const struct dc_env *env, struct dc_error *err, int fildes)
 {
     pid_t ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = tcgetsid(fildes);
 
     if(ret_val == -1)
     {
-        DC_ERROR_RAISE_ERRNO(err, ret_val);
+        DC_ERROR_RAISE_ERRNO(err, errno);
     }
 
     return ret_val;
 }
 
-int dc_tcsendbreak(const struct dc_posix_env *env, struct dc_error *err, int fildes, int duration)
+int dc_tcsendbreak(const struct dc_env *env, struct dc_error *err, int fildes, int duration)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = tcsendbreak(fildes, duration);
 
     if(ret_val == -1)
     {
-        DC_ERROR_RAISE_ERRNO(err, ret_val);
+        DC_ERROR_RAISE_ERRNO(err, errno);
     }
 
     return ret_val;
 }
 
-int dc_tcsetattr(const struct dc_posix_env *env, struct dc_error *err, int fildes, int optional_actions, const struct termios *termios_p)
+int dc_tcsetattr(const struct dc_env *env, struct dc_error *err, int fildes, int optional_actions, const struct termios *termios_p)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = tcsetattr(fildes, optional_actions, termios_p);
 
     if(ret_val == -1)
     {
-        DC_ERROR_RAISE_ERRNO(err, ret_val);
+        DC_ERROR_RAISE_ERRNO(err, errno);
     }
 
     return ret_val;

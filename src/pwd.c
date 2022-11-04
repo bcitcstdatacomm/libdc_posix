@@ -18,43 +18,15 @@
 #include "dc_posix/dc_pwd.h"
 
 
-void dc_endpwent(const struct dc_posix_env *env, struct dc_error *err)
-{
-    DC_TRACE(env);
-    errno   = 0;
-    endpwent();
-
-    if(errno != 0)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-}
-
-struct passwd *dc_getpwent(const struct dc_posix_env *env, struct dc_error *err)
+struct passwd *dc_getpwnam(const struct dc_env *env, struct dc_error *err, const char *name)
 {
     struct passwd *ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
-    ret_val = getpwent();
-
-    if(ret_val == NULL)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-
-    return ret_val;
-}
-
-struct passwd *dc_getpwnam(const struct dc_posix_env *env, struct dc_error *err, const char *name)
-{
-    struct passwd *ret_val;
-
-    DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = getpwnam(name);
 
-    if(ret_val == NULL)
+    if(ret_val == NULL && errno != 0)
     {
         DC_ERROR_RAISE_ERRNO(err, errno);
     }
@@ -62,31 +34,31 @@ struct passwd *dc_getpwnam(const struct dc_posix_env *env, struct dc_error *err,
     return ret_val;
 }
 
-int dc_getpwnam_r(const struct dc_posix_env *env, struct dc_error *err, const char *name, struct passwd *pwd, char *buffer, size_t bufsize, struct passwd **result)
+int dc_getpwnam_r(const struct dc_env *env, struct dc_error *err, const char *name, struct passwd *pwd, char *buffer, size_t bufsize, struct passwd **result)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = getpwnam_r(name, pwd, buffer, bufsize, result);
 
     if(ret_val != 0)
     {
-        DC_ERROR_RAISE_ERRNO(err, ret_val);
+        // TODO: what?
     }
 
     return ret_val;
 }
 
-struct passwd *dc_getpwuid(const struct dc_posix_env *env, struct dc_error *err, uid_t uid)
+struct passwd *dc_getpwuid(const struct dc_env *env, struct dc_error *err, uid_t uid)
 {
     struct passwd *ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = getpwuid(uid);
 
-    if(ret_val != NULL)
+    if(ret_val == NULL && errno != 0)
     {
         DC_ERROR_RAISE_ERRNO(err, errno);
     }
@@ -94,30 +66,18 @@ struct passwd *dc_getpwuid(const struct dc_posix_env *env, struct dc_error *err,
     return ret_val;
 }
 
-int dc_getpwuid_r(const struct dc_posix_env *env, struct dc_error *err, uid_t uid, struct passwd *pwd, char *buffer, size_t bufsize, struct passwd **result)
+int dc_getpwuid_r(const struct dc_env *env, struct dc_error *err, uid_t uid, struct passwd *pwd, char *buffer, size_t bufsize, struct passwd **result)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = getpwuid_r(uid, pwd, buffer, bufsize, result);
 
     if(ret_val != 0)
     {
-        DC_ERROR_RAISE_ERRNO(err, ret_val);
+        // TODO: what?
     }
 
     return ret_val;
-}
-
-void dc_setpwent(const struct dc_posix_env *env, struct dc_error *err)
-{
-    DC_TRACE(env);
-    errno   = 0;
-    setpwent();
-
-    if(errno != 0)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
 }

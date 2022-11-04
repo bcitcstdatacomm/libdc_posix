@@ -1,5 +1,9 @@
+#ifndef LIBDC_POSIX_DC_UTIME_H
+#define LIBDC_POSIX_DC_UTIME_H
+
+
 /*
- * Copyright 2021-2022 D'Arcy Smith.
+ * Copyright 2022-2022 D'Arcy Smith.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,28 +19,21 @@
  */
 
 
-#include "dc_posix/dc_libgen.h"
-#include <libgen.h>
+#include <dc_env/env.h>
+#include <utime.h>
 
 
-char *dc_basename(const struct dc_posix_env *env, char *path)
-{
-    char *name;
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-    DC_TRACE(env);
-    errno = 0;
-    name = basename(path);
 
-    return name;
+int dc_utime(const struct dc_env *env, struct dc_error *err, const char *path, const struct utimbuf *times);
+
+
+#ifdef __cplusplus
 }
+#endif
 
-char *dc_dirname(const struct dc_posix_env *env, char *path)
-{
-    char *name;
 
-    DC_TRACE(env);
-    errno = 0;
-    name = dirname(path);
-
-    return name;
-}
+#endif // LIBDC_POSIX_DC_UTIME_H

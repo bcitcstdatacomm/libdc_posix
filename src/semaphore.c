@@ -16,16 +16,14 @@
 
 
 #include "dc_posix/dc_semaphore.h"
-#include "dc_posix/dc_fcntl.h"
-#include <stdarg.h>
 
 
-int dc_sem_close(const struct dc_posix_env *env, struct dc_error *err, sem_t *sem)
+int dc_sem_close(const struct dc_env *env, struct dc_error *err, sem_t *sem)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = sem_close(sem);
 
     if(ret_val == -1)
@@ -36,13 +34,12 @@ int dc_sem_close(const struct dc_posix_env *env, struct dc_error *err, sem_t *se
     return ret_val;
 }
 
-/*
-int dc_sem_destroy(const struct dc_posix_env *env, struct dc_error *err, sem_t *sem)
+int dc_sem_destroy(const struct dc_env *env, struct dc_error *err, sem_t *sem)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = sem_destroy(sem);
 
     if(ret_val == -1)
@@ -52,15 +49,13 @@ int dc_sem_destroy(const struct dc_posix_env *env, struct dc_error *err, sem_t *
 
     return ret_val;
 }
-*/
 
-/*
-int dc_sem_getvalue(const struct dc_posix_env *env, struct dc_error *err, sem_t *restrict sem, int *restrict sval)
+int dc_sem_getvalue(const struct dc_env *env, struct dc_error *err, sem_t *restrict sem, int *restrict sval)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = sem_getvalue(sem, sval);
 
     if(ret_val == -1)
@@ -70,15 +65,13 @@ int dc_sem_getvalue(const struct dc_posix_env *env, struct dc_error *err, sem_t 
 
     return ret_val;
 }
-*/
 
-/*
-int dc_sem_init(const struct dc_posix_env *env, struct dc_error *err, sem_t *sem, int pshared, unsigned value)
+int dc_sem_init(const struct dc_env *env, struct dc_error *err, sem_t *sem, int pshared, unsigned value)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = sem_init(sem, pshared, value);
 
     if(ret_val == -1)
@@ -88,33 +81,15 @@ int dc_sem_init(const struct dc_posix_env *env, struct dc_error *err, sem_t *sem
 
     return ret_val;
 }
-*/
 
-sem_t *dc_sem_open(const struct dc_posix_env *env, struct dc_error *err, const char *name, unsigned int oflag, ...)
+sem_t *dc_sem_open(const struct dc_env *env, struct dc_error *err, const char *name, int oflag, ...)
 {
     sem_t *ret_val;
-    mode_t mode;
 
     DC_TRACE(env);
-    errno   = 0;
-
-    if((oflag & (unsigned int)O_CREAT) != 0)
-    {
-        va_list arg;
-
-        va_start(arg, oflag);
-        // https://www.gnu.org/software/gnulib/manual/html_node/va_005farg.html
-        mode = (sizeof (mode_t) < sizeof (int)
-                ? va_arg (arg, int)
-                : va_arg (arg, mode_t));
-        va_end(arg);
-    }
-    else
-    {
-        mode = 0;
-    }
-
-    ret_val = sem_open(name, (int)oflag, mode);
+    errno = 0;
+    // TODO: fix the ... or remove the function
+    ret_val = sem_open(name, oflag, 0);
 
     if(ret_val == SEM_FAILED)
     {
@@ -124,12 +99,12 @@ sem_t *dc_sem_open(const struct dc_posix_env *env, struct dc_error *err, const c
     return ret_val;
 }
 
-int dc_sem_post(const struct dc_posix_env *env, struct dc_error *err, sem_t *sem)
+int dc_sem_post(const struct dc_env *env, struct dc_error *err, sem_t *sem)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = sem_post(sem);
 
     if(ret_val == -1)
@@ -140,13 +115,12 @@ int dc_sem_post(const struct dc_posix_env *env, struct dc_error *err, sem_t *sem
     return ret_val;
 }
 
-/*
-int dc_sem_timedwait(const struct dc_posix_env *env, struct dc_error *err, sem_t *restrict sem, const struct timespec *restrict abstime)
+int dc_sem_timedwait(const struct dc_env *env, struct dc_error *err, sem_t *restrict sem, const struct timespec *restrict abstime)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = sem_timedwait(sem, abstime);
 
     if(ret_val == -1)
@@ -156,14 +130,13 @@ int dc_sem_timedwait(const struct dc_posix_env *env, struct dc_error *err, sem_t
 
     return ret_val;
 }
-*/
 
-int dc_sem_trywait(const struct dc_posix_env *env, struct dc_error *err, sem_t *sem)
+int dc_sem_trywait(const struct dc_env *env, struct dc_error *err, sem_t *sem)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = sem_trywait(sem);
 
     if(ret_val == -1)
@@ -174,12 +147,12 @@ int dc_sem_trywait(const struct dc_posix_env *env, struct dc_error *err, sem_t *
     return ret_val;
 }
 
-int dc_sem_unlink(const struct dc_posix_env *env, struct dc_error *err, const char *name)
+int dc_sem_unlink(const struct dc_env *env, struct dc_error *err, const char *name)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = sem_unlink(name);
 
     if(ret_val == -1)
@@ -190,12 +163,12 @@ int dc_sem_unlink(const struct dc_posix_env *env, struct dc_error *err, const ch
     return ret_val;
 }
 
-int dc_sem_wait(const struct dc_posix_env *env, struct dc_error *err, sem_t *sem)
+int dc_sem_wait(const struct dc_env *env, struct dc_error *err, sem_t *sem)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = sem_wait(sem);
 
     if(ret_val == -1)

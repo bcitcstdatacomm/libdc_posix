@@ -18,19 +18,12 @@
 #include "dc_posix/sys/dc_select.h"
 
 
-int dc_pselect(const struct dc_posix_env *env,
-               struct dc_error           *err,
-               int                        nfds,
-               fd_set * restrict readfds,
-               fd_set * restrict writefds,
-               fd_set * restrict errorfds,
-               const struct timespec * restrict timeout,
-               const sigset_t * restrict sigmask)
+int dc_pselect(const struct dc_env *env, struct dc_error *err, int nfds, fd_set *restrict readfds, fd_set *restrict writefds, fd_set *restrict errorfds, const struct timespec *restrict timeout, const sigset_t *restrict sigmask)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = pselect(nfds, readfds, writefds, errorfds, timeout, sigmask);
 
     if(ret_val == -1)
@@ -41,18 +34,12 @@ int dc_pselect(const struct dc_posix_env *env,
     return ret_val;
 }
 
-int dc_select(const struct dc_posix_env *env,
-              struct dc_error           *err,
-              int                        nfds,
-              fd_set * restrict readfds,
-              fd_set * restrict writefds,
-              fd_set * restrict errorfds,
-              struct timeval * restrict timeout)
+int dc_select(const struct dc_env *env, struct dc_error *err, int nfds, fd_set *restrict readfds, fd_set *restrict writefds, fd_set *restrict errorfds, struct timeval *restrict timeout)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = select(nfds, readfds, writefds, errorfds, timeout);
 
     if(ret_val == -1)

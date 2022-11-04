@@ -1,5 +1,5 @@
 /*
- * Copyright 2022-2022 D'Arcy Smith.
+ * Copyright 2021-2022 D'Arcy Smith.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,20 +15,23 @@
  */
 
 
-#include "dc_posix/sys/dc_ipc.h"
+#include "dc_posix/dc_setjmp.h"
 
 
-key_t dc_ftok(const struct dc_posix_env *env, struct dc_error *err, const char *path, int id)
+void dc_siglongjmp(const struct dc_env *env, sigjmp_buf jmpbuf, int val)
 {
-    key_t ret_val;
+    DC_TRACE(env);
+    errno = 0;
+    siglongjmp(jmpbuf, val);
+}
+
+int dc_sigsetjmp(const struct dc_env *env, sigjmp_buf jmpbuf, int savemask)
+{
+    int ret_val;
 
     DC_TRACE(env);
-    ret_val = ftok(path, id);
-
-    if(ret_val == (key_t)-1)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
+    errno = 0;
+    ret_val = sigsetjmp(jmpbuf, savemask);
 
     return ret_val;
 }

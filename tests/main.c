@@ -34,7 +34,7 @@ int main(int argc, char **argv)
     add_suite(suite, dc_netdb_tests());
     add_suite(suite, dc_nl_types_tests());
     add_suite(suite, dc_poll_tests());
-    add_suite(suite, dc_posix_env_tests());
+    add_suite(suite, dc_env_tests());
     add_suite(suite, dc_pthread_tests());
     add_suite(suite, dc_pwd_tests());
     add_suite(suite, dc_regex_tests());

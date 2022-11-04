@@ -1,9 +1,9 @@
-#ifndef LIBDC_POSIX_SYS_DC_STATVFS_H
-#define LIBDC_POSIX_SYS_DC_STATVFS_H
+#ifndef LIBDC_POSIX_DC_LOCALE_H
+#define LIBDC_POSIX_DC_LOCALE_H
 
 
 /*
- * Copyright 2021-2022 D'Arcy Smith.
+ * Copyright 2022-2022 D'Arcy Smith.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
 
 
 #include <dc_env/env.h>
-#include <sys/statvfs.h>
+#include <locale.h>
 
 
 #ifdef __cplusplus
@@ -28,8 +28,10 @@ extern "C" {
 #endif
 
 
-int dc_fstatvfs(const struct dc_env *env, struct dc_error *err, int fildes, struct statvfs *buf);
-int dc_statvfs(const struct dc_env *env, struct dc_error *err, const char *restrict path, struct statvfs *restrict buf);
+locale_t dc_duplocale(const struct dc_env *env, struct dc_error *err, locale_t locobj);
+void dc_freelocale(const struct dc_env *env, locale_t locobj);
+locale_t dc_newlocale(const struct dc_env *env, struct dc_error *err, int category_mask, const char *locale, locale_t base);
+locale_t dc_uselocale(const struct dc_env *env, struct dc_error *err, locale_t newloc);
 
 
 #ifdef __cplusplus
@@ -37,4 +39,4 @@ int dc_statvfs(const struct dc_env *env, struct dc_error *err, const char *restr
 #endif
 
 
-#endif // LIBDC_POSIX_SYS_DC_STATVFS_H
+#endif // LIBDC_POSIX_DC_LOCALE_H

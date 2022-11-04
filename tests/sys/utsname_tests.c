@@ -1,14 +1,14 @@
 #include "../tests.h"
 #include "sys/dc_utsname.h"
 
-static struct dc_posix_env env;
+static struct dc_env env;
 static struct dc_error err;
 
 Describe(dc_sys_utsname);
 
 BeforeEach(dc_sys_utsname)
 {
-    dc_posix_env_init(&env, NULL);
+    dc_env_init(&env, NULL);
     dc_error_init(&err, NULL);
 }
 

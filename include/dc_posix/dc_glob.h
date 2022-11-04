@@ -18,7 +18,8 @@
  * limitations under the License.
  */
 
-#include "dc_posix_env.h"
+
+#include <dc_env/env.h>
 #include <glob.h>
 
 
@@ -27,24 +28,8 @@ extern "C" {
 #endif
 
 
-/**
- *
- * @param env
- * @param err
- * @param pattern
- * @param flags
- * @param errfunc
- * @param pglob
- * @return
- */
-int dc_glob(const struct dc_posix_env *env, struct dc_error *err, const char *restrict pattern, int flags, int(*errfunc)(const char *epath, int eerrno), glob_t *restrict pglob);
-
-/**
- *
- * @param env
- * @param pglob
- */
-void dc_globfree(const struct dc_posix_env *env, glob_t *pglob);
+int dc_glob(const struct dc_env *env, struct dc_error *err, const char *restrict pattern, int flags, int(*errfunc)(const char *epath, int eerrno), glob_t *restrict pglob);
+void dc_globfree(const struct dc_env *env, glob_t *pglob);
 
 
 #ifdef __cplusplus

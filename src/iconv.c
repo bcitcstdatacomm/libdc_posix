@@ -18,7 +18,7 @@
 #include "dc_posix/dc_iconv.h"
 
 
-size_t dc_iconv(const struct dc_posix_env *env, struct dc_error *err, iconv_t cd, char **restrict inbuf, size_t *restrict inbytesleft, char **restrict outbuf, size_t *restrict outbytesleft)
+size_t dc_iconv(const struct dc_env *env, struct dc_error *err, iconv_t cd, char **restrict inbuf, size_t *restrict inbytesleft, char **restrict outbuf, size_t *restrict outbytesleft)
 {
     size_t ret_val;
 
@@ -34,7 +34,7 @@ size_t dc_iconv(const struct dc_posix_env *env, struct dc_error *err, iconv_t cd
     return ret_val;
 }
 
-int dc_iconv_close(const struct dc_posix_env *env, struct dc_error *err, iconv_t cd)
+int dc_iconv_close(const struct dc_env *env, struct dc_error *err, iconv_t cd)
 {
     int ret_val;
 
@@ -50,7 +50,7 @@ int dc_iconv_close(const struct dc_posix_env *env, struct dc_error *err, iconv_t
     return ret_val;
 }
 
-iconv_t dc_iconv_open(const struct dc_posix_env *env, struct dc_error *err, const char *tocode, const char *fromcode)
+iconv_t dc_iconv_open(const struct dc_env *env, struct dc_error *err, const char *tocode, const char *fromcode)
 {
     iconv_t ret_val;
 
@@ -58,7 +58,7 @@ iconv_t dc_iconv_open(const struct dc_posix_env *env, struct dc_error *err, cons
     errno = 0;
     ret_val = iconv_open(tocode, fromcode);
 
-    if(ret_val == (iconv_t)-1)  // NOLINT(performance-no-int-to-ptr)
+    if(ret_val == (iconv_t)-1)
     {
         DC_ERROR_RAISE_ERRNO(err, errno);
     }

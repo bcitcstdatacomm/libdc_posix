@@ -18,12 +18,12 @@
 #include "dc_posix/dc_poll.h"
 
 
-int dc_poll(const struct dc_posix_env *env, struct dc_error *err, struct pollfd fds[], nfds_t nfds, int timeout)
+int dc_poll(const struct dc_env *env, struct dc_error *err, struct pollfd fds[], nfds_t nfds, int timeout)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = poll(fds, nfds, timeout);
 
     if(ret_val == -1)

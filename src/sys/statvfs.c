@@ -18,12 +18,12 @@
 #include "dc_posix/sys/dc_statvfs.h"
 
 
-int dc_fstatvfs(const struct dc_posix_env *env, struct dc_error *err, int fildes, struct statvfs *buf)
+int dc_fstatvfs(const struct dc_env *env, struct dc_error *err, int fildes, struct statvfs *buf)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = fstatvfs(fildes, buf);
 
     if(ret_val == -1)
@@ -34,15 +34,12 @@ int dc_fstatvfs(const struct dc_posix_env *env, struct dc_error *err, int fildes
     return ret_val;
 }
 
-int dc_statvfs(const struct dc_posix_env *env,
-               struct dc_error           *err,
-               const char * restrict path,
-               struct statvfs * restrict buf)
+int dc_statvfs(const struct dc_env *env, struct dc_error *err, const char *restrict path, struct statvfs *restrict buf)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = statvfs(path, buf);
 
     if(ret_val == -1)

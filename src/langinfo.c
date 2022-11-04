@@ -18,7 +18,7 @@
 #include "dc_posix/dc_langinfo.h"
 
 
-char *dc_nl_langinfo(const struct dc_posix_env *env, nl_item item)
+char *dc_nl_langinfo(const struct dc_env *env, nl_item item)
 {
     char *ret_val;
 
@@ -29,7 +29,7 @@ char *dc_nl_langinfo(const struct dc_posix_env *env, nl_item item)
     return ret_val;
 }
 
-char *dc_nl_langinfo_l(const struct dc_posix_env *env, nl_item item, locale_t locale)
+char *dc_nl_langinfo_l(const struct dc_env *env, nl_item item, locale_t locale)
 {
     char *ret_val;
 

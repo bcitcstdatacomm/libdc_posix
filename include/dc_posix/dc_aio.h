@@ -19,7 +19,7 @@
  */
 
 
-#include "dc_posix_env.h"
+#include <dc_env/env.h>
 #include <aio.h>
 
 
@@ -28,84 +28,13 @@ extern "C" {
 #endif
 
 
-/**
- *
- * @param env
- * @param err
- * @param fildes
- * @param aiocbp
- * @return
- */
-int dc_aio_cancel(const struct dc_posix_env *env, struct dc_error *err,int fildes, struct aiocb *aiocbp);
-
-/**
- *
- * @param env
- * @param err
- * @param aiocbp
- * @return
- */
-int dc_aio_error(const struct dc_posix_env *env, struct dc_error *err,const struct aiocb *aiocbp);
-
-/**
- *
- * @param env
- * @param err
- * @param op
- * @param aiocbp
- * @return
- */
-int dc_aio_fsync(const struct dc_posix_env *env, struct dc_error *err,int op, struct aiocb *aiocbp);
-
-/**
- *
- * @param env
- * @param err
- * @param aiocbp
- * @return
- */
-int dc_aio_read(const struct dc_posix_env *env, struct dc_error *err,struct aiocb *aiocbp);
-
-/**
- *
- * @param env
- * @param err
- * @param aiocbp
- * @return
- */
-ssize_t dc_aio_return(const struct dc_posix_env *env, struct dc_error *err,struct aiocb *aiocbp);
-
-/**
- *
- * @param env
- * @param err
- * @param list
- * @param nent
- * @param timeout
- * @return
- */
-int dc_aio_suspend(const struct dc_posix_env *env, struct dc_error *err,const struct aiocb *const list[], int nent, const struct timespec *timeout);
-
-/**
- *
- * @param env
- * @param err
- * @param aiocbp
- * @return
- */
-int dc_aio_write(const struct dc_posix_env *env, struct dc_error *err,struct aiocb *aiocbp);
-
-/**
- *
- * @param env
- * @param err
- * @param mode
- * @param list
- * @param nent
- * @param sig
- * @return
- */
-int dc_lio_listio(const struct dc_posix_env *env, struct dc_error *err,int mode, struct aiocb *restrict const list[restrict], int nent, struct sigevent *restrict sig);
+int dc_aio_cancel(const struct dc_env *env, struct dc_error *err, int fildes, struct aiocb *aiocbp);
+int dc_aio_error(const struct dc_env *env, struct dc_error *err, const struct aiocb *aiocbp);
+int dc_aio_read(const struct dc_env *env, struct dc_error *err, struct aiocb *aiocbp);
+ssize_t dc_aio_return(const struct dc_env *env, struct dc_error *err, struct aiocb *aiocbp);
+int dc_aio_suspend(const struct dc_env *env, struct dc_error *err, const struct aiocb *const list[], int nent, const struct timespec *timeout);
+int dc_aio_write(const struct dc_env *env, struct dc_error *err, struct aiocb *aiocbp);
+int dc_lio_listio(const struct dc_env *env, struct dc_error *err, int mode, struct aiocb *restrict const list[restrict], int nent, struct sigevent *restrict sig);
 
 
 #ifdef __cplusplus

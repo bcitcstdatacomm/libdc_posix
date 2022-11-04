@@ -19,7 +19,7 @@
  */
 
 
-#include "../dc_posix_env.h"
+#include <dc_env/env.h>
 #include <sys/select.h>
 
 
@@ -28,38 +28,8 @@ extern "C" {
 #endif
 
 
-/**
- *
- * @param env
- * @param err
- * @param nfds
- * @param readfds
- * @param writefds
- * @param errorfds
- * @param timeout
- * @param sigmask
- * @return
- */
-int dc_pselect(const struct dc_posix_env *env, struct dc_error *err, int nfds,
-               fd_set *restrict readfds, fd_set *restrict writefds,
-               fd_set *restrict errorfds,
-               const struct timespec *restrict timeout,
-               const sigset_t *restrict sigmask);
-
-/**
- *
- * @param env
- * @param err
- * @param nfds
- * @param readfds
- * @param writefds
- * @param errorfds
- * @param timeout
- * @return
- */
-int dc_select(const struct dc_posix_env *env, struct dc_error *err, int nfds,
-              fd_set *restrict readfds, fd_set *restrict writefds,
-              fd_set *restrict errorfds, struct timeval *restrict timeout);
+int dc_pselect(const struct dc_env *env, struct dc_error *err, int nfds, fd_set *restrict readfds, fd_set *restrict writefds, fd_set *restrict errorfds, const struct timespec *restrict timeout, const sigset_t *restrict sigmask);
+int dc_select(const struct dc_env *env, struct dc_error *err, int nfds, fd_set *restrict readfds, fd_set *restrict writefds, fd_set *restrict errorfds, struct timeval *restrict timeout);
 
 
 #ifdef __cplusplus

@@ -18,51 +18,57 @@
 #include "dc_posix/net/dc_if.h"
 
 
-void dc_if_freenameindex(const struct dc_posix_env *env, struct if_nameindex *ptr)
+void dc_if_freenameindex(const struct dc_env *env, struct if_nameindex *ptr)
 {
     DC_TRACE(env);
+    errno = 0;
     if_freenameindex(ptr);
 }
 
-char *dc_if_indextoname(const struct dc_posix_env *env, struct dc_error *err, unsigned int ifindex, char *ifname)
+char *dc_if_indextoname(const struct dc_env *env, struct dc_error *err, unsigned ifindex, char *ifname)
 {
-    char *name;
+    char *ret_val;
 
     DC_TRACE(env);
     errno = 0;
-    name  = if_indextoname(ifindex, ifname);
+    ret_val = if_indextoname(ifindex, ifname);
 
-    if(name == NULL)
+    if(ret_val == NULL)
     {
         DC_ERROR_RAISE_ERRNO(err, errno);
     }
 
-    return name;
+    return ret_val;
 }
 
-struct if_nameindex *dc_if_nameindex(const struct dc_posix_env *env, struct dc_error *err)
+struct if_nameindex *dc_if_nameindex(const struct dc_env *env, struct dc_error *err)
 {
-    struct if_nameindex *indexes;
+    struct if_nameindex *ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
-    indexes = if_nameindex();
+    errno = 0;
+    ret_val = if_nameindex();
 
-    if(indexes == NULL)
+    if(ret_val == NULL)
     {
         DC_ERROR_RAISE_ERRNO(err, errno);
     }
 
-    return indexes;
+    return ret_val;
 }
 
-unsigned int dc_if_nametoindex(const struct dc_posix_env *env, const char *ifname)
+unsigned dc_if_nametoindex(const struct dc_env *env, struct dc_error *err, const char *ifname)
 {
-    unsigned int index;
+    unsigned ret_val;
 
     DC_TRACE(env);
     errno = 0;
-    index = if_nametoindex(ifname);
+    ret_val = if_nametoindex(ifname);
 
-    return index;
+    if(ret_val == 0)
+    {
+        // TODO: what?
+    }
+
+    return ret_val;
 }

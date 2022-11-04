@@ -19,7 +19,7 @@
  */
 
 
-#include "dc_posix_env.h"
+#include <dc_env/env.h>
 #include <termios.h>
 
 
@@ -28,110 +28,17 @@ extern "C" {
 #endif
 
 
-/**
- *
- * @param env
- * @param termios_p
- * @return
- */
-speed_t dc_cfgetispeed(const struct dc_posix_env *env, const struct termios *termios_p);
-
-/**
- *
- * @param env
- * @param termios_p
- * @return
- */
-speed_t dc_cfgetospeed(const struct dc_posix_env *env, const struct termios *termios_p);
-
-/**
- *
- * @param env
- * @param err
- * @param termios_p
- * @param speed
- * @return
- */
-int dc_cfsetispeed(const struct dc_posix_env *env, struct dc_error *err, struct termios *termios_p, speed_t speed);
-
-/**
- *
- * @param env
- * @param err
- * @param termios_p
- * @param speed
- * @return
- */
-int dc_cfsetospeed(const struct dc_posix_env *env, struct dc_error *err, struct termios *termios_p, speed_t speed);
-
-/**
- *
- * @param env
- * @param err
- * @param fildes
- * @return
- */
-int dc_tcdrain(const struct dc_posix_env *env, struct dc_error *err, int fildes);
-
-/**
- *
- * @param env
- * @param err
- * @param fildes
- * @param action
- * @return
- */
-int dc_tcflow(const struct dc_posix_env *env, struct dc_error *err, int fildes, int action);
-
-/**
- *
- * @param env
- * @param err
- * @param fildes
- * @param queue_selector
- * @return
- */
-int dc_tcflush(const struct dc_posix_env *env, struct dc_error *err, int fildes, int queue_selector);
-
-/**
- *
- * @param env
- * @param err
- * @param fildes
- * @param termios_p
- * @return
- */
-int dc_tcgetattr(const struct dc_posix_env *env, struct dc_error *err, int fildes, struct termios *termios_p);
-
-/**
- *
- * @param env
- * @param err
- * @param fildes
- * @return
- */
-pid_t dc_tcgetsid(const struct dc_posix_env *env, struct dc_error *err, int fildes);
-
-/**
- *
- * @param env
- * @param err
- * @param fildes
- * @param duration
- * @return
- */
-int dc_tcsendbreak(const struct dc_posix_env *env, struct dc_error *err, int fildes, int duration);
-
-/**
- *
- * @param env
- * @param err
- * @param fildes
- * @param optional_actions
- * @param termios_p
- * @return
- */
-int dc_tcsetattr(const struct dc_posix_env *env, struct dc_error *err, int fildes, int optional_actions, const struct termios *termios_p);
+speed_t dc_cfgetispeed(const struct dc_env *env, const struct termios *termios_p);
+speed_t dc_cfgetospeed(const struct dc_env *env, const struct termios *termios_p);
+int dc_cfsetispeed(const struct dc_env *env, struct dc_error *err, struct termios *termios_p, speed_t speed);
+int dc_cfsetospeed(const struct dc_env *env, struct dc_error *err, struct termios *termios_p, speed_t speed);
+int dc_tcdrain(const struct dc_env *env, struct dc_error *err, int fildes);
+int dc_tcflow(const struct dc_env *env, struct dc_error *err, int fildes, int action);
+int dc_tcflush(const struct dc_env *env, struct dc_error *err, int fildes, int queue_selector);
+int dc_tcgetattr(const struct dc_env *env, struct dc_error *err, int fildes, struct termios *termios_p);
+pid_t dc_tcgetsid(const struct dc_env *env, struct dc_error *err, int fildes);
+int dc_tcsendbreak(const struct dc_env *env, struct dc_error *err, int fildes, int duration);
+int dc_tcsetattr(const struct dc_env *env, struct dc_error *err, int fildes, int optional_actions, const struct termios *termios_p);
 
 
 #ifdef __cplusplus

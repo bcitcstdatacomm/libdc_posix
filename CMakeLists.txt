@@ -13,6 +13,7 @@ set(SOURCE_DIR ${PROJECT_SOURCE_DIR}/src)
 set(INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
 
 set(SOURCE_LIST ${SOURCE_DIR}/ ${SOURCE_DIR}/aio.c
+        ${SOURCE_DIR}/ctype.c
         ${SOURCE_DIR}/dirent.c
         ${SOURCE_DIR}/dlfcn.c
         ${SOURCE_DIR}/fcntl.c
@@ -20,19 +21,17 @@ set(SOURCE_LIST ${SOURCE_DIR}/ ${SOURCE_DIR}/aio.c
         ${SOURCE_DIR}/glob.c
         ${SOURCE_DIR}/grp.c
         ${SOURCE_DIR}/iconv.c
-        ${SOURCE_DIR}/inttypes.c
         ${SOURCE_DIR}/langinfo.c
-        ${SOURCE_DIR}/libgen.c
-        ${SOURCE_DIR}/ndbm.c
+        ${SOURCE_DIR}/locale.c
         ${SOURCE_DIR}/netdb.c
         ${SOURCE_DIR}/nl_types.c
         ${SOURCE_DIR}/poll.c
-        ${SOURCE_DIR}/posix_env.c
         ${SOURCE_DIR}/pthread.c
         ${SOURCE_DIR}/pwd.c
         ${SOURCE_DIR}/regex.c
         ${SOURCE_DIR}/sched.c
         ${SOURCE_DIR}/semaphore.c
+        ${SOURCE_DIR}/setjmp.c
         ${SOURCE_DIR}/signal.c
         ${SOURCE_DIR}/stdio.c
         ${SOURCE_DIR}/stdlib.c
@@ -41,12 +40,13 @@ set(SOURCE_LIST ${SOURCE_DIR}/ ${SOURCE_DIR}/aio.c
         ${SOURCE_DIR}/termios.c
         ${SOURCE_DIR}/time.c
         ${SOURCE_DIR}/unistd.c
+        ${SOURCE_DIR}/utime.c
+        ${SOURCE_DIR}/wchar.c
+        ${SOURCE_DIR}/wctype.c
         ${SOURCE_DIR}/wordexp.c
         ${SOURCE_DIR}/arpa/inet.c
         ${SOURCE_DIR}/net/if.c
-        ${SOURCE_DIR}/sys/ipc.c
         ${SOURCE_DIR}/sys/mman.c
-        ${SOURCE_DIR}/sys/msg.c
         ${SOURCE_DIR}/sys/select.c
         ${SOURCE_DIR}/sys/socket.c
         ${SOURCE_DIR}/sys/stat.c
@@ -56,6 +56,7 @@ set(SOURCE_LIST ${SOURCE_DIR}/ ${SOURCE_DIR}/aio.c
         ${SOURCE_DIR}/sys/wait.c
         )
 set(HEADER_LIST ${INCLUDE_DIR}/dc_posix/dc_aio.h
+        ${INCLUDE_DIR}/dc_posix/dc_ctype.h
         ${INCLUDE_DIR}/dc_posix/dc_dirent.h
         ${INCLUDE_DIR}/dc_posix/dc_dlfcn.h
         ${INCLUDE_DIR}/dc_posix/dc_fcntl.h
@@ -63,19 +64,17 @@ set(HEADER_LIST ${INCLUDE_DIR}/dc_posix/dc_aio.h
         ${INCLUDE_DIR}/dc_posix/dc_glob.h
         ${INCLUDE_DIR}/dc_posix/dc_grp.h
         ${INCLUDE_DIR}/dc_posix/dc_iconv.h
-        ${INCLUDE_DIR}/dc_posix/dc_inttypes.h
         ${INCLUDE_DIR}/dc_posix/dc_langinfo.h
-        ${INCLUDE_DIR}/dc_posix/dc_libgen.h
-        ${INCLUDE_DIR}/dc_posix/dc_ndbm.h
+        ${INCLUDE_DIR}/dc_posix/dc_locale.h
         ${INCLUDE_DIR}/dc_posix/dc_netdb.h
         ${INCLUDE_DIR}/dc_posix/dc_nl_types.h
         ${INCLUDE_DIR}/dc_posix/dc_poll.h
-        ${INCLUDE_DIR}/dc_posix/dc_posix_env.h
         ${INCLUDE_DIR}/dc_posix/dc_pthread.h
         ${INCLUDE_DIR}/dc_posix/dc_pwd.h
         ${INCLUDE_DIR}/dc_posix/dc_regex.h
         ${INCLUDE_DIR}/dc_posix/dc_sched.h
         ${INCLUDE_DIR}/dc_posix/dc_semaphore.h
+        ${INCLUDE_DIR}/dc_posix/dc_setjmp.h
         ${INCLUDE_DIR}/dc_posix/dc_signal.h
         ${INCLUDE_DIR}/dc_posix/dc_stdio.h
         ${INCLUDE_DIR}/dc_posix/dc_stdlib.h
@@ -84,15 +83,17 @@ set(HEADER_LIST ${INCLUDE_DIR}/dc_posix/dc_aio.h
         ${INCLUDE_DIR}/dc_posix/dc_termios.h
         ${INCLUDE_DIR}/dc_posix/dc_time.h
         ${INCLUDE_DIR}/dc_posix/dc_unistd.h
+        ${INCLUDE_DIR}/dc_posix/dc_utime.h
+        ${INCLUDE_DIR}/dc_posix/dc_wchar.h
+        ${INCLUDE_DIR}/dc_posix/dc_wctype.h
+        ${INCLUDE_DIR}/dc_posix/dc_ctype.h
         ${INCLUDE_DIR}/dc_posix/dc_wordexp.h
     )
 set(HEADER_LIST_ARPA ${INCLUDE_DIR}/dc_posix/arpa/dc_inet.h)
 
 set(HEADER_LIST_NET ${INCLUDE_DIR}/dc_posix/net/dc_if.h)
 
-set(HEADER_LIST_SYS ${INCLUDE_DIR}/dc_posix/sys/dc_ipc.h
-        ${INCLUDE_DIR}/dc_posix/sys/dc_mman.h
-        ${INCLUDE_DIR}/dc_posix/sys/dc_msg.h
+set(HEADER_LIST_SYS ${INCLUDE_DIR}/dc_posix/sys/dc_mman.h
         ${INCLUDE_DIR}/dc_posix/sys/dc_select.h
         ${INCLUDE_DIR}/dc_posix/sys/dc_socket.h
         ${INCLUDE_DIR}/dc_posix/sys/dc_stat.h
@@ -104,15 +105,6 @@ set(HEADER_LIST_SYS ${INCLUDE_DIR}/dc_posix/sys/dc_ipc.h
 
 add_compile_definitions(_POSIX_C_SOURCE=200809L)
 add_compile_definitions(_XOPEN_SOURCE=700)
-# add_compile_definitions(_GNU_SOURCE)
-
-if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-    add_compile_definitions(_DARWIN_C_SOURCE)
-endif ()
-
-if (${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD")
-    add_compile_definitions(__BSD_VISIBLE)
-endif ()
 
 include_directories(${INCLUDE_DIR})
 add_compile_options("-Wall"
@@ -247,43 +239,10 @@ set_target_properties(dc_posix PROPERTIES
         SOVERSION ${PROJECT_VERSION_MAJOR})
 
 find_library(LIBDC_ERROR dc_error REQUIRED)
-find_library(LIB_CRYPT crypt)
-find_library(LIB_DL dl)
-find_library(LIB_GDBM gdbm)
-find_library(LIB_GDBM_COMPAT gdbm_compat)
-find_library(LIB_ICONV iconv)
-find_library(LIB_PTHREAD pthread)
-find_library(LIB_RT rt)
+find_library(LIBDC_ENV dc_env REQUIRED)
 
 target_link_libraries(dc_posix PUBLIC ${LIBDC_ERROR})
-
-if(LIB_CRYPT)
-    target_link_libraries(dc_posix PUBLIC ${LIB_CRYPT})
-endif()
-
-if(LIB_DL)
-    target_link_libraries(dc_posix PUBLIC ${LIB_DL})
-endif()
-
-if(LIB_GDBM)
-    target_link_libraries(dc_posix PUBLIC ${LIB_GDBM})
-endif()
-
-if(LIB_GDBM_COMPAT)
-    target_link_libraries(dc_posix PUBLIC ${LIB_GDBM_COMPAT})
-endif()
-
-if(LIB_ICONV)
-    target_link_libraries(dc_posix PUBLIC ${LIB_ICONV})
-endif()
-
-if(LIB_PTHREAD)
-    target_link_libraries(dc_posix PUBLIC ${LIB_PTHREAD})
-endif()
-
-if(LIB_RT)
-    target_link_libraries(dc_posix PUBLIC ${LIB_RT})
-endif()
+target_link_libraries(dc_posix PUBLIC ${LIBDC_ENV})
 
 install(TARGETS dc_posix LIBRARY DESTINATION lib)
 install(FILES ${HEADER_LIST} DESTINATION include/dc_posix)

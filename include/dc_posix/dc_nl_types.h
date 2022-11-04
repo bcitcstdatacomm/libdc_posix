@@ -19,7 +19,7 @@
  */
 
 
-#include "dc_posix_env.h"
+#include <dc_env/env.h>
 #include <nl_types.h>
 
 
@@ -28,36 +28,9 @@ extern "C" {
 #endif
 
 
-/**
- *
- * @param env
- * @param err
- * @param catd
- * @return
- */
-int dc_catclose(const struct dc_posix_env *env, struct dc_error *err,nl_catd catd);
-
-/**
- *
- * @param env
- * @param err
- * @param catd
- * @param set_id
- * @param msg_id
- * @param s
- * @return
- */
-char *dc_catgets(const struct dc_posix_env *env, struct dc_error *err,nl_catd catd, int set_id, int msg_id, const char *s);
-
-/**
- *
- * @param env
- * @param err
- * @param name
- * @param oflag
- * @return
- */
-nl_catd dc_catopen(const struct dc_posix_env *env, struct dc_error *err,const char *name, int oflag);
+int dc_catclose(const struct dc_env *env, struct dc_error *err, nl_catd catd);
+char *dc_catgets(const struct dc_env *env, struct dc_error *err, nl_catd catd, int set_id, int msg_id, const char *s);
+nl_catd dc_catopen(const struct dc_env *env, struct dc_error *err, const char *name, int oflag);
 
 
 #ifdef __cplusplus

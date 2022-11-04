@@ -1,5 +1,5 @@
-#ifndef LIBDC_POSIX_IF_H
-#define LIBDC_POSIX_IF_H
+#ifndef LIBDC_POSIX_NET_DC_IF_H
+#define LIBDC_POSIX_NET_DC_IF_H
 
 
 /*
@@ -19,7 +19,7 @@
  */
 
 
-#include "../dc_posix_env.h"
+#include <dc_env/env.h>
 #include <net/if.h>
 
 
@@ -28,42 +28,10 @@ extern "C" {
 #endif
 
 
-/**
- *
- * @param env
- * @param ptr
- */
-void dc_if_freenameindex(const struct dc_posix_env *env,
-                         struct if_nameindex *ptr);
-
-/**
- *
- * @param env
- * @param err
- * @param ifindex
- * @param ifname
- * @return
- */
-char *dc_if_indextoname(const struct dc_posix_env *env, struct dc_error *err,
-                        unsigned int ifindex, char *ifname);
-
-/**
- *
- * @param env
- * @param err
- * @return
- */
-struct if_nameindex *dc_if_nameindex(const struct dc_posix_env *env,
-                                     struct dc_error *err);
-
-/**
- *
- * @param env
- * @param ifname
- * @return
- */
-unsigned int dc_if_nametoindex(const struct dc_posix_env *env,
-                               const char *ifname);
+void dc_if_freenameindex(const struct dc_env *env, struct if_nameindex *ptr);
+char *dc_if_indextoname(const struct dc_env *env, struct dc_error *err, unsigned ifindex, char *ifname);
+struct if_nameindex *dc_if_nameindex(const struct dc_env *env, struct dc_error *err);
+unsigned dc_if_nametoindex(const struct dc_env *env, struct dc_error *err, const char *ifname);
 
 
 #ifdef __cplusplus
@@ -71,4 +39,4 @@ unsigned int dc_if_nametoindex(const struct dc_posix_env *env,
 #endif
 
 
-#endif // LIBDC_POSIX_IF_H
+#endif // LIBDC_POSIX_NET_DC_IF_H

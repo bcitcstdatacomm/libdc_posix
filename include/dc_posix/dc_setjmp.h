@@ -1,5 +1,5 @@
-#ifndef LIBDC_POSIX_DC_LIBGEN_H
-#define LIBDC_POSIX_DC_LIBGEN_H
+#ifndef LIBDC_POSIX_DC_SETJMP_H
+#define LIBDC_POSIX_DC_SETJMP_H
 
 
 /*
@@ -19,8 +19,8 @@
  */
 
 
-#include "dc_posix_env.h"
-#include <libgen.h>
+#include <dc_env/env.h>
+#include <setjmp.h>
 
 
 #ifdef __cplusplus
@@ -28,21 +28,8 @@ extern "C" {
 #endif
 
 
-/**
- *
- * @param env
- * @param path
- * @return
- */
-char *dc_basename(const struct dc_posix_env *env, char *path);
-
-/**
- *
- * @param env
- * @param path
- * @return
- */
-char *dc_dirname(const struct dc_posix_env *env, char *path);
+void dc_siglongjmp(const struct dc_env *env, sigjmp_buf jmpbuf, int val);
+int dc_sigsetjmp(const struct dc_env *env, sigjmp_buf jmpbuf, int savemask);
 
 
 #ifdef __cplusplus
@@ -50,4 +37,4 @@ char *dc_dirname(const struct dc_posix_env *env, char *path);
 #endif
 
 
-#endif // LIBDC_POSIX_DC_LIBGEN_H
+#endif // LIBDC_POSIX_DC__H

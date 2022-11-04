@@ -19,7 +19,7 @@
  */
 
 
-#include "../dc_posix_env.h"
+#include <dc_env/env.h>
 #include <sys/times.h>
 
 
@@ -28,15 +28,7 @@ extern "C" {
 #endif
 
 
-/**
- *
- * @param env
- * @param err
- * @param buffer
- * @return
- */
-clock_t dc_times(const struct dc_posix_env *env, struct dc_error *err,
-                 struct tms *buffer);
+clock_t dc_times(const struct dc_env *env, struct dc_error *err, struct tms *buffer);
 
 
 #ifdef __cplusplus

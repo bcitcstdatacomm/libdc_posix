@@ -18,7 +18,7 @@
 #include "dc_posix/dc_dirent.h"
 
 
-int dc_alphasort(const struct dc_posix_env *env, const struct dirent **d1, const struct dirent **d2)
+int dc_alphasort(const struct dc_env *env, struct dc_error *err, const struct dirent **d1, const struct dirent **d2)
 {
     int ret_val;
 
@@ -26,10 +26,15 @@ int dc_alphasort(const struct dc_posix_env *env, const struct dirent **d1, const
     errno = 0;
     ret_val = alphasort(d1, d2);
 
+    if(ret_val == -1)
+    {
+        DC_ERROR_RAISE_ERRNO(err, errno);
+    }
+
     return ret_val;
 }
 
-int dc_closedir(const struct dc_posix_env *env, struct dc_error *err, DIR *dirp)
+int dc_closedir(const struct dc_env *env, struct dc_error *err, DIR *dirp)
 {
     int ret_val;
 
@@ -45,7 +50,7 @@ int dc_closedir(const struct dc_posix_env *env, struct dc_error *err, DIR *dirp)
     return ret_val;
 }
 
-int dc_dirfd(const struct dc_posix_env *env, struct dc_error *err, DIR *dirp)
+int dc_dirfd(const struct dc_env *env, struct dc_error *err, DIR *dirp)
 {
     int ret_val;
 
@@ -61,7 +66,7 @@ int dc_dirfd(const struct dc_posix_env *env, struct dc_error *err, DIR *dirp)
     return ret_val;
 }
 
-DIR *dc_fdopendir(const struct dc_posix_env *env, struct dc_error *err, int fd)
+DIR *dc_fdopendir(const struct dc_env *env, struct dc_error *err, int fd)
 {
     DIR *ret_val;
 
@@ -77,7 +82,7 @@ DIR *dc_fdopendir(const struct dc_posix_env *env, struct dc_error *err, int fd)
     return ret_val;
 }
 
-DIR *dc_opendir(const struct dc_posix_env *env, struct dc_error *err, const char *dirname)
+DIR *dc_opendir(const struct dc_env *env, struct dc_error *err, const char *dirname)
 {
     DIR *ret_val;
 
@@ -93,7 +98,7 @@ DIR *dc_opendir(const struct dc_posix_env *env, struct dc_error *err, const char
     return ret_val;
 }
 
-struct dirent *dc_readdir(const struct dc_posix_env *env, struct dc_error *err, DIR *dirp)
+struct dirent *dc_readdir(const struct dc_env *env, struct dc_error *err, DIR *dirp)
 {
     struct dirent *ret_val;
 
@@ -109,14 +114,30 @@ struct dirent *dc_readdir(const struct dc_posix_env *env, struct dc_error *err, 
     return ret_val;
 }
 
-void dc_rewinddir(const struct dc_posix_env *env, DIR *dirp)
+int dc_readdir_r(const struct dc_env *env, struct dc_error *err, DIR *restrict dirp, struct dirent *restrict entry, struct dirent **restrict result)
+{
+    int ret_val;
+
+    DC_TRACE(env);
+    errno = 0;
+    ret_val = readdir_r(dirp, entry, result);
+
+    if(ret_val != 0)
+    {
+        DC_ERROR_RAISE_ERRNO(err, errno);
+    }
+
+    return ret_val;
+}
+
+void dc_rewinddir(const struct dc_env *env, DIR *dirp)
 {
     DC_TRACE(env);
     errno = 0;
     rewinddir(dirp);
 }
 
-int dc_scandir(const struct dc_posix_env *env, struct dc_error *err, const char *dir, struct dirent ***namelist, int (*sel)(const struct dirent *), int (*compar)(const struct dirent **, const struct dirent **))
+int dc_scandir(const struct dc_env *env, struct dc_error *err, const char *dir, struct dirent ***namelist, int (*sel)(const struct dirent *), int (*compar)(const struct dirent **, const struct dirent **))
 {
     int ret_val;
 
@@ -128,24 +149,6 @@ int dc_scandir(const struct dc_posix_env *env, struct dc_error *err, const char 
     {
         DC_ERROR_RAISE_ERRNO(err, errno);
     }
-
-    return ret_val;
-}
-
-void dc_seekdir(const struct dc_posix_env *env, DIR *dirp, long loc)
-{
-    DC_TRACE(env);
-    errno = 0;
-    seekdir(dirp, loc);
-}
-
-long dc_telldir(const struct dc_posix_env *env, DIR *dirp)
-{
-    long ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = telldir(dirp);
 
     return ret_val;
 }

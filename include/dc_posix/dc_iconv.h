@@ -19,7 +19,7 @@
  */
 
 
-#include "dc_posix_env.h"
+#include <dc_env/env.h>
 #include <iconv.h>
 
 
@@ -28,37 +28,9 @@ extern "C" {
 #endif
 
 
-/**
- *
- * @param env
- * @param err
- * @param cd
- * @param inbuf
- * @param inbytesleft
- * @param outbuf
- * @param outbytesleft
- * @return
- */
-size_t dc_iconv(const struct dc_posix_env *env, struct dc_error *err, iconv_t cd, char **restrict inbuf, size_t *restrict inbytesleft, char **restrict outbuf, size_t *restrict outbytesleft);
-
-/**
- *
- * @param env
- * @param err
- * @param cd
- * @return
- */
-int dc_iconv_close(const struct dc_posix_env *env, struct dc_error *err, iconv_t cd);
-
-/**
- *
- * @param env
- * @param err
- * @param tocode
- * @param fromcode
- * @return
- */
-iconv_t dc_iconv_open(const struct dc_posix_env *env, struct dc_error *err, const char *tocode, const char *fromcode);
+size_t dc_iconv(const struct dc_env *env, struct dc_error *err, iconv_t cd, char **restrict inbuf, size_t *restrict inbytesleft, char **restrict outbuf, size_t *restrict outbytesleft);
+int dc_iconv_close(const struct dc_env *env, struct dc_error *err, iconv_t cd);
+iconv_t dc_iconv_open(const struct dc_env *env, struct dc_error *err, const char *tocode, const char *fromcode);
 
 
 #ifdef __cplusplus

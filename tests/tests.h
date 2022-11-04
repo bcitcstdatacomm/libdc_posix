@@ -29,7 +29,7 @@ TestSuite *dc_ndbm_tests(void);
 TestSuite *dc_netdb_tests(void);
 TestSuite *dc_nl_types_tests(void);
 TestSuite *dc_poll_tests(void);
-TestSuite *dc_posix_env_tests(void);
+TestSuite *dc_env_tests(void);
 TestSuite *dc_pthread_tests(void);
 TestSuite *dc_pwd_tests(void);
 TestSuite *dc_regex_tests(void);

@@ -18,12 +18,12 @@
 #include "dc_posix/sys/dc_utsname.h"
 
 
-int dc_uname(const struct dc_posix_env *env, struct dc_error *err, struct utsname *name)
+int dc_uname(const struct dc_env *env, struct dc_error *err, struct utsname *name)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = uname(name);
 
     if(ret_val == -1)

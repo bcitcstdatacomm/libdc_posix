@@ -19,7 +19,7 @@
  */
 
 
-#include "dc_posix_env.h"
+#include <dc_env/env.h>
 #include <fnmatch.h>
 
 
@@ -28,7 +28,7 @@ extern "C" {
 #endif
 
 
-int dc_fnmatch(const struct dc_posix_env *env, struct dc_error *err, const char *pattern, const char *string, int flags);
+int dc_fnmatch(const struct dc_env *env, struct dc_error *err, const char *pattern, const char *string, int flags);
 
 
 #ifdef __cplusplus

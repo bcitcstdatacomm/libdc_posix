@@ -19,7 +19,7 @@
  */
 
 
-#include "dc_posix_env.h"
+#include <dc_env/env.h>
 #include <dlfcn.h>
 
 
@@ -28,41 +28,10 @@ extern "C" {
 #endif
 
 
-/**
- *
- * @param env
- * @param err
- * @param handle
- * @return
- */
-int dc_dlclose(const struct dc_posix_env *env, struct dc_error *err, void *handle);
-
-/**
- *
- * @param env
- * @return
- */
-char *dc_dlerror(const struct dc_posix_env *env);
-
-/**
- *
- * @param env
- * @param err
- * @param file
- * @param mode
- * @return
- */
-void *dc_dlopen(const struct dc_posix_env *env, struct dc_error *err, const char *file, int mode);
-
-/**
- *
- * @param env
- * @param err
- * @param handle
- * @param name
- * @return
- */
-void *dc_dlsym(const struct dc_posix_env *env, struct dc_error *err, void *restrict handle, const char *restrict name);
+int dc_dlclose(const struct dc_env *env, struct dc_error *err, void *handle);
+char *dc_dlerror(const struct dc_env *env);
+void *dc_dlopen(const struct dc_env *env, struct dc_error *err, const char *file, int mode);
+void *dc_dlsym(const struct dc_env *env, void *restrict handle, const char *restrict name);
 
 
 #ifdef __cplusplus

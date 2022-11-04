@@ -19,7 +19,7 @@
  */
 
 
-#include "dc_posix_env.h"
+#include <dc_env/env.h>
 #include <pwd.h>
 
 
@@ -28,71 +28,10 @@ extern "C" {
 #endif
 
 
-/**
- *
- * @param env
- * @param err
- */
-void dc_endpwent(const struct dc_posix_env *env, struct dc_error *err);
-
-/**
- *
- * @param env
- * @param err
- * @return
- */
-struct passwd *dc_getpwent(const struct dc_posix_env *env, struct dc_error *err);
-
-/**
- *
- * @param env
- * @param err
- * @param name
- * @return
- */
-struct passwd *dc_getpwnam(const struct dc_posix_env *env, struct dc_error *err, const char *name);
-
-/**
- *
- * @param env
- * @param err
- * @param name
- * @param pwd
- * @param buffer
- * @param bufsize
- * @param result
- * @return
- */
-int dc_getpwnam_r(const struct dc_posix_env *env, struct dc_error *err, const char *name, struct passwd *pwd, char *buffer, size_t bufsize, struct passwd **result);
-
-/**
- *
- * @param env
- * @param err
- * @param uid
- * @return
- */
-struct passwd *dc_getpwuid(const struct dc_posix_env *env, struct dc_error *err, uid_t uid);
-
-/**
- *
- * @param env
- * @param err
- * @param uid
- * @param pwd
- * @param buffer
- * @param bufsize
- * @param result
- * @return
- */
-int dc_getpwuid_r(const struct dc_posix_env *env, struct dc_error *err, uid_t uid, struct passwd *pwd, char *buffer, size_t bufsize, struct passwd **result);
-
-/**
- *
- * @param env
- * @param err
- */
-void dc_setpwent(const struct dc_posix_env *env, struct dc_error *err);
+struct passwd *dc_getpwnam(const struct dc_env *env, struct dc_error *err, const char *name);
+int dc_getpwnam_r(const struct dc_env *env, struct dc_error *err, const char *name, struct passwd *pwd, char *buffer, size_t bufsize, struct passwd **result);
+struct passwd *dc_getpwuid(const struct dc_env *env, struct dc_error *err, uid_t uid);
+int dc_getpwuid_r(const struct dc_env *env, struct dc_error *err, uid_t uid, struct passwd *pwd, char *buffer, size_t bufsize, struct passwd **result);
 
 
 #ifdef __cplusplus

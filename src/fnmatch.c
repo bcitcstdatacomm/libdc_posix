@@ -18,7 +18,7 @@
 #include "dc_posix/dc_fnmatch.h"
 
 
-int dc_fnmatch(const struct dc_posix_env *env, struct dc_error *err, const char *pattern, const char *string, int flags)
+int dc_fnmatch(const struct dc_env *env, struct dc_error *err, const char *pattern, const char *string, int flags)
 {
     int ret_val;
 
@@ -26,9 +26,9 @@ int dc_fnmatch(const struct dc_posix_env *env, struct dc_error *err, const char 
     errno = 0;
     ret_val = fnmatch(pattern, string, flags);
 
-    if(ret_val != 0 && ret_val != FNM_NOMATCH)
+    if(ret_val != 0)
     {
-        DC_ERROR_RAISE_SYSTEM(err, "fnmatch error", ret_val);
+        // TODO: what?
     }
 
     return ret_val;

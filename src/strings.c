@@ -18,18 +18,7 @@
 #include "dc_posix/dc_strings.h"
 
 
-int dc_ffs(const struct dc_posix_env *env, int i)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = ffs(i);
-
-    return ret_val;
-}
-
-int dc_strcasecmp(const struct dc_posix_env *env, const char *s1, const char *s2)
+int dc_strcasecmp(const struct dc_env *env, const char *s1, const char *s2)
 {
     int ret_val;
 
@@ -40,7 +29,7 @@ int dc_strcasecmp(const struct dc_posix_env *env, const char *s1, const char *s2
     return ret_val;
 }
 
-int dc_strcasecmp_l(const struct dc_posix_env *env, const char *s1, const char *s2, locale_t locale)
+int dc_strcasecmp_l(const struct dc_env *env, const char *s1, const char *s2, locale_t locale)
 {
     int ret_val;
 
@@ -51,7 +40,7 @@ int dc_strcasecmp_l(const struct dc_posix_env *env, const char *s1, const char *
     return ret_val;
 }
 
-int dc_strncasecmp(const struct dc_posix_env *env, const char *s1, const char *s2, size_t n)
+int dc_strncasecmp(const struct dc_env *env, const char *s1, const char *s2, size_t n)
 {
     int ret_val;
 
@@ -62,7 +51,7 @@ int dc_strncasecmp(const struct dc_posix_env *env, const char *s1, const char *s
     return ret_val;
 }
 
-int dc_strncasecmp_l(const struct dc_posix_env *env, const char *s1, const char *s2, size_t n, locale_t locale)
+int dc_strncasecmp_l(const struct dc_env *env, const char *s1, const char *s2, size_t n, locale_t locale)
 {
     int ret_val;
 
@@ -72,4 +61,3 @@ int dc_strncasecmp_l(const struct dc_posix_env *env, const char *s1, const char 
 
     return ret_val;
 }
-

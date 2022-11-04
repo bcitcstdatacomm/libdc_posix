@@ -1,14 +1,14 @@
 #include "tests.h"
 #include "dc_aio.h"
 
-static struct dc_posix_env env;
+static struct dc_env env;
 static struct dc_error err;
 
 Describe(dc_stdio);
 
 BeforeEach(dc_stdio)
 {
-    dc_posix_env_init(&env, NULL);
+    dc_env_init(&env, NULL);
     dc_error_init(&err, NULL);
 }
 

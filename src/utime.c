@@ -1,9 +1,5 @@
-#ifndef LIBDC_POSIX_SYS_DC_IPC_H
-#define LIBDC_POSIX_SYS_DC_IPC_H
-
-
 /*
- * Copyright 2022-2022 D'Arcy Smith.
+ * Copyright 2021-2022 D'Arcy Smith.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,29 +15,21 @@
  */
 
 
-#include "../dc_posix_env.h"
-#include <sys/ipc.h>
+#include "dc_posix/dc_utime.h"
 
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+int dc_utime(const struct dc_env *env, struct dc_error *err, const char *path, const struct utimbuf *times)
+{
+    int ret_val;
 
+    DC_TRACE(env);
+    errno = 0;
+    ret_val = utime(path, times);
 
-/**
- *
- * @param env
- * @param err
- * @param path
- * @param id
- * @return
- */
-key_t dc_ftok(const struct dc_posix_env *env, struct dc_error *err, const char *path, int id);
+    if(ret_val == -1)
+    {
+        DC_ERROR_RAISE_ERRNO(err, errno);
+    }
 
-
-#ifdef __cplusplus
+    return ret_val;
 }
-#endif
-
-
-#endif // LIBDC_POSIX_SYS_DC_IPC_H

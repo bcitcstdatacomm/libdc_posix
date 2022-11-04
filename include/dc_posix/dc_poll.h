@@ -19,7 +19,7 @@
  */
 
 
-#include "dc_posix_env.h"
+#include <dc_env/env.h>
 #include <poll.h>
 
 
@@ -28,17 +28,7 @@ extern "C" {
 #endif
 
 
-/**
- *
- * @param env
- * @param err
- * @param fds
- * @param nfds
- * @param timeout
- * @return
- */
-int dc_poll(const struct dc_posix_env *env, struct dc_error *err,
-            struct pollfd fds[], nfds_t nfds, int timeout);
+int dc_poll(const struct dc_env *env, struct dc_error *err, struct pollfd fds[], nfds_t nfds, int timeout);
 
 
 #ifdef __cplusplus

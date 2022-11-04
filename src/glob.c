@@ -18,7 +18,7 @@
 #include "dc_posix/dc_glob.h"
 
 
-int dc_glob(const struct dc_posix_env *env, struct dc_error *err, const char *restrict pattern, int flags, int(*errfunc)(const char *epath, int eerrno), glob_t *restrict pglob)
+int dc_glob(const struct dc_env *env, struct dc_error *err, const char *restrict pattern, int flags, int(*errfunc)(const char *epath, int eerrno), glob_t *restrict pglob)
 {
     int ret_val;
 
@@ -26,15 +26,15 @@ int dc_glob(const struct dc_posix_env *env, struct dc_error *err, const char *re
     errno = 0;
     ret_val = glob(pattern, flags, errfunc, pglob);
 
-    if(ret_val != 0)
+    if(ret_val == 0)
     {
-        DC_ERROR_RAISE_SYSTEM(err, "glob error", ret_val);
+        // TODO: what?
     }
 
     return ret_val;
 }
 
-void dc_globfree(const struct dc_posix_env *env, glob_t *pglob)
+void dc_globfree(const struct dc_env *env, glob_t *pglob)
 {
     DC_TRACE(env);
     errno = 0;

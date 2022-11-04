@@ -15,34 +15,17 @@
  */
 
 
-#include "dc_posix/dc_posix_env.h"
 #include "dc_posix/dc_time.h"
+#include <dc_env/env.h>
 
 
-clock_t dc_clock(const struct dc_posix_env *env, struct dc_error *err)
-{
-    clock_t ret_val;
-
-    DC_TRACE(env);
-    errno   = 0;
-    ret_val = clock();
-
-    if(ret_val == (clock_t)-1)
-    {
-        // TODO: what is a sensible message/code?
-        DC_ERROR_RAISE_SYSTEM(err, "", 0);
-    }
-
-    return ret_val;
-}
-
-int dc_clock_getres(const struct dc_posix_env *env, struct dc_error *err, clockid_t clock_id, struct timespec *tp)
+int dc_clock_getres(const struct dc_env *env, struct dc_error *err, clockid_t clock_id, struct timespec *res)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
-    ret_val = clock_getres(clock_id, tp);
+    errno = 0;
+    ret_val = clock_getres(clock_id, res);
 
     if(ret_val == -1)
     {
@@ -52,12 +35,12 @@ int dc_clock_getres(const struct dc_posix_env *env, struct dc_error *err, clocki
     return ret_val;
 }
 
-int dc_clock_gettime(const struct dc_posix_env *env, struct dc_error *err, clockid_t clock_id, struct timespec *tp)
+int dc_clock_gettime(const struct dc_env *env, struct dc_error *err, clockid_t clock_id, struct timespec *tp)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = clock_gettime(clock_id, tp);
 
     if(ret_val == -1)
@@ -68,12 +51,28 @@ int dc_clock_gettime(const struct dc_posix_env *env, struct dc_error *err, clock
     return ret_val;
 }
 
-int dc_clock_settime(const struct dc_posix_env *env, struct dc_error *err, clockid_t clock_id, const struct timespec *tp)
+int dc_clock_nanosleep(const struct dc_env *env, struct dc_error *err, clockid_t clock_id, int flags, const struct timespec *rqtp, struct timespec *rmtp)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
+    ret_val = clock_nanosleep(clock_id, flags, rqtp, rmtp);
+
+    if(ret_val != 0)
+    {
+        // TODO: what?
+    }
+
+    return ret_val;
+}
+
+int dc_clock_settime(const struct dc_env *env, struct dc_error *err, clockid_t clock_id, const struct timespec *tp)
+{
+    int ret_val;
+
+    DC_TRACE(env);
+    errno = 0;
     ret_val = clock_settime(clock_id, tp);
 
     if(ret_val == -1)
@@ -84,24 +83,13 @@ int dc_clock_settime(const struct dc_posix_env *env, struct dc_error *err, clock
     return ret_val;
 }
 
-double dc_difftime(const struct dc_posix_env *env, time_t time1, time_t time0)
-{
-    double ret_val;
-
-    DC_TRACE(env);
-    errno   = 0;
-    ret_val = difftime(time1, time0);
-
-    return ret_val;
-}
-
-struct tm *dc_gmtime(const struct dc_posix_env *env, struct dc_error *err, const time_t *clock)
+struct tm *dc_gmtime_r(const struct dc_env *env, struct dc_error *err, const time_t *restrict timer, struct tm *restrict result)
 {
     struct tm *ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
-    ret_val = gmtime(clock);
+    errno = 0;
+    ret_val = gmtime_r(timer, result);
 
     if(ret_val == NULL)
     {
@@ -111,13 +99,13 @@ struct tm *dc_gmtime(const struct dc_posix_env *env, struct dc_error *err, const
     return ret_val;
 }
 
-struct tm *dc_gmtime_r(const struct dc_posix_env *env, struct dc_error *err, const time_t *clock, struct tm *result)
+struct tm *dc_localtime_r(const struct dc_env *env, struct dc_error *err, const time_t *restrict timer, struct tm *restrict result)
 {
     struct tm *ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
-    ret_val = gmtime_r(clock, result);
+    errno = 0;
+    ret_val = localtime_r(timer, result);
 
     if(ret_val == NULL)
     {
@@ -127,63 +115,12 @@ struct tm *dc_gmtime_r(const struct dc_posix_env *env, struct dc_error *err, con
     return ret_val;
 }
 
-struct tm *dc_localtime(const struct dc_posix_env *env, struct dc_error *err, const time_t *clock)
-{
-    struct tm *ret_val;
-
-    DC_TRACE(env);
-    errno   = 0;
-    ret_val = localtime(clock);
-
-    if(ret_val == NULL)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-
-    return ret_val;
-}
-
-struct tm *dc_localtime_r(const struct dc_posix_env *env, struct dc_error *err, const time_t *clock, struct tm	*result)
-{
-    struct tm *ret_val;
-
-    DC_TRACE(env);
-    errno   = 0;
-    ret_val = localtime_r(clock, result);
-
-    if(ret_val == NULL)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-
-    return ret_val;
-}
-
-time_t dc_mktime(const struct dc_posix_env *env, struct dc_error *err, struct tm *tm)
-{
-    time_t ret_val;
-
-    DC_TRACE(env);
-    errno   = 0;
-    ret_val = mktime(tm);
-
-    if(ret_val == (time_t)-1)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-
-    return ret_val;
-}
-
-int dc_nanosleep(const struct dc_posix_env *env,
-                 struct dc_error           *err,
-                 const struct timespec     *rqtp,
-                 struct timespec           *rmtp)
+int dc_nanosleep(const struct dc_env *env, struct dc_error *err, const struct timespec *rqtp, struct timespec *rmtp)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = nanosleep(rqtp, rmtp);
 
     if(ret_val == -1)
@@ -194,69 +131,26 @@ int dc_nanosleep(const struct dc_posix_env *env,
     return ret_val;
 }
 
-size_t dc_strftime(const struct dc_posix_env *env, struct dc_error *err, char * restrict buf, size_t maxsize, const char * restrict format, const struct tm * restrict timeptr)
+size_t dc_strftime_l(const struct dc_env *env,char *restrict s, size_t maxsize, const char *restrict format, const struct tm *restrict timeptr, locale_t locale)
 {
     size_t ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wformat-nonliteral"
-    ret_val = strftime(buf, maxsize, format, timeptr);
-#pragma GCC diagnostic pop
-
-    if(ret_val == 0)
-    {
-        // TODO: what is a sensible message/code?
-        DC_ERROR_RAISE_SYSTEM(err, "", 0);
-    }
+    errno = 0;
+    ret_val = strftime_l(s, maxsize, format, timeptr, locale);
 
     return ret_val;
 }
 
-size_t dc_strftime_l(const struct dc_posix_env *env, struct dc_error *err, char *restrict buf, size_t maxsize, const char * restrict format, const struct tm *restrict timeptr, locale_t loc)
+int dc_timer_create(const struct dc_env *env, struct dc_error *err, clockid_t clockid, struct sigevent *restrict evp, timer_t *restrict timerid)
 {
-    size_t ret_val;
+    int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
-    ret_val = strftime_l(buf, maxsize, format, timeptr, loc);
+    errno = 0;
+    ret_val = timer_create(clockid, evp, timerid);
 
-    if(ret_val == 0)
-    {
-        // TODO: what is a sensible message/code?
-        DC_ERROR_RAISE_SYSTEM(err, "", 0);
-    }
-
-    return ret_val;
-}
-
-char *dc_strptime(const struct dc_posix_env *env, struct dc_error *err, const char * restrict buf, const char * restrict format, struct	tm * restrict timeptr)
-{
-    char *ret_val;
-
-    DC_TRACE(env);
-    errno   = 0;
-    ret_val = strptime(buf, format, timeptr);
-
-    if(ret_val == NULL)
-    {
-        // TODO: what is a sensible message/code?
-        DC_ERROR_RAISE_SYSTEM(err, "", 0);
-    }
-
-    return ret_val;
-}
-
-time_t dc_time(const struct dc_posix_env *env, struct dc_error *err, time_t *tloc)
-{
-    time_t ret_val;
-
-    DC_TRACE(env);
-    errno   = 0;
-    ret_val = time(tloc);
-
-    if(ret_val == (time_t)-1)
+    if(ret_val == -1)
     {
         DC_ERROR_RAISE_ERRNO(err, errno);
     }
@@ -264,9 +158,73 @@ time_t dc_time(const struct dc_posix_env *env, struct dc_error *err, time_t *tlo
     return ret_val;
 }
 
-void dc_tzset(const struct dc_posix_env *env)
+int dc_timer_delete(const struct dc_env *env, struct dc_error *err, timer_t timerid)
+{
+    int ret_val;
+
+    DC_TRACE(env);
+    errno = 0;
+    ret_val = timer_delete(timerid);
+
+    if(ret_val == -1)
+    {
+        DC_ERROR_RAISE_ERRNO(err, errno);
+    }
+
+    return ret_val;
+}
+
+int dc_timer_getoverrun(const struct dc_env *env, struct dc_error *err, timer_t timerid)
+{
+    int ret_val;
+
+    DC_TRACE(env);
+    errno = 0;
+    ret_val = timer_getoverrun(timerid);
+
+    if(ret_val == -1)
+    {
+        DC_ERROR_RAISE_ERRNO(err, errno);
+    }
+
+    return ret_val;
+}
+
+int dc_timer_gettime(const struct dc_env *env, struct dc_error *err, timer_t timerid, struct itimerspec *value)
+{
+    int ret_val;
+
+    DC_TRACE(env);
+    errno = 0;
+    ret_val = timer_gettime(timerid, value);
+
+    if(ret_val == -1)
+    {
+        DC_ERROR_RAISE_ERRNO(err, errno);
+    }
+
+    return ret_val;
+}
+
+int dc_timer_settime(const struct dc_env *env, struct dc_error *err, timer_t timerid, int flags, const struct itimerspec *restrict value, struct itimerspec *restrict ovalue)
+{
+    int ret_val;
+
+    DC_TRACE(env);
+    errno = 0;
+    ret_val = timer_settime(timerid, flags, value, ovalue);
+
+    if(ret_val == -1)
+    {
+        DC_ERROR_RAISE_ERRNO(err, errno);
+    }
+
+    return ret_val;
+}
+
+void dc_tzset(const struct dc_env *env)
 {
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     tzset();
 }

@@ -18,70 +18,56 @@
 #include "dc_posix/dc_dlfcn.h"
 
 
-int dc_dlclose(const struct dc_posix_env *env, struct dc_error *err, void *handle)
+int dc_dlclose(const struct dc_env *env, struct dc_error *err, void *handle)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = dlclose(handle);
 
     if(ret_val != 0)
     {
-        char *msg;
-
-        msg = dc_dlerror(env);
-        DC_ERROR_RAISE_SYSTEM(err, msg, ret_val);
+        // TODO: what?
     }
 
     return ret_val;
 }
 
-char *dc_dlerror(const struct dc_posix_env *env)
+char *dc_dlerror(const struct dc_env *env)
 {
     char *ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = dlerror();
 
     return ret_val;
 }
 
-void *dc_dlopen(const struct dc_posix_env *env, struct dc_error *err, const char *file, int mode)
+void *dc_dlopen(const struct dc_env *env, struct dc_error *err, const char *file, int mode)
 {
     void *ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = dlopen(file, mode);
 
-    if(ret_val != 0)
+    if(ret_val == NULL)
     {
-        char *msg;
-
-        msg = dc_dlerror(env);
-        DC_ERROR_RAISE_SYSTEM(err, msg, 1);
+        // TODO: what?
     }
 
     return ret_val;
 }
 
-void *dc_dlsym(const struct dc_posix_env *env, struct dc_error *err, void *restrict handle, const char *restrict name)
+void *dc_dlsym(const struct dc_env *env, void *restrict handle, const char *restrict name)
 {
     void *ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = dlsym(handle, name);
-
-    if(ret_val != 0)
-    {
-        char *msg;
-
-        msg = dc_dlerror(env);
-        DC_ERROR_RAISE_SYSTEM(err, msg, 1);
-    }
 
     return ret_val;
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022-2022 D'Arcy Smith.
+ * Copyright 2021-2022 D'Arcy Smith.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,18 +15,18 @@
  */
 
 
-#include "dc_posix/sys/dc_mman.h"
+#include "dc_posix/dc_locale.h"
 
 
-void *dc_mmap(const struct dc_env *env, struct dc_error *err, void *addr, size_t len, int prot, int flags, int fildes, off_t off)
+locale_t dc_duplocale(const struct dc_env *env, struct dc_error *err, locale_t locobj)
 {
-    void *ret_val;
+    locale_t ret_val;
 
     DC_TRACE(env);
     errno = 0;
-    ret_val = mmap(addr, len, prot, flags, fildes, off);
+    ret_val = duplocale(locobj);
 
-    if(ret_val == MAP_FAILED)
+    if(ret_val == (locale_t)0)
     {
         DC_ERROR_RAISE_ERRNO(err, errno);
     }
@@ -34,15 +34,22 @@ void *dc_mmap(const struct dc_env *env, struct dc_error *err, void *addr, size_t
     return ret_val;
 }
 
-int dc_mprotect(const struct dc_env *env, struct dc_error *err, void *addr, size_t len, int prot)
+void dc_freelocale(const struct dc_env *env, locale_t locobj)
 {
-    int ret_val;
+    DC_TRACE(env);
+    errno = 0;
+    freelocale(locobj);
+}
+
+locale_t dc_newlocale(const struct dc_env *env, struct dc_error *err, int category_mask, const char *locale, locale_t base)
+{
+    locale_t ret_val;
 
     DC_TRACE(env);
     errno = 0;
-    ret_val = mprotect(addr, len, prot);
+    ret_val = newlocale(category_mask, locale, base);
 
-    if(ret_val == -1)
+    if(ret_val == (locale_t)0)
     {
         DC_ERROR_RAISE_ERRNO(err, errno);
     }
@@ -50,15 +57,15 @@ int dc_mprotect(const struct dc_env *env, struct dc_error *err, void *addr, size
     return ret_val;
 }
 
-int dc_munmap(const struct dc_env *env, struct dc_error *err, void *addr, size_t len)
+locale_t dc_uselocale(const struct dc_env *env, struct dc_error *err, locale_t newloc)
 {
-    int ret_val;
+    locale_t ret_val;
 
     DC_TRACE(env);
     errno = 0;
-    ret_val = munmap(addr, len);
+    ret_val = uselocale(newloc);
 
-    if(ret_val == -1)
+    if(ret_val == (locale_t)0)
     {
         DC_ERROR_RAISE_ERRNO(err, errno);
     }

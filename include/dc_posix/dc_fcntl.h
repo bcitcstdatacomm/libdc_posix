@@ -19,7 +19,7 @@
  */
 
 
-#include "dc_posix_env.h"
+#include <dc_env/env.h>
 #include <fcntl.h>
 
 
@@ -28,44 +28,10 @@ extern "C" {
 #endif
 
 
-/**
- *
- * @param env
- * @param err
- * @param path
- * @param mode
- * @return
- */
-int dc_creat(const struct dc_posix_env *env, struct dc_error *err, const char *path, mode_t mode);
-// int dc_fcntl(const struct dc_posix_env *env, struct dc_error *err, int fildes, int cmd, ...);
-
-/**
- *
- * @param env
- * @param err
- * @param path
- * @param oflag
- * @param ...
- * @return
- */
-int dc_open(const struct dc_posix_env *env, struct dc_error *err, const char *path, unsigned int oflag, ...);
-
-/**
- *
- * @param env
- * @param err
- * @param fd
- * @param path
- * @param oflag
- * @param ...
- * @return
- */
-int dc_openat(const struct dc_posix_env *env, struct dc_error *err, int fd, const char *path, unsigned int oflag, ...);
-
-
-// These do not exist on macOS
-// int dc_posix_fadvise(const struct dc_posix_env *env, struct dc_error *err, int fd, off_t offset, off_t len, int advice);
-// int dc_posix_fallocate(const struct dc_posix_env *env, struct dc_error *err, int fd, off_t offset, off_t len);
+int dc_creat(const struct dc_env *env, struct dc_error *err, const char *path, mode_t mode);
+int dc_fcntl(const struct dc_env *env, struct dc_error *err, int fildes, int cmd, ...);
+int dc_open(const struct dc_env *env, struct dc_error *err, const char *path, int oflag, ...);
+int dc_openat(const struct dc_env *env, struct dc_error *err, int fd, const char *path, int oflag, ...);
 
 
 #ifdef __cplusplus

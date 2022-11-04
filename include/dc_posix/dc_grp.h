@@ -19,7 +19,7 @@
  */
 
 
-#include "dc_posix_env.h"
+#include <dc_env/env.h>
 #include <grp.h>
 
 
@@ -28,71 +28,10 @@ extern "C" {
 #endif
 
 
-/**
- *
- * @param env
- * @param err
- */
-void dc_endgrent(const struct dc_posix_env *env, struct dc_error *err);
-
-/**
- *
- * @param env
- * @param err
- * @return
- */
-struct group *dc_getgrent(const struct dc_posix_env *env, struct dc_error *err);
-
-/**
- *
- * @param env
- * @param err
- * @param gid
- * @return
- */
-struct group *dc_getgrgid(const struct dc_posix_env *env, struct dc_error *err, gid_t gid);
-
-/**
- *
- * @param env
- * @param err
- * @param gid
- * @param grp
- * @param buffer
- * @param bufsize
- * @param result
- * @return
- */
-int dc_getgrgid_r(const struct dc_posix_env *env, struct dc_error *err, gid_t gid, struct group *grp, char *buffer, size_t bufsize, struct group **result);
-
-/**
- *
- * @param env
- * @param err
- * @param name
- * @return
- */
-struct group *dc_getgrnam(const struct dc_posix_env *env, struct dc_error *err, const char *name);
-
-/**
- *
- * @param env
- * @param err
- * @param name
- * @param grp
- * @param buffer
- * @param bufsize
- * @param result
- * @return
- */
-int dc_getgrnam_r(const struct dc_posix_env *env, struct dc_error *err, const char *name, struct group *grp, char *buffer, size_t bufsize, struct group **result);
-
-/**
- *
- * @param env
- * @param err
- */
-void dc_setgrent(const struct dc_posix_env *env, struct dc_error *err);
+struct group *dc_getgrgid(const struct dc_env *env, struct dc_error *err, gid_t gid);
+int dc_getgrgid_r(const struct dc_env *env, struct dc_error *err, gid_t gid, struct group *grp, char *buffer, size_t bufsize, struct group **result);
+struct group *dc_getgrnam(const struct dc_env *env, struct dc_error *err, const char *name);
+int dc_getgrnam_r(const struct dc_env *env, struct dc_error *err, const char *name, struct group *grp, char *buffer, size_t bufsize, struct group **result);
 
 
 #ifdef __cplusplus

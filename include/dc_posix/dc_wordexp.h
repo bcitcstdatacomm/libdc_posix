@@ -19,7 +19,7 @@
  */
 
 
-#include "dc_posix_env.h"
+#include <dc_env/env.h>
 #include <wordexp.h>
 
 
@@ -28,25 +28,8 @@ extern "C" {
 #endif
 
 
-/**
- *
- * @param env
- * @param err
- * @param words
- * @param pwordexp
- * @param flags
- * @return
- */
-int dc_wordexp(const struct dc_posix_env *env, struct dc_error *err,
-               const char *restrict words, wordexp_t *restrict pwordexp,
-               int flags);
-
-/**
- *
- * @param env
- * @param pwordexp
- */
-void dc_wordfree(const struct dc_posix_env *env, wordexp_t *pwordexp);
+int dc_wordexp(const struct dc_env *env, struct dc_error *err, const char *restrict words, wordexp_t *restrict pwordexp, int flags);
+void dc_wordfree(const struct dc_env *env, wordexp_t *pwordexp);
 
 
 #ifdef __cplusplus

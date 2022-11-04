@@ -18,12 +18,12 @@
 #include "dc_posix/sys/dc_wait.h"
 
 
-pid_t dc_wait(const struct dc_posix_env *env, struct dc_error *err, int *stat_loc)
+pid_t dc_wait(const struct dc_env *env, struct dc_error *err, int *stat_loc)
 {
     pid_t ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = wait(stat_loc);
 
     if(ret_val == -1)
@@ -34,17 +34,12 @@ pid_t dc_wait(const struct dc_posix_env *env, struct dc_error *err, int *stat_lo
     return ret_val;
 }
 
-int dc_waitid(const struct dc_posix_env *env,
-              struct dc_error           *err,
-              idtype_t                   idtype,
-              id_t                       id,
-              siginfo_t                 *infop,
-              int                        options)
+int dc_waitid(const struct dc_env *env, struct dc_error *err, idtype_t idtype, id_t id, siginfo_t *infop, int options)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = waitid(idtype, id, infop, options);
 
     if(ret_val == -1)
@@ -55,12 +50,12 @@ int dc_waitid(const struct dc_posix_env *env,
     return ret_val;
 }
 
-pid_t dc_waitpid(const struct dc_posix_env *env, struct dc_error *err, pid_t pid, int *stat_loc, int options)
+pid_t dc_waitpid(const struct dc_env *env, struct dc_error *err, pid_t pid, int *stat_loc, int options)
 {
     pid_t ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = waitpid(pid, stat_loc, options);
 
     if(ret_val == -1)

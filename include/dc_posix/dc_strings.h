@@ -19,11 +19,8 @@
  */
 
 
-#include "dc_posix_env.h"
+#include <dc_env/env.h>
 #include <strings.h>
-#if __has_include(<xlocale.h>)
-    #include <xlocale.h>
-#endif
 
 
 #ifdef __cplusplus
@@ -31,53 +28,10 @@ extern "C" {
 #endif
 
 
-/**
- *
- * @param env
- * @param i
- * @return
- */
-int dc_ffs(const struct dc_posix_env *env, int i);
-
-/**
- *
- * @param env
- * @param s1
- * @param s2
- * @return
- */
-int dc_strcasecmp(const struct dc_posix_env *env, const char *s1, const char *s2);
-
-/**
- *
- * @param env
- * @param s1
- * @param s2
- * @param locale
- * @return
- */
-int dc_strcasecmp_l(const struct dc_posix_env *env, const char *s1, const char *s2, locale_t locale);
-
-/**
- *
- * @param env
- * @param s1
- * @param s2
- * @param n
- * @return
- */
-int dc_strncasecmp(const struct dc_posix_env *env, const char *s1, const char *s2, size_t n);
-
-/**
- *
- * @param env
- * @param s1
- * @param s2
- * @param n
- * @param locale
- * @return
- */
-int dc_strncasecmp_l(const struct dc_posix_env *env, const char *s1, const char *s2, size_t n, locale_t locale);
+int dc_strcasecmp(const struct dc_env *env, const char *s1, const char *s2);
+int dc_strcasecmp_l(const struct dc_env *env, const char *s1, const char *s2, locale_t locale);
+int dc_strncasecmp(const struct dc_env *env, const char *s1, const char *s2, size_t n);
+int dc_strncasecmp_l(const struct dc_env *env, const char *s1, const char *s2, size_t n, locale_t locale);
 
 
 #ifdef __cplusplus

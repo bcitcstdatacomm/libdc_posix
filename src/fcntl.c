@@ -19,13 +19,13 @@
 #include <stdarg.h>
 
 
-int dc_creat(const struct dc_posix_env *env, struct dc_error *err, const char *path, mode_t mode)
+int dc_creat(const struct dc_env *env, struct dc_error *err, const char *path, mode_t mode)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
-    ret_val = creat(path, mode);    // NOLINT(android-cloexec-creat)
+    errno = 0;
+    ret_val = creat(path, mode);
 
     if(ret_val == -1)
     {
@@ -35,35 +35,14 @@ int dc_creat(const struct dc_posix_env *env, struct dc_error *err, const char *p
     return ret_val;
 }
 
-int dc_open(const struct dc_posix_env *env, struct dc_error *err, const char *path, unsigned int oflag, ...)
+int dc_fcntl(const struct dc_env *env, struct dc_error *err, int fildes, int cmd, ...)
 {
     int ret_val;
-    mode_t mode;
 
     DC_TRACE(env);
-    errno   = 0;
-
-    if(((oflag & (unsigned int)O_CREAT) != 0)
-#ifdef O_TMPFILE
-    || ((oflag & (unsigned int)O_TMPFILE) != 0)
-#endif
-    )
-    {
-        va_list arg;
-
-        va_start(arg, oflag);
-        // https://www.gnu.org/software/gnulib/manual/html_node/va_005farg.html
-        mode = (sizeof (mode_t) < sizeof (int)
-                ? va_arg (arg, int)
-                : va_arg (arg, mode_t));
-        va_end(arg);
-    }
-    else
-    {
-        mode = 0;
-    }
-
-    ret_val = open(path, (int)oflag, mode);
+    errno = 0;
+    // TODO: fix the ... or delete the function
+    ret_val = fcntl(fildes, cmd, 0);
 
     if(ret_val == -1)
     {
@@ -73,34 +52,14 @@ int dc_open(const struct dc_posix_env *env, struct dc_error *err, const char *pa
     return ret_val;
 }
 
-int dc_openat(const struct dc_posix_env *env, struct dc_error *err, int fd, const char *path, unsigned int oflag, ...)
+int dc_open(const struct dc_env *env, struct dc_error *err, const char *path, int oflag, ...)
 {
     int ret_val;
-    mode_t mode;
 
     DC_TRACE(env);
-    errno   = 0;
-
-    if((((oflag) & (unsigned int)O_CREAT) != 0)
-#ifdef O_TMPFILE
-        || (((oflag) & (unsigned int)O_TMPFILE) != 0)
-#endif
-    )
-    {
-        va_list arg;
-        va_start(arg, oflag);
-        // https://www.gnu.org/software/gnulib/manual/html_node/va_005farg.html
-        mode = (sizeof (mode_t) < sizeof (int)
-                ? va_arg (arg, int)
-                : va_arg (arg, mode_t));
-        va_end(arg);
-    }
-    else
-    {
-        mode = 0;
-    }
-
-    ret_val = openat(fd, path, (int)oflag, mode);
+    errno = 0;
+    // TODO: fix the ...
+    ret_val = open(path, oflag, 0);
 
     if(ret_val == -1)
     {
@@ -110,36 +69,19 @@ int dc_openat(const struct dc_posix_env *env, struct dc_error *err, int fd, cons
     return ret_val;
 }
 
-/*
-int dc_posix_fadvise(const struct dc_posix_env *env, struct dc_error *err, int fd, off_t offset, off_t len, int advice)
+int dc_openat(const struct dc_env *env, struct dc_error *err, int fd, const char *path, int oflag, ...)
 {
     int ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
-    ret_val = posix_fadvise(fd, offset, len, advice);
+    errno = 0;
+    // TODO: fix the ...
+    ret_val = openat(fd, path, oflag, 0);
 
     if(ret_val == -1)
     {
-        DC_ERROR_RAISE_ERRNO(err, ret_val);
+        DC_ERROR_RAISE_ERRNO(err, errno);
     }
 
     return ret_val;
 }
-
-int dc_posix_fallocate(const struct dc_posix_env *env, struct dc_error *err, int fd, off_t offset, off_t len)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno   = 0;
-    ret_val = posix_fallocate(fd, offset, len);
-
-    if(ret_val == -1)
-    {
-        DC_ERROR_RAISE_ERRNO(err, ret_val);
-    }
-
-    return ret_val;
-}
-*/

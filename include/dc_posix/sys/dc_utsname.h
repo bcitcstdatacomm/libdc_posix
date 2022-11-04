@@ -1,5 +1,5 @@
-#ifndef LIBDC_POSIX_SYS_DC_UTSNAME_H
-#define LIBDC_POSIX_SYS_DC_UTSNAME_H
+#ifndef LIBDC_POSIX_SYS_DC_TIMES_H
+#define LIBDC_POSIX_SYS_DC_TIMES_H
 
 
 /*
@@ -19,7 +19,7 @@
  */
 
 
-#include "../dc_posix_env.h"
+#include <dc_env/env.h>
 #include <sys/utsname.h>
 
 
@@ -28,15 +28,7 @@ extern "C" {
 #endif
 
 
-/**
- *
- * @param env
- * @param err
- * @param name
- * @return
- */
-int dc_uname(const struct dc_posix_env *env, struct dc_error *err,
-             struct utsname *name);
+int dc_uname(const struct dc_env *env, struct dc_error *err, struct utsname *name);
 
 
 #ifdef __cplusplus
@@ -44,4 +36,4 @@ int dc_uname(const struct dc_posix_env *env, struct dc_error *err,
 #endif
 
 
-#endif // LIBDC_POSIX_SYS_DC_UTSNAME_H
+#endif // LIBDC_POSIX_SYS_DC_TIMES_H

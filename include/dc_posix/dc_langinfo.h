@@ -19,11 +19,8 @@
  */
 
 
-#include "dc_posix_env.h"
+#include <dc_env/env.h>
 #include <langinfo.h>
-#if __has_include(<xlocale.h>)
-    #include <xlocale.h>
-#endif
 
 
 #ifdef __cplusplus
@@ -31,22 +28,8 @@ extern "C" {
 #endif
 
 
-/**
- *
- * @param env
- * @param item
- * @return
- */
-char *dc_nl_langinfo(const struct dc_posix_env *env, nl_item item);
-
-/**
- *
- * @param env
- * @param item
- * @param locale
- * @return
- */
-char *dc_nl_langinfo_l(const struct dc_posix_env *env, nl_item item, locale_t locale);
+char *dc_nl_langinfo(const struct dc_env *env, nl_item item);
+char *dc_nl_langinfo_l(const struct dc_env *env, nl_item item, locale_t locale);
 
 
 #ifdef __cplusplus

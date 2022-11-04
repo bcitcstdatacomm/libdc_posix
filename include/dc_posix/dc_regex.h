@@ -19,7 +19,7 @@
  */
 
 
-#include "dc_posix_env.h"
+#include <dc_env/env.h>
 #include <regex.h>
 
 
@@ -28,52 +28,10 @@ extern "C" {
 #endif
 
 
-/**
- *
- * @param env
- * @param err
- * @param preg
- * @param pattern
- * @param cflags
- * @return
- */
-int dc_regcomp(const struct dc_posix_env *env, struct dc_error *err,
-               regex_t *restrict preg, const char *restrict pattern,
-               int cflags);
-
-/**
- *
- * @param env
- * @param errcode
- * @param preg
- * @param errbuf
- * @param errbuf_size
- * @return
- */
-size_t dc_regerror(const struct dc_posix_env *env, int errcode,
-                   const regex_t *restrict preg, char *restrict errbuf,
-                   size_t errbuf_size);
-
-/**
- *
- * @param env
- * @param preg
- * @param string
- * @param nmatch
- * @param pmatch
- * @param eflags
- * @return
- */
-int dc_regexec(const struct dc_posix_env *env, const regex_t *restrict preg,
-               const char *restrict string, size_t nmatch,
-               regmatch_t pmatch[restrict], int eflags);
-
-/**
- *
- * @param env
- * @param preg
- */
-void dc_regfree(const struct dc_posix_env *env, regex_t *preg);
+int dc_regcomp(const struct dc_env *env, struct dc_error *err, regex_t *restrict preg, const char *restrict pattern, int cflags);
+size_t dc_regerror(const struct dc_env *env, int errcode, const regex_t *restrict preg, char *restrict errbuf, size_t errbuf_size);
+int dc_regexec(const struct dc_env *env, const regex_t *restrict preg, const char *restrict string, size_t nmatch, regmatch_t pmatch[restrict], int eflags);
+void dc_regfree(const struct dc_env *env, regex_t *preg);
 
 
 #ifdef __cplusplus

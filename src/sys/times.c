@@ -18,12 +18,12 @@
 #include "dc_posix/sys/dc_times.h"
 
 
-clock_t dc_times(const struct dc_posix_env *env, struct dc_error *err, struct tms *buffer)
+clock_t dc_times(const struct dc_env *env, struct dc_error *err, struct tms *buffer)
 {
     clock_t ret_val;
 
     DC_TRACE(env);
-    errno   = 0;
+    errno = 0;
     ret_val = times(buffer);
 
     if(ret_val == (clock_t)-1)
