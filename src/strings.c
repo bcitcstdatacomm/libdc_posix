@@ -18,7 +18,7 @@
 #include "dc_posix/dc_strings.h"
 #include <string.h>
 
-#if __APPLE__
+#if (defined __APPLE__) || (defined __FreeBSD__)
     #include <xlocale.h>
 #endif
 
