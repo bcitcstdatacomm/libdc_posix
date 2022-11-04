@@ -16,6 +16,7 @@
 
 
 #include "dc_posix/dc_ctype.h"
+#include <ctype.h>
 
 
 int dc_isalnum_l(const struct dc_env *env, int c, locale_t locale)

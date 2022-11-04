@@ -16,7 +16,7 @@
 
 
 #include "dc_posix/dc_fcntl.h"
-#include <stdarg.h>
+#include <fcntl.h>
 
 
 int dc_creat(const struct dc_env *env, struct dc_error *err, const char *path, mode_t mode)

@@ -16,8 +16,9 @@
 
 
 #include "dc_posix/dc_string.h"
+#include <string.h>
 
-#if __APPLE__
+#ifdef __APPLE__
     #include <xlocale.h>
 #endif
 

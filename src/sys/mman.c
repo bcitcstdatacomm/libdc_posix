@@ -16,6 +16,7 @@
 
 
 #include "dc_posix/sys/dc_mman.h"
+#include <sys/mman.h>
 
 
 void *dc_mmap(const struct dc_env *env, struct dc_error *err, void *addr, size_t len, int prot, int flags, int fildes, off_t off)

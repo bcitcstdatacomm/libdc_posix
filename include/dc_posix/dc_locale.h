@@ -20,9 +20,11 @@
 
 
 #include <dc_env/env.h>
-#include <locale.h>
-#if __APPLE__
+
+#ifdef __APPLE__
     #include <xlocale.h>
+#else
+    #include <locale.h>
 #endif
 
 

@@ -16,6 +16,7 @@
 
 
 #include "dc_posix/dc_fnmatch.h"
+#include <fnmatch.h>
 
 
 int dc_fnmatch(const struct dc_env *env, struct dc_error *err, const char *pattern, const char *string, int flags)

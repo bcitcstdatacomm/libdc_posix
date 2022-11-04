@@ -16,6 +16,7 @@
 
 
 #include "dc_posix/dc_pwd.h"
+#include <pwd.h>
 
 
 struct passwd *dc_getpwnam(const struct dc_env *env, struct dc_error *err, const char *name)

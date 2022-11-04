@@ -16,7 +16,7 @@
 
 
 #include "dc_posix/dc_stdlib.h"
-#include <unistd.h>
+#include <stdlib.h>
 
 
 int dc_getsubopt(const struct dc_env *env, struct dc_error *err, char **optionp, char * const *keylistp, char **valuep)

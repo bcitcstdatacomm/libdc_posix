@@ -22,7 +22,7 @@
 #include <dc_env/env.h>
 #include <time.h>
 
-#if __APPLE__
+#ifdef __APPLE__
     #include <xlocale.h>
 #endif
 

@@ -20,7 +20,7 @@
 
 
 #include <dc_env/env.h>
-#include <sys/mman.h>
+#include <sys/types.h>
 
 
 #ifdef __cplusplus
