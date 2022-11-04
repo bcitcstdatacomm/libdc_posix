@@ -18,6 +18,10 @@
 #include "dc_posix/dc_stdlib.h"
 #include <stdlib.h>
 
+#ifdef __APPLE__
+    #include <unistd.h>
+#endif
+
 
 int dc_getsubopt(const struct dc_env *env, struct dc_error *err, char **optionp, char * const *keylistp, char **valuep)
 {

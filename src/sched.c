@@ -16,6 +16,7 @@
 
 
 #include "dc_posix/dc_sched.h"
+#include <sched.h>
 
 
 int dc_sched_yield(const struct dc_env *env, struct dc_error *err)
