@@ -21,7 +21,10 @@
 
 #include <dc_env/env.h>
 #include <string.h>
-#include <xlocale.h>
+
+#if __APPLE__
+    #include <xlocale.h>
+#endif
 
 
 char *dc_stpcpy(const struct dc_env *env, char *restrict s1, const char *restrict s2);

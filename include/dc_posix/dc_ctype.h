@@ -21,7 +21,10 @@
 
 #include <dc_env/env.h>
 #include <ctype.h>
-#include <xlocale.h>
+
+#if __APPLE__
+    #include <xlocale.h>
+#endif
 
 
 #ifdef __cplusplus

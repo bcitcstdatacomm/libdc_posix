@@ -17,7 +17,10 @@
 
 #include "dc_posix/dc_strings.h"
 #include <string.h>
-#include <xlocale.h>
+
+#if __APPLE__
+    #include <xlocale.h>
+#endif
 
 
 int dc_strcasecmp(const struct dc_env *env, const char *s1, const char *s2)
