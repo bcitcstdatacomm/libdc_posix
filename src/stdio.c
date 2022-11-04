@@ -239,7 +239,7 @@ FILE *dc_popen(const struct dc_env *env, struct dc_error *err, const char *comma
     errno = 0;
     ret_val = popen(command, mode);
 
-    if(ret_val == -1)
+    if(ret_val == NULL)
     {
         DC_ERROR_RAISE_ERRNO(err, errno);
     }
