@@ -261,22 +261,6 @@ int dc_fchownat(const struct dc_env *env, struct dc_error *err, int fd, const ch
     return ret_val;
 }
 
-int dc_fexecve(const struct dc_env *env, struct dc_error *err, int fd, char *const argv[], char *const envp[])
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = fexecve(fd, argv, envp);
-
-    if(ret_val == -1)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-
-    return ret_val;
-}
-
 pid_t dc_fork(const struct dc_env *env, struct dc_error *err)
 {
     pid_t ret_val;

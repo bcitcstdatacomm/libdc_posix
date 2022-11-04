@@ -44,7 +44,6 @@ int dc_faccessat(const struct dc_env *env, struct dc_error *err, int fd, const c
 int dc_fchdir(const struct dc_env *env, struct dc_error *err, int fildes);
 int dc_fchown(const struct dc_env *env, struct dc_error *err, int fildes, uid_t owner, gid_t group);
 int dc_fchownat(const struct dc_env *env, struct dc_error *err, int fd, const char *path, uid_t owner, gid_t group, int flag);
-int dc_fexecve(const struct dc_env *env, struct dc_error *err, int fd, char *const argv[], char *const envp[]);
 pid_t dc_fork(const struct dc_env *env, struct dc_error *err);
 long dc_fpathconf(const struct dc_env *env, struct dc_error *err, int fildes, int name);
 int dc_ftruncate(const struct dc_env *env, struct dc_error *err, int fildes, off_t length);
@@ -100,6 +99,10 @@ ssize_t dc_write(const struct dc_env *env, struct dc_error *err, int fildes, con
 #ifdef __cplusplus
 }
 #endif
+
+
+// not on macOS
+// int dc_fexecve(const struct dc_env *env, struct dc_error *err, int fd, char *const argv[], char *const envp[]);
 
 
 #endif // LIBDC_POSIX_DC_UNISTD_H

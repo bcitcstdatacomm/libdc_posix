@@ -115,22 +115,6 @@ int dc_sem_post(const struct dc_env *env, struct dc_error *err, sem_t *sem)
     return ret_val;
 }
 
-int dc_sem_timedwait(const struct dc_env *env, struct dc_error *err, sem_t *restrict sem, const struct timespec *restrict abstime)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = sem_timedwait(sem, abstime);
-
-    if(ret_val == -1)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-
-    return ret_val;
-}
-
 int dc_sem_trywait(const struct dc_env *env, struct dc_error *err, sem_t *sem)
 {
     int ret_val;

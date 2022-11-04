@@ -51,22 +51,6 @@ int dc_clock_gettime(const struct dc_env *env, struct dc_error *err, clockid_t c
     return ret_val;
 }
 
-int dc_clock_nanosleep(const struct dc_env *env, struct dc_error *err, clockid_t clock_id, int flags, const struct timespec *rqtp, struct timespec *rmtp)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = clock_nanosleep(clock_id, flags, rqtp, rmtp);
-
-    if(ret_val != 0)
-    {
-        // TODO: what?
-    }
-
-    return ret_val;
-}
-
 int dc_clock_settime(const struct dc_env *env, struct dc_error *err, clockid_t clock_id, const struct timespec *tp)
 {
     int ret_val;
@@ -138,86 +122,6 @@ size_t dc_strftime_l(const struct dc_env *env,char *restrict s, size_t maxsize, 
     DC_TRACE(env);
     errno = 0;
     ret_val = strftime_l(s, maxsize, format, timeptr, locale);
-
-    return ret_val;
-}
-
-int dc_timer_create(const struct dc_env *env, struct dc_error *err, clockid_t clockid, struct sigevent *restrict evp, timer_t *restrict timerid)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = timer_create(clockid, evp, timerid);
-
-    if(ret_val == -1)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-
-    return ret_val;
-}
-
-int dc_timer_delete(const struct dc_env *env, struct dc_error *err, timer_t timerid)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = timer_delete(timerid);
-
-    if(ret_val == -1)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-
-    return ret_val;
-}
-
-int dc_timer_getoverrun(const struct dc_env *env, struct dc_error *err, timer_t timerid)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = timer_getoverrun(timerid);
-
-    if(ret_val == -1)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-
-    return ret_val;
-}
-
-int dc_timer_gettime(const struct dc_env *env, struct dc_error *err, timer_t timerid, struct itimerspec *value)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = timer_gettime(timerid, value);
-
-    if(ret_val == -1)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-
-    return ret_val;
-}
-
-int dc_timer_settime(const struct dc_env *env, struct dc_error *err, timer_t timerid, int flags, const struct itimerspec *restrict value, struct itimerspec *restrict ovalue)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = timer_settime(timerid, flags, value, ovalue);
-
-    if(ret_val == -1)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
 
     return ret_val;
 }

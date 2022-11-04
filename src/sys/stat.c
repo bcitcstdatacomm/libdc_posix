@@ -178,22 +178,6 @@ int dc_mkfifo(const struct dc_env *env, struct dc_error *err, const char *path, 
     return ret_val;
 }
 
-int dc_mkfifoat(const struct dc_env *env, struct dc_error *err, int fd, const char *path, mode_t mode)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = mkfifoat(fd, path, mode);
-
-    if(ret_val == -1)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-
-    return ret_val;
-}
-
 int dc_stat(const struct dc_env *env, struct dc_error *err, const char *restrict path, struct stat *restrict buf)
 {
     int ret_val;

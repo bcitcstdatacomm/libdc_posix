@@ -106,6 +106,10 @@ set(HEADER_LIST_SYS ${INCLUDE_DIR}/dc_posix/sys/dc_mman.h
 add_compile_definitions(_POSIX_C_SOURCE=200809L)
 add_compile_definitions(_XOPEN_SOURCE=700)
 
+if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+    add_compile_definitions(_DARWIN_C_SOURCE)
+endif ()
+
 include_directories(${INCLUDE_DIR})
 add_compile_options("-Wall"
         "-Wextra"
@@ -240,9 +244,14 @@ set_target_properties(dc_posix PROPERTIES
 
 find_library(LIBDC_ERROR dc_error REQUIRED)
 find_library(LIBDC_ENV dc_env REQUIRED)
+find_library(LIBICONV iconv)
 
 target_link_libraries(dc_posix PUBLIC ${LIBDC_ERROR})
 target_link_libraries(dc_posix PUBLIC ${LIBDC_ENV})
+
+if(LIBICONV)
+    target_link_libraries(dc_posix PUBLIC ${LIBICONV})
+endif()
 
 install(TARGETS dc_posix LIBRARY DESTINATION lib)
 install(FILES ${HEADER_LIST} DESTINATION include/dc_posix)

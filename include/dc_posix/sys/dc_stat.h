@@ -38,7 +38,6 @@ int dc_lstat(const struct dc_env *env, struct dc_error *err, const char *restric
 int dc_mkdir(const struct dc_env *env, struct dc_error *err, const char *path, mode_t mode);
 int dc_mkdirat(const struct dc_env *env, struct dc_error *err, int fd, const char *path, mode_t mode);
 int dc_mkfifo(const struct dc_env *env, struct dc_error *err, const char *path, mode_t mode);
-int dc_mkfifoat(const struct dc_env *env, struct dc_error *err, int fd, const char *path, mode_t mode);
 int dc_stat(const struct dc_env *env, struct dc_error *err, const char *restrict path, struct stat *restrict buf);
 mode_t dc_umask(const struct dc_env *env, mode_t cmask);
 int dc_utimensat(const struct dc_env *env, struct dc_error *err, int fd, const char *path, const struct timespec times[2], int flag);
@@ -47,6 +46,10 @@ int dc_utimensat(const struct dc_env *env, struct dc_error *err, int fd, const c
 #ifdef __cplusplus
 }
 #endif
+
+
+// not on macOS
+// int dc_mkfifoat(const struct dc_env *env, struct dc_error *err, int fd, const char *path, mode_t mode);
 
 
 #endif // LIBDC_POSIX_SYS_DC_STAT_H

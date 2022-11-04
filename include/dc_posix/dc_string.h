@@ -21,13 +21,13 @@
 
 #include <dc_env/env.h>
 #include <string.h>
+#include <xlocale.h>
 
 
 char *dc_stpcpy(const struct dc_env *env, char *restrict s1, const char *restrict s2);
 char *dc_stpncpy(const struct dc_env *env, char *restrict s1, const char *restrict s2, size_t n);
 int dc_strcoll_l(const struct dc_env *env, struct dc_error *err, const char *s1, const char *s2, locale_t locale);
 char *dc_strdup(const struct dc_env *env, struct dc_error *err, const char *s);
-char *dc_strerror_l(const struct dc_env *env, struct dc_error *err, int errnum, locale_t locale);
 int dc_strerror_r(const struct dc_env *env, struct dc_error *err, int errnum, char *strerrbuf, size_t buflen);
 char *dc_strndup(const struct dc_env *env, struct dc_error *err, const char *s, size_t size);
 size_t dc_strnlen(const struct dc_env *env, const char *s, size_t maxlen);
@@ -41,9 +41,8 @@ extern "C" {
 #endif
 
 
-#ifdef __cplusplus
-}
-#endif
+// not on macOS
+// char *dc_strerror_l(const struct dc_env *env, struct dc_error *err, int errnum, locale_t locale);
 
 
 #endif // LIBDC_POSIX_DC_STRING_H

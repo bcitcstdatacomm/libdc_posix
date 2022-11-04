@@ -34,30 +34,6 @@ int dc_kill(const struct dc_env *env, struct dc_error *err, pid_t pid, int sig)
     return ret_val;
 }
 
-void dc_psiginfo(const struct dc_env *env, struct dc_error *err, const siginfo_t *pinfo, const char *message)
-{
-    DC_TRACE(env);
-    errno = 0;
-    psiginfo(pinfo, message);
-
-    if(errno != 0)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-}
-
-void dc_psignal(const struct dc_env *env, struct dc_error *err, int signum, const char *message)
-{
-    DC_TRACE(env);
-    errno = 0;
-    psignal(signum, message);
-
-    if(errno != 0)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-}
-
 int dc_pthread_kill(const struct dc_env *env, struct dc_error *err, pthread_t thread, int sig)
 {
     int ret_val;
@@ -218,22 +194,6 @@ int dc_sigprocmask(const struct dc_env *env, struct dc_error *err, int how, cons
     return ret_val;
 }
 
-int dc_sigqueue(const struct dc_env *env, struct dc_error *err, pid_t pid, int signo, union sigval value)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = sigqueue(pid, signo, value);
-
-    if(ret_val == -1)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-
-    return ret_val;
-}
-
 int dc_sigsuspend(const struct dc_env *env, struct dc_error *err, const sigset_t *sigmask)
 {
     int ret_val;
@@ -241,22 +201,6 @@ int dc_sigsuspend(const struct dc_env *env, struct dc_error *err, const sigset_t
     DC_TRACE(env);
     errno = 0;
     ret_val = sigsuspend(sigmask);
-
-    if(ret_val == -1)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-
-    return ret_val;
-}
-
-int dc_sigtimedwait(const struct dc_env *env, struct dc_error *err, const sigset_t *restrict set, siginfo_t *restrict info, const struct timespec *restrict timeout)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = sigtimedwait(set, info, timeout);
 
     if(ret_val == -1)
     {
@@ -277,22 +221,6 @@ int dc_sigwait(const struct dc_env *env, struct dc_error *err, const sigset_t *r
     if(ret_val != 0)
     {
         // TODO: what?
-    }
-
-    return ret_val;
-}
-
-int dc_sigwaitinfo(const struct dc_env *env, struct dc_error *err, const sigset_t *restrict set, siginfo_t *restrict info)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = sigwaitinfo(set, info);
-
-    if(ret_val == -1)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
     }
 
     return ret_val;

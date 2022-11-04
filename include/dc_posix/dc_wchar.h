@@ -21,6 +21,7 @@
 
 #include <dc_env/env.h>
 #include <wchar.h>
+#include <xlocale.h>
 
 
 #ifdef __cplusplus

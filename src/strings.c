@@ -16,6 +16,8 @@
 
 
 #include "dc_posix/dc_strings.h"
+#include <string.h>
+#include <xlocale.h>
 
 
 int dc_strcasecmp(const struct dc_env *env, const char *s1, const char *s2)

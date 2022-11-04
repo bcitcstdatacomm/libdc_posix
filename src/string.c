@@ -16,6 +16,7 @@
 
 
 #include "dc_posix/dc_string.h"
+#include <xlocale.h>
 
 
 char *dc_stpcpy(const struct dc_env *env, char *restrict s1, const char *restrict s2)
@@ -63,22 +64,6 @@ char *dc_strdup(const struct dc_env *env, struct dc_error *err, const char *s)
     DC_TRACE(env);
     errno = 0;
     ret_val = strdup(s);
-
-    if(ret_val == NULL)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-
-    return ret_val;
-}
-
-char *dc_strerror_l(const struct dc_env *env, struct dc_error *err, int errnum, locale_t locale)
-{
-    char *ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = strerror_l(errnum, locale);
 
     if(ret_val == NULL)
     {

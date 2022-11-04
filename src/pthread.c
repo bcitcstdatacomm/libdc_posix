@@ -157,86 +157,6 @@ int dc_pthread_attr_setschedparam(const struct dc_env *env, struct dc_error *err
     return ret_val;
 }
 
-int dc_pthread_barrier_destroy(const struct dc_env *env, struct dc_error *err, pthread_barrier_t *barrier)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = pthread_barrier_destroy(barrier);
-
-    if(ret_val != 0)
-    {
-        // TODO: What?
-    }
-
-    return ret_val;
-}
-
-int dc_pthread_barrier_init(const struct dc_env *env, struct dc_error *err, pthread_barrier_t *restrict barrier, const pthread_barrierattr_t *restrict attr, unsigned count)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = pthread_barrier_init(barrier, attr, count);
-
-    if(ret_val != 0)
-    {
-        // TODO: What?
-    }
-
-    return ret_val;
-}
-
-int dc_pthread_barrier_wait(const struct dc_env *env, struct dc_error *err, pthread_barrier_t *barrier)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = pthread_barrier_wait(barrier);
-
-    if(ret_val != 0 && ret_val != PTHREAD_BARRIER_SERIAL_THREAD)
-    {
-        // TODO: What?
-    }
-
-    return ret_val;
-}
-
-int dc_pthread_barrierattr_destroy(const struct dc_env *env, struct dc_error *err, pthread_barrierattr_t *attr)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = pthread_barrierattr_destroy(attr);
-
-    if(ret_val != 0)
-    {
-        // TODO: What?
-    }
-
-    return ret_val;
-}
-
-int dc_pthread_barrierattr_init(const struct dc_env *env, struct dc_error *err, pthread_barrierattr_t *attr)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = pthread_barrierattr_init(attr);
-
-    if(ret_val != 0)
-    {
-        // TODO: What?
-    }
-
-    return ret_val;
-}
-
 int dc_pthread_cancel(const struct dc_env *env, struct dc_error *err, pthread_t thread)
 {
     int ret_val;
@@ -360,22 +280,6 @@ int dc_pthread_condattr_destroy(const struct dc_env *env, struct dc_error *err, 
     return ret_val;
 }
 
-int dc_pthread_condattr_getclock(const struct dc_env *env, struct dc_error *err, const pthread_condattr_t *restrict attr, clockid_t *restrict clock_id)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = pthread_condattr_getclock(attr, clock_id);
-
-    if(ret_val != 0)
-    {
-        // TODO: What?
-    }
-
-    return ret_val;
-}
-
 int dc_pthread_condattr_init(const struct dc_env *env, struct dc_error *err, pthread_condattr_t *attr)
 {
     int ret_val;
@@ -383,22 +287,6 @@ int dc_pthread_condattr_init(const struct dc_env *env, struct dc_error *err, pth
     DC_TRACE(env);
     errno = 0;
     ret_val = pthread_condattr_init(attr);
-
-    if(ret_val != 0)
-    {
-        // TODO: What?
-    }
-
-    return ret_val;
-}
-
-int dc_pthread_condattr_setclock(const struct dc_env *env, struct dc_error *err, pthread_condattr_t *attr, clockid_t clock_id)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = pthread_condattr_setclock(attr, clock_id);
 
     if(ret_val != 0)
     {
@@ -517,22 +405,6 @@ int dc_pthread_key_delete(const struct dc_env *env, struct dc_error *err, pthrea
     return ret_val;
 }
 
-int dc_pthread_mutex_consistent(const struct dc_env *env, struct dc_error *err, pthread_mutex_t *mutex)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = pthread_mutex_consistent(mutex);
-
-    if(ret_val != 0)
-    {
-        // TODO: What?
-    }
-
-    return ret_val;
-}
-
 int dc_pthread_mutex_destroy(const struct dc_env *env, struct dc_error *err, pthread_mutex_t *mutex)
 {
     int ret_val;
@@ -572,22 +444,6 @@ int dc_pthread_mutex_lock(const struct dc_env *env, struct dc_error *err, pthrea
     DC_TRACE(env);
     errno = 0;
     ret_val = pthread_mutex_lock(mutex);
-
-    if(ret_val != 0)
-    {
-        // TODO: What?
-    }
-
-    return ret_val;
-}
-
-int dc_pthread_mutex_timedlock(const struct dc_env *env, struct dc_error *err, pthread_mutex_t *restrict mutex, const struct timespec *restrict abstime)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = pthread_mutex_timedlock(mutex, abstime);
 
     if(ret_val != 0)
     {
@@ -645,22 +501,6 @@ int dc_pthread_mutexattr_destroy(const struct dc_env *env, struct dc_error *err,
     return ret_val;
 }
 
-int dc_pthread_mutexattr_getrobust(const struct dc_env *env, struct dc_error *err, const pthread_mutexattr_t *restrict attr, int *restrict robust)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = pthread_mutexattr_getrobust(attr, robust);
-
-    if(ret_val != 0)
-    {
-        // TODO: What?
-    }
-
-    return ret_val;
-}
-
 int dc_pthread_mutexattr_gettype(const struct dc_env *env, struct dc_error *err, const pthread_mutexattr_t *restrict attr, int *restrict type)
 {
     int ret_val;
@@ -684,22 +524,6 @@ int dc_pthread_mutexattr_init(const struct dc_env *env, struct dc_error *err, pt
     DC_TRACE(env);
     errno = 0;
     ret_val = pthread_mutexattr_init(attr);
-
-    if(ret_val != 0)
-    {
-        // TODO: What?
-    }
-
-    return ret_val;
-}
-
-int dc_pthread_mutexattr_setrobust(const struct dc_env *env, struct dc_error *err, pthread_mutexattr_t *attr, int robust)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = pthread_mutexattr_setrobust(attr, robust);
 
     if(ret_val != 0)
     {
@@ -780,38 +604,6 @@ int dc_pthread_rwlock_rdlock(const struct dc_env *env, struct dc_error *err, pth
     DC_TRACE(env);
     errno = 0;
     ret_val = pthread_rwlock_rdlock(rwlock);
-
-    if(ret_val != 0)
-    {
-        // TODO: What?
-    }
-
-    return ret_val;
-}
-
-int dc_pthread_rwlock_timedrdlock(const struct dc_env *env, struct dc_error *err, pthread_rwlock_t *restrict rwlock, const struct timespec *restrict abstime)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = pthread_rwlock_timedrdlock(rwlock, abstime);
-
-    if(ret_val != 0)
-    {
-        // TODO: What?
-    }
-
-    return ret_val;
-}
-
-int dc_pthread_rwlock_timedwrlock(const struct dc_env *env, struct dc_error *err, pthread_rwlock_t *restrict rwlock, const struct timespec *restrict abstime)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = pthread_rwlock_timedwrlock(rwlock, abstime);
 
     if(ret_val != 0)
     {
@@ -962,86 +754,6 @@ int dc_pthread_setspecific(const struct dc_env *env, struct dc_error *err, pthre
     DC_TRACE(env);
     errno = 0;
     ret_val = pthread_setspecific(key, value);
-
-    if(ret_val != 0)
-    {
-        // TODO: What?
-    }
-
-    return ret_val;
-}
-
-int dc_pthread_spin_destroy(const struct dc_env *env, struct dc_error *err, pthread_spinlock_t *lock)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = pthread_spin_destroy(lock);
-
-    if(ret_val != 0)
-    {
-        // TODO: What?
-    }
-
-    return ret_val;
-}
-
-int dc_pthread_spin_init(const struct dc_env *env, struct dc_error *err, pthread_spinlock_t *lock, int pshared)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = pthread_spin_init(lock, pshared);
-
-    if(ret_val != 0)
-    {
-        // TODO: What?
-    }
-
-    return ret_val;
-}
-
-int dc_pthread_spin_lock(const struct dc_env *env, struct dc_error *err, pthread_spinlock_t *lock)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = pthread_spin_lock(lock);
-
-    if(ret_val != 0)
-    {
-        // TODO: What?
-    }
-
-    return ret_val;
-}
-
-int dc_pthread_spin_trylock(const struct dc_env *env, struct dc_error *err, pthread_spinlock_t *lock)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = pthread_spin_trylock(lock);
-
-    if(ret_val != 0)
-    {
-        // TODO: What?
-    }
-
-    return ret_val;
-}
-
-int dc_pthread_spin_unlock(const struct dc_env *env, struct dc_error *err, pthread_spinlock_t *lock)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = pthread_spin_unlock(lock);
 
     if(ret_val != 0)
     {
