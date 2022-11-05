@@ -34,54 +34,6 @@ int dc_sem_close(const struct dc_env *env, struct dc_error *err, sem_t *sem)
     return ret_val;
 }
 
-int dc_sem_destroy(const struct dc_env *env, struct dc_error *err, sem_t *sem)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = sem_destroy(sem);
-
-    if(ret_val == -1)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-
-    return ret_val;
-}
-
-int dc_sem_getvalue(const struct dc_env *env, struct dc_error *err, sem_t *restrict sem, int *restrict sval)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = sem_getvalue(sem, sval);
-
-    if(ret_val == -1)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-
-    return ret_val;
-}
-
-int dc_sem_init(const struct dc_env *env, struct dc_error *err, sem_t *sem, int pshared, unsigned value)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = sem_init(sem, pshared, value);
-
-    if(ret_val == -1)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-
-    return ret_val;
-}
-
 sem_t *dc_sem_open(const struct dc_env *env, struct dc_error *err, const char *name, int oflag, ...)
 {
     sem_t *ret_val;

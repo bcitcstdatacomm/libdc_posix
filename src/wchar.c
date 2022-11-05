@@ -50,7 +50,7 @@ FILE *dc_open_wmemstream(const struct dc_env *env, struct dc_error *err, wchar_t
     return ret_val;
 }
 
-wchar_t *dc_wcpcpy(const struct dc_env *env, struct dc_error *err, wchar_t *restrict ws1, const wchar_t *restrict ws2)
+wchar_t *dc_wcpcpy(const struct dc_env *env, wchar_t *restrict ws1, const wchar_t *restrict ws2)
 {
     wchar_t *ret_val;
 

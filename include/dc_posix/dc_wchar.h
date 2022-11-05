@@ -34,7 +34,7 @@ extern "C" {
 
 size_t dc_mbsnrtowcs(const struct dc_env *env, struct dc_error *err, wchar_t *restrict dst, const char **restrict src, size_t nmc, size_t len, mbstate_t *restrict ps);
 FILE *dc_open_wmemstream(const struct dc_env *env, struct dc_error *err, wchar_t **bufp, size_t *sizep);
-wchar_t *dc_wcpcpy(const struct dc_env *env, struct dc_error *err, wchar_t *restrict ws1, const wchar_t *restrict ws2);
+wchar_t *dc_wcpcpy(const struct dc_env *env, wchar_t *restrict ws1, const wchar_t *restrict ws2);
 wchar_t *dc_wcpncpy(const struct dc_env *env, wchar_t *restrict ws1, const wchar_t *restrict ws2, size_t n);
 int dc_wcscasecmp(const struct dc_env *env, const wchar_t *ws1, const wchar_t *ws2);
 int dc_wcscasecmp_l(const struct dc_env *env, const wchar_t *ws1, const wchar_t *ws2, locale_t locale);

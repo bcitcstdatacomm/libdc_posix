@@ -31,7 +31,7 @@ extern "C" {
 void dc_if_freenameindex(const struct dc_env *env, struct if_nameindex *ptr);
 char *dc_if_indextoname(const struct dc_env *env, struct dc_error *err, unsigned ifindex, char *ifname);
 struct if_nameindex *dc_if_nameindex(const struct dc_env *env, struct dc_error *err);
-unsigned dc_if_nametoindex(const struct dc_env *env, struct dc_error *err, const char *ifname);
+unsigned dc_if_nametoindex(const struct dc_env *env, const char *ifname);
 
 
 #ifdef __cplusplus

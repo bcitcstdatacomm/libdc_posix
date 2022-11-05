@@ -30,7 +30,18 @@ int dc_regcomp(const struct dc_env *env, struct dc_error *err, regex_t *restrict
 
     if(ret_val != 0)
     {
-        // TODO: what?
+        size_t len;
+        char *msg;
+
+        len = dc_regerror(env, ret_val, preg, NULL, 0);
+        msg = dc_malloc(env, err, len);
+
+        if(dc_error_has_no_error(err))
+        {
+            len = dc_regerror(env, ret_val, preg, msg, len);
+            DC_ERROR_RAISE_SYSTEM(err, msg, ret_val);
+            dc_free(env, msg);
+        }
     }
 
     return ret_val;

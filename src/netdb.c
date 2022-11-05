@@ -74,7 +74,8 @@ int dc_getaddrinfo(const struct dc_env *env, struct dc_error *err, const char *r
 
     if(ret_val != 0)
     {
-        // TODO: what?
+        // TODO: message
+        DC_ERROR_RAISE_SYSTEM(err, "", ret_val);
     }
 
     return ret_val;
@@ -101,7 +102,8 @@ int dc_getnameinfo(const struct dc_env *env, struct dc_error *err, const struct 
 
     if(ret_val != 0)
     {
-        // TODO: what?
+        // TODO: message
+        DC_ERROR_RAISE_SYSTEM(err, "", ret_val);
     }
 
     return ret_val;
@@ -162,7 +164,7 @@ struct protoent *dc_getprotobynumber(const struct dc_env *env, int proto)
     return ret_val;
 }
 
-struct protoent *dc_getprotoent(const struct dc_env *env, struct dc_error *err)
+struct protoent *dc_getprotoent(const struct dc_env *env)
 {
     struct protoent *ret_val;
 

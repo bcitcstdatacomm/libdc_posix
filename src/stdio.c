@@ -117,7 +117,7 @@ off_t dc_ftello(const struct dc_env *env, struct dc_error *err, FILE *stream)
     return ret_val;
 }
 
-int dc_ftrylockfile(const struct dc_env *env, struct dc_error *err, FILE *file)
+int dc_ftrylockfile(const struct dc_env *env, FILE *file)
 {
     int ret_val;
 
@@ -228,6 +228,11 @@ int dc_pclose(const struct dc_env *env, struct dc_error *err, FILE *stream)
     errno = 0;
     ret_val = pclose(stream);
 
+    if(ret_val == -1)
+    {
+        DC_ERROR_RAISE_ERRNO(err, errno);
+    }
+
     return ret_val;
 }
 
@@ -237,7 +242,7 @@ FILE *dc_popen(const struct dc_env *env, struct dc_error *err, const char *comma
 
     DC_TRACE(env);
     errno = 0;
-    ret_val = popen(command, mode);
+    ret_val = popen(command, mode);     // NOLINT(cert-env33-c)
 
     if(ret_val == NULL)
     {
@@ -301,7 +306,16 @@ int dc_vdprintf(const struct dc_env *env, struct dc_error *err, int fildes, cons
 
     DC_TRACE(env);
     errno = 0;
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat-nonliteral"
     ret_val = vdprintf(fildes, format, ap);
+#pragma GCC diagnostic pop
+
+    if(ret_val < 0)
+    {
+        DC_ERROR_RAISE_ERRNO(err, errno);
+    }
 
     return ret_val;
 }

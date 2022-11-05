@@ -28,7 +28,7 @@ int dc_pthread_atfork(const struct dc_env *env, struct dc_error *err, void (*pre
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -44,7 +44,7 @@ int dc_pthread_attr_destroy(const struct dc_env *env, struct dc_error *err, pthr
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -60,7 +60,7 @@ int dc_pthread_attr_getdetachstate(const struct dc_env *env, struct dc_error *er
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -76,7 +76,7 @@ int dc_pthread_attr_getguardsize(const struct dc_env *env, struct dc_error *err,
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -92,7 +92,7 @@ int dc_pthread_attr_getschedparam(const struct dc_env *env, struct dc_error *err
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -108,7 +108,7 @@ int dc_pthread_attr_init(const struct dc_env *env, struct dc_error *err, pthread
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -122,6 +122,11 @@ int dc_pthread_attr_setdetachstate(const struct dc_env *env, struct dc_error *er
     errno = 0;
     ret_val = pthread_attr_setdetachstate(attr, detachstate);
 
+    if(ret_val != 0)
+    {
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
+    }
+
     return ret_val;
 }
 
@@ -131,11 +136,14 @@ int dc_pthread_attr_setguardsize(const struct dc_env *env, struct dc_error *err,
 
     DC_TRACE(env);
     errno = 0;
+        #pragma GCC diagnostic push
+        #pragma GCC diagnostic ignored "-Wincompatible-pointer-types-discards-qualifiers"
     ret_val = pthread_attr_setguardsize(attr, guardsize);
+#pragma GCC diagnostic pop
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -151,7 +159,7 @@ int dc_pthread_attr_setschedparam(const struct dc_env *env, struct dc_error *err
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -164,6 +172,11 @@ int dc_pthread_cancel(const struct dc_env *env, struct dc_error *err, pthread_t 
     DC_TRACE(env);
     errno = 0;
     ret_val = pthread_cancel(thread);
+
+    if(ret_val != 0)
+    {
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
+    }
 
     return ret_val;
 }
@@ -178,7 +191,7 @@ int dc_pthread_cond_broadcast(const struct dc_env *env, struct dc_error *err, pt
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -194,7 +207,7 @@ int dc_pthread_cond_destroy(const struct dc_env *env, struct dc_error *err, pthr
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -210,7 +223,7 @@ int dc_pthread_cond_init(const struct dc_env *env, struct dc_error *err, pthread
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -226,7 +239,7 @@ int dc_pthread_cond_signal(const struct dc_env *env, struct dc_error *err, pthre
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -242,7 +255,7 @@ int dc_pthread_cond_timedwait(const struct dc_env *env, struct dc_error *err, pt
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -258,7 +271,7 @@ int dc_pthread_cond_wait(const struct dc_env *env, struct dc_error *err, pthread
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -274,7 +287,7 @@ int dc_pthread_condattr_destroy(const struct dc_env *env, struct dc_error *err, 
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -290,7 +303,7 @@ int dc_pthread_condattr_init(const struct dc_env *env, struct dc_error *err, pth
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -306,7 +319,7 @@ int dc_pthread_create(const struct dc_env *env, struct dc_error *err, pthread_t 
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -322,7 +335,7 @@ int dc_pthread_detach(const struct dc_env *env, struct dc_error *err, pthread_t 
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -367,7 +380,7 @@ int dc_pthread_join(const struct dc_env *env, struct dc_error *err, pthread_t th
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -383,7 +396,7 @@ int dc_pthread_key_create(const struct dc_env *env, struct dc_error *err, pthrea
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -399,7 +412,7 @@ int dc_pthread_key_delete(const struct dc_env *env, struct dc_error *err, pthrea
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -415,7 +428,7 @@ int dc_pthread_mutex_destroy(const struct dc_env *env, struct dc_error *err, pth
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -431,7 +444,7 @@ int dc_pthread_mutex_init(const struct dc_env *env, struct dc_error *err, pthrea
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -447,7 +460,7 @@ int dc_pthread_mutex_lock(const struct dc_env *env, struct dc_error *err, pthrea
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -463,7 +476,7 @@ int dc_pthread_mutex_trylock(const struct dc_env *env, struct dc_error *err, pth
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -479,7 +492,7 @@ int dc_pthread_mutex_unlock(const struct dc_env *env, struct dc_error *err, pthr
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -495,7 +508,7 @@ int dc_pthread_mutexattr_destroy(const struct dc_env *env, struct dc_error *err,
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -511,7 +524,7 @@ int dc_pthread_mutexattr_gettype(const struct dc_env *env, struct dc_error *err,
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -527,7 +540,7 @@ int dc_pthread_mutexattr_init(const struct dc_env *env, struct dc_error *err, pt
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -543,7 +556,7 @@ int dc_pthread_mutexattr_settype(const struct dc_env *env, struct dc_error *err,
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -559,7 +572,7 @@ int dc_pthread_once(const struct dc_env *env, struct dc_error *err, pthread_once
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -575,7 +588,7 @@ int dc_pthread_rwlock_destroy(const struct dc_env *env, struct dc_error *err, pt
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -591,7 +604,7 @@ int dc_pthread_rwlock_init(const struct dc_env *env, struct dc_error *err, pthre
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -607,7 +620,7 @@ int dc_pthread_rwlock_rdlock(const struct dc_env *env, struct dc_error *err, pth
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -623,7 +636,7 @@ int dc_pthread_rwlock_tryrdlock(const struct dc_env *env, struct dc_error *err, 
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -639,7 +652,7 @@ int dc_pthread_rwlock_trywrlock(const struct dc_env *env, struct dc_error *err, 
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -652,6 +665,11 @@ int dc_pthread_rwlock_unlock(const struct dc_env *env, struct dc_error *err, pth
     DC_TRACE(env);
     errno = 0;
     ret_val = pthread_rwlock_unlock(rwlock);
+
+    if(ret_val != 0)
+    {
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
+    }
 
     return ret_val;
 }
@@ -666,7 +684,7 @@ int dc_pthread_rwlock_wrlock(const struct dc_env *env, struct dc_error *err, pth
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -682,7 +700,7 @@ int dc_pthread_rwlockattr_destroy(const struct dc_env *env, struct dc_error *err
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -698,7 +716,7 @@ int dc_pthread_rwlockattr_init(const struct dc_env *env, struct dc_error *err, p
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -725,7 +743,7 @@ int dc_pthread_setcancelstate(const struct dc_env *env, struct dc_error *err, in
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -741,7 +759,7 @@ int dc_pthread_setcanceltype(const struct dc_env *env, struct dc_error *err, int
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -757,7 +775,7 @@ int dc_pthread_setspecific(const struct dc_env *env, struct dc_error *err, pthre
 
     if(ret_val != 0)
     {
-        // TODO: What?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;

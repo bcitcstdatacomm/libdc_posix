@@ -28,7 +28,8 @@ int dc_wordexp(const struct dc_env *env, struct dc_error *err, const char *restr
 
     if(ret_val != 0)
     {
-        // TODO: what?
+        // TODO: message
+        DC_ERROR_RAISE_SYSTEM(err, "", ret_val);
     }
 
     return ret_val;

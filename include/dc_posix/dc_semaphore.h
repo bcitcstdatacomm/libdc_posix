@@ -29,9 +29,6 @@ extern "C" {
 
 
 int dc_sem_close(const struct dc_env *env, struct dc_error *err, sem_t *sem);
-int dc_sem_destroy(const struct dc_env *env, struct dc_error *err, sem_t *sem);
-int dc_sem_getvalue(const struct dc_env *env, struct dc_error *err, sem_t *restrict sem, int *restrict sval);
-int dc_sem_init(const struct dc_env *env, struct dc_error *err, sem_t *sem, int pshared, unsigned value);
 sem_t *dc_sem_open(const struct dc_env *env, struct dc_error *err, const char *name, int oflag, ...);
 int dc_sem_post(const struct dc_env *env, struct dc_error *err, sem_t *sem);
 int dc_sem_trywait(const struct dc_env *env, struct dc_error *err, sem_t *sem);
@@ -47,6 +44,10 @@ int dc_sem_wait(const struct dc_env *env, struct dc_error *err, sem_t *sem);
 // not on macOS
 // int dc_sem_timedwait(const struct dc_env *env, struct dc_error *err, sem_t *restrict sem, const struct timespec *restrict abstime);
 
+// deprecated on macOS
+// int dc_sem_destroy(const struct dc_env *env, struct dc_error *err, sem_t *sem);
+// int dc_sem_getvalue(const struct dc_env *env, struct dc_error *err, sem_t *restrict sem, int *restrict sval);
+// int dc_sem_init(const struct dc_env *env, struct dc_error *err, sem_t *sem, int pshared, unsigned value);
 
 
 #endif // LIBDC_POSIX_DC_SEMAPHPORE_H

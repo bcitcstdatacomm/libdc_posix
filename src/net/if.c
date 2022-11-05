@@ -57,7 +57,7 @@ struct if_nameindex *dc_if_nameindex(const struct dc_env *env, struct dc_error *
     return ret_val;
 }
 
-unsigned dc_if_nametoindex(const struct dc_env *env, struct dc_error *err, const char *ifname)
+unsigned dc_if_nametoindex(const struct dc_env *env, const char *ifname)
 {
     unsigned ret_val;
 

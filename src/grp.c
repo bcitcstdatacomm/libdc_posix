@@ -44,7 +44,7 @@ int dc_getgrgid_r(const struct dc_env *env, struct dc_error *err, gid_t gid, str
 
     if(ret_val == -1)
     {
-        // TODO: what?
+        DC_ERROR_RAISE_ERRNO(err, errno);
     }
 
     return ret_val;
@@ -76,7 +76,7 @@ int dc_getgrnam_r(const struct dc_env *env, struct dc_error *err, const char *na
 
     if(ret_val != 0)
     {
-        // TODO: what?
+        DC_ERROR_RAISE_ERRNO(err, errno);
     }
 
     return ret_val;

@@ -27,9 +27,10 @@ int dc_fnmatch(const struct dc_env *env, struct dc_error *err, const char *patte
     errno = 0;
     ret_val = fnmatch(pattern, string, flags);
 
-    if(ret_val != 0)
+    if(ret_val != 0 && ret_val != FNM_NOMATCH)
     {
-        // TODO: what?
+        // TODO: what message?
+        DC_ERROR_RAISE_SYSTEM(err, "", ret_val);
     }
 
     return ret_val;

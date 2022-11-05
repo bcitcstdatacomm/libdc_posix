@@ -120,7 +120,11 @@ int dc_lio_listio(const struct dc_env *env, struct dc_error *err, int mode, stru
 
     DC_TRACE(env);
     errno = 0;
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wincompatible-pointer-types-discards-qualifiers"
     ret_val = lio_listio(mode, list, nent, sig);
+#pragma GCC diagnostic pop
 
     if(ret_val == -1)
     {

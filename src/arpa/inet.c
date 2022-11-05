@@ -72,7 +72,8 @@ in_addr_t dc_inet_addr(const struct dc_env *env, struct dc_error *err, const cha
 
     if(ret_val == (in_addr_t)-1)
     {
-        // TODO: some sort of error
+        // TODO: message & code
+        DC_ERROR_RAISE_SYSTEM(err, "", -1);
     }
 
     return ret_val;

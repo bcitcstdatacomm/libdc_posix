@@ -42,7 +42,7 @@ struct netent *dc_getnetbyname(const struct dc_env *env, const char *name);
 struct netent *dc_getnetent(const struct dc_env *env);
 struct protoent *dc_getprotobyname(const struct dc_env *env, const char *name);
 struct protoent *dc_getprotobynumber(const struct dc_env *env, int proto);
-struct protoent *dc_getprotoent(const struct dc_env *env, struct dc_error *err);
+struct protoent *dc_getprotoent(const struct dc_env *env);
 struct servent *dc_getservbyname(const struct dc_env *env, const char *name, const char *proto);
 struct servent *dc_getservbyport(const struct dc_env *env, int port, const char *proto);
 struct servent *dc_getservent(const struct dc_env *env);

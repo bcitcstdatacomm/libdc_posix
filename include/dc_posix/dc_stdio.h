@@ -35,7 +35,7 @@ void dc_flockfile(const struct dc_env *env, FILE *file);
 FILE *dc_fmemopen(const struct dc_env *env, struct dc_error *err, void *restrict buf, size_t size, const char *restrict mode);
 int dc_fseeko(const struct dc_env *env, struct dc_error *err, FILE *stream, off_t offset, int whence);
 off_t dc_ftello(const struct dc_env *env, struct dc_error *err, FILE *stream);
-int dc_ftrylockfile(const struct dc_env *env, struct dc_error *err, FILE *file);
+int dc_ftrylockfile(const struct dc_env *env, FILE *file);
 void dc_funlockfile(const struct dc_env *env, FILE *file);
 int dc_getc_unlocked(const struct dc_env *env, struct dc_error *err, FILE *stream);
 int dc_getchar_unlocked(const struct dc_env *env, struct dc_error *err);

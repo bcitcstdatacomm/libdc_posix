@@ -26,9 +26,20 @@ int dc_glob(const struct dc_env *env, struct dc_error *err, const char *restrict
     errno = 0;
     ret_val = glob(pattern, flags, errfunc, pglob);
 
-    if(ret_val == 0)
+    if(ret_val != 0 && ret_val != GLOB_NOMATCH)
     {
-        // TODO: what?
+        if(ret_val == GLOB_ABORTED)
+        {
+            DC_ERROR_RAISE_SYSTEM(err, "", ret_val);
+        }
+        else if(ret_val == GLOB_NOSPACE)
+        {
+            DC_ERROR_RAISE_SYSTEM(err, "", ret_val);
+        }
+        else
+        {
+            DC_ERROR_RAISE_SYSTEM(err, "<unknown glob error>", ret_val);
+        }
     }
 
     return ret_val;

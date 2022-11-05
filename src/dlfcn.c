@@ -29,7 +29,10 @@ int dc_dlclose(const struct dc_env *env, struct dc_error *err, void *handle)
 
     if(ret_val != 0)
     {
-        // TODO: what?
+        char *str;
+
+        str = dc_dlerror(env);
+        DC_ERROR_RAISE_SYSTEM(err, str, ret_val);
     }
 
     return ret_val;
@@ -56,7 +59,11 @@ void *dc_dlopen(const struct dc_env *env, struct dc_error *err, const char *file
 
     if(ret_val == NULL)
     {
-        // TODO: what?
+        char *str;
+
+        str = dc_dlerror(env);
+        // TODO: what to do instead of -1?
+        DC_ERROR_RAISE_SYSTEM(err, str, -1);
     }
 
     return ret_val;
@@ -69,6 +76,7 @@ void *dc_dlsym(const struct dc_env *env, void *restrict handle, const char *rest
     DC_TRACE(env);
     errno = 0;
     ret_val = dlsym(handle, name);
+    // TODO: investigate what errors can happen - badly worded spec
 
     return ret_val;
 }

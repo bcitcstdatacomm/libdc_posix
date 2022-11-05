@@ -416,7 +416,7 @@ int dc_getlogin_r(const struct dc_env *env, struct dc_error *err, char *name, si
 
     if(ret_val != 0)
     {
-        // TODO: what?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
@@ -962,7 +962,7 @@ int dc_ttyname_r(const struct dc_env *env, struct dc_error *err, int fildes, cha
 
     if(ret_val != 0)
     {
-        // TODO: what?
+        DC_ERROR_RAISE_ERRNO(err, ret_val);
     }
 
     return ret_val;
