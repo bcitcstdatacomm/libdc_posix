@@ -17,7 +17,6 @@
 
 #include "dc_posix/dc_regex.h"
 #include <dc_c/dc_stdlib.h>
-#include <regex.h>
 
 
 int dc_regcomp(const struct dc_env *env, struct dc_error *err, regex_t *restrict preg, const char *restrict pattern, int cflags)

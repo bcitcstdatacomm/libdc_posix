@@ -16,7 +16,6 @@
 
 
 #include "dc_posix/dc_stdio.h"
-#include <dc_c/dc_stdio.h>
 
 
 char *dc_ctermid(const struct dc_env *env, char *s)

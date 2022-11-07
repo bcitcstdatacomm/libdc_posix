@@ -16,7 +16,6 @@
 
 
 #include "dc_posix/dc_time.h"
-#include <dc_env/env.h>
 
 
 int dc_clock_getres(const struct dc_env *env, struct dc_error *err, clockid_t clock_id, struct timespec *res)

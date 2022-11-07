@@ -20,8 +20,8 @@
 
 
 #include <dc_env/env.h>
-#include <sys/signal.h>
-#include <sys/types.h>
+//#include <sys/signal.h>
+//#include <sys/types.h>
 #include <sys/wait.h>
 
 

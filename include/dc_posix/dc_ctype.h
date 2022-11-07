@@ -48,6 +48,7 @@ int dc_isxdigit_l(const struct dc_env *env, int c, locale_t locale);
 int dc_tolower_l(const struct dc_env *env, int c, locale_t locale);
 int dc_toupper_l(const struct dc_env *env, int c, locale_t locale);
 
+
 #ifdef __cplusplus
 }
 #endif

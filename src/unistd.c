@@ -16,7 +16,7 @@
 
 
 #include "dc_posix/dc_unistd.h"
-#include <unistd.h>
+//#include <unistd.h>
 
 
 int dc_access(const struct dc_env *env, struct dc_error *err, const char *path, int amode)

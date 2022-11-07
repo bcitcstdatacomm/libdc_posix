@@ -34,7 +34,6 @@ int dc_dirfd(const struct dc_env *env, struct dc_error *err, DIR *dirp);
 DIR *dc_fdopendir(const struct dc_env *env, struct dc_error *err, int fd);
 DIR *dc_opendir(const struct dc_env *env, struct dc_error *err, const char *dirname);
 struct dirent *dc_readdir(const struct dc_env *env, struct dc_error *err, DIR *dirp);
-int dc_readdir_r(const struct dc_env *env, struct dc_error *err, DIR *restrict dirp, struct dirent *restrict entry, struct dirent **restrict result);
 void dc_rewinddir(const struct dc_env *env, DIR *dirp);
 int dc_scandir(const struct dc_env *env, struct dc_error *err, const char *dir, struct dirent ***namelist, int (*sel)(const struct dirent *), int (*compar)(const struct dirent **, const struct dirent **));
 
@@ -42,6 +41,10 @@ int dc_scandir(const struct dc_env *env, struct dc_error *err, const char *dir, 
 #ifdef __cplusplus
 }
 #endif
+
+
+// obsolete
+// int dc_readdir_r(const struct dc_env *env, struct dc_error *err, DIR *restrict dirp, struct dirent *restrict entry, struct dirent **restrict result);
 
 
 #endif // LIBDC_POSIX_DC_DIRENT_H

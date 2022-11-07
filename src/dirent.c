@@ -114,22 +114,6 @@ struct dirent *dc_readdir(const struct dc_env *env, struct dc_error *err, DIR *d
     return ret_val;
 }
 
-int dc_readdir_r(const struct dc_env *env, struct dc_error *err, DIR *restrict dirp, struct dirent *restrict entry, struct dirent **restrict result)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = readdir_r(dirp, entry, result);
-
-    if(ret_val != 0)
-    {
-        DC_ERROR_RAISE_ERRNO(err, errno);
-    }
-
-    return ret_val;
-}
-
 void dc_rewinddir(const struct dc_env *env, DIR *dirp)
 {
     DC_TRACE(env);

@@ -137,7 +137,9 @@ int dc_pthread_attr_setguardsize(const struct dc_env *env, struct dc_error *err,
     DC_TRACE(env);
     errno = 0;
         #pragma GCC diagnostic push
-        #pragma GCC diagnostic ignored "-Wincompatible-pointer-types-discards-qualifiers"
+#pragma GCC diagnostic ignored "-Wpragmas"
+#pragma GCC diagnostic ignored "-Wincompatible-pointer-types-discards-qualifiers"
+#pragma GCC diagnostic ignored "-Wdiscarded-qualifiers"
     ret_val = pthread_attr_setguardsize(attr, guardsize);
 #pragma GCC diagnostic pop
 
