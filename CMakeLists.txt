@@ -116,7 +116,7 @@ include(CheckCCompilerFlag)
 function(AddCompileOptions)
     foreach(FLAG IN LISTS ARGN)
         string(REPLACE "-" "" FLAG_NO_HYPHEN ${FLAG})
-        set(CMAKE_C_FLAGS "-Werror -Wunknown-warning-option")
+        # set(CMAKE_C_FLAGS "-Werror -Wunknown-warning-option")
         check_c_compiler_flag(${FLAG} COMPILER_SUPPORTS_${FLAG_NO_HYPHEN})
         if (COMPILER_SUPPORTS_${FLAG_NO_HYPHEN})
             add_compile_options(${FLAG})
@@ -262,11 +262,13 @@ set_target_properties(dc_posix PROPERTIES
         VERSION ${PROJECT_VERSION}
         SOVERSION ${PROJECT_VERSION_MAJOR})
 
+find_library(LIBCGREEN cgreen REQUIRED)
 find_library(LIBDC_ERROR dc_error REQUIRED)
 find_library(LIBDC_ENV dc_env REQUIRED)
 find_library(LIBDC_C dc_c REQUIRED)
 find_library(LIBICONV iconv)
 
+target_link_libraries(dc_posix PUBLIC ${LIBCGREEN})
 target_link_libraries(dc_posix PUBLIC ${LIBDC_ERROR})
 target_link_libraries(dc_posix PUBLIC ${LIBDC_ENV})
 target_link_libraries(dc_posix PUBLIC ${LIBDC_C})
