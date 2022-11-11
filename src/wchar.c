@@ -83,17 +83,6 @@ int dc_wcscasecmp(const struct dc_env *env, const wchar_t *ws1, const wchar_t *w
     return ret_val;
 }
 
-int dc_wcscasecmp_l(const struct dc_env *env, const wchar_t *ws1, const wchar_t *ws2, locale_t locale)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = wcscasecmp_l(ws1, ws2, locale);
-
-    return ret_val;
-}
-
 int dc_wcscoll_l(const struct dc_env *env, struct dc_error *err, const wchar_t *ws1, const wchar_t *ws2, locale_t locale)
 {
     int ret_val;
