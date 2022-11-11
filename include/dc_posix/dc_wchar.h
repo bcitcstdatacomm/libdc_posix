@@ -41,7 +41,6 @@ int dc_wcscasecmp_l(const struct dc_env *env, const wchar_t *ws1, const wchar_t 
 int dc_wcscoll_l(const struct dc_env *env, struct dc_error *err, const wchar_t *ws1, const wchar_t *ws2, locale_t locale);
 wchar_t *dc_wcsdup(const struct dc_env *env, struct dc_error *err, const wchar_t *string);
 int dc_wcsncasecmp(const struct dc_env *env, const wchar_t *ws1, const wchar_t *ws2, size_t n);
-int dc_wcsncasecmp_l(const struct dc_env *env, const wchar_t *ws1, const wchar_t *ws2, size_t n, locale_t locale);
 size_t dc_wcsnlen(const struct dc_env *env, const wchar_t *ws, size_t maxlen);
 size_t dc_wcsnrtombs(const struct dc_env *env, struct dc_error *err, char *restrict dst, const wchar_t **restrict src, size_t nwc, size_t len, mbstate_t *restrict ps);
 size_t dc_wcsxfrm_l(const struct dc_env *env, struct dc_error *err, wchar_t *restrict ws1, const wchar_t *restrict ws2, size_t n, locale_t locale);
@@ -50,6 +49,10 @@ size_t dc_wcsxfrm_l(const struct dc_env *env, struct dc_error *err, wchar_t *res
 #ifdef __cplusplus
 }
 #endif
+
+
+// not on FreeBSD
+// int dc_wcsncasecmp_l(const struct dc_env *env, const wchar_t *ws1, const wchar_t *ws2, size_t n, locale_t locale);
 
 
 #endif // LIBDC_POSIX_DC_WCHAR_H

@@ -137,17 +137,6 @@ int dc_wcsncasecmp(const struct dc_env *env, const wchar_t *ws1, const wchar_t *
     return ret_val;
 }
 
-int dc_wcsncasecmp_l(const struct dc_env *env, const wchar_t *ws1, const wchar_t *ws2, size_t n, locale_t locale)
-{
-    int ret_val;
-
-    DC_TRACE(env);
-    errno = 0;
-    ret_val = wcsncasecmp_l(ws1, ws2, n, locale);
-
-    return ret_val;
-}
-
 size_t dc_wcsnlen(const struct dc_env *env, const wchar_t *ws, size_t maxlen)
 {
     size_t ret_val;
