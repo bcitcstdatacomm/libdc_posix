@@ -111,7 +111,21 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 endif ()
 
 include_directories(${INCLUDE_DIR})
-add_compile_options("-Wall"
+include(CheckCCompilerFlag)
+
+function(AddCompileOptions)
+    foreach(FLAG IN LISTS ARGN)
+        string(REPLACE "-" "" FLAG_NO_HYPHEN ${FLAG})
+        set(CMAKE_C_FLAGS "-Werror -Wunknown-warning-option")
+        check_c_compiler_flag(${FLAG} COMPILER_SUPPORTS_${FLAG_NO_HYPHEN})
+        if (COMPILER_SUPPORTS_${FLAG_NO_HYPHEN})
+            add_compile_options(${FLAG})
+        endif ()
+    endforeach()
+endfunction()
+
+list(APPEND COMPILER_FLAGS
+        "-Wall"
         "-Wextra"
         "-Wpedantic"
         "-Wshadow"
@@ -140,39 +154,34 @@ add_compile_options("-Wall"
         "-Wformat=2"
         "-Wfree-nonheap-object"
         "-Wshift-overflow"
-        "-Wwrite-strings")
+        "-Wwrite-strings"
+        "-Wunsuffixed-float-constants"
+        "-Warith-conversion"
+        "-Wunsafe-loop-optimizations"
+        "-Wvector-operation-performance"
+        "-Walloc-zero"
+        "-Wtrampolines"
+        "-Wtsan"
+        "-Wformat-overflow=2"
+        "-Wformat-signedness"
+        "-Wjump-misses-init"
+        "-Wformat-truncation=2")
 
 if (${SANITIZE})
-    add_compile_options("-fsanitize=address")
-    add_compile_options("-fsanitize=undefined")
-    add_compile_options("-fsanitize-address-use-after-scope")
-    add_compile_options("-fstack-protector-all")
-    add_compile_options("-fdelete-null-pointer-checks")
-    add_compile_options("-fno-omit-frame-pointer")
-
-    if (NOT ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-        add_compile_options("-fsanitize=leak")
-    endif ()
+    list(APPEND COMPILER_FLAGS
+            "-fsanitize=address"
+            "-fsanitize=undefined"
+            "-fsanitize-address-use-after-scope"
+            "-fstack-protector-all"
+            "-fdelete-null-pointer-checks"
+            "-fno-omit-frame-pointer"
+            "-fsanitize=leak")
 
     add_link_options("-fsanitize=address")
     add_link_options("-fsanitize=bounds")
 endif ()
 
-if ("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
-    #    add_compile_options("-O2")
-    add_compile_options("-Wunsuffixed-float-constants"
-            "-Warith-conversion"
-            "-Wunsafe-loop-optimizations"
-            "-Wvector-operation-performance"
-            "-Walloc-zero"
-            "-Wtrampolines"
-            "-Wtsan"
-            "-Wformat-overflow=2"
-            "-Wformat-signedness"
-            "-Wjump-misses-init"
-            "-Wformat-truncation=2")
-elseif ("${CMAKE_C_COMPILER_ID}" STREQUAL "Clang")
-endif ()
+AddCompileOptions(${COMPILER_FLAGS})
 
 find_package(Doxygen
         REQUIRED
