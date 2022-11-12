@@ -279,6 +279,7 @@ find_library(LIBDC_ENV dc_env REQUIRED)
 find_library(LIBDC_C dc_c REQUIRED)
 find_library(LIBICONV iconv)
 find_library(LIBDL dl)
+find_library(LIBRT rt)
 
 target_link_libraries(dc_posix PUBLIC ${LIBCGREEN})
 target_link_libraries(dc_posix PUBLIC ${LIBDC_ERROR})
@@ -291,6 +292,10 @@ endif()
 
 if(LIBDL)
     target_link_libraries(dc_posix PUBLIC ${LIBDL})
+endif()
+
+if(LIBRT)
+    target_link_libraries(dc_posix PUBLIC ${LIBRT})
 endif()
 
 install(TARGETS dc_posix LIBRARY DESTINATION lib)
