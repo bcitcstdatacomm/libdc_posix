@@ -22,6 +22,7 @@ find_library(LIBDC_C dc_c REQUIRED)
 find_library(LIBICONV iconv)
 find_library(LIBDL dl)
 find_library(LIBRT rt)
+find_library(LIBPTHREAD pthread)
 
 target_link_libraries(libdc_posix_test PRIVATE ${LIBCGREEN})
 target_link_libraries(libdc_posix_test PRIVATE ${LIBDC_ERROR})
@@ -38,6 +39,10 @@ endif()
 
 if(LIBRT)
     target_link_libraries(libdc_posix_test PUBLIC ${LIBRT})
+endif()
+
+if(LIBPTHREAD)
+    target_link_libraries(libdc_posix_test PUBLIC ${LIBPTHREAD})
 endif()
 
 add_test(NAME libdc_posix_test COMMAND libdc_posix_test)
