@@ -273,7 +273,6 @@ set_target_properties(dc_posix PROPERTIES
         VERSION ${PROJECT_VERSION}
         SOVERSION ${PROJECT_VERSION_MAJOR})
 
-find_library(LIBCGREEN cgreen REQUIRED)
 find_library(LIBDC_ERROR dc_error REQUIRED)
 find_library(LIBDC_ENV dc_env REQUIRED)
 find_library(LIBDC_C dc_c REQUIRED)
@@ -282,7 +281,6 @@ find_library(LIBDL dl)
 find_library(LIBRT rt)
 find_library(LIBPTHREAD pthread)
 
-target_link_libraries(dc_posix PUBLIC ${LIBCGREEN})
 target_link_libraries(dc_posix PUBLIC ${LIBDC_ERROR})
 target_link_libraries(dc_posix PUBLIC ${LIBDC_ENV})
 target_link_libraries(dc_posix PUBLIC ${LIBDC_C})
