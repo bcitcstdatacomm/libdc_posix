@@ -11,9 +11,14 @@ add_executable(libdc_posix_test ${TEST_SOURCE_LIST} ${TEST_HEADER_LIST} ${SOURCE
 
 target_compile_features(libdc_posix_test PRIVATE c_std_17)
 
-target_include_directories(libdc_posix_test PRIVATE ../include/dc_posix)
-target_include_directories(libdc_posix_test PRIVATE /usr/include)
+target_include_directories(libdc_posix_test PRIVATE ../include)
 target_include_directories(libdc_posix_test PRIVATE /usr/local/include)
+
+if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+    target_include_directories(libdc_posix_test PRIVATE /opt/homebrew/include)
+else ()
+    target_include_directories(libdc_posix_test PRIVATE /usr/include)
+endif ()
 
 find_library(LIBCGREEN cgreen REQUIRED)
 find_library(LIBDC_ERROR dc_error REQUIRED)
