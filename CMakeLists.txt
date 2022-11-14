@@ -7,7 +7,11 @@ project(dc_posix
 
 set(CMAKE_C_STANDARD 17)
 
-set(SANITIZE TRUE)
+if (NOT DEFINED ENV{DC_BUILD_SANITIZE})
+    set(SANITIZE FALSE)
+else ()
+    set(SANITIZE ENV{DC_BUILD_SANITIZE})
+endif ()
 
 set(SOURCE_DIR ${PROJECT_SOURCE_DIR}/src)
 set(INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
