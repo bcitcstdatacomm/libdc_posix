@@ -30,7 +30,7 @@ extern "C" {
 int dc_dlclose(const struct dc_env *env, struct dc_error *err, void *handle);
 char *dc_dlerror(const struct dc_env *env);
 void *dc_dlopen(const struct dc_env *env, struct dc_error *err, const char *file, int mode);
-void *dc_dlsym(const struct dc_env *env, void *restrict handle, const char *restrict name);
+void *dc_dlsym(const struct dc_env *env, struct dc_error *err, void *restrict handle, const char *restrict name);
 
 
 #ifdef __cplusplus

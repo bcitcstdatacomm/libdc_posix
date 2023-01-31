@@ -69,14 +69,21 @@ void *dc_dlopen(const struct dc_env *env, struct dc_error *err, const char *file
     return ret_val;
 }
 
-void *dc_dlsym(const struct dc_env *env, void *restrict handle, const char *restrict name)
+void *dc_dlsym(const struct dc_env *env, struct dc_error *err, void *restrict handle, const char *restrict name)
 {
     void *ret_val;
 
     DC_TRACE(env);
     errno = 0;
     ret_val = dlsym(handle, name);
-    // TODO: investigate what errors can happen - badly worded spec
+
+    if(ret_val == NULL)
+    {
+        char *msg;
+
+        msg = dc_dlerror(env);
+        DC_ERROR_RAISE_SYSTEM(err, msg, 1);
+    }
 
     return ret_val;
 }
